@@ -62,7 +62,7 @@ export class ToolbarFilter extends React.Component<ToolbarFilterProps, ToolbarFi
   componentDidMount() {
     const { categoryName, chips } = this.props;
     this.context.updateNumberFilters(
-      typeof categoryName !== 'string' && categoryName.hasOwnProperty('key')
+      typeof categoryName !== 'string' && Object.hasOwn(categoryName, 'key')
         ? categoryName.key
         : categoryName.toString(),
       chips.length
@@ -73,7 +73,7 @@ export class ToolbarFilter extends React.Component<ToolbarFilterProps, ToolbarFi
   componentDidUpdate() {
     const { categoryName, chips } = this.props;
     this.context.updateNumberFilters(
-      typeof categoryName !== 'string' && categoryName.hasOwnProperty('key')
+      typeof categoryName !== 'string' && Object.hasOwn(categoryName, 'key')
         ? categoryName.key
         : categoryName.toString(),
       chips.length
@@ -94,7 +94,7 @@ export class ToolbarFilter extends React.Component<ToolbarFilterProps, ToolbarFi
     } = this.props;
     const { isExpanded, chipGroupContentRef } = this.context;
     const categoryKey =
-      typeof categoryName !== 'string' && categoryName.hasOwnProperty('key')
+      typeof categoryName !== 'string' && Object.hasOwn(categoryName, 'key')
         ? categoryName.key
         : categoryName.toString();
 

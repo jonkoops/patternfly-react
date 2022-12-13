@@ -564,13 +564,13 @@ class CollapsibleEditableTable extends React.Component {
 
     const textInputFormatter = inlineEditFormatterFactory({
       renderValue: (value, { rowData }) =>
-        rowData.hasOwnProperty('parent') ? (
+        Object.hasOwn(rowData, 'parent') ? (
           <ExpandableRowContent>{rowData.data.modules.filter(a => a).join(', ')}</ExpandableRowContent>
         ) : (
           value
         ),
       renderEdit: (value, { column, columnIndex, rowIndex, rowData }, { activeEditId }) => {
-        const renderer = rowData.hasOwnProperty('parent') ? childEditRenderer : parentEditRenderer;
+        const renderer = Object.hasOwn(rowData, 'parent') ? childEditRenderer : parentEditRenderer;
         return renderer(value, { rowData, column, rowIndex, columnIndex, activeEditId });
       }
     });
@@ -655,7 +655,7 @@ class CollapsibleEditableTable extends React.Component {
         this.setState(({ rows }) => ({
           activeEditId: elementId,
           rows: rows.map((row, id) => {
-            if (id === rowIndex && columnIndex === EXPANDABLE_COL && row.hasOwnProperty('isOpen')) {
+            if (id === rowIndex && columnIndex === EXPANDABLE_COL && Object.hasOwn(row, 'isOpen')) {
               row.isOpen = !row.isOpen;
             }
             return row;

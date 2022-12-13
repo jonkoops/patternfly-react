@@ -72,7 +72,7 @@ export const ProgressContainer: React.FunctionComponent<ProgressContainerProps> 
   isTitleTruncated = false,
   tooltipPosition
 }: ProgressContainerProps) => {
-  const StatusIcon = variantToIcon.hasOwnProperty(variant) && variantToIcon[variant];
+  const StatusIcon = Object.hasOwn(variantToIcon, variant) && variantToIcon[variant];
   const [tooltip, setTooltip] = React.useState('');
   const onMouseEnter = (event: any) => {
     if (event.target.offsetWidth < event.target.scrollWidth) {
@@ -108,7 +108,7 @@ export const ProgressContainer: React.FunctionComponent<ProgressContainerProps> 
         {(measureLocation === ProgressMeasureLocation.top || measureLocation === ProgressMeasureLocation.outside) && (
           <span className={css(progressStyle.progressMeasure)}>{label || `${value}%`}</span>
         )}
-        {variantToIcon.hasOwnProperty(variant) && (
+        {Object.hasOwn(variantToIcon, variant) && (
           <span className={css(progressStyle.progressStatusIcon)}>
             <StatusIcon />
           </span>

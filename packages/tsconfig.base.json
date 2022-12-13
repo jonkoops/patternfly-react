@@ -3,12 +3,12 @@
     "assumeChangesOnlyAffectDirectDependencies": true,
     "jsx": "react",
     "lib": [
-      "es2015",
-      "dom"
+      "ES2022",
+      "DOM"
     ],
-    "target": "es2015",
-    "module": "es2015",
-    "moduleResolution": "node",
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "importHelpers": true,

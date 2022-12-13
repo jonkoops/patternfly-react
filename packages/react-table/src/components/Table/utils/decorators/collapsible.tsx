@@ -65,7 +65,7 @@ export const collapsible: IFormatter = (
 };
 
 export const expandable: IFormatter = (value: IFormatterValueType, { rowData }: IExtra) =>
-  rowData && rowData.hasOwnProperty('parent') ? (
+  rowData && Object.hasOwn(rowData, 'parent') ? (
     <ExpandableRowContent>{value as React.ReactNode}</ExpandableRowContent>
   ) : (
     value
@@ -84,7 +84,7 @@ export const expandedRow = (colSpan?: number, additionalColSpan: number = 0) => 
     }: IExtra
   ): decoratorReturnType =>
     value &&
-    rowData.hasOwnProperty('parent') && {
+    Object.hasOwn(rowData, 'parent') && {
       colSpan:
         !rowData.cells || rowData.cells.length === 1 ? colSpan + (rowData.fullWidth ? additionalColSpan + 1 : 0) : 1,
       id: contentId + rowIndex + (columnIndex ? '-' + columnIndex : ''),

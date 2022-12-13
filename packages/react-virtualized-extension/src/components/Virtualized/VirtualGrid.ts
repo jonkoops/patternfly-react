@@ -1275,7 +1275,7 @@ export class VirtualGrid extends React.Component<VirtualGridProps, VirtualGridSt
   _isScrolling(props: VirtualGridProps = this.props, state: VirtualGridState = this.state): boolean {
     // If isScrolling is defined in props, use it to override the value in state
     // This is a performance optimization for WindowScroller + VirtualGrid
-    return Object.hasOwnProperty.call(props, 'isScrolling') ? Boolean(props.isScrolling) : Boolean(state.isScrolling);
+    return Object.hasOwn(props, 'isScrolling') ? Boolean(props.isScrolling) : Boolean(state.isScrolling);
   }
 
   _maybeCallOnScrollbarPresenceChange() {

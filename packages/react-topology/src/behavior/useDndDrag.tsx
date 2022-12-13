@@ -54,14 +54,14 @@ const getOperation = (
   if (!operation) {
     return undefined;
   }
-  if (operation.hasOwnProperty('type')) {
+  if (Object.hasOwn(operation, 'type')) {
     return operation as DragOperationWithType;
   }
   return operation[getModifiers((d3.event && d3.event.sourceEvent) || d3.event)] || operation[Modifiers.DEFAULT];
 };
 
 const hasOperation = (operation: DragSpecOperationType<DragOperationWithType> | undefined): boolean =>
-  !!(operation && (operation.hasOwnProperty('type') || Object.keys(operation).length > 0));
+  !!(operation && (Object.hasOwn(operation, 'type') || Object.keys(operation).length > 0));
 
 const EMPTY_PROPS = Object.freeze({});
 

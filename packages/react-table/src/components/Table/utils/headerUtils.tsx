@@ -41,9 +41,9 @@ const generateHeader = (
     emptyCol,
     ...(origTransforms || []),
     ...(columnTransforms || []),
-    ...(header && header.hasOwnProperty('transforms') ? header.transforms : [])
+    ...(header && Object.hasOwn(header, 'transforms') ? header.transforms : [])
   ],
-  formatters: [...(origFormatters || []), ...(header && header.hasOwnProperty('formatters') ? header.formatters : [])]
+  formatters: [...(origFormatters || []), ...(header && Object.hasOwn(header, 'formatters') ? header.formatters : [])]
 });
 
 interface ICustomCell {
@@ -69,13 +69,13 @@ const generateCell = (
   transforms: [
     ...(cellTransforms || []),
     ...(columnTransforms || []),
-    ...(cell && cell.hasOwnProperty('transforms') ? cell.transforms : []),
+    ...(cell && Object.hasOwn(cell, 'transforms') ? cell.transforms : []),
     mapProps // This transform should be applied last so that props that are manually defined at the cell level will override all other transforms.
   ],
   formatters: [
     defaultTitle,
     ...(cellFormatters || []),
-    ...(cell && cell.hasOwnProperty('formatters') ? cell.formatters : [])
+    ...(cell && Object.hasOwn(cell, 'formatters') ? cell.formatters : [])
   ]
 });
 
@@ -90,9 +90,9 @@ const generateCell = (
  * @returns {*} object with property, extraParams, header, cell and props.
  */
 const mapHeader = (column: ICell, extra: any, key: number, ...props: any) => {
-  const title = (column.hasOwnProperty('title') ? column.title : column) as string | ICell;
+  const title = (Object.hasOwn(column, 'title') ? column.title : column) as string | ICell;
   let dataLabel: string | ICell = `column-${key}`;
-  if (column.hasOwnProperty('dataLabel')) {
+  if (Object.hasOwn(column, 'dataLabel')) {
     dataLabel = column.dataLabel;
   } else if (typeof title === 'string') {
     dataLabel = title;
@@ -113,7 +113,7 @@ const mapHeader = (column: ICell, extra: any, key: number, ...props: any) => {
     props: {
       'data-label': dataLabel,
       'data-key': key,
-      ...(column.hasOwnProperty('props') ? column.props : {}),
+      ...(Object.hasOwn(column, 'props') ? column.props : {}),
       ...props
     }
   };
@@ -246,8 +246,8 @@ const collapsibleTransforms = (
  * @returns {*} object with title from cell and cellTransforms with additional in.
  */
 const addAdditionalCellTranforms = (cell: ICell, additional: any) => ({
-  ...(cell.hasOwnProperty('title') ? cell : { title: cell }),
-  cellTransforms: [...(cell.hasOwnProperty('cellTransforms') ? cell.cellTransforms : []), additional]
+  ...(Object.hasOwn(cell, 'title') ? cell : { title: cell }),
+  cellTransforms: [...(Object.hasOwn(cell, 'cellTransforms') ? cell.cellTransforms : []), additional]
 });
 
 /**
@@ -274,11 +274,11 @@ const expandContent = (header: (ICell | string)[], extra: any) => {
  */
 export const mapOpenedRows = (rows: IRow[], children: any) =>
   rows.reduce((acc: any, curr, key) => {
-    if (curr.hasOwnProperty('parent')) {
+    if (Object.hasOwn(curr, 'parent')) {
       const parent = acc.length > 0 && acc[acc.length - 1];
       if (parent) {
         acc[acc.length - 1].rows = [...acc[acc.length - 1].rows, children[key]];
-        if (curr.hasOwnProperty('compoundParent')) {
+        if (Object.hasOwn(curr, 'compoundParent')) {
           // if this is compound expand, check for any open child cell
           acc[acc.length - 1].isOpen = acc[acc.length - 1].rows.some((oneRow: IRow) =>
             oneRow.props.rowData.cells.some((oneCell: ICell) => oneCell.props && oneCell.props.isOpen)

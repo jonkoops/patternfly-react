@@ -45,7 +45,7 @@ const outputIndex = (index, indexFile) => {
     `
 "use strict";
 function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    for (var p in m) if (!Object.hasOwn(exports, p)) exports[p] = m[p];
 }
 exports.__esModule = true;
 ${index.map(file => `__export(require('./${file}'));`).join('\n')}

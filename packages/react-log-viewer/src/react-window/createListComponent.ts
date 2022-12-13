@@ -361,7 +361,7 @@ export default function createListComponent({
       const itemStyleCache = this._getItemStyleCache(shouldResetStyleCacheOnItemSizeChange && itemSize);
 
       let style;
-      if (itemStyleCache.hasOwnProperty(index)) {
+      if (Object.hasOwn(itemStyleCache, index)) {
         style = itemStyleCache[index];
       } else {
         const offset = getItemOffset(this.props, index, this._instanceProps);
@@ -435,7 +435,7 @@ export default function createListComponent({
 
       if (typeof outerRef === 'function') {
         outerRef(ref);
-      } else if (outerRef != null && typeof outerRef === 'object' && outerRef.hasOwnProperty('current')) {
+      } else if (outerRef != null && typeof outerRef === 'object' && Object.hasOwn(outerRef, 'current')) {
         outerRef.current = ref;
       }
     };

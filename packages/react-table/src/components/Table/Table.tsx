@@ -168,7 +168,7 @@ export class Table extends React.Component<TableProps, {}> {
       return false;
     }
     return rows.every(
-      row => this.isSelected(row) || row.disableSelection || (row.hasOwnProperty('parent') && !row.showSelect)
+      row => this.isSelected(row) || row.disableSelection || (Object.hasOwn(row, 'parent') && !row.showSelect)
     );
   };
 

@@ -65,7 +65,7 @@ function effect({ state }: ModifierArguments<{}>) {
       const element = state.elements[name];
       const attributes = state.attributes[name] || {};
 
-      const styleProperties = Object.keys(state.styles.hasOwnProperty(name) ? state.styles[name] : initialStyles[name]);
+      const styleProperties = Object.keys(Object.hasOwn(state.styles, name) ? state.styles[name] : initialStyles[name]);
 
       // Set all values to an empty string to unset them
       const style = styleProperties.reduce((style, property) => {

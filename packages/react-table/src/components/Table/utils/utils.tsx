@@ -4,7 +4,7 @@ const hasCompoundParentsExpanded = (parentId: number, compoundParent: number, ro
   // max rows.length parents
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   for (const i of rows) {
-    if (rows[parentId].hasOwnProperty('parent')) {
+    if (Object.hasOwn(rows[parentId], 'parent')) {
       parentId = rows[parentId].parent;
     } else {
       return (rows[parentId].cells[compoundParent] as IRowCell).props.isOpen;
@@ -17,7 +17,7 @@ const hasParentsExpanded = (parentId: number, rows: IRow[]) => {
   // max rows.length parents
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   for (const i of rows) {
-    if (rows[parentId].hasOwnProperty('parent')) {
+    if (Object.hasOwn(rows[parentId], 'parent')) {
       parentId = rows[parentId].parent;
     } else {
       return rows[parentId].isOpen;
@@ -28,7 +28,7 @@ const hasParentsExpanded = (parentId: number, rows: IRow[]) => {
 
 export const isRowExpanded = (row: IRow, rows: IRow[]) => {
   if (row.parent !== undefined) {
-    if (row.hasOwnProperty('compoundParent')) {
+    if (Object.hasOwn(row, 'compoundParent')) {
       return hasCompoundParentsExpanded(row.parent, row.compoundParent, rows);
     }
     return hasParentsExpanded(row.parent, rows) && rows[row.parent].isOpen;

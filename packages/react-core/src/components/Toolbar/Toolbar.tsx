@@ -109,7 +109,7 @@ export class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
 
   updateNumberFilters = (categoryName: string, numberOfFilters: number) => {
     const filterInfoToUpdate: FilterInfo = { ...this.staticFilterInfo };
-    if (!filterInfoToUpdate.hasOwnProperty(categoryName) || filterInfoToUpdate[categoryName] !== numberOfFilters) {
+    if (!Object.hasOwn(filterInfoToUpdate, categoryName) || filterInfoToUpdate[categoryName] !== numberOfFilters) {
       filterInfoToUpdate[categoryName] = numberOfFilters;
       this.staticFilterInfo = filterInfoToUpdate;
       this.setState({ filterInfo: filterInfoToUpdate });

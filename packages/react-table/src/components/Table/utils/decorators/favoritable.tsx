@@ -19,7 +19,7 @@ export const favoritable: ITransform = (
   };
 
   // this is a child row which should not display the favorites icon
-  if (rowData && rowData.hasOwnProperty('parent') && !rowData.fullWidth) {
+  if (rowData && Object.hasOwn(rowData, 'parent') && !rowData.fullWidth) {
     return {
       component: 'td',
       isVisible: true

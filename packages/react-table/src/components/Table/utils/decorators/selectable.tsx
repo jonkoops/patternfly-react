@@ -19,7 +19,7 @@ export const selectable: ITransform = (
     property
   };
 
-  if (rowData && rowData.hasOwnProperty('parent') && !rowData.showSelect && !rowData.fullWidth) {
+  if (rowData && Object.hasOwn(rowData, 'parent') && !rowData.showSelect && !rowData.fullWidth) {
     return {
       component: 'td',
       isVisible: true

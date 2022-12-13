@@ -231,7 +231,7 @@ const SearchInputBase: React.FunctionComponent<SearchInputProps> = ({
       if (splitPair.length === 2) {
         attrValue[splitPair[0]] = splitPair[1];
       } else if (splitPair.length === 1) {
-        attrValue.haswords = attrValue.hasOwnProperty('haswords')
+        attrValue.haswords = Object.hasOwn(attrValue, 'haswords')
           ? `${attrValue.haswords} ${splitPair[0]}`
           : splitPair[0];
       }

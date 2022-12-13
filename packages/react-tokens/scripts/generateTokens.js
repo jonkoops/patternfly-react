@@ -197,7 +197,7 @@ function generateTokens() {
         let bestMatch = '';
         let bestValue = '';
         for (const key in localVarsMap[match]) {
-          if (localVarsMap[match].hasOwnProperty(key)) {
+          if (Object.hasOwn(localVarsMap[match], key)) {
             // remove trailing * from key to compare
             let sanitizedKey = key.replace(/\*$/, '').trim();
             sanitizedKey = sanitizedKey.replace(/>$/, '').trim();

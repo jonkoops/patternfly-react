@@ -153,7 +153,7 @@ export const AdvancedSearchMenu: React.FunctionComponent<AdvancedSearchMenuProps
 
   const getValue = (attribute: string) => {
     const map = getAttrValueMap();
-    return map.hasOwnProperty(attribute) ? map[attribute] : '';
+    return Object.hasOwn(map, attribute) ? map[attribute] : '';
   };
 
   const buildFormGroups = () => {

@@ -58,8 +58,8 @@ export function mapToStyles({
 }) {
   let { x, y } = roundOffsets(offsets);
 
-  const hasX = offsets.hasOwnProperty('x');
-  const hasY = offsets.hasOwnProperty('y');
+  const hasX = Object.hasOwn(offsets, 'x');
+  const hasY = Object.hasOwn(offsets, 'y');
 
   let sideX: string = left;
   let sideY: string = top;
