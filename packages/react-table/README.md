@@ -2,21 +2,6 @@
 
 This package provides Table PatternFly components based on [PatternFly][patternfly]
 
-### Prerequisite 
-
-#### Node environment
-
-This project currently supports Node [Active LTS](https://github.com/nodejs/Release#release-schedule) releases. Please stay current with Node Active LTS when developing patternfly-react.
-
-For example, to develop with Node 18, use the following:
-
-```
-nvm install 18
-nvm use 18
-```
-
-This project also requires a Yarn version of >=1.6.0. The latest version can be installed [here](https://yarnpkg.com/).
-
 ### Installing
 
 ```

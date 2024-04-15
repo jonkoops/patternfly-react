@@ -15,20 +15,7 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18'
-      - uses: actions/cache@v2
-        id: yarn-cache
-        name: Cache npm deps
-        with:
-          path: |
-           node_modules
-           **/node_modules
-           ~/.cache/Cypress
-          key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock', 'packages/*/package.json') }}
-      - run: yarn install --frozen-lockfile
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+      - uses: ./.github/actions/setup-project
       - uses: actions/cache@v2
         id: dist
         name: Cache dist
@@ -59,20 +46,7 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18'
-      - uses: actions/cache@v2
-        id: yarn-cache
-        name: Cache npm deps
-        with:
-          path: |
-           node_modules
-           **/node_modules
-           ~/.cache/Cypress
-          key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+      - uses: ./.github/actions/setup-project
       - uses: actions/cache@v2
         id: lint-cache
         name: Load lint cache
@@ -99,20 +73,7 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18'
-      - uses: actions/cache@v2
-        id: yarn-cache
-        name: Cache npm deps
-        with:
-          path: |
-           node_modules
-           **/node_modules
-           ~/.cache/Cypress
-          key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+      - uses: ./.github/actions/setup-project
       - uses: actions/cache@v2
         id: dist
         name: Cache dist
@@ -148,20 +109,7 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18'
-      - uses: actions/cache@v2
-        id: yarn-cache
-        name: Cache npm deps
-        with:
-          path: |
-           node_modules
-           **/node_modules
-           ~/.cache/Cypress
-          key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+      - uses: ./.github/actions/setup-project
       - uses: actions/cache@v2
         id: dist
         name: Cache dist
@@ -208,20 +156,7 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18'
-      - uses: actions/cache@v2
-        id: yarn-cache
-        name: Cache npm deps
-        with:
-          path: |
-           node_modules
-           **/node_modules
-           ~/.cache/Cypress
-          key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+      - uses: ./.github/actions/setup-project
       - uses: actions/cache@v2
         id: dist
         name: Cache dist
@@ -264,19 +199,7 @@ jobs:
             git fetch origin pull/$GH_PR_NUM/head:tmp
             git checkout tmp
           fi
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '18'
-      - uses: actions/cache@v2
-        id: yarn-cache
-        name: Cache npm deps
-        with:
-          path: |
-           node_modules
-           **/node_modules
-           ~/.cache/Cypress
-          key: ${{ runner.os }}-yarn-14-${{ secrets.CACHE_VERSION }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
+      - uses: ./.github/actions/setup-project
         if: steps.yarn-cache.outputs.cache-hit != 'true'
       - uses: actions/cache@v2
         id: dist

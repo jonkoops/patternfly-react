@@ -1,0 +1,36 @@
+name: Setup project
+description: Sets up Node.js and Yarn, and installs dependencies, including cache.
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        check-latest: true
+
+    - name: Enable Corepack
+      shell: bash
+      run: corepack enable
+
+    - name: Get Yarn configuration
+      id: yarn-config
+      shell: bash
+      run: |
+        echo "cache-folder=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+    - uses: actions/cache@v4
+      name: Setup Yarn cache
+      with:
+        # Also cache Cypress binary.
+        path: |
+          ~/.cache/Cypress
+          ${{ steps.yarn-config.outputs.cache-folder }}
+        key: ${{ runner.os }}-yarn-cache-${{ hashFiles('yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-cache-
+
+    - name: Install dependencies
+      shell: bash
+      run: yarn install --immutable

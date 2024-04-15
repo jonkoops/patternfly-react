@@ -8,9 +8,9 @@
     "url": "https://github.com/patternfly/patternfly-react.git"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "yarn": ">=1.6.0"
+    "node": ">=20"
   },
+  "packageManager": "yarn@4.1.1",
   "keywords": [
     "react",
     "patternfly",
@@ -111,6 +111,5 @@
     "packages": [
       "packages/**"
     ]
-  },
-  "dependencies": {}
+  }
 }
