@@ -31,5 +31,5 @@ jobs:
         with:
           skip-build-cache: true
 
-      - name: Deploy to NPM and Github
-        run: .github/release.sh
+      # - name: Deploy to NPM and Github
+      #   run: .github/release.sh
