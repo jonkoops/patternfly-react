@@ -1,9 +1,14 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { MultipleFileUploadStatus } from '../MultipleFileUploadStatus';
+/**
+ * @vitest-environment jsdom
+ */
 import InProgressIcon from '@patternfly/react-icons/dist/esm/icons/in-progress-icon';
+import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+import { MultipleFileUploadStatus } from '../MultipleFileUploadStatus';
+
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 describe('MultipleFileUploadStatus', () => {
   test('renders with expected class names', () => {

@@ -1,13 +1,16 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Chip/chip-group';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-import { ChipGroup } from '../index';
 import { Chip } from '../../Chip';
-import styles from '@patternfly/react-styles/css/components/Chip/chip-group';
+import { ChipGroup } from '../index';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 test('chip group default', () => {
   render(
@@ -121,7 +124,7 @@ test('chip group with closeBtnAriaLabel', () => {
 });
 
 test('chip group onClick', async () => {
-  const onClose = jest.fn();
+  const onClose = vi.fn();
   const user = userEvent.setup();
 
   render(
@@ -135,7 +138,7 @@ test('chip group onClick', async () => {
 });
 
 test('chip group onOverflowChipClick', async () => {
-  const onOverflowChipClick = jest.fn();
+  const onOverflowChipClick = vi.fn();
   const user = userEvent.setup();
 
   render(

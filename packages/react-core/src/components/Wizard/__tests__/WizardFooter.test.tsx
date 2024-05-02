@@ -1,15 +1,18 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { WizardFooter, WizardFooterProps } from '../WizardFooter';
 
 const defaultProps: WizardFooterProps = {
   activeStep: { name: 'Step name', id: 'some-id', index: 1 },
-  onNext: jest.fn(),
-  onBack: jest.fn(),
-  onClose: jest.fn()
+  onNext: vi.fn(),
+  onBack: vi.fn(),
+  onClose: vi.fn()
 };
 
 test('has button names of "Next", "Back", and "Cancel" by default', () => {
@@ -21,7 +24,7 @@ test('has button names of "Next", "Back", and "Cancel" by default', () => {
 });
 
 test('calls onNext when the next button is clicked', async () => {
-  const onNext = jest.fn();
+  const onNext = vi.fn();
   const user = userEvent.setup();
 
   render(<WizardFooter {...defaultProps} onNext={onNext} />);
@@ -31,7 +34,7 @@ test('calls onNext when the next button is clicked', async () => {
 });
 
 test('calls onBack when the back button is clicked', async () => {
-  const onBack = jest.fn();
+  const onBack = vi.fn();
   const user = userEvent.setup();
 
   render(<WizardFooter {...defaultProps} onBack={onBack} />);
@@ -41,7 +44,7 @@ test('calls onBack when the back button is clicked', async () => {
 });
 
 test('calls onClose when the close button is clicked', async () => {
-  const onClose = jest.fn();
+  const onClose = vi.fn();
   const user = userEvent.setup();
 
   render(<WizardFooter {...defaultProps} onClose={onClose} />);

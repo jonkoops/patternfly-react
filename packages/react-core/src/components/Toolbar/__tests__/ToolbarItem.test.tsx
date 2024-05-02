@@ -1,5 +1,10 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, it } from 'vitest';
+
 import { ToolbarItem } from '../ToolbarItem';
 
 describe('ToolbarItem', () => {

@@ -1,8 +1,10 @@
 /**
- * This test was generated
+ * @vitest-environment jsdom
  */
-import * as React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, it } from 'vitest';
+
 import { FocusTrap } from '../../FocusTrap';
 
 it('FocusTrap should match snapshot (auto-generated)', () => {

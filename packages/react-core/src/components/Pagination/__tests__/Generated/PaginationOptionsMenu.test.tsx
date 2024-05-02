@@ -1,11 +1,12 @@
 /**
- * This test was generated
+ * @vitest-environment jsdom
  */
-import * as React from 'react';
 import { render } from '@testing-library/react';
-import { PaginationOptionsMenu } from '../../PaginationOptionsMenu';
-// any missing imports can usually be resolved by adding them here
+import React from 'react';
+import { expect, it } from 'vitest';
+
 import { PaginationToggleTemplateProps } from '../..';
+import { PaginationOptionsMenu } from '../../PaginationOptionsMenu';
 
 it('PaginationOptionsMenu should match snapshot (auto-generated)', () => {
   const { asFragment } = render(

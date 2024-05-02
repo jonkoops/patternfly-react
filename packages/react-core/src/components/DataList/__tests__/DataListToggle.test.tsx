@@ -1,8 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { DataListToggle } from '../DataListToggle';
-
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/DataList/data-list';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { DataListToggle } from '../DataListToggle';
 
 test('Renders to match snapshot', () => {
   const { asFragment } = render(<DataListToggle id="ex-toggle2" />);

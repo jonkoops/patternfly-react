@@ -1,9 +1,12 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-import { Wizard, WizardFooterProps, WizardStep, WizardNavProps, WizardStepChangeScope } from '../';
+import { Wizard, WizardFooterProps, WizardNavProps, WizardStep, WizardStepChangeScope } from '../';
 
 test('renders step when child is of type WizardStep', () => {
   render(
@@ -196,7 +199,7 @@ test(`can customize the wizard's height and width`, () => {
 
 test('calls onStepChange on nav item click', async () => {
   const user = userEvent.setup();
-  const onStepChange = jest.fn();
+  const onStepChange = vi.fn();
 
   render(
     <Wizard onStepChange={onStepChange}>
@@ -216,8 +219,8 @@ test('calls onStepChange on nav item click', async () => {
 
 test('calls onStepChange and not onSave on next button click when not on the last step', async () => {
   const user = userEvent.setup();
-  const onStepChange = jest.fn();
-  const onSave = jest.fn();
+  const onStepChange = vi.fn();
+  const onSave = vi.fn();
 
   render(
     <Wizard onStepChange={onStepChange} onSave={onSave}>
@@ -239,7 +242,7 @@ test('calls onStepChange and not onSave on next button click when not on the las
 
 test('calls onStepChange on back button click', async () => {
   const user = userEvent.setup();
-  const onStepChange = jest.fn();
+  const onStepChange = vi.fn();
 
   render(
     <Wizard onStepChange={onStepChange}>
@@ -261,8 +264,8 @@ test('calls onStepChange on back button click', async () => {
 
 test('calls onSave and not onClose on next button click when on the last step', async () => {
   const user = userEvent.setup();
-  const onSave = jest.fn();
-  const onClose = jest.fn();
+  const onSave = vi.fn();
+  const onClose = vi.fn();
 
   render(
     <Wizard onSave={onSave} onClose={onClose}>
@@ -280,7 +283,7 @@ test('calls onSave and not onClose on next button click when on the last step', 
 
 test('calls onClose when onSave is not specified on next button click when on the last step', async () => {
   const user = userEvent.setup();
-  const onClose = jest.fn();
+  const onClose = vi.fn();
 
   render(
     <Wizard onClose={onClose}>
@@ -297,7 +300,7 @@ test('calls onClose when onSave is not specified on next button click when on th
 
 test('calls onClose on cancel link click', async () => {
   const user = userEvent.setup();
-  const onClose = jest.fn();
+  const onClose = vi.fn();
 
   render(
     <Wizard onClose={onClose}>
@@ -540,7 +543,7 @@ test('child steps are hidden when parent is hidden', () => {
 
 test('onStepChange skips over disabled or hidden steps and substeps', async () => {
   const user = userEvent.setup();
-  const onStepChange = jest.fn();
+  const onStepChange = vi.fn();
 
   render(
     <Wizard onStepChange={onStepChange}>

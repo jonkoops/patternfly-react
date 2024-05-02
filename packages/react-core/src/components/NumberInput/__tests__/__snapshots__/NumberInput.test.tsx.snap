@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`numberInput disables lower threshold 1`] = `
+exports[`numberInput > disables lower threshold 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input"
@@ -94,7 +94,7 @@ exports[`numberInput disables lower threshold 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput disables upper threshold 1`] = `
+exports[`numberInput > disables upper threshold 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input"
@@ -188,7 +188,7 @@ exports[`numberInput disables upper threshold 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput passes button props successfully 1`] = `
+exports[`numberInput > passes button props successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input"
@@ -283,7 +283,7 @@ exports[`numberInput passes button props successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput passes input props successfully 1`] = `
+exports[`numberInput > passes input props successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input"
@@ -376,7 +376,7 @@ exports[`numberInput passes input props successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput renders custom width 1`] = `
+exports[`numberInput > renders custom width 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input"
@@ -470,7 +470,7 @@ exports[`numberInput renders custom width 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput renders defaults & extra props 1`] = `
+exports[`numberInput > renders defaults & extra props 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input custom"
@@ -564,7 +564,7 @@ exports[`numberInput renders defaults & extra props 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput renders disabled 1`] = `
+exports[`numberInput > renders disabled 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input"
@@ -660,7 +660,7 @@ exports[`numberInput renders disabled 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput renders error validated 1`] = `
+exports[`numberInput > renders error validated 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input pf-m-status"
@@ -774,7 +774,7 @@ exports[`numberInput renders error validated 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput renders success validated 1`] = `
+exports[`numberInput > renders success validated 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input pf-m-status"
@@ -888,7 +888,7 @@ exports[`numberInput renders success validated 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput renders unit & position 1`] = `
+exports[`numberInput > renders unit & position 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input"
@@ -986,7 +986,7 @@ exports[`numberInput renders unit & position 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput renders unit 1`] = `
+exports[`numberInput > renders unit 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input"
@@ -1084,7 +1084,7 @@ exports[`numberInput renders unit 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput renders value 1`] = `
+exports[`numberInput > renders value 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input"
@@ -1177,7 +1177,7 @@ exports[`numberInput renders value 1`] = `
 </DocumentFragment>
 `;
 
-exports[`numberInput renders warning validated 1`] = `
+exports[`numberInput > renders warning validated 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-number-input pf-m-status"

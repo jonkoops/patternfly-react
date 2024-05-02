@@ -1,6 +1,11 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, it, test, vi } from 'vitest';
+
 import { DataListCheck } from '../DataListCheck';
 
 test(`Renders with spread props`, () => {
@@ -9,7 +14,7 @@ test(`Renders with spread props`, () => {
 });
 
 it('does not throw a "A component is changing an uncontrolled input of type checkbox to be controlled" error when changed if using isChecked', async () => {
-  const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
   const user = userEvent.setup();
 
   const ControlledDataListCheck = () => {

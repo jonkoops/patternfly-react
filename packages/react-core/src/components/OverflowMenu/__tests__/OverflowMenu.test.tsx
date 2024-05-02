@@ -1,10 +1,13 @@
-import * as React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/OverflowMenu/overflow-menu';
-import { OverflowMenu } from '../OverflowMenu';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
 import * as getResizeObserver from '../../../helpers/resizeObserver';
+import { OverflowMenu } from '../OverflowMenu';
 
 describe('OverflowMenu', () => {
   test('md', () => {
@@ -32,7 +35,7 @@ describe('OverflowMenu', () => {
   });
 
   test('should warn on bad props', () => {
-    const myMock = jest.fn() as any;
+    const myMock = vi.fn() as any;
     global.console = { error: myMock } as any;
 
     render(
@@ -45,7 +48,7 @@ describe('OverflowMenu', () => {
   });
 
   test('should call resizeObserver on undefined containerRefElement', () => {
-    const resizeObserver = jest.spyOn(getResizeObserver, 'getResizeObserver');
+    const resizeObserver = vi.spyOn(getResizeObserver, 'getResizeObserver');
 
     render(<OverflowMenu breakpoint={'md'} />);
 
@@ -53,7 +56,7 @@ describe('OverflowMenu', () => {
   });
 
   test('should call resizeObserver on selector ref containerRefElement', () => {
-    const resizeObserver = jest.spyOn(getResizeObserver, 'getResizeObserver');
+    const resizeObserver = vi.spyOn(getResizeObserver, 'getResizeObserver');
 
     render(
       <div id="selector-ref-test">
@@ -69,7 +72,7 @@ describe('OverflowMenu', () => {
   });
 
   test('should call resizeObserver on React ref containerRefElement', () => {
-    const resizeObserver = jest.spyOn(getResizeObserver, 'getResizeObserver');
+    const resizeObserver = vi.spyOn(getResizeObserver, 'getResizeObserver');
     const containerRef = React.createRef<HTMLDivElement>();
 
     render(

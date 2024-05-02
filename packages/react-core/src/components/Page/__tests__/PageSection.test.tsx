@@ -1,8 +1,12 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 import { PageSection, PageSectionTypes } from '../PageSection';
 
-jest.mock('../Page');
+vi.mock('../Page');
 
 test('Check page section with no padding example against snapshot', () => {
   const Section = <PageSection padding={{ default: 'noPadding' }} />;
@@ -102,7 +106,7 @@ test('Renders with the passed aria-label applied', () => {
 });
 
 test('Does not log a warning in the console by default', () => {
-  const consoleWarning = jest.spyOn(console, 'warn').mockImplementation();
+  const consoleWarning = vi.spyOn(console, 'warn').mockImplementation();
 
   render(<PageSection>test</PageSection>);
 
@@ -110,7 +114,7 @@ test('Does not log a warning in the console by default', () => {
 });
 
 test('Does not log a warning in the console when an aria-label is included with hasOverflowScroll', () => {
-  const consoleWarning = jest.spyOn(console, 'warn').mockImplementation();
+  const consoleWarning = vi.spyOn(console, 'warn').mockImplementation();
 
   render(
     <PageSection hasOverflowScroll aria-label="Test label">
@@ -122,7 +126,7 @@ test('Does not log a warning in the console when an aria-label is included with 
 });
 
 test('Logs a warning in the console when an aria-label is not included with hasOverflowScroll', () => {
-  const consoleWarning = jest.spyOn(console, 'warn').mockImplementation();
+  const consoleWarning = vi.spyOn(console, 'warn').mockImplementation();
 
   render(<PageSection hasOverflowScroll>test</PageSection>);
 

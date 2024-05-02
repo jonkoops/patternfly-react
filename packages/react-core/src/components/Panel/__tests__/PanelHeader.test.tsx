@@ -1,7 +1,12 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { PanelHeader } from '../PanelHeader';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Panel/panel';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { PanelHeader } from '../PanelHeader';
 
 test('Renders without children', () => {
   render(

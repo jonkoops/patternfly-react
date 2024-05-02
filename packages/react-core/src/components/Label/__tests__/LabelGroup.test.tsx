@@ -1,12 +1,15 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { Label } from '../../Label';
 import { LabelGroup } from '../index';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 describe('LabelGroup', () => {
   test('label group default', () => {

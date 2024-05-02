@@ -1,14 +1,17 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { Dropdown } from '../Dropdown';
-import { DropdownPosition, DropdownDirection } from '../dropdownConstants';
-import { InternalDropdownItem } from '../InternalDropdownItem';
 import { DropdownSeparator } from '../DropdownSeparator';
 import { DropdownToggle } from '../DropdownToggle';
+import { InternalDropdownItem } from '../InternalDropdownItem';
 import { KebabToggle } from '../KebabToggle';
+import { DropdownDirection, DropdownPosition } from '../dropdownConstants';
 
 const dropdownItems = [
   <InternalDropdownItem key="link">Link</InternalDropdownItem>,
@@ -125,7 +128,7 @@ describe('Dropdown', () => {
   });
 
   test('Renders in strict mode', () => {
-    const consoleError = jest.spyOn(console, 'error');
+    const consoleError = vi.spyOn(console, 'error');
     const { asFragment } = render(
       <React.StrictMode>
         <Dropdown
@@ -217,8 +220,8 @@ describe('KebabToggle', () => {
 
 describe('API', () => {
   test('click on item', async () => {
-    const mockToggle = jest.fn();
-    const mockSelect = jest.fn();
+    const mockToggle = vi.fn();
+    const mockSelect = vi.fn();
     const user = userEvent.setup();
 
     render(
@@ -236,7 +239,7 @@ describe('API', () => {
   });
 
   test('dropdownItems and children console error ', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { error: myMock } as any;
     render(
       <Dropdown
@@ -253,7 +256,7 @@ describe('API', () => {
   });
 
   test('dropdownItems only, no console error ', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { error: myMock } as any;
     render(
       <Dropdown
@@ -266,7 +269,7 @@ describe('API', () => {
   });
 
   test('children only, no console ', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { error: myMock } as any;
     render(
       <Dropdown isOpen toggle={<DropdownToggle id="Dropdown Toggle">Dropdown</DropdownToggle>}>

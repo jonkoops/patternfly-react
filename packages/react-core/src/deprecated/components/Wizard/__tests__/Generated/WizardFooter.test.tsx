@@ -1,11 +1,11 @@
 /**
- * This test was generated
+ * @vitest-environment jsdom
  */
-import * as React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, it } from 'vitest';
+
 import { WizardFooter } from '../../WizardFooter';
-// any missing imports can usually be resolved by adding them here
-import {} from '../..';
 
 it('WizardFooter should match snapshot (auto-generated)', () => {
   const { asFragment } = render(<WizardFooter children={'any'} />);

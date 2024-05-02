@@ -1,7 +1,12 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+
 import { Breadcrumb } from '../Breadcrumb';
 import { BreadcrumbItem } from '../BreadcrumbItem';
-import { render } from '@testing-library/react';
 
 describe('Breadcrumb component', () => {
   test('should render default breadcrumb', () => {

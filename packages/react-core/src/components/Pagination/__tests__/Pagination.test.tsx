@@ -1,10 +1,13 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
-import { Pagination, PaginationVariant } from '../index';
 import { KeyTypes } from '../../../helpers';
+import { Pagination, PaginationVariant } from '../index';
 
 describe('Pagination', () => {
   describe('component render', () => {
@@ -128,7 +131,7 @@ describe('Pagination', () => {
 
   describe('API', () => {
     describe('onSetPage', () => {
-      const onSetPage = jest.fn();
+      const onSetPage = vi.fn();
 
       test('should call first', async () => {
         const user = userEvent.setup();
@@ -225,7 +228,7 @@ describe('Pagination', () => {
     });
 
     describe('onFirst', () => {
-      const onFirst = jest.fn();
+      const onFirst = vi.fn();
       test('should call', async () => {
         const user = userEvent.setup();
 
@@ -246,7 +249,7 @@ describe('Pagination', () => {
     });
 
     describe('onLast', () => {
-      const onLast = jest.fn();
+      const onLast = vi.fn();
       test('should call', async () => {
         const user = userEvent.setup();
 
@@ -267,7 +270,7 @@ describe('Pagination', () => {
     });
 
     describe('onPrevious', () => {
-      const onPrevious = jest.fn();
+      const onPrevious = vi.fn();
       test('should call', async () => {
         const user = userEvent.setup();
 
@@ -288,7 +291,7 @@ describe('Pagination', () => {
     });
 
     describe('onNext', () => {
-      const onNext = jest.fn();
+      const onNext = vi.fn();
       test('should call', async () => {
         const user = userEvent.setup();
 
@@ -309,7 +312,7 @@ describe('Pagination', () => {
     });
 
     describe('onPerPage', () => {
-      const onPerPage = jest.fn();
+      const onPerPage = vi.fn();
       test('should call', async () => {
         const user = userEvent.setup();
 

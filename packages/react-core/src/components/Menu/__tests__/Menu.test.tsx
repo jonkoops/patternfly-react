@@ -1,7 +1,9 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import React from 'react';
+import { expect, describe, test, vi, it } from 'vitest';
 
 import { Menu } from '../Menu';
 import { MenuItem } from '../MenuItem';
@@ -11,7 +13,7 @@ import { MenuContent } from '../MenuContent';
 describe('Menu', () => {
   test('should render Menu successfully', () => {
     const { asFragment } = render(
-      <Menu activeItemId={0} onSelect={jest.fn()}>
+      <Menu activeItemId={0} onSelect={vi.fn()}>
         content
       </Menu>
     );
@@ -21,7 +23,7 @@ describe('Menu', () => {
   describe('with isPlain', () => {
     test('should render Menu with plain styles applied', () => {
       render(
-        <Menu activeItemId={0} onSelect={jest.fn()} isPlain>
+        <Menu activeItemId={0} onSelect={vi.fn()} isPlain>
           content
         </Menu>
       );
@@ -32,7 +34,7 @@ describe('Menu', () => {
   describe('with isScrollable', () => {
     test('should render Menu with scrollable styles applied', () => {
       render(
-        <Menu activeItemId={0} onSelect={jest.fn()} isScrollable>
+        <Menu activeItemId={0} onSelect={vi.fn()} isScrollable>
           content
         </Menu>
       );
@@ -43,7 +45,7 @@ describe('Menu', () => {
   describe('with isNavFlyout', () => {
     test('should render Menu with nav flyout styles applied', () => {
       render(
-        <Menu activeItemId={0} onSelect={jest.fn()} isNavFlyout>
+        <Menu activeItemId={0} onSelect={vi.fn()} isNavFlyout>
           content
         </Menu>
       );

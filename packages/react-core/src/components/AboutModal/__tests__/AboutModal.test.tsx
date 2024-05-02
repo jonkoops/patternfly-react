@@ -1,13 +1,16 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
-import { AboutModal, AboutModalProps } from '../AboutModal';
 import { KeyTypes } from '../../../helpers';
+import { AboutModal, AboutModalProps } from '../AboutModal';
 
 const props: AboutModalProps = {
-  onClose: jest.fn(),
+  onClose: vi.fn(),
   children: 'modal content',
   productName: 'Product Name',
   trademark: 'Trademark and copyright information here',
@@ -32,14 +35,14 @@ describe('AboutModal', () => {
 
   test('Console error is generated when the logoImageSrc is provided without logoImageAlt', () => {
     const noImgAltrops = {
-      onClose: jest.fn(),
+      onClose: vi.fn(),
       children: 'modal content',
       productName: 'Product Name',
       trademark: 'Trademark and copyright information here',
       brandImageSrc: 'brandImg...',
       logoImageSrc: 'logoImg...'
     } as any;
-    const myMock = jest.fn() as any;
+    const myMock = vi.fn() as any;
     global.console = { error: myMock } as any;
 
     render(<AboutModal {...noImgAltrops}>Test About Modal</AboutModal>);
@@ -48,11 +51,11 @@ describe('AboutModal', () => {
 
   test('Console error is generated when the logoImageSrc is provided without logoImageAlt', () => {
     const noProductNameProps = {
-      onClose: jest.fn(),
+      onClose: vi.fn(),
       children: 'modal content',
       trademark: 'Trademark and copyright information here'
     } as any;
-    const myMock = jest.fn() as any;
+    const myMock = vi.fn() as any;
     global.console = { error: myMock } as any;
 
     render(<AboutModal {...noProductNameProps}>Test About Modal</AboutModal>);

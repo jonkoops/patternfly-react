@@ -1,7 +1,9 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import React from 'react';
+import { expect, describe, test, vi, it } from 'vitest';
 
 import { Card, CardContext } from '../Card';
 
@@ -116,7 +118,7 @@ describe('Card', () => {
   });
 
   test('card warns when isLarge and isCompact', () => {
-    const consoleWarnMock = jest.fn();
+    const consoleWarnMock = vi.fn();
     global.console = { warn: consoleWarnMock } as any;
 
     render(<Card isLarge isCompact />);
@@ -140,7 +142,7 @@ describe('Card', () => {
   });
 
   test('card warns when hasSelectableInput is passed without selectableInputAriaLabel or a card title', () => {
-    const consoleWarnMock = jest.fn();
+    const consoleWarnMock = vi.fn();
     global.console = { warn: consoleWarnMock } as any;
 
     render(<Card isSelectable hasSelectableInput />);

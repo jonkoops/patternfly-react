@@ -1,12 +1,17 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
-import { ToolbarToggleGroup } from '../ToolbarToggleGroup';
+import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
+
 import { Toolbar } from '../Toolbar';
 import { ToolbarContent } from '../ToolbarContent';
+import { ToolbarToggleGroup } from '../ToolbarToggleGroup';
 
 describe('ToolbarToggleGroup', () => {
   it('should warn on bad props', () => {
-    const myMock = jest.fn() as any;
+    const myMock = vi.fn() as any;
     global.console = { error: myMock } as any;
 
     const items = (

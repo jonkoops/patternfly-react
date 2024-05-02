@@ -1,10 +1,15 @@
-import React from 'react';
-import { render, screen, act } from '@testing-library/react';
-import { CodeEditor, Language } from '../CodeEditor';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/CodeEditor/code-editor';
 import fileUploadStyles from '@patternfly/react-styles/css/components/FileUpload/file-upload';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('@monaco-editor/react', () => jest.fn(() => <div data-testid="mock-editor"></div>));
+import { CodeEditor, Language } from '../CodeEditor';
+
+vi.mock('@monaco-editor/react', () => vi.fn(() => <div data-testid="mock-editor"></div>));
 
 test('Matches snapshot without props', () => {
   const { asFragment } = render(<CodeEditor code="test" />);

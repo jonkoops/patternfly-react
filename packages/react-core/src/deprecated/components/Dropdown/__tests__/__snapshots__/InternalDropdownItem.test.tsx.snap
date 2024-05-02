@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`InternalDropdownItem dropdown items a 1`] = `
+exports[`InternalDropdownItem > dropdown items > a 1`] = `
 <DocumentFragment>
   <li
     role="none"
@@ -15,7 +15,7 @@ exports[`InternalDropdownItem dropdown items a 1`] = `
 </DocumentFragment>
 `;
 
-exports[`InternalDropdownItem dropdown items aria-disabled a 1`] = `
+exports[`InternalDropdownItem > dropdown items > aria-disabled > a 1`] = `
 <DocumentFragment>
   <li
     role="none"
@@ -31,7 +31,7 @@ exports[`InternalDropdownItem dropdown items aria-disabled a 1`] = `
 </DocumentFragment>
 `;
 
-exports[`InternalDropdownItem dropdown items aria-disabled button 1`] = `
+exports[`InternalDropdownItem > dropdown items > aria-disabled > button 1`] = `
 <DocumentFragment>
   <li
     role="none"
@@ -48,7 +48,7 @@ exports[`InternalDropdownItem dropdown items aria-disabled button 1`] = `
 </DocumentFragment>
 `;
 
-exports[`InternalDropdownItem dropdown items button 1`] = `
+exports[`InternalDropdownItem > dropdown items > button 1`] = `
 <DocumentFragment>
   <li
     role="none"
@@ -64,7 +64,7 @@ exports[`InternalDropdownItem dropdown items button 1`] = `
 </DocumentFragment>
 `;
 
-exports[`InternalDropdownItem dropdown items description a 1`] = `
+exports[`InternalDropdownItem > dropdown items > description > a 1`] = `
 <DocumentFragment>
   <li
     role="none"
@@ -88,7 +88,7 @@ exports[`InternalDropdownItem dropdown items description a 1`] = `
 </DocumentFragment>
 `;
 
-exports[`InternalDropdownItem dropdown items description button 1`] = `
+exports[`InternalDropdownItem > dropdown items > description > button 1`] = `
 <DocumentFragment>
   <li
     role="none"
@@ -113,7 +113,7 @@ exports[`InternalDropdownItem dropdown items description button 1`] = `
 </DocumentFragment>
 `;
 
-exports[`InternalDropdownItem dropdown items disabled a 1`] = `
+exports[`InternalDropdownItem > dropdown items > disabled > a 1`] = `
 <DocumentFragment>
   <li
     role="none"
@@ -129,7 +129,7 @@ exports[`InternalDropdownItem dropdown items disabled a 1`] = `
 </DocumentFragment>
 `;
 
-exports[`InternalDropdownItem dropdown items disabled button 1`] = `
+exports[`InternalDropdownItem > dropdown items > disabled > button 1`] = `
 <DocumentFragment>
   <li
     role="none"
@@ -146,7 +146,7 @@ exports[`InternalDropdownItem dropdown items disabled button 1`] = `
 </DocumentFragment>
 `;
 
-exports[`InternalDropdownItem dropdown items hover a 1`] = `
+exports[`InternalDropdownItem > dropdown items > hover > a 1`] = `
 <DocumentFragment>
   <li
     role="none"
@@ -161,7 +161,7 @@ exports[`InternalDropdownItem dropdown items hover a 1`] = `
 </DocumentFragment>
 `;
 
-exports[`InternalDropdownItem dropdown items hover button 1`] = `
+exports[`InternalDropdownItem > dropdown items > hover > button 1`] = `
 <DocumentFragment>
   <li
     role="none"

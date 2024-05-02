@@ -1,18 +1,21 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
 
-import { Page } from '../Page';
 import { PageHeader } from '../../../deprecated/components/PageHeader';
+import { Breadcrumb, BreadcrumbItem } from '../../Breadcrumb';
+import { Nav, NavItem, NavList } from '../../Nav';
+import { SkipToContent } from '../../SkipToContent';
+import { Page } from '../Page';
+import { PageBreadcrumb } from '../PageBreadcrumb';
+import { PageGroup } from '../PageGroup';
+import { PageNavigation } from '../PageNavigation';
+import { PageSection } from '../PageSection';
 import { PageSidebar } from '../PageSidebar';
 import { PageSidebarBody } from '../PageSidebarBody';
-import { PageSection } from '../PageSection';
-import { Breadcrumb, BreadcrumbItem } from '../../Breadcrumb';
-import { Nav, NavList, NavItem } from '../../Nav';
-import { SkipToContent } from '../../SkipToContent';
-import { PageBreadcrumb } from '../PageBreadcrumb';
-import { PageNavigation } from '../PageNavigation';
-import { PageGroup } from '../PageGroup';
 
 const props = {
   'aria-label': 'Page layout',

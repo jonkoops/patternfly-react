@@ -1,7 +1,12 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
-import { ChartLegend } from '../ChartLegend/ChartLegend';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { ChartLabel } from '../ChartLabel/ChartLabel';
+import { ChartLegend } from '../ChartLegend/ChartLegend';
 import { ChartContainer } from './ChartContainer';
 
 Object.values([true, false]).forEach(() => {

@@ -1,14 +1,17 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import formControlStyles from '@patternfly/react-styles/css/components/FormControl/form-control';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-import { TextArea } from '../TextArea';
 import { ValidatedOptions } from '../../../helpers/constants';
-import formControlStyles from '@patternfly/react-styles/css/components/FormControl/form-control';
+import { TextArea } from '../TextArea';
 
 const props = {
-  onChange: jest.fn(),
+  onChange: vi.fn(),
   value: 'test textarea'
 };
 
@@ -104,7 +107,7 @@ test('Renders horizontally resizable text area', () => {
 });
 
 test('Throws console error when no aria-label or id is given', () => {
-  jest.spyOn(global.console, 'error');
+  vi.spyOn(global.console, 'error');
 
   render(<TextArea />);
 
@@ -112,7 +115,7 @@ test('Throws console error when no aria-label or id is given', () => {
 });
 
 test('Does not throw console error when id is given but no aria-label', () => {
-  jest.spyOn(global.console, 'error');
+  vi.spyOn(global.console, 'error');
 
   render(<TextArea id="5" />);
 
@@ -120,7 +123,7 @@ test('Does not throw console error when id is given but no aria-label', () => {
 });
 
 test('Does not throw console error when aria-label is given but no id', () => {
-  jest.spyOn(global.console, 'error');
+  vi.spyOn(global.console, 'error');
 
   render(<TextArea aria-label="test textarea" />);
 
@@ -130,7 +133,7 @@ test('Does not throw console error when aria-label is given but no id', () => {
 test('TextArea can be accessed via passed ref', () => {
   const testRef: React.RefObject<HTMLTextAreaElement> = React.createRef();
   render(<TextArea ref={testRef} />);
-  global.scrollTo = jest.fn();
+  global.scrollTo = vi.fn();
   testRef.current?.focus();
   expect(screen.getByRole('textbox')).toHaveFocus();
 });

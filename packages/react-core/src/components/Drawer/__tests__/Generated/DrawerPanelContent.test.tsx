@@ -1,13 +1,13 @@
 /**
- * This test was generated
+ * @vitest-environment jsdom
  */
-import * as React from 'react';
 import { render } from '@testing-library/react';
-import { DrawerPanelContent } from '../../DrawerPanelContent';
-// any missing imports can usually be resolved by adding them here
-import {} from '../..';
+import React from 'react';
+import { expect, it, vi } from 'vitest';
 
-jest.mock('../../../../helpers/GenerateId/GenerateId');
+import { DrawerPanelContent } from '../../DrawerPanelContent';
+
+vi.mock('../../../../helpers/GenerateId/GenerateId');
 
 it('DrawerPanelContent should match snapshot (auto-generated)', () => {
   const { asFragment } = render(<DrawerPanelContent className={"''"} children={<div>ReactNode</div>} />);

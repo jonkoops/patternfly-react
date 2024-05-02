@@ -1,8 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { DescriptionListTerm } from '../DescriptionListTerm';
-
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/DescriptionList/description-list';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { DescriptionListTerm } from '../DescriptionListTerm';
 
 test('Renders to match snapshot', () => {
   const { asFragment } = render(<DescriptionListTerm>test</DescriptionListTerm>);

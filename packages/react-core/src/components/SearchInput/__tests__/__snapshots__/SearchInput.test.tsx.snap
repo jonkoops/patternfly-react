@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SearchInput advanced search 1`] = `
+exports[`SearchInput > advanced search 1`] = `
 <DocumentFragment>
   <div
     class=""
@@ -129,18 +129,11 @@ exports[`SearchInput advanced search 1`] = `
         </button>
       </div>
     </div>
-    <div
-      class=""
-      data-popper-escaped="true"
-      data-popper-placement="bottom-start"
-      data-popper-reference-hidden="true"
-      style="position: absolute; left: 0px; top: 0px; z-index: 9999; opacity: 1; transition: opacity 0ms cubic-bezier(.54, 1.5, .38, 1.11); min-width: 0px; transform: translate(0px, 0px);"
-    />
   </div>
 </DocumentFragment>
 `;
 
-exports[`SearchInput advanced search with custom attributes 1`] = `
+exports[`SearchInput > advanced search with custom attributes 1`] = `
 <DocumentFragment>
   <div
     class=""
@@ -316,6 +309,9 @@ exports[`SearchInput advanced search with custom attributes 1`] = `
                   >
                     <input
                       aria-invalid="false"
+                      data-ouia-component-id="OUIA-Generated-TextInputBase-1"
+                      data-ouia-component-type="PF5/TextInput"
+                      data-ouia-safe="true"
                       id="username_0"
                       type="text"
                       value="player"
@@ -349,6 +345,9 @@ exports[`SearchInput advanced search with custom attributes 1`] = `
                   >
                     <input
                       aria-invalid="false"
+                      data-ouia-component-id="OUIA-Generated-TextInputBase-2"
+                      data-ouia-component-type="PF5/TextInput"
+                      data-ouia-safe="true"
                       id="firstname_1"
                       type="text"
                       value="john"
@@ -382,6 +381,9 @@ exports[`SearchInput advanced search with custom attributes 1`] = `
                   >
                     <input
                       aria-invalid="false"
+                      data-ouia-component-id="OUIA-Generated-TextInputBase-3"
+                      data-ouia-component-type="PF5/TextInput"
+                      data-ouia-safe="true"
                       id="generated-id"
                       type="text"
                       value=""
@@ -456,7 +458,7 @@ exports[`SearchInput advanced search with custom attributes 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SearchInput renders search input in strict mode 1`] = `
+exports[`SearchInput > renders search input in strict mode 1`] = `
 <DocumentFragment>
   <div
     class=""
@@ -585,18 +587,11 @@ exports[`SearchInput renders search input in strict mode 1`] = `
         </button>
       </div>
     </div>
-    <div
-      class=""
-      data-popper-escaped="true"
-      data-popper-placement="bottom-start"
-      data-popper-reference-hidden="true"
-      style="position: absolute; left: 0px; top: 0px; z-index: 9999; opacity: 1; transition: opacity 0ms cubic-bezier(.54, 1.5, .38, 1.11); min-width: 0px; transform: translate(0px, 0px);"
-    />
   </div>
 </DocumentFragment>
 `;
 
-exports[`SearchInput search input with hint 1`] = `
+exports[`SearchInput > search input with hint 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-input-group"
@@ -751,7 +746,7 @@ exports[`SearchInput search input with hint 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SearchInput simple search input 1`] = `
+exports[`SearchInput > simple search input 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-input-group"

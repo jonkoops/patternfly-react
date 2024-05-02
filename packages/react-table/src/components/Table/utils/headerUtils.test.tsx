@@ -1,6 +1,8 @@
-import { calculateColumns, mapOpenedRows } from './headerUtils';
+import { describe, expect, test } from 'vitest';
+
 import { ICell, IRow } from '../TableTypes';
 import { HeaderType } from '../base/types';
+import { calculateColumns, mapOpenedRows } from './headerUtils';
 
 describe('headerUtils', () => {
   describe('calculateColumns', () => {

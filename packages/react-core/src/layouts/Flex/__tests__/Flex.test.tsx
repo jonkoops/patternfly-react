@@ -1,10 +1,13 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import layout from '@patternfly/react-styles/css/layouts/Flex/flex';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
 
 import { Flex } from '../Flex';
 import { FlexItem } from '../FlexItem';
-import layout from '@patternfly/react-styles/css/layouts/Flex/flex';
 
 describe('Flex', () => {
   test('Simple flex with single item', () => {

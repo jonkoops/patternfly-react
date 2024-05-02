@@ -1,8 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { DataListItemRow } from '../DataListItemRow';
-
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/DataList/data-list';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { DataListItemRow } from '../DataListItemRow';
 
 test('Item row renders to match snapshot', () => {
   const { asFragment } = render(<DataListItemRow>test</DataListItemRow>);

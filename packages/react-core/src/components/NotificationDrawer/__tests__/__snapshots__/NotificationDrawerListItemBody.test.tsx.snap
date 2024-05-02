@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NotificationDrawerListItemBody list item body with timestamp property applied 1`] = `
+exports[`NotificationDrawerListItemBody > list item body with timestamp property applied 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-notification-drawer__list-item-description"
@@ -13,7 +13,7 @@ exports[`NotificationDrawerListItemBody list item body with timestamp property a
 </DocumentFragment>
 `;
 
-exports[`NotificationDrawerListItemBody renders with PatternFly Core styles 1`] = `
+exports[`NotificationDrawerListItemBody > renders with PatternFly Core styles 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-notification-drawer__list-item-description"

@@ -1,8 +1,13 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
 import { MultipleFileUpload } from '../MultipleFileUpload';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 describe('MultipleFileUpload', () => {
   test('renders with expected class names when not horizontal', () => {

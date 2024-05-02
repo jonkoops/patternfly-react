@@ -1,5 +1,10 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { Th } from '../Th';
 
 test('Does not render with aria-label by default', () => {

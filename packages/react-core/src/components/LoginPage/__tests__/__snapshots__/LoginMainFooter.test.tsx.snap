@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LoginMainFooter className is added to the root element 1`] = `
+exports[`LoginMainFooter > className is added to the root element 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-login__main-footer extra-class"
@@ -8,7 +8,7 @@ exports[`LoginMainFooter className is added to the root element 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LoginMainFooter renders with PatternFly Core styles 1`] = `
+exports[`LoginMainFooter > renders with PatternFly Core styles 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-login__main-footer"

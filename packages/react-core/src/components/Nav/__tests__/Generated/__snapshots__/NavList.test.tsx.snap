@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NavList should match snapshot 1`] = `
+exports[`NavList > should match snapshot 1`] = `
 <DocumentFragment>
   <ul
     class="pf-v5-c-nav__list"

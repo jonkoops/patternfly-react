@@ -1,11 +1,11 @@
 /**
- * This test was generated
+ * @vitest-environment jsdom
  */
-import * as React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, it } from 'vitest';
+
 import { AlertGroup } from '../../AlertGroup';
-// any missing imports can usually be resolved by adding them here
-import {} from '../..';
 
 it('AlertGroup should match snapshot (auto-generated)', () => {
   const { asFragment } = render(

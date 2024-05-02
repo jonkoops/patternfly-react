@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NotificationDrawerHeader drawer header with count applied 1`] = `
+exports[`NotificationDrawerHeader > drawer header with count applied 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-notification-drawer__header"
@@ -24,7 +24,7 @@ exports[`NotificationDrawerHeader drawer header with count applied 1`] = `
 </DocumentFragment>
 `;
 
-exports[`NotificationDrawerHeader drawer header with custom unread text applied 1`] = `
+exports[`NotificationDrawerHeader > drawer header with custom unread text applied 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-notification-drawer__header"
@@ -48,7 +48,7 @@ exports[`NotificationDrawerHeader drawer header with custom unread text applied 
 </DocumentFragment>
 `;
 
-exports[`NotificationDrawerHeader drawer header with title applied 1`] = `
+exports[`NotificationDrawerHeader > drawer header with title applied 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-notification-drawer__header"
@@ -66,7 +66,7 @@ exports[`NotificationDrawerHeader drawer header with title applied 1`] = `
 </DocumentFragment>
 `;
 
-exports[`NotificationDrawerHeader renders with PatternFly Core styles 1`] = `
+exports[`NotificationDrawerHeader > renders with PatternFly Core styles 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-notification-drawer__header"

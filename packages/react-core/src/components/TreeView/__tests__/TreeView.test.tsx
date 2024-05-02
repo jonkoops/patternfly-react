@@ -1,9 +1,14 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
 import { TreeView } from '../TreeView';
 
-jest.mock('../TreeViewList', () => ({
+vi.mock('../TreeViewList', () => ({
   TreeViewList: ({ children, isNested, toolbar }) => (
     <div data-testid="TreeViewList-mock">
       <p>{`TreeViewList isNested: ${isNested}`}</p>
@@ -12,7 +17,7 @@ jest.mock('../TreeViewList', () => ({
     </div>
   )
 }));
-jest.mock('../TreeViewListItem', () => ({
+vi.mock('../TreeViewListItem', () => ({
   TreeViewListItem: ({
     action,
     activeItems,
@@ -69,7 +74,7 @@ jest.mock('../TreeViewListItem', () => ({
     </div>
   )
 }));
-jest.mock('../TreeViewRoot', () => ({
+vi.mock('../TreeViewRoot', () => ({
   TreeViewRoot: ({ children, hasCheckboxes, hasGuides, hasSelectableNodes, variant, className }) => (
     <div data-testid="TreeViewRoot-mock">
       <p>{`TreeViewRoot hasCheckboxes: ${hasCheckboxes}`}</p>
@@ -270,9 +275,9 @@ test('Passes data.children to TreeViewListItem', () => {
 
 describe('Passes callback props to TreeViewListItem', () => {
   const user = userEvent.setup();
-  const callbackMock = jest.fn();
 
   test('Passes compareItems', async () => {
+    const callbackMock = vi.fn();
     render(<TreeView data={[basicData]} compareItems={callbackMock} />);
 
     await user.click(screen.getByRole('button', { name: 'compareItems clicker' }));
@@ -280,6 +285,7 @@ describe('Passes callback props to TreeViewListItem', () => {
     expect(callbackMock).toHaveBeenCalledTimes(1);
   });
   test('Passes onCheck', async () => {
+    const callbackMock = vi.fn();
     render(<TreeView data={[basicData]} onCheck={callbackMock} />);
 
     await user.click(screen.getByRole('button', { name: 'onCheck clicker' }));
@@ -287,6 +293,7 @@ describe('Passes callback props to TreeViewListItem', () => {
     expect(callbackMock).toHaveBeenCalledTimes(1);
   });
   test('Passes onSelect', async () => {
+    const callbackMock = vi.fn();
     render(<TreeView data={[basicData]} onSelect={callbackMock} />);
 
     await user.click(screen.getByRole('button', { name: 'onSelect clicker' }));
@@ -294,6 +301,7 @@ describe('Passes callback props to TreeViewListItem', () => {
     expect(callbackMock).toHaveBeenCalledTimes(1);
   });
   test('Passes onExpand', async () => {
+    const callbackMock = vi.fn();
     render(<TreeView data={[basicData]} onExpand={callbackMock} />);
 
     await user.click(screen.getByRole('button', { name: 'onExpand clicker' }));
@@ -301,6 +309,7 @@ describe('Passes callback props to TreeViewListItem', () => {
     expect(callbackMock).toHaveBeenCalledTimes(1);
   });
   test('Passes onCollapse', async () => {
+    const callbackMock = vi.fn();
     render(<TreeView data={[basicData]} onCollapse={callbackMock} />);
 
     await user.click(screen.getByRole('button', { name: 'onCollapse clicker' }));

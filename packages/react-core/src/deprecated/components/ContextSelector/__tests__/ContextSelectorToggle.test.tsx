@@ -1,10 +1,13 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
-import { ContextSelectorToggle } from '../ContextSelectorToggle';
 import { KeyTypes } from '../../../../helpers';
+import { ContextSelectorToggle } from '../ContextSelectorToggle';
 
 describe('ContextSelectorToggle', () => {
   test('Renders ContextSelectorToggle', () => {
@@ -13,7 +16,7 @@ describe('ContextSelectorToggle', () => {
   });
 
   test('Verify onToggle is called ', async () => {
-    const mockfnOnToggle = jest.fn();
+    const mockfnOnToggle = vi.fn();
     const user = userEvent.setup();
 
     render(<ContextSelectorToggle onToggle={mockfnOnToggle} id="toggle-id" />);
@@ -34,7 +37,7 @@ describe('ContextSelectorToggle', () => {
   test('Verify ESC press with not isOpen', async () => {
     const user = userEvent.setup();
 
-    const { asFragment } = render(<ContextSelectorToggle onToggle={jest.fn()} id="toggle-id" />);
+    const { asFragment } = render(<ContextSelectorToggle onToggle={vi.fn()} id="toggle-id" />);
 
     await user.type(screen.getByRole('button'), `{${KeyTypes.Escape}}`);
     expect(asFragment()).toMatchSnapshot();
@@ -52,7 +55,7 @@ describe('ContextSelectorToggle', () => {
   test('Verify keydown enter ', async () => {
     const user = userEvent.setup();
 
-    const { asFragment } = render(<ContextSelectorToggle onToggle={jest.fn()} onEnter={jest.fn()} id="toggle-id" />);
+    const { asFragment } = render(<ContextSelectorToggle onToggle={vi.fn()} onEnter={vi.fn()} id="toggle-id" />);
 
     await user.type(screen.getByRole('button'), `{${KeyTypes.Enter}}`);
     expect(asFragment()).toMatchSnapshot();

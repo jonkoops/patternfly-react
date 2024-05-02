@@ -1,8 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { DataListContent } from '../DataListContent';
-
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/DataList/data-list';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { DataListContent } from '../DataListContent';
 
 test('Renders to match snapshot', () => {
   const { asFragment } = render(<DataListContent aria-label="Primary Content Details"> test</DataListContent>);

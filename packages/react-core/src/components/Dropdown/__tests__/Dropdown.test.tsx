@@ -1,11 +1,16 @@
-import React from 'react';
-import { Dropdown } from '../../Dropdown';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../Menu');
+import { Dropdown } from '../../Dropdown';
 
-jest.mock('../../../helpers/Popper/Popper');
+vi.mock('../../Menu');
+
+vi.mock('../../../helpers/Popper/Popper');
 
 const toggle = (ref: React.RefObject<any>) => <button ref={ref}>Dropdown</button>;
 
@@ -136,7 +141,7 @@ function doesn`t get passed */
 test('passes onSelect callback', async () => {
   const user = userEvent.setup();
 
-  const onSelect = jest.fn();
+  const onSelect = vi.fn();
   render(
     <Dropdown isOpen onSelect={onSelect} toggle={(toggleRef) => toggle(toggleRef)}>
       {dropdownChildren}
@@ -151,7 +156,7 @@ test('passes onSelect callback', async () => {
 
 test('onOpenChange is called when passed and user clicks outside of dropdown', async () => {
   const user = userEvent.setup();
-  const onOpenChange = jest.fn();
+  const onOpenChange = vi.fn();
 
   render(
     <Dropdown isOpen={true} onOpenChange={onOpenChange} toggle={(toggleRef) => toggle(toggleRef)}>
@@ -168,7 +173,7 @@ test('onOpenChange is called when passed and user clicks outside of dropdown', a
 
 test('onOpenChange is called when passed and user presses tab key', async () => {
   const user = userEvent.setup();
-  const onOpenChange = jest.fn();
+  const onOpenChange = vi.fn();
 
   render(
     <Dropdown isOpen={true} onOpenChange={onOpenChange} toggle={(toggleRef) => toggle(toggleRef)}>
@@ -186,7 +191,7 @@ test('onOpenChange is called when passed and user presses tab key', async () => 
 
 test('onOpenChange is called when passed and user presses esc key', async () => {
   const user = userEvent.setup();
-  const onOpenChange = jest.fn();
+  const onOpenChange = vi.fn();
 
   render(
     <Dropdown isOpen={true} onOpenChange={onOpenChange} toggle={(toggleRef) => toggle(toggleRef)}>

@@ -1,7 +1,12 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { ProgressStepper } from '../ProgressStepper';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/ProgressStepper/progress-stepper';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { ProgressStepper } from '../ProgressStepper';
 
 test('Renders without children', () => {
   render(

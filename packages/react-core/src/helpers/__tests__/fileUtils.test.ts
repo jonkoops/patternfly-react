@@ -1,4 +1,8 @@
-import { readFile, fileReaderType } from '../fileUtils';
+/**
+ * @vitest-environment jsdom
+ */
+import { describe, expect, test } from 'vitest';
+import { fileReaderType, readFile } from '../fileUtils';
 
 describe('readFile', () => {
   const file = new File(['File contents here'], 'testfile.txt');

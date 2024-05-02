@@ -1,5 +1,10 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
 import { PageGroup } from '../PageGroup';
 
 describe('page group', () => {
@@ -45,7 +50,7 @@ describe('page group', () => {
   });
 
   test('Does not log a warning in the console by default', () => {
-    const consoleWarning = jest.spyOn(console, 'warn').mockImplementation();
+    const consoleWarning = vi.spyOn(console, 'warn').mockImplementation();
 
     render(<PageGroup>test</PageGroup>);
 
@@ -53,7 +58,7 @@ describe('page group', () => {
   });
 
   test('Does not log a warning in the console when an aria-label is included with hasOverflowScroll', () => {
-    const consoleWarning = jest.spyOn(console, 'warn').mockImplementation();
+    const consoleWarning = vi.spyOn(console, 'warn').mockImplementation();
 
     render(
       <PageGroup hasOverflowScroll aria-label="Test label">
@@ -65,7 +70,7 @@ describe('page group', () => {
   });
 
   test('Logs a warning in the console when an aria-label is not included with hasOverflowScroll', () => {
-    const consoleWarning = jest.spyOn(console, 'warn').mockImplementation();
+    const consoleWarning = vi.spyOn(console, 'warn').mockImplementation();
 
     render(<PageGroup hasOverflowScroll>test</PageGroup>);
 

@@ -1,8 +1,13 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { PanelMain } from '../PanelMain';
-import cssPanelMainMaxHeight from '@patternfly/react-tokens/dist/esm/c_panel__main_MaxHeight';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Panel/panel';
+import cssPanelMainMaxHeight from '@patternfly/react-tokens/dist/esm/c_panel__main_MaxHeight';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { PanelMain } from '../PanelMain';
 
 test('Renders without children', () => {
   render(

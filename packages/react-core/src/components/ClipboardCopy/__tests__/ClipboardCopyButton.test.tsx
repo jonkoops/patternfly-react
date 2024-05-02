@@ -1,11 +1,15 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import buttonStyles from '@patternfly/react-styles/css/components/Button/button';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ClipboardCopyButton } from '../ClipboardCopyButton';
-import buttonStyles from '@patternfly/react-styles/css/components/Button/button';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../Tooltip', () => ({
+import { ClipboardCopyButton } from '../ClipboardCopyButton';
+
+vi.mock('../../Tooltip', () => ({
   Tooltip: ({ content, children, exitDelay, entryDelay, maxWidth, position, onTooltipHidden }) => (
     <div data-testid="tooltip-mock">
       <div data-testid="tooltip-mock-content">{content}</div>
@@ -20,7 +24,7 @@ jest.mock('../../Tooltip', () => ({
 }));
 
 const requiredProps = {
-  onClick: jest.fn(),
+  onClick: vi.fn(),
   children: 'Button content',
   id: 'button-id',
   textId: 'text-id'
@@ -144,7 +148,7 @@ test('Passes position to Tooltip', () => {
 
 test('Passes onTooltipHidden to Tooltip', async () => {
   const user = userEvent.setup();
-  const onTooltipHiddenMock = jest.fn();
+  const onTooltipHiddenMock = vi.fn();
 
   render(<ClipboardCopyButton onTooltipHidden={onTooltipHiddenMock} {...requiredProps} />);
 

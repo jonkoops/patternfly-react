@@ -1,7 +1,12 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Badge } from '../Badge';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Badge/badge';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { Badge } from '../Badge';
 
 test('Renders without children', () => {
   render(

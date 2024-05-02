@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Progress measure location inside 1`] = `
+exports[`Progress measure location > inside 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-inside pf-m-lg pf-m-singleline"
@@ -32,7 +32,7 @@ exports[`Progress measure location inside 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress measure location inside and small should render large 1`] = `
+exports[`Progress measure location > inside and small should render large 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-inside pf-m-lg pf-m-singleline"
@@ -64,7 +64,7 @@ exports[`Progress measure location inside and small should render large 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress measure location none 1`] = `
+exports[`Progress measure location > none 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-singleline"
@@ -90,7 +90,7 @@ exports[`Progress measure location none 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress measure location outside 1`] = `
+exports[`Progress measure location > outside 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-outside pf-m-singleline"
@@ -126,7 +126,7 @@ exports[`Progress measure location outside 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress measure location top 1`] = `
+exports[`Progress measure location > top 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-singleline"
@@ -162,7 +162,7 @@ exports[`Progress measure location top 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress size lg 1`] = `
+exports[`Progress size > lg 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-lg pf-m-singleline"
@@ -198,7 +198,7 @@ exports[`Progress size lg 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress size md 1`] = `
+exports[`Progress size > md 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-singleline"
@@ -234,7 +234,7 @@ exports[`Progress size md 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress size sm 1`] = `
+exports[`Progress size > sm 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-sm pf-m-singleline"
@@ -270,7 +270,7 @@ exports[`Progress size sm 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress variant danger 1`] = `
+exports[`Progress variant > danger 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-danger pf-m-singleline"
@@ -323,7 +323,7 @@ exports[`Progress variant danger 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress variant success 1`] = `
+exports[`Progress variant > success 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-success pf-m-singleline"
@@ -376,7 +376,7 @@ exports[`Progress variant success 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Progress variant warning 1`] = `
+exports[`Progress variant > warning 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-progress pf-m-warning pf-m-singleline"

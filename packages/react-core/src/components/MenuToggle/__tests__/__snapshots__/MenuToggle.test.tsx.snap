@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`menu toggle passes additional classes 1`] = `
+exports[`menu toggle > passes additional classes 1`] = `
 <DocumentFragment>
   <button
     aria-expanded="false"
@@ -37,7 +37,7 @@ exports[`menu toggle passes additional classes 1`] = `
 </DocumentFragment>
 `;
 
-exports[`menu toggle renders successfully 1`] = `
+exports[`menu toggle > renders successfully 1`] = `
 <DocumentFragment>
   <button
     aria-expanded="false"
@@ -74,7 +74,7 @@ exports[`menu toggle renders successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`menu toggle shows badge 1`] = `
+exports[`menu toggle > shows badge 1`] = `
 <DocumentFragment>
   <button
     aria-expanded="false"
@@ -120,7 +120,7 @@ exports[`menu toggle shows badge 1`] = `
 </DocumentFragment>
 `;
 
-exports[`menu toggle shows icon 1`] = `
+exports[`menu toggle > shows icon 1`] = `
 <DocumentFragment>
   <button
     aria-expanded="false"
@@ -174,7 +174,7 @@ exports[`menu toggle shows icon 1`] = `
 </DocumentFragment>
 `;
 
-exports[`menu toggle shows isDisabled 1`] = `
+exports[`menu toggle > shows isDisabled 1`] = `
 <DocumentFragment>
   <button
     aria-expanded="false"
@@ -212,7 +212,7 @@ exports[`menu toggle shows isDisabled 1`] = `
 </DocumentFragment>
 `;
 
-exports[`menu toggle shows isExpanded 1`] = `
+exports[`menu toggle > shows isExpanded 1`] = `
 <DocumentFragment>
   <button
     aria-expanded="true"
@@ -249,7 +249,7 @@ exports[`menu toggle shows isExpanded 1`] = `
 </DocumentFragment>
 `;
 
-exports[`menu toggle shows isPlain 1`] = `
+exports[`menu toggle > shows isPlain 1`] = `
 <DocumentFragment>
   <button
     aria-expanded="false"
@@ -273,7 +273,7 @@ exports[`menu toggle shows isPlain 1`] = `
 </DocumentFragment>
 `;
 
-exports[`menu toggle shows isPrimary 1`] = `
+exports[`menu toggle > shows isPrimary 1`] = `
 <DocumentFragment>
   <button
     aria-expanded="false"
@@ -310,7 +310,7 @@ exports[`menu toggle shows isPrimary 1`] = `
 </DocumentFragment>
 `;
 
-exports[`menu toggle shows plain text 1`] = `
+exports[`menu toggle > shows plain text 1`] = `
 <DocumentFragment>
   <button
     aria-expanded="false"

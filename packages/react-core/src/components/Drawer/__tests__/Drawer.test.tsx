@@ -1,20 +1,25 @@
+/**
+ * @vitest-environment jsdom
+ */
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
 import {
   Drawer,
   DrawerActions,
   DrawerCloseButton,
+  DrawerColorVariant,
   DrawerContent,
   DrawerContentBody,
   DrawerHead,
   DrawerPanelBody,
-  DrawerColorVariant,
   DrawerPanelContent
 } from '../';
-import React from 'react';
-import { render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { KeyTypes } from '../../../helpers';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 Object.values([
   { isExpanded: true, isInline: false, isStatic: false },
@@ -106,7 +111,7 @@ test(`Drawer has resizable css and color variants`, () => {
 
 test(`Drawer has resizable callback and id`, () => {
   const panelContent = (
-    <DrawerPanelContent isResizable onResize={jest.fn()} id="test-id">
+    <DrawerPanelContent isResizable onResize={vi.fn()} id="test-id">
       <DrawerHead>
         <span>drawer-panel</span>
         <DrawerActions>
@@ -132,7 +137,7 @@ test(`Drawer has resizable callback and id`, () => {
 test('Resizeable DrawerPanelContent can be wrapped in a context without causing an error', async () => {
   const TestContext = React.createContext({});
 
-  const consoleError = jest.spyOn(console, 'error').mockImplementation();
+  const consoleError = vi.spyOn(console, 'error').mockImplementation();
 
   const panelContent = (
     <TestContext.Provider value={{}}>

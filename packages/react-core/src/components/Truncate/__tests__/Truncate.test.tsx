@@ -1,9 +1,14 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Truncate } from '../Truncate';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Truncate/truncate';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../Tooltip', () => ({
+import { Truncate } from '../Truncate';
+
+vi.mock('../../Tooltip', () => ({
   Tooltip: ({ content, position, children, ...props }) => (
     <div data-testid="Tooltip-mock" {...props}>
       <div data-testid="Tooltip-mock-content-container">Test {content}</div>

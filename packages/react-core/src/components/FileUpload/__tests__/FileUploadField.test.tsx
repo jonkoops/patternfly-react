@@ -1,10 +1,15 @@
-import { FileUploadField } from '../FileUploadField';
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
+import { FileUploadField } from '../FileUploadField';
 
 test('simple fileuploadfield', () => {
-  const browserBtnClickHandler = jest.fn();
-  const clearBtnClickHandler = jest.fn();
+  const browserBtnClickHandler = vi.fn();
+  const clearBtnClickHandler = vi.fn();
 
   const { asFragment } = render(
     <FileUploadField

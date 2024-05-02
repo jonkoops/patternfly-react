@@ -1,7 +1,12 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
-import { ChartLegendTooltipLabel } from './ChartLegendTooltipLabel';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { ChartLabel } from '../ChartLabel/ChartLabel';
+import { ChartLegendTooltipLabel } from './ChartLegendTooltipLabel';
 
 Object.values([true, false]).forEach(() => {
   test('ChartLegendTooltipLabel', () => {

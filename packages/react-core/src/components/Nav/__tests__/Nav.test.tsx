@@ -1,13 +1,16 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 import { Nav, NavContext } from '../Nav';
-import { NavList } from '../NavList';
+import { NavExpandable } from '../NavExpandable';
 import { NavGroup } from '../NavGroup';
 import { NavItem } from '../NavItem';
-import { NavExpandable } from '../NavExpandable';
+import { NavList } from '../NavList';
 
 const props = {
   items: [
@@ -19,7 +22,7 @@ const props = {
 };
 
 const renderNav = (ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>) =>
-  render(<NavContext.Provider value={{ onSelect: jest.fn(), onToggle: jest.fn() }}>{ui}</NavContext.Provider>);
+  render(<NavContext.Provider value={{ onSelect: vi.fn(), onToggle: vi.fn() }}>{ui}</NavContext.Provider>);
 
 describe('Nav', () => {
   beforeEach(() => {
@@ -42,7 +45,7 @@ describe('Nav', () => {
   });
 
   test('Renders nav list in strict mode', () => {
-    const consoleError = jest.spyOn(console, 'error');
+    const consoleError = vi.spyOn(console, 'error');
     const { asFragment } = renderNav(
       <React.StrictMode>
         <Nav className="test-nav-class">
@@ -112,7 +115,7 @@ describe('Nav', () => {
   });
 
   test('Expandable Nav verify onExpand', async () => {
-    const onExpand = jest.fn();
+    const onExpand = vi.fn();
     const user = userEvent.setup();
 
     renderNav(

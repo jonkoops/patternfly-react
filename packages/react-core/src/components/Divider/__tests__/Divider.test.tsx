@@ -1,7 +1,12 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Divider } from '../Divider';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Divider/divider';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { Divider } from '../Divider';
 
 test(`Renders with only the class name ${styles.divider} by default`, () => {
   render(<Divider />);

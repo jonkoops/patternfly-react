@@ -1,10 +1,13 @@
-import * as React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/OverflowMenu/overflow-menu';
-import { OverflowMenuItem } from '../OverflowMenuItem';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+
 import { OverflowMenuContext } from '../OverflowMenuContext';
+import { OverflowMenuItem } from '../OverflowMenuItem';
 
 describe('OverflowMenuItem', () => {
   test('isPersistent and below breakpoint should still show', () => {

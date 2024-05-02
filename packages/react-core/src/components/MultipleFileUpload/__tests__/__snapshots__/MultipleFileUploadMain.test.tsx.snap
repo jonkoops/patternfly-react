@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MultipleFileUploadMain passes props to the info component as expected 1`] = `
+exports[`MultipleFileUploadMain > passes props to the info component as expected 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__main"
@@ -28,7 +28,7 @@ exports[`MultipleFileUploadMain passes props to the info component as expected 1
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadMain passes props to the title as expected 1`] = `
+exports[`MultipleFileUploadMain > passes props to the title as expected 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__main"
@@ -70,7 +70,7 @@ exports[`MultipleFileUploadMain passes props to the title as expected 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadMain renders custom class names 1`] = `
+exports[`MultipleFileUploadMain > renders custom class names 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__main test"
@@ -93,7 +93,7 @@ exports[`MultipleFileUploadMain renders custom class names 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadMain renders with expected class names 1`] = `
+exports[`MultipleFileUploadMain > renders with expected class names 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__main"
@@ -116,7 +116,7 @@ exports[`MultipleFileUploadMain renders with expected class names 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadMain renders without the button when expected 1`] = `
+exports[`MultipleFileUploadMain > renders without the button when expected 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__main"

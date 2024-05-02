@@ -1,5 +1,10 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { CardSelectableActions } from '../CardSelectableActions';
 
 test('Matches the snapshot', () => {

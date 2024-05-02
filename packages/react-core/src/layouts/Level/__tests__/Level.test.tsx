@@ -1,7 +1,12 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { Level } from '../Level';
 import { LevelItem } from '../LevelItem';
-import { render } from '@testing-library/react';
 
 test('Gutter', () => {
   const { asFragment } = render(<Level hasGutter />);

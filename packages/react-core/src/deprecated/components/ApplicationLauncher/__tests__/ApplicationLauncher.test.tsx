@@ -1,9 +1,14 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, describe, test, vi } from 'vitest';
+
 import HelpIcon from '@patternfly/react-icons/dist/esm/icons/help-icon';
+import { DropdownDirection, DropdownPosition } from '../../Dropdown/dropdownConstants';
 import { ApplicationLauncher } from '../ApplicationLauncher';
 import { ApplicationLauncherItem } from '../ApplicationLauncherItem';
-import { DropdownPosition, DropdownDirection } from '../../Dropdown/dropdownConstants';
 import { ApplicationLauncherSeparator } from '../ApplicationLauncherSeparator';
 
 const dropdownItems = [
@@ -60,7 +65,7 @@ describe('ApplicationLauncher', () => {
   });
 
   test('Renders in strict mode', () => {
-    const consoleError = jest.spyOn(console, 'error');
+    const consoleError = vi.spyOn(console, 'error');
     const { asFragment } = render(
       <React.StrictMode>
         <ApplicationLauncher isOpen items={dropdownItems} />{' '}

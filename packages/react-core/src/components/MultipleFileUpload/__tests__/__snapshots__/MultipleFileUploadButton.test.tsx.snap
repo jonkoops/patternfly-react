@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MultipleFileUploadButton renders custom class names 1`] = `
+exports[`MultipleFileUploadButton > renders custom class names 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__upload test"
@@ -19,7 +19,7 @@ exports[`MultipleFileUploadButton renders custom class names 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadButton renders with aria-label applied to the button 1`] = `
+exports[`MultipleFileUploadButton > renders with aria-label applied to the button 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__upload"
@@ -39,7 +39,7 @@ exports[`MultipleFileUploadButton renders with aria-label applied to the button 
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadButton renders with expected class names 1`] = `
+exports[`MultipleFileUploadButton > renders with expected class names 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__upload"
@@ -58,7 +58,7 @@ exports[`MultipleFileUploadButton renders with expected class names 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadButton renders with label applied to the button 1`] = `
+exports[`MultipleFileUploadButton > renders with label applied to the button 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__upload"

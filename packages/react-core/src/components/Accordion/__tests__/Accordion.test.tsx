@@ -1,10 +1,13 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Accordion/accordion';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
 
 import { Accordion } from '../Accordion';
 import { AccordionContext } from '../AccordionContext';
-import styles from '@patternfly/react-styles/css/components/Accordion/accordion';
 
 test('Renders without children', () => {
   render(<Accordion data-testid="accordion" />);

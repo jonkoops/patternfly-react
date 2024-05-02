@@ -1,8 +1,13 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { BackgroundImage } from '../BackgroundImage';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/BackgroundImage/background-image';
 import cssBackgroundImage from '@patternfly/react-tokens/dist/esm/c_background_image_BackgroundImage';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { BackgroundImage } from '../BackgroundImage';
 
 test(`renders with default className ${styles.backgroundImage}`, () => {
   render(<BackgroundImage src="/image/url.png" data-testid="test-id" />);

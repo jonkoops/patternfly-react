@@ -1,13 +1,22 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { ProgressStep, ProgressStepVariant } from '../ProgressStep';
-import { capitalize } from '../../../helpers';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/ProgressStepper/progress-stepper';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('@patternfly/react-icons/dist/esm/icons/check-circle-icon', () => () => 'Success icon mock');
-jest.mock('@patternfly/react-icons/dist/esm/icons/resources-full-icon', () => () => 'Info icon mock');
-jest.mock('@patternfly/react-icons/dist/esm/icons/exclamation-triangle-icon', () => () => 'Warning icon mock');
-jest.mock('@patternfly/react-icons/dist/esm/icons/exclamation-circle-icon', () => () => 'Danger icon mock');
+import { capitalize } from '../../../helpers';
+import { ProgressStep, ProgressStepVariant } from '../ProgressStep';
+
+vi.mock('@patternfly/react-icons/dist/esm/icons/check-circle-icon', () => ({ default: () => 'Success icon mock' }));
+vi.mock('@patternfly/react-icons/dist/esm/icons/resources-full-icon', () => ({ default: () => 'Info icon mock' }));
+vi.mock('@patternfly/react-icons/dist/esm/icons/exclamation-triangle-icon', () => ({
+  default: () => 'Warning icon mock'
+}));
+vi.mock('@patternfly/react-icons/dist/esm/icons/exclamation-circle-icon', () => ({
+  default: () => 'Danger icon mock'
+}));
 
 test('Renders without children', () => {
   render(

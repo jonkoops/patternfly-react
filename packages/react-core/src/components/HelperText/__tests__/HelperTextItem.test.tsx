@@ -1,8 +1,12 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { HelperTextItem } from '../HelperTextItem';
-
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/HelperText/helper-text';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { HelperTextItem } from '../HelperTextItem';
 
 test('Renders to match snapshot', () => {
   const { asFragment } = render(<HelperTextItem>help test text</HelperTextItem>);

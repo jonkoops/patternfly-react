@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`DualListSelector basic 1`] = `
+exports[`DualListSelector > basic 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-dual-list-selector"
@@ -257,7 +257,7 @@ exports[`DualListSelector basic 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DualListSelector basic with disabled controls 1`] = `
+exports[`DualListSelector > basic with disabled controls 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-dual-list-selector"
@@ -517,7 +517,7 @@ exports[`DualListSelector basic with disabled controls 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DualListSelector with actions 1`] = `
+exports[`DualListSelector > with actions 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-dual-list-selector"
@@ -850,7 +850,7 @@ exports[`DualListSelector with actions 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DualListSelector with custom status 1`] = `
+exports[`DualListSelector > with custom status 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-dual-list-selector"
@@ -1107,7 +1107,7 @@ exports[`DualListSelector with custom status 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DualListSelector with search inputs 1`] = `
+exports[`DualListSelector > with search inputs 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-dual-list-selector"
@@ -1450,7 +1450,7 @@ exports[`DualListSelector with search inputs 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DualListSelector with tree 1`] = `
+exports[`DualListSelector > with tree 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-dual-list-selector"

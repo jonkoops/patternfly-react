@@ -1,12 +1,17 @@
-import React from 'react';
-import { screen, render } from '@testing-library/react';
-import { ClipboardCopy } from '../ClipboardCopy';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/ClipboardCopy/clipboard-copy';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+import { ClipboardCopy } from '../ClipboardCopy';
 
-jest.mock('../ClipboardCopyButton', () => ({
+vi.mock('../../../helpers/GenerateId/GenerateId');
+
+vi.mock('../ClipboardCopyButton', () => ({
   ClipboardCopyButton: ({ 'aria-label': ariaLabel, children, entryDelay, exitDelay, maxWidth, position, onClick }) => (
     <div data-testid="clipboardCopyButton-mock">
       <p>{`exitDelay: ${exitDelay}`}</p>
@@ -20,7 +25,7 @@ jest.mock('../ClipboardCopyButton', () => ({
   )
 }));
 
-jest.mock('../ClipboardCopyToggle', () => ({
+vi.mock('../ClipboardCopyToggle', () => ({
   ClipboardCopyToggle: ({ 'aria-label': ariaLabel }) => (
     <div data-testid="clipboardCopyToggle-mock">
       <p>{`toggle-ariaLabel: ${ariaLabel}`}</p>
@@ -281,7 +286,7 @@ test('Passes textAriaLabel to TextInput', () => {
 });
 
 test('Calls onChange when ClipboardCopy textinput is typed in', async () => {
-  const onChangeMock = jest.fn();
+  const onChangeMock = vi.fn();
   const user = userEvent.setup();
   const typedText = 'stuff';
 
@@ -293,7 +298,7 @@ test('Calls onChange when ClipboardCopy textinput is typed in', async () => {
 });
 
 test('Does not call onChange when ClipboardCopy textinput is not typed in', async () => {
-  const onChangeMock = jest.fn();
+  const onChangeMock = vi.fn();
   const user = userEvent.setup();
   const typedText = 'stuff';
 
@@ -310,7 +315,7 @@ test('Does not call onChange when ClipboardCopy textinput is not typed in', asyn
 });
 
 test('Calls onCopy when ClipboardCopyButton is clicked', async () => {
-  const onCopyMock = jest.fn();
+  const onCopyMock = vi.fn();
   const user = userEvent.setup();
 
   render(<ClipboardCopy onCopy={onCopyMock}>{children}</ClipboardCopy>);
@@ -321,7 +326,7 @@ test('Calls onCopy when ClipboardCopyButton is clicked', async () => {
 });
 
 test('Does not call onCopy when ClipboardCopyButton is not clicked', async () => {
-  const onCopyMock = jest.fn();
+  const onCopyMock = vi.fn();
   const user = userEvent.setup();
 
   render(

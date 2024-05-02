@@ -1,13 +1,16 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { ContextSelectorItem } from '../ContextSelectorItem';
 
 test('Renders ContextSelectorItem', () => {
   const { asFragment } = render(
-    <ContextSelectorItem sendRef={jest.fn()} index={0}>
+    <ContextSelectorItem sendRef={vi.fn()} index={0}>
       My Project
     </ContextSelectorItem>
   );
@@ -16,7 +19,7 @@ test('Renders ContextSelectorItem', () => {
 
 test('Renders ContextSelectorItem disabled and hovered', () => {
   const { asFragment } = render(
-    <ContextSelectorItem isDisabled sendRef={jest.fn()} index={0}>
+    <ContextSelectorItem isDisabled sendRef={vi.fn()} index={0}>
       My Project
     </ContextSelectorItem>
   );
@@ -24,11 +27,11 @@ test('Renders ContextSelectorItem disabled and hovered', () => {
 });
 
 test('Verify onClick is called ', async () => {
-  const mockfn = jest.fn();
+  const mockfn = vi.fn();
   const user = userEvent.setup();
 
   render(
-    <ContextSelectorItem onClick={mockfn} sendRef={jest.fn()} index={0}>
+    <ContextSelectorItem onClick={mockfn} sendRef={vi.fn()} index={0}>
       My Project
     </ContextSelectorItem>
   );

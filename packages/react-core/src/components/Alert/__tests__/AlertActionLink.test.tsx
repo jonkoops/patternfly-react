@@ -1,8 +1,13 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
 import { AlertActionLink } from '../AlertActionLink';
 
-jest.mock('../../Button');
+vi.mock('../../Button');
 
 test('Renders without children', () => {
   render(

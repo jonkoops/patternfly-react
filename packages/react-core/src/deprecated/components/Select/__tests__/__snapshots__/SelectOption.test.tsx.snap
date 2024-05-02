@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SelectOption checked renders with checked successfully 1`] = `
+exports[`SelectOption > checked > renders with checked successfully 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"
@@ -19,7 +19,7 @@ exports[`SelectOption checked renders with checked successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SelectOption disabled renders disabled successfully 1`] = `
+exports[`SelectOption > disabled > renders disabled successfully 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"
@@ -38,7 +38,7 @@ exports[`SelectOption disabled renders disabled successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SelectOption is selected renders selected successfully 1`] = `
+exports[`SelectOption > is selected > renders selected successfully 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"
@@ -75,7 +75,7 @@ exports[`SelectOption is selected renders selected successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SelectOption renders custom component 1`] = `
+exports[`SelectOption > renders custom component 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"
@@ -95,7 +95,7 @@ exports[`SelectOption renders custom component 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SelectOption renders with custom display and custom user object successfully 1`] = `
+exports[`SelectOption > renders with custom display and custom user object successfully 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"
@@ -115,7 +115,7 @@ exports[`SelectOption renders with custom display and custom user object success
 </DocumentFragment>
 `;
 
-exports[`SelectOption renders with custom display successfully 1`] = `
+exports[`SelectOption > renders with custom display successfully 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"
@@ -135,7 +135,7 @@ exports[`SelectOption renders with custom display successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SelectOption renders with custom user object successfully 1`] = `
+exports[`SelectOption > renders with custom user object successfully 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"
@@ -154,7 +154,7 @@ exports[`SelectOption renders with custom user object successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SelectOption renders with description successfully 1`] = `
+exports[`SelectOption > renders with description successfully 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"
@@ -182,7 +182,7 @@ exports[`SelectOption renders with description successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SelectOption renders with item count successfully 1`] = `
+exports[`SelectOption > renders with item count successfully 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"
@@ -214,7 +214,7 @@ exports[`SelectOption renders with item count successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SelectOption renders with value parameter successfully 1`] = `
+exports[`SelectOption > renders with value parameter successfully 1`] = `
 <DocumentFragment>
   <li
     class="pf-v5-c-select__menu-wrapper"

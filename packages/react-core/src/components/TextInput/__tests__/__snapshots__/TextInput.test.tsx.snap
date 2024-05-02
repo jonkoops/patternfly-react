@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TextInput default read only text input 1`] = `
+exports[`TextInput > default read only text input 1`] = `
 <DocumentFragment>
   <span
     class="pf-v5-c-form-control pf-m-readonly"
@@ -19,7 +19,7 @@ exports[`TextInput default read only text input 1`] = `
 </DocumentFragment>
 `;
 
-exports[`TextInput disabled text input 1`] = `
+exports[`TextInput > disabled text input 1`] = `
 <DocumentFragment>
   <span
     class="pf-v5-c-form-control pf-m-disabled"
@@ -38,7 +38,7 @@ exports[`TextInput disabled text input 1`] = `
 </DocumentFragment>
 `;
 
-exports[`TextInput invalid text input 1`] = `
+exports[`TextInput > invalid text input 1`] = `
 <DocumentFragment>
   <span
     class="pf-v5-c-form-control pf-m-error"
@@ -77,7 +77,7 @@ exports[`TextInput invalid text input 1`] = `
 </DocumentFragment>
 `;
 
-exports[`TextInput plain read only text input 1`] = `
+exports[`TextInput > plain read only text input 1`] = `
 <DocumentFragment>
   <span
     class="pf-v5-c-form-control pf-m-readonly pf-m-plain"
@@ -96,7 +96,7 @@ exports[`TextInput plain read only text input 1`] = `
 </DocumentFragment>
 `;
 
-exports[`TextInput read only text input using isReadOnly 1`] = `
+exports[`TextInput > read only text input using isReadOnly 1`] = `
 <DocumentFragment>
   <span
     class="pf-v5-c-form-control pf-m-readonly"
@@ -115,7 +115,7 @@ exports[`TextInput read only text input using isReadOnly 1`] = `
 </DocumentFragment>
 `;
 
-exports[`TextInput simple text input 1`] = `
+exports[`TextInput > simple text input 1`] = `
 <DocumentFragment>
   <span
     class="pf-v5-c-form-control"
@@ -133,7 +133,7 @@ exports[`TextInput simple text input 1`] = `
 </DocumentFragment>
 `;
 
-exports[`TextInput validated text input error 1`] = `
+exports[`TextInput > validated text input error 1`] = `
 <DocumentFragment>
   <span
     class="pf-v5-c-form-control pf-m-error"

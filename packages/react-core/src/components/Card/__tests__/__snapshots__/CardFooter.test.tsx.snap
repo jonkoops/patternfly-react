@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CardFooter renders with PatternFly Core styles 1`] = `
+exports[`CardFooter > renders with PatternFly Core styles 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-card__footer"

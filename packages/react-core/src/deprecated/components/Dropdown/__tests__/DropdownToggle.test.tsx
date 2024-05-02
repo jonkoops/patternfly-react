@@ -1,7 +1,10 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { DropdownToggle } from '../DropdownToggle';
 import { DropdownContext } from '../dropdownConstants';
@@ -9,7 +12,7 @@ import { DropdownContext } from '../dropdownConstants';
 describe('DropdownToggle', () => {
   describe('API', () => {
     test('click on closed', async () => {
-      const mockToggle = jest.fn();
+      const mockToggle = vi.fn();
       const user = userEvent.setup();
 
       render(
@@ -23,7 +26,7 @@ describe('DropdownToggle', () => {
     });
 
     test('click on opened', async () => {
-      const mockToggle = jest.fn();
+      const mockToggle = vi.fn();
       const user = userEvent.setup();
 
       render(
@@ -38,15 +41,15 @@ describe('DropdownToggle', () => {
 
     test('on click outside has been removed', () => {
       let mousedown: EventListenerOrEventListenerObject = () => {};
-      document.addEventListener = jest.fn((event, cb) => {
+      document.addEventListener = vi.fn((event, cb) => {
         mousedown = cb;
       });
-      document.removeEventListener = jest.fn((event, cb) => {
+      document.removeEventListener = vi.fn((event, cb) => {
         if (mousedown === cb) {
           mousedown = () => {};
         }
       });
-      const mockToggle = jest.fn();
+      const mockToggle = vi.fn();
       const { unmount } = render(
         <DropdownToggle id="Dropdown Toggle" onToggle={mockToggle} isOpen parentRef={document.createElement('div')}>
           Dropdown
@@ -60,15 +63,15 @@ describe('DropdownToggle', () => {
 
     test('on touch outside has been removed', () => {
       let touchstart: EventListenerOrEventListenerObject = () => {};
-      document.addEventListener = jest.fn((event, cb) => {
+      document.addEventListener = vi.fn((event, cb) => {
         touchstart = cb;
       });
-      document.removeEventListener = jest.fn((event, cb) => {
+      document.removeEventListener = vi.fn((event, cb) => {
         if (touchstart === cb) {
           touchstart = () => {};
         }
       });
-      const mockToggle = jest.fn();
+      const mockToggle = vi.fn();
       const { unmount } = render(
         <DropdownToggle id="Dropdown Toggle" onToggle={mockToggle} isOpen parentRef={document.createElement('div')}>
           Dropdown

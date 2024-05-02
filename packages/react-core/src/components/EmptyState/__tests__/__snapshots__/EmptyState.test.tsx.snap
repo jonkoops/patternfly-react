@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`EmptyState Full height 1`] = `
+exports[`EmptyState > Full height 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-empty-state pf-m-lg pf-m-full-height"
@@ -26,7 +26,7 @@ exports[`EmptyState Full height 1`] = `
 </DocumentFragment>
 `;
 
-exports[`EmptyState Header with icon 1`] = `
+exports[`EmptyState > Header with icon 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-empty-state__header"
@@ -52,7 +52,7 @@ exports[`EmptyState Header with icon 1`] = `
 </DocumentFragment>
 `;
 
-exports[`EmptyState Main 1`] = `
+exports[`EmptyState > Main 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-empty-state"
@@ -116,7 +116,7 @@ exports[`EmptyState Main 1`] = `
 </DocumentFragment>
 `;
 
-exports[`EmptyState Main variant large 1`] = `
+exports[`EmptyState > Main variant large 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-empty-state pf-m-lg"
@@ -142,7 +142,7 @@ exports[`EmptyState Main variant large 1`] = `
 </DocumentFragment>
 `;
 
-exports[`EmptyState Main variant small 1`] = `
+exports[`EmptyState > Main variant small 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-empty-state pf-m-sm"
@@ -168,7 +168,7 @@ exports[`EmptyState Main variant small 1`] = `
 </DocumentFragment>
 `;
 
-exports[`EmptyState Main variant xs 1`] = `
+exports[`EmptyState > Main variant xs 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-empty-state pf-m-xs"

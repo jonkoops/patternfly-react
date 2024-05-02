@@ -1,9 +1,12 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import FileImageIcon from '@patternfly/react-icons/dist/esm/icons/file-image-icon';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
 
 import { MultipleFileUploadStatusItem } from '../MultipleFileUploadStatusItem';
-import FileImageIcon from '@patternfly/react-icons/dist/esm/icons/file-image-icon';
 
 describe('MultipleFileUploadStatusItem', () => {
   test('renders with expected class names', () => {

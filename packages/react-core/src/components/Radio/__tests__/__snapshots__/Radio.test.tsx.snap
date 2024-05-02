@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Radio controlled 1`] = `
+exports[`Radio > controlled 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-radio pf-m-standalone"
@@ -21,7 +21,7 @@ exports[`Radio controlled 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Radio isDisabled 1`] = `
+exports[`Radio > isDisabled 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-radio pf-m-standalone"
@@ -42,7 +42,7 @@ exports[`Radio isDisabled 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Radio isLabelBeforeButton 1`] = `
+exports[`Radio > isLabelBeforeButton 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-radio"
@@ -67,7 +67,7 @@ exports[`Radio isLabelBeforeButton 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Radio isLabelWrapped 1`] = `
+exports[`Radio > isLabelWrapped 1`] = `
 <DocumentFragment>
   <label
     class="pf-v5-c-radio"
@@ -92,7 +92,7 @@ exports[`Radio isLabelWrapped 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Radio label is function 1`] = `
+exports[`Radio > label is function 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-radio"
@@ -120,7 +120,7 @@ exports[`Radio label is function 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Radio label is node 1`] = `
+exports[`Radio > label is node 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-radio"
@@ -148,7 +148,7 @@ exports[`Radio label is node 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Radio label is string 1`] = `
+exports[`Radio > label is string 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-radio"
@@ -174,7 +174,7 @@ exports[`Radio label is string 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Radio passing HTML attribute 1`] = `
+exports[`Radio > passing HTML attribute 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-radio"
@@ -201,7 +201,7 @@ exports[`Radio passing HTML attribute 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Radio passing class 1`] = `
+exports[`Radio > passing class 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-radio class-123"
@@ -227,7 +227,7 @@ exports[`Radio passing class 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Radio uncontrolled 1`] = `
+exports[`Radio > uncontrolled 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-radio pf-m-standalone"

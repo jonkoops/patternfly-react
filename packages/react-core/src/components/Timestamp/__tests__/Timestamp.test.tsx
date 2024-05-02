@@ -1,9 +1,14 @@
-import * as React from 'react';
-import { render, screen, getDefaultNormalizer } from '@testing-library/react';
-import { Timestamp, TimestampFormat, TimestampTooltipVariant } from '../Timestamp';
-import styles from '@patternfly/react-styles/css/components/Timestamp/timestamp';
+/**
+ * @vitest-environment jsdom
+ */
+import { getDefaultNormalizer, render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../Tooltip', () => ({
+import styles from '@patternfly/react-styles/css/components/Timestamp/timestamp';
+import { Timestamp, TimestampFormat, TimestampTooltipVariant } from '../Timestamp';
+
+vi.mock('../../Tooltip', () => ({
   Tooltip: ({ content, children, ...props }) => (
     <div data-testid="timestamp-tooltip-mock" {...props}>
       <div data-testid="timestamp-tooltip-mock-content">{content}</div>
@@ -12,7 +17,7 @@ jest.mock('../../Tooltip', () => ({
   )
 }));
 
-xtest('Matches snapshot', () => {
+test('Matches snapshot', () => {
   /** Due to how the datetime attribute is contstructed internally, dateTime must be
    * manually passed for this snapshot to pass on GitHub.
    */

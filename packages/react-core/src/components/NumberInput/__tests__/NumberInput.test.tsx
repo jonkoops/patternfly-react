@@ -1,7 +1,12 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { fireEvent, render, screen } from '@testing-library/react';
-import { NumberInput } from '../NumberInput';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
+import { NumberInput } from '../NumberInput';
 
 describe('numberInput', () => {
   test('renders defaults & extra props', () => {
@@ -60,7 +65,7 @@ describe('numberInput', () => {
   });
 
   test('passes input props successfully', () => {
-    const { asFragment } = render(<NumberInput value={5} onChange={jest.fn()} inputName="test-name" />);
+    const { asFragment } = render(<NumberInput value={5} onChange={vi.fn()} inputName="test-name" />);
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -68,9 +73,9 @@ describe('numberInput', () => {
     const { asFragment } = render(
       <NumberInput
         value={5}
-        onMinus={jest.fn()}
+        onMinus={vi.fn()}
         minusBtnProps={{ id: 'minus-id' }}
-        onPlus={jest.fn()}
+        onPlus={vi.fn()}
         plusBtnProps={{ id: 'plus-id' }}
       />
     );
@@ -93,7 +98,7 @@ describe('numberInput', () => {
   });
 
   test('does not call onChange callback when the input does not change', () => {
-    const onChangeMock = jest.fn();
+    const onChangeMock = vi.fn();
 
     render(<NumberInput onChange={onChangeMock}>5</NumberInput>);
 
@@ -101,7 +106,7 @@ describe('numberInput', () => {
   });
 
   test('calls onChange callback when input changes', async () => {
-    const onChangeMock = jest.fn();
+    const onChangeMock = vi.fn();
     const user = userEvent.setup();
 
     render(<NumberInput onChange={onChangeMock}>55</NumberInput>);
@@ -113,7 +118,7 @@ describe('numberInput', () => {
   });
 
   test('does not call onBlur callback when input does not lose focus', async () => {
-    const onBlurMock = jest.fn();
+    const onBlurMock = vi.fn();
     const user = userEvent.setup();
 
     render(<NumberInput onBlur={onBlurMock}>5</NumberInput>);
@@ -125,7 +130,7 @@ describe('numberInput', () => {
   });
 
   test('calls onBlur callback when input loses focus', async () => {
-    const onBlurMock = jest.fn();
+    const onBlurMock = vi.fn();
     const user = userEvent.setup();
 
     render(<NumberInput onBlur={onBlurMock}>5</NumberInput>);
@@ -213,7 +218,7 @@ describe('numberInput', () => {
   });
 
   test('does not throw an error if onChange is passed via inputProps as well as the onChange prop', async () => {
-    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
     const NumberInputWrapper = () => {
       const [value, setValue] = React.useState(0);
@@ -238,7 +243,7 @@ describe('numberInput', () => {
   });
 
   test('input is not read only if onChange passed ', () => {
-    const onChangeMock = jest.fn();
+    const onChangeMock = vi.fn();
     render(<NumberInput inputAriaLabel="not readonly input" value={5} onChange={onChangeMock} />);
     const input = screen.getByLabelText('not readonly input');
     expect(input).not.toHaveAttribute('readOnly');

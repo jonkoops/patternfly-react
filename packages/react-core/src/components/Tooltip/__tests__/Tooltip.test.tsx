@@ -1,10 +1,15 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Tooltip } from '../Tooltip';
-import userEvent from '@testing-library/user-event';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Tooltip/tooltip';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../../helpers/Popper/Popper');
+import { Tooltip } from '../Tooltip';
+
+vi.mock('../../../helpers/Popper/Popper');
 
 test('Renders with class name pf-v5-c-tooltip by default', async () => {
   render(<Tooltip isVisible content="Test content" />);
@@ -91,7 +96,7 @@ test('Renders without aria-labelledby or aria-describedby on trigger when aria="
 });
 
 test('Does not call onTooltipHidden before tooltip is hidden', async () => {
-  const onTooltipHiddenMock = jest.fn();
+  const onTooltipHiddenMock = vi.fn();
   const user = userEvent.setup();
 
   const TooltipCallback = () => {
@@ -111,7 +116,7 @@ test('Does not call onTooltipHidden before tooltip is hidden', async () => {
 });
 
 test.skip('Calls onTooltipHidden when tooltip is hidden', async () => {
-  const onTooltipHiddenMock = jest.fn();
+  const onTooltipHiddenMock = vi.fn();
   const user = userEvent.setup();
 
   const TooltipCallback = () => {

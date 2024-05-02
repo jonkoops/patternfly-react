@@ -1,9 +1,14 @@
-import React from 'react';
-import { screen, render } from '@testing-library/react';
-import { ClipboardCopyToggle } from '../ClipboardCopyToggle';
+/**
+ * @vitest-environment jsdom
+ */
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-const onClickMock = jest.fn();
+import { ClipboardCopyToggle } from '../ClipboardCopyToggle';
+
+const onClickMock = vi.fn();
 const requiredProps = {
   id: 'main-id',
   textId: 'text-id',

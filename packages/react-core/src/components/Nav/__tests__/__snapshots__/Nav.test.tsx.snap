@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Nav Dark Nav List 1`] = `
+exports[`Nav > Dark Nav List 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Global"
@@ -70,7 +70,7 @@ exports[`Nav Dark Nav List 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Default Nav List - Trigger item active update 1`] = `
+exports[`Nav > Default Nav List - Trigger item active update 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Global"
@@ -140,7 +140,7 @@ exports[`Nav Default Nav List - Trigger item active update 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Default Nav List 1`] = `
+exports[`Nav > Default Nav List 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Global"
@@ -210,7 +210,7 @@ exports[`Nav Default Nav List 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Expandable Nav List - Trigger toggle 1`] = `
+exports[`Nav > Expandable Nav List - Trigger toggle 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Global"
@@ -326,7 +326,7 @@ exports[`Nav Expandable Nav List - Trigger toggle 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Expandable Nav List 1`] = `
+exports[`Nav > Expandable Nav List 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Global"
@@ -442,7 +442,7 @@ exports[`Nav Expandable Nav List 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Expandable Nav List with aria label 1`] = `
+exports[`Nav > Expandable Nav List with aria label 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Test"
@@ -563,7 +563,7 @@ exports[`Nav Expandable Nav List with aria label 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Horizontal Nav List 1`] = `
+exports[`Nav > Horizontal Nav List 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Global"
@@ -671,7 +671,7 @@ exports[`Nav Horizontal Nav List 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Horizontal SubNav List 1`] = `
+exports[`Nav > Horizontal SubNav List 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Local"
@@ -779,7 +779,7 @@ exports[`Nav Horizontal SubNav List 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Nav Grouped List 1`] = `
+exports[`Nav > Nav Grouped List 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Global"
@@ -938,7 +938,7 @@ exports[`Nav Nav Grouped List 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Nav List with custom item nodes 1`] = `
+exports[`Nav > Nav List with custom item nodes 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Local"
@@ -1006,7 +1006,7 @@ exports[`Nav Nav List with custom item nodes 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Nav List with flyout 1`] = `
+exports[`Nav > Nav List with flyout 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Local"
@@ -1096,7 +1096,7 @@ exports[`Nav Nav List with flyout 1`] = `
       data-popper-escaped="true"
       data-popper-placement="right-start"
       data-popper-reference-hidden="true"
-      style="position: absolute; left: 0px; top: 0px; z-index: 9999; opacity: 0; transition: opacity 0ms cubic-bezier(.54, 1.5, .38, 1.11); min-width: 0px; transform: translate(0px, 0px);"
+      style="position: absolute; left: 0px; top: 0px; z-index: 9999; opacity: 1; transition: opacity 0ms cubic-bezier(.54, 1.5, .38, 1.11); min-width: 0px; transform: translate(0px, 0px);"
     >
       <div>
         Flyout test
@@ -1106,7 +1106,7 @@ exports[`Nav Nav List with flyout 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Renders nav list in strict mode 1`] = `
+exports[`Nav > Renders nav list in strict mode 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Global"
@@ -1176,7 +1176,7 @@ exports[`Nav Renders nav list in strict mode 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Tertiary Nav List 1`] = `
+exports[`Nav > Tertiary Nav List 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Local"

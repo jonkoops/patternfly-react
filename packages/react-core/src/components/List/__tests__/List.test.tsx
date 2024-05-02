@@ -1,11 +1,14 @@
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import BookOpen from '@patternfly/react-icons/dist/esm/icons/book-open-icon';
-import Key from '@patternfly/react-icons/dist/esm/icons/key-icon';
 import Desktop from '@patternfly/react-icons/dist/esm/icons/desktop-icon';
-import { List, ListVariant, ListComponent, OrderType } from '../List';
+import Key from '@patternfly/react-icons/dist/esm/icons/key-icon';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+
+import { List, ListComponent, ListVariant, OrderType } from '../List';
 import { ListItem } from '../ListItem';
 
 const ListItems = () => (

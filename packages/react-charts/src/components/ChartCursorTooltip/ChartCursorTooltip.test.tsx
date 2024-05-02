@@ -1,5 +1,10 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { ChartArea } from '../ChartArea/ChartArea';
 import { ChartGroup } from '../ChartGroup/ChartGroup';
 import { createContainer } from '../ChartUtils/chart-container';

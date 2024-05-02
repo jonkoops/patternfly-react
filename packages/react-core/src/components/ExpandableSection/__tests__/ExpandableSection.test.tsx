@@ -1,7 +1,10 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { ExpandableSection, ExpandableSectionVariant } from '../ExpandableSection';
 import { ExpandableSectionToggle } from '../ExpandableSectionToggle';
@@ -24,7 +27,7 @@ test('Renders ExpandableSection expanded', () => {
 });
 
 test('ExpandableSection onToggle called', async () => {
-  const mockfn = jest.fn();
+  const mockfn = vi.fn();
   const user = userEvent.setup();
 
   render(<ExpandableSection onToggle={mockfn}> test </ExpandableSection>);

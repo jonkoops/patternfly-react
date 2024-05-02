@@ -1,10 +1,15 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Chip/chip';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Chip } from '../Chip';
-import styles from '@patternfly/react-styles/css/components/Chip/chip';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../Tooltip', () => ({
+import { Chip } from '../Chip';
+
+vi.mock('../../Tooltip', () => ({
   Tooltip: ({ content, position }) => (
     <div data-testid="tooltip-mock">
       <p>{`content: ${content}`}</p>
@@ -13,7 +18,9 @@ jest.mock('../../Tooltip', () => ({
   )
 }));
 
-['default chip', 'overflow chip'].forEach((chipType) => {
+const chipTypes = ['default chip', 'overflow chip'];
+
+chipTypes.forEach((chipType) => {
   const isOverflowChip = chipType === 'overflow chip';
 
   test(`Renders without children for ${chipType}`, () => {
@@ -192,7 +199,7 @@ test(`Renders with class ${styles.modifiers.overflow} when isOverflowChip is tru
 
 test(`Calls onClick when close button action is clicked for default chip`, async () => {
   const user = userEvent.setup();
-  const onClickMock = jest.fn();
+  const onClickMock = vi.fn();
 
   render(<Chip onClick={onClickMock}>Chip text</Chip>);
 
@@ -203,7 +210,7 @@ test(`Calls onClick when close button action is clicked for default chip`, async
 
 test(`Does not call onClick when close button action is not clicked for default chip`, async () => {
   const user = userEvent.setup();
-  const onClickMock = jest.fn();
+  const onClickMock = vi.fn();
 
   render(
     <>
@@ -219,7 +226,7 @@ test(`Does not call onClick when close button action is not clicked for default 
 
 test(`Calls onClick when chip is clicked for overflow chip`, async () => {
   const user = userEvent.setup();
-  const onClickMock = jest.fn();
+  const onClickMock = vi.fn();
 
   render(
     <Chip isOverflowChip component="button" onClick={onClickMock}>
@@ -234,7 +241,7 @@ test(`Calls onClick when chip is clicked for overflow chip`, async () => {
 
 test(`Does not call onClick when chip is not clicked for overflow chip`, async () => {
   const user = userEvent.setup();
-  const onClickMock = jest.fn();
+  const onClickMock = vi.fn();
 
   render(
     <>

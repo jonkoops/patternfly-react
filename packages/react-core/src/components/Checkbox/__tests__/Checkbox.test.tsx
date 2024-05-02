@@ -1,10 +1,13 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Check/check';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { Checkbox } from '../Checkbox';
-import styles from '@patternfly/react-styles/css/components/Check/check';
 
 test(`Renders with only the class ${styles.checkInput} on the check by default`, () => {
   render(<Checkbox id="test-id" />);
@@ -94,7 +97,7 @@ test(`Sets the checkbox as checked when checked is passed`, () => {
 
 test(`Calls onChange when the checkbox is clicked`, async () => {
   const user = userEvent.setup();
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   render(<Checkbox id="test-id" onChange={onChange} />);
 
   await user.click(screen.getByRole('checkbox'));
@@ -103,7 +106,7 @@ test(`Calls onChange when the checkbox is clicked`, async () => {
 });
 
 test('Does not call onChange when the checkbox is not clicked', () => {
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   render(<Checkbox id="test-id" onChange={onChange} />);
 
   expect(onChange).not.toHaveBeenCalled();
@@ -111,7 +114,7 @@ test('Does not call onChange when the checkbox is not clicked', () => {
 
 test(`Calls onChange with the event and the checked value when the checkbox is clicked`, async () => {
   const user = userEvent.setup();
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   render(<Checkbox id="test-id" onChange={onChange} />);
 
   await user.click(screen.getByRole('checkbox'));
@@ -121,7 +124,7 @@ test(`Calls onChange with the event and the checked value when the checkbox is c
 
 test(`Calls onChange with the event and the checked value when the checkbox is clicked and isChecked is passed`, async () => {
   const user = userEvent.setup();
-  const onChange = jest.fn();
+  const onChange = vi.fn();
   render(<Checkbox id="test-id" isChecked onChange={onChange} />);
 
   await user.click(screen.getByRole('checkbox'));

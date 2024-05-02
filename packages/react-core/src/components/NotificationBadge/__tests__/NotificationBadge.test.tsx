@@ -1,6 +1,11 @@
-import { NotificationBadge } from '../NotificationBadge';
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { NotificationBadge } from '../NotificationBadge';
 
 Object.values([true, false]).forEach((attentionVariant) => {
   test(`${attentionVariant} NotificationBadge needs attention`, () => {

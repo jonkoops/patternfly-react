@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`slider renders continuous slider 1`] = `
+exports[`slider > renders continuous slider 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-slider"
@@ -74,7 +74,7 @@ exports[`slider renders continuous slider 1`] = `
 </DocumentFragment>
 `;
 
-exports[`slider renders continuous slider with custom steps 1`] = `
+exports[`slider > renders continuous slider with custom steps 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-slider"
@@ -137,7 +137,7 @@ exports[`slider renders continuous slider with custom steps 1`] = `
 </DocumentFragment>
 `;
 
-exports[`slider renders disabled slider 1`] = `
+exports[`slider > renders disabled slider 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-slider pf-m-disabled"
@@ -194,7 +194,7 @@ exports[`slider renders disabled slider 1`] = `
 </DocumentFragment>
 `;
 
-exports[`slider renders discrete slider 1`] = `
+exports[`slider > renders discrete slider 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-slider"
@@ -268,7 +268,7 @@ exports[`slider renders discrete slider 1`] = `
 </DocumentFragment>
 `;
 
-exports[`slider renders discrete slider with custom steps 1`] = `
+exports[`slider > renders discrete slider with custom steps 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-slider"
@@ -360,7 +360,7 @@ exports[`slider renders discrete slider with custom steps 1`] = `
 </DocumentFragment>
 `;
 
-exports[`slider renders slider with input 1`] = `
+exports[`slider > renders slider with input 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-slider"
@@ -451,7 +451,7 @@ exports[`slider renders slider with input 1`] = `
 </DocumentFragment>
 `;
 
-exports[`slider renders slider with input above thumb 1`] = `
+exports[`slider > renders slider with input above thumb 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-slider"
@@ -542,7 +542,7 @@ exports[`slider renders slider with input above thumb 1`] = `
 </DocumentFragment>
 `;
 
-exports[`slider renders slider with input actions 1`] = `
+exports[`slider > renders slider with input actions 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-slider"
@@ -625,7 +625,7 @@ exports[`slider renders slider with input actions 1`] = `
 </DocumentFragment>
 `;
 
-exports[`slider renders slider with tooltip on thumb 1`] = `
+exports[`slider > renders slider with tooltip on thumb 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-slider"

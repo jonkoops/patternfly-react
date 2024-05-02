@@ -1,5 +1,10 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+
 import { Masthead, MastheadBrand, MastheadContent, MastheadMain, MastheadToggle } from '../index';
 
 describe('Masthead', () => {

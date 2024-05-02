@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Switch no label switch is checked 1`] = `
+exports[`Switch > no label switch is checked 1`] = `
 <DocumentFragment>
   <label
     class="pf-v5-c-switch"
@@ -42,7 +42,7 @@ exports[`Switch no label switch is checked 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Switch no label switch is not checked 1`] = `
+exports[`Switch > no label switch is not checked 1`] = `
 <DocumentFragment>
   <label
     class="pf-v5-c-switch"
@@ -83,7 +83,7 @@ exports[`Switch no label switch is not checked 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Switch switch is checked 1`] = `
+exports[`Switch > switch is checked 1`] = `
 <DocumentFragment>
   <label
     class="pf-v5-c-switch"
@@ -118,7 +118,7 @@ exports[`Switch switch is checked 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Switch switch is checked and disabled 1`] = `
+exports[`Switch > switch is checked and disabled 1`] = `
 <DocumentFragment>
   <label
     class="pf-v5-c-switch"
@@ -161,7 +161,7 @@ exports[`Switch switch is checked and disabled 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Switch switch is not checked 1`] = `
+exports[`Switch > switch is not checked 1`] = `
 <DocumentFragment>
   <label
     class="pf-v5-c-switch"
@@ -195,7 +195,7 @@ exports[`Switch switch is not checked 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Switch switch is not checked and disabled 1`] = `
+exports[`Switch > switch is not checked and disabled 1`] = `
 <DocumentFragment>
   <label
     class="pf-v5-c-switch"
@@ -237,7 +237,7 @@ exports[`Switch switch is not checked and disabled 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Switch switch with only label is checked 1`] = `
+exports[`Switch > switch with only label is checked 1`] = `
 <DocumentFragment>
   <label
     class="pf-v5-c-switch"
@@ -275,7 +275,7 @@ exports[`Switch switch with only label is checked 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Switch switch with only label is not checked 1`] = `
+exports[`Switch > switch with only label is not checked 1`] = `
 <DocumentFragment>
   <label
     class="pf-v5-c-switch"

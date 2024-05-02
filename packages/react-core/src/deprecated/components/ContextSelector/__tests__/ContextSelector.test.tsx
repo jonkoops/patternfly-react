@@ -1,7 +1,10 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { ContextSelector } from '../ContextSelector';
 import { ContextSelectorItem } from '../ContextSelectorItem';
@@ -30,7 +33,7 @@ describe('ContextSelector', () => {
   });
 
   test('Renders in strict mode', () => {
-    const consoleError = jest.spyOn(console, 'error');
+    const consoleError = vi.spyOn(console, 'error');
     const { asFragment } = render(
       <React.StrictMode>
         <ContextSelector isOpen id="render">
@@ -43,7 +46,7 @@ describe('ContextSelector', () => {
   });
 
   test('Verify onToggle is called ', async () => {
-    const mockfn = jest.fn();
+    const mockfn = vi.fn();
     const user = userEvent.setup();
 
     render(<ContextSelector onToggle={mockfn}>{items}</ContextSelector>);

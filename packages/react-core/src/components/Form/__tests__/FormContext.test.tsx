@@ -1,6 +1,11 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { FormContextConsumer, FormContextProvider } from '../FormContext';
 
 const customRender = (ui, initialValues?: Record<string, any>) =>

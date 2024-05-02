@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ToggleGroup basic not selected 1`] = `
+exports[`ToggleGroup > basic not selected 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-toggle-group__item"
@@ -22,7 +22,7 @@ exports[`ToggleGroup basic not selected 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ToggleGroup basic selected 1`] = `
+exports[`ToggleGroup > basic selected 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-toggle-group__item"
@@ -44,7 +44,7 @@ exports[`ToggleGroup basic selected 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ToggleGroup icon variant 1`] = `
+exports[`ToggleGroup > icon variant 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-toggle-group__item"
@@ -66,7 +66,7 @@ exports[`ToggleGroup icon variant 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ToggleGroup isCompact 1`] = `
+exports[`ToggleGroup > isCompact 1`] = `
 <DocumentFragment>
   <div
     aria-label="Label"
@@ -107,7 +107,7 @@ exports[`ToggleGroup isCompact 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ToggleGroup isDisabled 1`] = `
+exports[`ToggleGroup > isDisabled 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-toggle-group__item"
@@ -130,7 +130,7 @@ exports[`ToggleGroup isDisabled 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ToggleGroup should render non-ToggleGroupItem children 1`] = `
+exports[`ToggleGroup > should render non-ToggleGroupItem children 1`] = `
 <DocumentFragment>
   <div
     aria-label="non-element children"

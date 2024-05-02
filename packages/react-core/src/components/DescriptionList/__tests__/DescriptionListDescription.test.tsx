@@ -1,5 +1,10 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { DescriptionListDescription } from '../DescriptionListDescription';
 
 import styles from '@patternfly/react-styles/css/components/DescriptionList/description-list';

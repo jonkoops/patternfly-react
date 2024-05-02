@@ -1,10 +1,15 @@
-import { FileUpload } from '../FileUpload';
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
+import { FileUpload } from '../FileUpload';
 
 test('simple fileupload', () => {
-  const readStartedHandler = jest.fn();
-  const readFinishedHandler = jest.fn();
+  const readStartedHandler = vi.fn();
+  const readFinishedHandler = vi.fn();
 
   const { asFragment } = render(
     <FileUpload

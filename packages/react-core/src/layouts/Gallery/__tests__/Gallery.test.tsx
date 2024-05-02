@@ -1,7 +1,12 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { Gallery } from '../Gallery';
 import { GalleryItem } from '../GalleryItem';
-import { render } from '@testing-library/react';
 
 test('gutter', () => {
   const { asFragment } = render(<Gallery hasGutter />);

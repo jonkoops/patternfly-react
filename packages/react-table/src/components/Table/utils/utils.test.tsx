@@ -1,6 +1,8 @@
-import { isRowExpanded } from './utils';
+import { describe, expect, test } from 'vitest';
+
 import { buildExpandableRows } from '../../../test-helpers/data-helpers';
 import { IRow } from '../TableTypes';
+import { isRowExpanded } from './utils';
 
 const assertExpanded = (rows: IRow[], expandedRowIndexes: number[]) => {
   expandedRowIndexes.forEach((expandedRowIndex: number) => {

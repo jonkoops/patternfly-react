@@ -1,7 +1,12 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { PageSidebarBody } from '../PageSidebarBody';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Page/page';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { PageSidebarBody } from '../PageSidebarBody';
 
 test('Renders without children', () => {
   render(

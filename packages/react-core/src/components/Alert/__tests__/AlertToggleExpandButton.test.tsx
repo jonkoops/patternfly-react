@@ -1,14 +1,18 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Alert/alert';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-import { AlertToggleExpandButton } from '../AlertToggleExpandButton';
 import { AlertContext } from '../AlertContext';
-import styles from '@patternfly/react-styles/css/components/Alert/alert';
+import { AlertToggleExpandButton } from '../AlertToggleExpandButton';
 
-jest.mock('../../Button');
+vi.mock('../../Button');
 
-jest.mock('@patternfly/react-icons/dist/esm/icons/angle-right-icon', () => () => 'Icon mock');
+vi.mock('@patternfly/react-icons/dist/esm/icons/angle-right-icon', () => ({ default: () => 'Icon mock' }));
 
 test('Renders without children', () => {
   render(
@@ -43,7 +47,7 @@ test('Renders with the aria label provided via prop when one is provided', () =>
 });
 
 test('Does not call the callback provided via onToggleExpand when it is not clicked', () => {
-  const onToggleExpandMock = jest.fn();
+  const onToggleExpandMock = vi.fn();
 
   render(
     <AlertContext.Provider value={{ title: 'title', variantLabel: 'variantLabel' }}>
@@ -55,7 +59,7 @@ test('Does not call the callback provided via onToggleExpand when it is not clic
 });
 
 test('Calls the callback provided via onToggleExpand when clicked', async () => {
-  const onToggleExpandMock = jest.fn();
+  const onToggleExpandMock = vi.fn();
   const user = userEvent.setup();
 
   render(

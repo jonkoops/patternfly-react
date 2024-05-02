@@ -1,10 +1,13 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
 
-import { FormGroup } from '../FormGroup';
 import { Form } from '../Form';
+import { FormGroup } from '../FormGroup';
 
 describe('FormGroup', () => {
   const returnFunction = () => <div>label</div>;

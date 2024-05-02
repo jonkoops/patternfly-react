@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`page navigation Verify basic render 1`] = `
+exports[`page navigation > Verify basic render 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-page__main-nav"
@@ -10,7 +10,7 @@ exports[`page navigation Verify basic render 1`] = `
 </DocumentFragment>
 `;
 
-exports[`page navigation Verify bottom shadow 1`] = `
+exports[`page navigation > Verify bottom shadow 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-page__main-nav pf-m-shadow-bottom"
@@ -20,7 +20,7 @@ exports[`page navigation Verify bottom shadow 1`] = `
 </DocumentFragment>
 `;
 
-exports[`page navigation Verify bottom sticky 1`] = `
+exports[`page navigation > Verify bottom sticky 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-page__main-nav pf-m-sticky-bottom"
@@ -30,7 +30,7 @@ exports[`page navigation Verify bottom sticky 1`] = `
 </DocumentFragment>
 `;
 
-exports[`page navigation Verify limited width 1`] = `
+exports[`page navigation > Verify limited width 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-page__main-nav pf-m-limit-width"
@@ -44,7 +44,7 @@ exports[`page navigation Verify limited width 1`] = `
 </DocumentFragment>
 `;
 
-exports[`page navigation Verify overflow scroll 1`] = `
+exports[`page navigation > Verify overflow scroll 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-page__main-nav pf-m-overflow-scroll"
@@ -56,7 +56,7 @@ exports[`page navigation Verify overflow scroll 1`] = `
 </DocumentFragment>
 `;
 
-exports[`page navigation Verify top shadow 1`] = `
+exports[`page navigation > Verify top shadow 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-page__main-nav pf-m-shadow-top"
@@ -66,7 +66,7 @@ exports[`page navigation Verify top shadow 1`] = `
 </DocumentFragment>
 `;
 
-exports[`page navigation Verify top sticky 1`] = `
+exports[`page navigation > Verify top sticky 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-page__main-nav pf-m-sticky-top"

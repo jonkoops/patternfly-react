@@ -1,12 +1,14 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import SearchIcon from '@patternfly/react-icons/dist/esm/icons/search-icon';
+import styles from '@patternfly/react-styles/css/components/TextInputGroup/text-input-group';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import '@testing-library/jest-dom';
-import styles from '@patternfly/react-styles/css/components/TextInputGroup/text-input-group';
-
-import { TextInputGroupMain } from '../TextInputGroupMain';
+import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 import { TextInputGroupContext } from '../TextInputGroup';
-import SearchIcon from '@patternfly/react-icons/dist/esm/icons/search-icon';
+import { TextInputGroupMain } from '../TextInputGroupMain';
 
 describe('TextInputGroupMain', () => {
   it('renders without children', () => {
@@ -243,7 +245,7 @@ describe('TextInputGroupMain', () => {
   });
 
   it('does not call onChange callback when the input does not change', () => {
-    const onChangeMock = jest.fn();
+    const onChangeMock = vi.fn();
 
     render(<TextInputGroupMain onChange={onChangeMock}>Test</TextInputGroupMain>);
 
@@ -251,7 +253,7 @@ describe('TextInputGroupMain', () => {
   });
 
   it('calls the onChange callback when the input changes', async () => {
-    const onChangeMock = jest.fn();
+    const onChangeMock = vi.fn();
     const user = userEvent.setup();
 
     render(<TextInputGroupMain onChange={onChangeMock}>Test</TextInputGroupMain>);
@@ -263,7 +265,7 @@ describe('TextInputGroupMain', () => {
   });
 
   it('does not call onFocus callback when the input does not get focus', () => {
-    const onFocusMock = jest.fn();
+    const onFocusMock = vi.fn();
 
     render(<TextInputGroupMain onFocus={onFocusMock}>Test</TextInputGroupMain>);
 
@@ -271,7 +273,7 @@ describe('TextInputGroupMain', () => {
   });
 
   it('calls the onFocus callback when the input is focused', async () => {
-    const onFocusMock = jest.fn();
+    const onFocusMock = vi.fn();
     const user = userEvent.setup();
 
     render(<TextInputGroupMain onFocus={onFocusMock}>Test</TextInputGroupMain>);
@@ -283,7 +285,7 @@ describe('TextInputGroupMain', () => {
   });
 
   it('does not call onBlur callback when the input does not lose focus', async () => {
-    const onBlurMock = jest.fn();
+    const onBlurMock = vi.fn();
     const user = userEvent.setup();
 
     render(<TextInputGroupMain onBlur={onBlurMock}>Test</TextInputGroupMain>);
@@ -295,7 +297,7 @@ describe('TextInputGroupMain', () => {
   });
 
   it('calls the onBlur callback when the input loses focus', async () => {
-    const onBlurMock = jest.fn();
+    const onBlurMock = vi.fn();
     const user = userEvent.setup();
 
     render(<TextInputGroupMain onBlur={onBlurMock}>Test</TextInputGroupMain>);

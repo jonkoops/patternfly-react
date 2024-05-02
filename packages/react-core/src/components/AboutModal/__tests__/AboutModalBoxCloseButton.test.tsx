@@ -1,5 +1,10 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
 import { AboutModalBoxCloseButton } from '../AboutModalBoxCloseButton';
 
 test('AboutModalBoxCloseButton Test', () => {
@@ -8,7 +13,7 @@ test('AboutModalBoxCloseButton Test', () => {
 });
 
 test('AboutModalBoxCloseButton Test onclose', () => {
-  const onClose = jest.fn();
+  const onClose = vi.fn();
   const { asFragment } = render(<AboutModalBoxCloseButton onClose={onClose} />);
   expect(asFragment()).toMatchSnapshot();
 });

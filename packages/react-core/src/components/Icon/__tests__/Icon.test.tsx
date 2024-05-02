@@ -1,8 +1,13 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Icon } from '../Icon';
+/**
+ * @vitest-environment jsdom
+ */
 import CheckIcon from '@patternfly/react-icons/dist/esm/icons/check-icon';
 import styles from '@patternfly/react-styles/css/components/Icon/icon';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { Icon } from '../Icon';
 
 test('renders basic icon successfully', () => {
   const { asFragment } = render(

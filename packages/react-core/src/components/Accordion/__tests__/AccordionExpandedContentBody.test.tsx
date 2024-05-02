@@ -1,9 +1,12 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Accordion/accordion';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
 
 import { AccordionExpandableContentBody } from '../AccordionExpandableContentBody';
-import styles from '@patternfly/react-styles/css/components/Accordion/accordion';
 
 test('Renders without children', () => {
   const { asFragment } = render(<AccordionExpandableContentBody />);

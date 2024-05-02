@@ -1,8 +1,13 @@
-import React from 'react';
-import { screen, render } from '@testing-library/react';
-import { ClipboardCopyExpanded } from '../ClipboardCopyExpanded';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/ClipboardCopy/clipboard-copy';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
+import { ClipboardCopyExpanded } from '../ClipboardCopyExpanded';
 
 test(`Renders with classname ${styles.clipboardCopyExpandableContent} by default`, () => {
   render(<ClipboardCopyExpanded>Expanded content</ClipboardCopyExpanded>);
@@ -42,7 +47,7 @@ test('Renders with contenteditable attribute of false when isReadOnly is passed'
 
 test('Calls onChange when expanded content is typed in', async () => {
   const user = userEvent.setup();
-  const onChangeMock = jest.fn();
+  const onChangeMock = vi.fn();
 
   render(<ClipboardCopyExpanded onChange={onChangeMock}>Expanded content</ClipboardCopyExpanded>);
 
@@ -53,7 +58,7 @@ test('Calls onChange when expanded content is typed in', async () => {
 
 test('Does not call onChange when expanded content is not typed in', async () => {
   const user = userEvent.setup();
-  const onChangeMock = jest.fn();
+  const onChangeMock = vi.fn();
 
   render(
     <>

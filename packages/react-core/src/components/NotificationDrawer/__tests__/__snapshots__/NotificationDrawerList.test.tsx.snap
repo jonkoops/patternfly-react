@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NotificationDrawerList drawer list with hidden applied  1`] = `
+exports[`NotificationDrawerList > drawer list with hidden applied  1`] = `
 <DocumentFragment>
   <ul
     class="pf-v5-c-notification-drawer__list"
@@ -10,7 +10,7 @@ exports[`NotificationDrawerList drawer list with hidden applied  1`] = `
 </DocumentFragment>
 `;
 
-exports[`NotificationDrawerList renders with PatternFly Core styles 1`] = `
+exports[`NotificationDrawerList > renders with PatternFly Core styles 1`] = `
 <DocumentFragment>
   <ul
     class="pf-v5-c-notification-drawer__list"

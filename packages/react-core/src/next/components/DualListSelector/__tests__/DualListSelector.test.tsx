@@ -1,7 +1,12 @@
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
-import { DualListSelectorPane } from '../../DualListSelector';
-import { SearchInput } from '../../../../components/SearchInput';
 import React from 'react';
+import { describe, expect, test } from 'vitest';
+
+import { SearchInput } from '../../../../components/SearchInput';
+import { DualListSelectorPane } from '../../DualListSelector';
 
 describe('DualListSelector', () => {
   test('basic', () => {

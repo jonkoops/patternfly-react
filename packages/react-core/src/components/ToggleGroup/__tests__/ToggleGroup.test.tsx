@@ -1,13 +1,16 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { ToggleGroup } from '../ToggleGroup';
 import { ToggleGroupItem } from '../ToggleGroupItem';
 
 const props = {
-  onChange: jest.fn(),
+  onChange: vi.fn(),
   selected: false
 };
 

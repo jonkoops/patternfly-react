@@ -1,6 +1,9 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
 
 import { SelectGroup } from '../SelectGroup';
 import { SelectProvider } from '../selectConstants';

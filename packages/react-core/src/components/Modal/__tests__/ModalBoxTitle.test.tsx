@@ -1,8 +1,12 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import BullhornIcon from '@patternfly/react-icons/dist/esm/icons/bullhorn-icon';
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
 
 import { ModalBoxTitle } from '../ModalBoxTitle';
-import BullhornIcon from '@patternfly/react-icons/dist/esm/icons/bullhorn-icon';
 
 test('ModalBoxTitle alert variant', () => {
   const { asFragment } = render(

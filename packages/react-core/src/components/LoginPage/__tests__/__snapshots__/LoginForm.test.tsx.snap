@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LoginForm LoginForm with rememberMeLabel 1`] = `
+exports[`LoginForm > LoginForm with rememberMeLabel 1`] = `
 <DocumentFragment>
   <form
     class="pf-v5-c-form"
@@ -147,7 +147,7 @@ exports[`LoginForm LoginForm with rememberMeLabel 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LoginForm LoginForm with show password 1`] = `
+exports[`LoginForm > LoginForm with show password 1`] = `
 <DocumentFragment>
   <form
     class="pf-v5-c-form"
@@ -302,7 +302,7 @@ exports[`LoginForm LoginForm with show password 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LoginForm should render Login form 1`] = `
+exports[`LoginForm > should render Login form 1`] = `
 <DocumentFragment>
   <form
     class="pf-v5-c-form"

@@ -1,4 +1,8 @@
+/**
+ * @vitest-environment jsdom
+ */
 import React from 'react';
+import { describe, expect, test } from 'vitest';
 
 import { WizardParentStep, WizardSubStep } from '../types';
 import { buildSteps } from '../utils';

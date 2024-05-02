@@ -1,24 +1,15 @@
+/**
+ * @vitest-environment jsdom
+ */
+import { DropdownDirection, DropdownPosition } from '@patternfly/react-core/dist/esm/deprecated/components/Dropdown';
+import { css } from '@patternfly/react-styles';
+import dropdownStyles from '@patternfly/react-styles/css/components/Dropdown/dropdown';
+import tableStyles from '@patternfly/react-styles/css/components/Table/table';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
-import {
-  Visibility,
-  selectable,
-  sortable,
-  cellWidth,
-  collapsible,
-  scopeColTransformer,
-  headerCol,
-  editable,
-  emptyCol,
-  mapProps,
-  expandable,
-  expandedRow,
-  wrappable,
-  textCenter,
-  cellActions
-} from './';
-import { DropdownPosition, DropdownDirection } from '@patternfly/react-core/dist/esm/deprecated/components/Dropdown';
 import {
   IAction,
   IActions,
@@ -29,9 +20,23 @@ import {
   IRowData,
   ISeparator
 } from '../TableTypes';
-import { css } from '@patternfly/react-styles';
-import tableStyles from '@patternfly/react-styles/css/components/Table/table';
-import dropdownStyles from '@patternfly/react-styles/css/components/Dropdown/dropdown';
+import {
+  Visibility,
+  cellActions,
+  cellWidth,
+  collapsible,
+  editable,
+  emptyCol,
+  expandable,
+  expandedRow,
+  headerCol,
+  mapProps,
+  scopeColTransformer,
+  selectable,
+  sortable,
+  textCenter,
+  wrappable
+} from './';
 
 const testCellActions = async ({
   actions,
@@ -87,7 +92,7 @@ const testCellActions = async ({
 describe('Transformer functions', () => {
   describe('selectable', () => {
     test('main select', async () => {
-      const onSelect = jest.fn((_event, selected, rowId) => ({ selected, rowId }));
+      const onSelect = vi.fn((_event, selected, rowId) => ({ selected, rowId }));
       const column = {
         extraParams: { onSelect }
       };
@@ -104,7 +109,7 @@ describe('Transformer functions', () => {
     });
 
     test('selected', async () => {
-      const onSelect = jest.fn((_event, selected, rowId) => ({ selected, rowId }));
+      const onSelect = vi.fn((_event, selected, rowId) => ({ selected, rowId }));
       const column = {
         extraParams: { onSelect }
       };
@@ -120,7 +125,7 @@ describe('Transformer functions', () => {
     });
 
     test('unselected', () => {
-      const onSelect = jest.fn((_event, selected, rowId) => ({ selected, rowId }));
+      const onSelect = vi.fn((_event, selected, rowId) => ({ selected, rowId }));
       const column = {
         extraParams: { onSelect }
       };
@@ -131,7 +136,7 @@ describe('Transformer functions', () => {
 
   describe('sortable', () => {
     test('unsorted', async () => {
-      const onSort = jest.fn();
+      const onSort = vi.fn();
       const column = { extraParams: { sortBy: {}, onSort } };
       const returnedData = sortable('', { column, columnIndex: 0 });
       expect(returnedData).toMatchObject({ className: tableStyles.tableSort });
@@ -144,7 +149,7 @@ describe('Transformer functions', () => {
     });
 
     test('asc', async () => {
-      const onSort = jest.fn();
+      const onSort = vi.fn();
       const column = { extraParams: { sortBy: { index: 0, direction: 'asc' }, onSort } };
       const returnedData = sortable('', { column, columnIndex: 0 } as IExtra);
       expect(returnedData).toMatchSnapshot();
@@ -157,7 +162,7 @@ describe('Transformer functions', () => {
     });
 
     test('desc', async () => {
-      const onSort = jest.fn();
+      const onSort = vi.fn();
       const column = { extraParams: { sortBy: { index: 0, direction: 'desc' }, onSort } };
       const returnedData = sortable('', { column, columnIndex: 0 } as IExtra);
       expect(returnedData).toMatchObject({ className: css(tableStyles.tableSort, tableStyles.modifiers.selected) });
@@ -174,7 +179,7 @@ describe('Transformer functions', () => {
     const actions: IActions = [
       {
         title: 'Some',
-        onClick: jest.fn()
+        onClick: vi.fn()
       }
     ];
 
@@ -224,7 +229,7 @@ describe('Transformer functions', () => {
   });
 
   test('collapsible', async () => {
-    const onCollapse = jest.fn();
+    const onCollapse = vi.fn();
     const rowData = {
       isOpen: true
     };
@@ -242,7 +247,7 @@ describe('Transformer functions', () => {
   });
 
   test('collapsible full width', () => {
-    const onCollapse = jest.fn();
+    const onCollapse = vi.fn();
     const rowData = {
       fullWidth: true
     };
@@ -333,7 +338,7 @@ describe('Transformer functions', () => {
   });
 
   test('editable', () => {
-    const onRowEdit = jest.fn();
+    const onRowEdit = vi.fn();
     const column = {
       extraParams: { onRowEdit }
     };

@@ -1,13 +1,18 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
-import { Tabs } from '../Tabs';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
 import { Tab } from '../Tab';
-import { TabTitleText } from '../TabTitleText';
-import { TabTitleIcon } from '../TabTitleIcon';
 import { TabContent } from '../TabContent';
 import { TabContentBody } from '../TabContentBody';
+import { TabTitleIcon } from '../TabTitleIcon';
+import { TabTitleText } from '../TabTitleText';
+import { Tabs } from '../Tabs';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 test('should render simple tabs', () => {
   const { asFragment } = render(
@@ -42,7 +47,7 @@ test('should render simple tabs', () => {
 
 test('should render closeable tabs', () => {
   render(
-    <Tabs onClose={jest.fn()}>
+    <Tabs onClose={vi.fn()}>
       <Tab eventKey={0} title={<TabTitleText>"Tab item 1"</TabTitleText>} closeButtonAriaLabel="close-label">
         Tab 1 section
       </Tab>
@@ -53,7 +58,7 @@ test('should render closeable tabs', () => {
 
 test('should render add button', () => {
   render(
-    <Tabs onAdd={jest.fn()} addButtonAriaLabel="add-label">
+    <Tabs onAdd={vi.fn()} addButtonAriaLabel="add-label">
       <Tab eventKey={0} title={<TabTitleText>"Tab item 1"</TabTitleText>} closeButtonAriaLabel="close-label">
         Tab 1 section
       </Tab>
@@ -156,7 +161,7 @@ test('should render expandable vertical tabs', () => {
 });
 
 test('should log error when there is no aria-label or toggleText for expandable vertical tabs', () => {
-  const consoleErrorMock = jest.fn();
+  const consoleErrorMock = vi.fn();
   global.console = { error: consoleErrorMock } as any;
   render(
     <Tabs id="verticalTabs" isVertical expandable={{ default: 'expandable' }}>

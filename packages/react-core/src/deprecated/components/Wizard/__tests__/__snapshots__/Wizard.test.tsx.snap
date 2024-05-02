@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Wizard Expandable Nav Wizard should match snapshot 1`] = `
+exports[`Wizard > Expandable Nav Wizard should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-wizard"
@@ -279,7 +279,7 @@ exports[`Wizard Expandable Nav Wizard should match snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Wizard Wizard should match snapshot 1`] = `
+exports[`Wizard > Wizard should match snapshot 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-wizard"
@@ -538,7 +538,7 @@ exports[`Wizard Wizard should match snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Wizard bare wiz 1`] = `
+exports[`Wizard > bare wiz 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-wizard"

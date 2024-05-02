@@ -1,15 +1,17 @@
+import styles from '@patternfly/react-styles/css/layouts/Flex/flex';
+import { expect, test, vi } from 'vitest';
+
+import { SIDE } from '../constants';
 import {
   capitalize,
-  getUniqueId,
   debounce,
-  isElementInView,
-  sideElementIsOutOfView,
   fillTemplate,
+  formatBreakpointMods,
+  getUniqueId,
+  isElementInView,
   pluralize,
-  formatBreakpointMods
+  sideElementIsOutOfView
 } from '../util';
-import { SIDE } from '../constants';
-import styles from '@patternfly/react-styles/css/layouts/Flex/flex';
 
 const createMockHtmlElement = (bounds: Partial<DOMRect>) =>
   ({
@@ -30,8 +32,8 @@ test('getUniqueId prefixed', () => {
 });
 
 test('debounce', () => {
-  jest.useFakeTimers();
-  const callback = jest.fn();
+  vi.useFakeTimers();
+  const callback = vi.fn();
   const debouncedFunction = debounce(callback, 50);
 
   debouncedFunction();
@@ -39,7 +41,7 @@ test('debounce', () => {
   expect(callback).toHaveBeenCalledTimes(0);
 
   for (let i = 0; i < 10; i++) {
-    jest.advanceTimersByTime(50);
+    vi.advanceTimersByTime(50);
     debouncedFunction();
   }
 

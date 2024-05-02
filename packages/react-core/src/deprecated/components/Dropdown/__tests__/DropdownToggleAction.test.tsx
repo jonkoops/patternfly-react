@@ -1,7 +1,10 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { DropdownToggleAction } from '../DropdownToggleAction';
 
@@ -21,7 +24,7 @@ test('passing class', () => {
 });
 
 test('checkbox passes value and event to onClick handler', async () => {
-  const onClickMock = jest.fn();
+  const onClickMock = vi.fn();
   const user = userEvent.setup();
 
   render(<DropdownToggleAction id="action" aria-label="acton" onClick={onClickMock} />);

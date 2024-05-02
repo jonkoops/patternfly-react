@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Form component should render default form variant 1`] = `
+exports[`Form component > should render default form variant 1`] = `
 <DocumentFragment>
   <form
     class="pf-v5-c-form"
@@ -9,7 +9,7 @@ exports[`Form component should render default form variant 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Form component should render form with limited width 1`] = `
+exports[`Form component > should render form with limited width 1`] = `
 <DocumentFragment>
   <form
     class="pf-v5-c-form pf-m-limit-width"
@@ -18,7 +18,7 @@ exports[`Form component should render form with limited width 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Form component should render horizontal form variant 1`] = `
+exports[`Form component > should render horizontal form variant 1`] = `
 <DocumentFragment>
   <form
     class="pf-v5-c-form pf-m-horizontal"

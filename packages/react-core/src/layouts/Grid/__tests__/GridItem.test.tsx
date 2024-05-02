@@ -1,7 +1,12 @@
-import * as React from 'react';
-import { GridItem } from '../GridItem';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { DeviceSizes } from '../../../styles/sizes';
+import { GridItem } from '../GridItem';
 
 test('adds span class', () => {
   const { asFragment } = render(<GridItem span={4} />);

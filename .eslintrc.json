@@ -26,17 +26,6 @@
             "version": "detect"
         }
     },
-    "globals": {
-        "describe": "readonly",
-        "test": "readonly",
-        "jest": "readonly",
-        "expect": "readonly",
-        "require": "readonly",
-        "global": "writable",
-        "it": "readonly",
-        "afterEach": "readonly",
-        "beforeEach": "readonly"
-    },
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/array-type": "error",
@@ -130,12 +119,7 @@
         },
         {
             "files": ["**/*.test.[jt]s?(x)"],
-            "extends": ["plugin:testing-library/react"],
-            "rules": {
-                "testing-library/no-node-access": "off",
-                "react/jsx-key": "off",
-                "no-console": "off"
-            }
+            "extends": ["plugin:testing-library/react"]
         }
     ]
 }

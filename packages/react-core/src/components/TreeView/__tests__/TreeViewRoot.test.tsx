@@ -1,7 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { TreeViewRoot } from '../TreeViewRoot';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/TreeView/tree-view';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { TreeViewRoot } from '../TreeViewRoot';
 
 test('Renders children', () => {
   render(

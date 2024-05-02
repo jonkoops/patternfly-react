@@ -12,8 +12,8 @@ const getRowWrapper = (props: RowWrapperProps) => (
 
 describe('RowWrapper', () => {
   test('renders correctly', () => {
-    const trRef = jest.fn();
-    const { asFragment } = render(getRowWrapper({ onScroll: jest.fn(), onResize: jest.fn(), trRef }));
+    const trRef = vi.fn();
+    const { asFragment } = render(getRowWrapper({ onScroll: vi.fn(), onResize: vi.fn(), trRef }));
 
     expect(asFragment()).toMatchSnapshot();
     expect(trRef.mock.calls).toHaveLength(1);

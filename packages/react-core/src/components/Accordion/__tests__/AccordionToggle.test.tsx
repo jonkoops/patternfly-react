@@ -1,12 +1,15 @@
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
-import { AccordionToggle } from '../AccordionToggle';
-import { AccordionContext } from '../AccordionContext';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Accordion/accordion';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('@patternfly/react-icons/dist/esm/icons/angle-right-icon', () => () => 'Icon mock');
+import { AccordionContext } from '../AccordionContext';
+import { AccordionToggle } from '../AccordionToggle';
+
+vi.mock('@patternfly/react-icons/dist/esm/icons/angle-right-icon', () => ({ default: () => 'Icon mock' }));
 
 test('Renders without children', () => {
   render(

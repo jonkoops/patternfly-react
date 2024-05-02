@@ -1,5 +1,10 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
 import { Popover, PopoverPosition } from '../Popover';
 
 test('popover renders close-button, header and body', () => {
@@ -92,7 +97,7 @@ test('popover can close from content (uncontrolled)', () => {
 });
 
 test('popover renders in strict mode', () => {
-  const consoleError = jest.spyOn(console, 'error');
+  const consoleError = vi.spyOn(console, 'error');
   const { asFragment } = render(
     <React.StrictMode>
       <Popover

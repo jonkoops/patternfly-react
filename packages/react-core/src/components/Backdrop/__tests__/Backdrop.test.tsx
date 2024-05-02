@@ -1,7 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Backdrop } from '../Backdrop';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Backdrop/backdrop';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { Backdrop } from '../Backdrop';
 
 test('Renders without children', () => {
   render(

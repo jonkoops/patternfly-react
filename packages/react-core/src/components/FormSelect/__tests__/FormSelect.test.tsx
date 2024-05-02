@@ -1,12 +1,15 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
+import { ValidatedOptions } from '../../../helpers/constants';
 import { FormSelect } from '../FormSelect';
 import { FormSelectOption } from '../FormSelectOption';
 import { FormSelectOptionGroup } from '../FormSelectOptionGroup';
-import { ValidatedOptions } from '../../../helpers/constants';
 
 const props = {
   options: [
@@ -88,7 +91,7 @@ describe('FormSelect', () => {
   });
 
   test('FormSelect input with aria-label does not generate console error', () => {
-    const myMock = jest.fn() as any;
+    const myMock = vi.fn() as any;
     global.console = { error: myMock } as any;
 
     const { asFragment } = render(
@@ -102,7 +105,7 @@ describe('FormSelect', () => {
   });
 
   test('FormSelect input with id does not generate console error', () => {
-    const myMock = jest.fn() as any;
+    const myMock = vi.fn() as any;
     global.console = { error: myMock } as any;
 
     const { asFragment } = render(
@@ -116,7 +119,7 @@ describe('FormSelect', () => {
   });
 
   test('FormSelect input with no aria-label or id generates console error', () => {
-    const myMock = jest.fn() as any;
+    const myMock = vi.fn() as any;
     global.console = { error: myMock } as any;
 
     const { asFragment } = render(
@@ -175,7 +178,7 @@ describe('FormSelect', () => {
   });
 
   test('FormSelect passes value and event to onChange handler', async () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     const user = userEvent.setup();
     render(
       <FormSelect onChange={myMock} aria-label="Some label">

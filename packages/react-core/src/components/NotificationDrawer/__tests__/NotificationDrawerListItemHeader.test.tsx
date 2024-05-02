@@ -1,9 +1,11 @@
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-
+/**
+ * @vitest-environment jsdom
+ */
 import BellIcon from '@patternfly/react-icons/dist/esm/icons/bell-icon';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+
 import { NotificationDrawerListItemHeader } from '../NotificationDrawerListItemHeader';
 
 describe('NotificationDrawerListItemHeader', () => {

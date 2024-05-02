@@ -1,6 +1,11 @@
-import * as React from 'react';
-import { BreadcrumbHeading } from '../BreadcrumbHeading';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+
+import { BreadcrumbHeading } from '../BreadcrumbHeading';
 
 describe('BreadcrumbHeading component', () => {
   test('should render default breadcrumbHeading', () => {

@@ -1,7 +1,11 @@
-import React from 'react';
-import { screen, render } from '@testing-library/react';
-import { ClipboardCopyAction } from '../ClipboardCopyAction';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/ClipboardCopy/clipboard-copy';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+import { ClipboardCopyAction } from '../ClipboardCopyAction';
 
 test('Renders without children', () => {
   render(

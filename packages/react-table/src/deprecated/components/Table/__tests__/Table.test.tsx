@@ -98,7 +98,7 @@ describe('Table', () => {
     });
 
     test('Row click table', () => {
-      const rowClickHandler = jest.fn();
+      const rowClickHandler = vi.fn();
       const { asFragment } = render(
         <Table aria-label="Row click table" cells={columns} rows={rows}>
           <TableHeader />

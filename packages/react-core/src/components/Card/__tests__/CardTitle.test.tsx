@@ -1,7 +1,12 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
-import { CardTitle } from '../CardTitle';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
 import { CardContext } from '../Card';
+import { CardTitle } from '../CardTitle';
 
 describe('CardTitle', () => {
   test('renders with PatternFly Core styles', () => {
@@ -22,7 +27,7 @@ describe('CardTitle', () => {
   });
 
   test('calls the registerTitleId function provided by the CardContext with the generated title id', () => {
-    const mockRegisterTitleId = jest.fn();
+    const mockRegisterTitleId = vi.fn();
 
     render(
       <CardContext.Provider value={{ cardId: 'card', registerTitleId: mockRegisterTitleId }}>

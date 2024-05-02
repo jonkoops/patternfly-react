@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MultipleFileUploadStatus renders custom class names 1`] = `
+exports[`MultipleFileUploadStatus > renders custom class names 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__status test"
@@ -65,7 +65,7 @@ exports[`MultipleFileUploadStatus renders custom class names 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadStatus renders status toggle icon 1`] = `
+exports[`MultipleFileUploadStatus > renders status toggle icon 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__status"
@@ -144,7 +144,7 @@ exports[`MultipleFileUploadStatus renders status toggle icon 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadStatus renders status toggle text 1`] = `
+exports[`MultipleFileUploadStatus > renders status toggle text 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__status"
@@ -211,7 +211,7 @@ exports[`MultipleFileUploadStatus renders status toggle text 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadStatus renders with expected class names 1`] = `
+exports[`MultipleFileUploadStatus > renders with expected class names 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__status"

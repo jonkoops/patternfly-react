@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FormGroup should render correctly when label is not a string with Children = Array 1`] = `
+exports[`FormGroup > should render correctly when label is not a string with Children = Array 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-form__group"
@@ -37,7 +37,7 @@ exports[`FormGroup should render correctly when label is not a string with Child
 </DocumentFragment>
 `;
 
-exports[`FormGroup should render default form group variant 1`] = `
+exports[`FormGroup > should render default form group variant 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-form__group"
@@ -68,7 +68,7 @@ exports[`FormGroup should render default form group variant 1`] = `
 </DocumentFragment>
 `;
 
-exports[`FormGroup should render form group variant with node label 1`] = `
+exports[`FormGroup > should render form group variant with node label 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-form__group"
@@ -101,7 +101,7 @@ exports[`FormGroup should render form group variant with node label 1`] = `
 </DocumentFragment>
 `;
 
-exports[`FormGroup should render form group variant with required label 1`] = `
+exports[`FormGroup > should render form group variant with required label 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-form__group"
@@ -138,7 +138,7 @@ exports[`FormGroup should render form group variant with required label 1`] = `
 </DocumentFragment>
 `;
 
-exports[`FormGroup should render form group variant without label 1`] = `
+exports[`FormGroup > should render form group variant without label 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-form__group"
@@ -154,7 +154,7 @@ exports[`FormGroup should render form group variant without label 1`] = `
 </DocumentFragment>
 `;
 
-exports[`FormGroup should render form group with additonal label info 1`] = `
+exports[`FormGroup > should render form group with additonal label info 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-form__group"
@@ -196,7 +196,7 @@ exports[`FormGroup should render form group with additonal label info 1`] = `
 </DocumentFragment>
 `;
 
-exports[`FormGroup should render horizontal form group variant 1`] = `
+exports[`FormGroup > should render horizontal form group variant 1`] = `
 <DocumentFragment>
   <form
     class="pf-v5-c-form pf-m-horizontal"
@@ -232,7 +232,7 @@ exports[`FormGroup should render horizontal form group variant 1`] = `
 </DocumentFragment>
 `;
 
-exports[`FormGroup should render stacked horizontal form group variant 1`] = `
+exports[`FormGroup > should render stacked horizontal form group variant 1`] = `
 <DocumentFragment>
   <form
     class="pf-v5-c-form pf-m-horizontal"

@@ -1,12 +1,15 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { DropdownToggleCheckbox } from '../DropdownToggleCheckbox';
 
 const props = {
-  onChange: jest.fn(),
+  onChange: vi.fn(),
   isChecked: false
 };
 

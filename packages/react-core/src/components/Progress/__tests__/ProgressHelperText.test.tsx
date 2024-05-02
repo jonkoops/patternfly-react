@@ -1,7 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { ProgressHelperText } from '../ProgressHelperText';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Progress/progress';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { ProgressHelperText } from '../ProgressHelperText';
 
 test('Renders without children', () => {
   render(

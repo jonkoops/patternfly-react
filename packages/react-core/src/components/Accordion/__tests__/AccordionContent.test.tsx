@@ -1,12 +1,15 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Accordion/accordion';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { AccordionContent } from '../AccordionContent';
 import { AccordionContext } from '../AccordionContext';
-import styles from '@patternfly/react-styles/css/components/Accordion/accordion';
 
-jest.mock('../AccordionExpandableContentBody', () => ({
+vi.mock('../AccordionExpandableContentBody', () => ({
   AccordionExpandableContentBody: ({ children }) => <div aria-label="Expanded content body mock">{children}</div>
 }));
 

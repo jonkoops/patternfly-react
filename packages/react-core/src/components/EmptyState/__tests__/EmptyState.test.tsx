@@ -1,17 +1,19 @@
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import AddressBookIcon from '@patternfly/react-icons/dist/esm/icons/address-book-icon';
-
-import { EmptyState, EmptyStateVariant } from '../EmptyState';
-import { EmptyStateBody } from '../EmptyStateBody';
-import { EmptyStateActions } from '../EmptyStateActions';
-import { Button } from '../../Button';
-import { EmptyStateHeader } from '../EmptyStateHeader';
-import { EmptyStateFooter } from '../EmptyStateFooter';
-import { EmptyStateIcon } from '../../../../dist/esm';
 import styles from '@patternfly/react-styles/css/components/EmptyState/empty-state';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+
+import { EmptyStateIcon } from '../../../../dist/esm';
+import { Button } from '../../Button';
+import { EmptyState, EmptyStateVariant } from '../EmptyState';
+import { EmptyStateActions } from '../EmptyStateActions';
+import { EmptyStateBody } from '../EmptyStateBody';
+import { EmptyStateFooter } from '../EmptyStateFooter';
+import { EmptyStateHeader } from '../EmptyStateHeader';
 
 describe('EmptyState', () => {
   test('Main', () => {

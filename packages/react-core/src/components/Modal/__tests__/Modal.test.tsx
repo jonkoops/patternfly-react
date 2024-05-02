@@ -1,20 +1,22 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Backdrop/backdrop';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { css } from '../../../../../react-styles/dist/js';
-import styles from '@patternfly/react-styles/css/components/Backdrop/backdrop';
-
-import { Modal } from '../Modal';
 import { KeyTypes } from '../../../helpers';
+import { Modal } from '../Modal';
 
-jest.spyOn(document, 'createElement');
-jest.spyOn(document.body, 'addEventListener');
+vi.spyOn(document, 'createElement');
+vi.spyOn(document.body, 'addEventListener');
 
 const props = {
   title: 'Modal',
-  onClose: jest.fn(),
+  onClose: vi.fn(),
   isOpen: false,
   children: 'modal content'
 };
@@ -82,11 +84,11 @@ describe('Modal', () => {
 
   test('modal generates console error when no accessible name is provided', () => {
     const props = {
-      onClose: jest.fn(),
+      onClose: vi.fn(),
       isOpen: true,
       children: 'modal content'
     };
-    const consoleErrorMock = jest.fn();
+    const consoleErrorMock = vi.fn();
     global.console = { error: consoleErrorMock } as any;
 
     render(<Modal {...props} />);
@@ -97,11 +99,11 @@ describe('Modal', () => {
   test('modal generates console warning when conflicting accessible name strategies are provided', () => {
     const props = {
       hasNoBodyWrapper: true,
-      onClose: jest.fn(),
+      onClose: vi.fn(),
       isOpen: true,
       children: 'modal content'
     };
-    const consoleErrorMock = jest.fn();
+    const consoleErrorMock = vi.fn();
     global.console = { error: consoleErrorMock } as any;
 
     render(<Modal {...props} />);

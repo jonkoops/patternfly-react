@@ -1,9 +1,14 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
 import { CheckboxSelect } from './CheckboxSelect';
 
-jest.mock('@patternfly/react-core/dist/js/helpers/GenerateId/GenerateId', () => ({
+vi.mock('@patternfly/react-core/dist/js/helpers/GenerateId/GenerateId', () => ({
   GenerateId: ({ children }) => children('generated-id')
 }));
 

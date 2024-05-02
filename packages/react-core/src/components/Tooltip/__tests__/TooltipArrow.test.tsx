@@ -1,7 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { TooltipArrow } from '../TooltipArrow';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Tooltip/tooltip';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { TooltipArrow } from '../TooltipArrow';
 
 test('Renders without children', () => {
   render(<TooltipArrow data-testid="tooltipArrow" />);

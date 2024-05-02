@@ -1,25 +1,28 @@
-import React from 'react';
-
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-
-import { SearchInput } from '../SearchInput';
-import { FormGroup } from '../../Form';
-import { Button } from '../../Button';
+/**
+ * @vitest-environment jsdom
+ */
 import ExternalLinkSquareAltIcon from '@patternfly/react-icons/dist/esm/icons/external-link-square-alt-icon';
 import badgeStyles from '@patternfly/react-styles/css/components/Badge/badge';
 import textInputGroupStyles from '@patternfly/react-styles/css/components/TextInputGroup/text-input-group';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
-jest.mock('../../../helpers/OUIA/ouia');
-jest.mock('../../../helpers/GenerateId/GenerateId');
+import { Button } from '../../Button';
+import { FormGroup } from '../../Form';
+import { SearchInput } from '../SearchInput';
+
+vi.mock('../../../helpers/OUIA/ouia');
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 const props = {
-  onChange: jest.fn(),
+  onChange: vi.fn(),
   value: 'test input',
-  onNextClick: jest.fn(),
-  onPreviousClick: jest.fn(),
-  onClear: jest.fn(),
-  onSearch: jest.fn()
+  onNextClick: vi.fn(),
+  onPreviousClick: vi.fn(),
+  onClear: vi.fn(),
+  onSearch: vi.fn()
 };
 
 describe('SearchInput', () => {
@@ -41,7 +44,7 @@ describe('SearchInput', () => {
   test('renders search input in strict mode', async () => {
     const user = userEvent.setup();
 
-    const consoleError = jest.spyOn(console, 'error');
+    const consoleError = vi.spyOn(console, 'error');
     const { asFragment } = render(
       <React.StrictMode>
         <SearchInput
@@ -217,7 +220,7 @@ test('text input is rendered when isExpanded is true', () => {
 });
 
 test('onToggleExpand is not called if the expandable toggle is not clicked', () => {
-  const mockOnToggleExpand = jest.fn();
+  const mockOnToggleExpand = vi.fn();
 
   render(
     <SearchInput
@@ -229,7 +232,7 @@ test('onToggleExpand is not called if the expandable toggle is not clicked', () 
 });
 
 test('onToggleExpand is called if the expandable toggle is clicked', async () => {
-  const mockOnToggleExpand = jest.fn();
+  const mockOnToggleExpand = vi.fn();
   const user = userEvent.setup();
 
   render(

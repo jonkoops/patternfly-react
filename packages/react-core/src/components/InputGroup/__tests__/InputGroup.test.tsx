@@ -1,11 +1,14 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+import { Button } from '../../Button';
 
+import { TextInput } from '../../TextInput';
 import { InputGroup } from '../InputGroup';
 import { InputGroupItem } from '../InputGroupItem';
-import { Button } from '../../Button';
-import { TextInput } from '../../TextInput';
 
 describe('InputGroup', () => {
   // Regression test for https://github.com/patternfly/patternfly-react/issues/9667

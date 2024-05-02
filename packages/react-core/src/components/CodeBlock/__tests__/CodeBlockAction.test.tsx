@@ -1,7 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { CodeBlockAction } from '../CodeBlockAction';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/CodeBlock/code-block';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { CodeBlockAction } from '../CodeBlockAction';
 
 test('CodeBlockAction renders', () => {
   render(<CodeBlockAction>action</CodeBlockAction>);

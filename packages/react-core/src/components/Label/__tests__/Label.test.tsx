@@ -1,7 +1,10 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { Label } from '../Label';
 
@@ -38,14 +41,14 @@ describe('Label', () => {
   });
 
   test('label with close button', () => {
-    const { asFragment } = render(<Label onClose={jest.fn()}>Something</Label>);
+    const { asFragment } = render(<Label onClose={vi.fn()}>Something</Label>);
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   test('label with close button and outline variant', () => {
     const { asFragment } = render(
-      <Label onClose={jest.fn()} variant="outline">
+      <Label onClose={vi.fn()} variant="outline">
         Something
       </Label>
     );
@@ -95,7 +98,7 @@ describe('Label', () => {
     const user = userEvent.setup();
 
     const { asFragment } = render(
-      <Label onClose={jest.fn()} onEditCancel={jest.fn()} onEditComplete={jest.fn()} isEditable>
+      <Label onClose={vi.fn()} onEditCancel={vi.fn()} onEditComplete={vi.fn()} isEditable>
         Something
       </Label>
     );
@@ -117,7 +120,7 @@ describe('Label', () => {
   });
 
   test('a button is rendered when onClick is passed', () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
 
     render(<Label onClick={fn}>Click me</Label>);
 
@@ -125,7 +128,7 @@ describe('Label', () => {
   });
 
   test('clickable label does not call the passed callback when it is not clicked', async () => {
-    const mockCallback = jest.fn();
+    const mockCallback = vi.fn();
 
     render(<Label onClick={mockCallback}>Click me</Label>);
 
@@ -133,7 +136,7 @@ describe('Label', () => {
   });
 
   test('clickable label calls passed callback on click', async () => {
-    const mockCallback = jest.fn();
+    const mockCallback = vi.fn();
     const user = userEvent.setup();
 
     render(<Label onClick={mockCallback}>Click me</Label>);
@@ -146,7 +149,7 @@ describe('Label', () => {
   });
 
   test('disabled clickable label does not call passed callback on click', async () => {
-    const mockCallback = jest.fn();
+    const mockCallback = vi.fn();
     const user = userEvent.setup();
 
     render(
@@ -163,7 +166,7 @@ describe('Label', () => {
   });
 
   test('disabled clickable label is a disabled button', async () => {
-    const mockCallback = jest.fn();
+    const mockCallback = vi.fn();
 
     render(
       <Label isDisabled onClick={mockCallback}>
@@ -205,7 +208,7 @@ describe('Label', () => {
   });
 
   test('disabled removable clickable label has a disabled close button', async () => {
-    const mockCallback = jest.fn();
+    const mockCallback = vi.fn();
 
     render(
       <Label isDisabled onClick={mockCallback} onClose={mockCallback}>
@@ -219,7 +222,7 @@ describe('Label', () => {
   });
 
   test('disabled removable link label has a disabled close button', async () => {
-    const mockCallback = jest.fn();
+    const mockCallback = vi.fn();
 
     render(
       <Label isDisabled href="#" onClose={mockCallback}>

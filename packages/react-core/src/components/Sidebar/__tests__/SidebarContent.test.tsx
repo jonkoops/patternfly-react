@@ -1,7 +1,12 @@
-import * as React from 'react';
-import { render, screen } from '@testing-library/react';
-import { SidebarContent } from '../SidebarContent';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Sidebar/sidebar';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { SidebarContent } from '../SidebarContent';
 
 test('Renders children', () => {
   render(<SidebarContent>Test</SidebarContent>);

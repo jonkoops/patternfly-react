@@ -1,26 +1,27 @@
-import React from 'react';
-
-import { render } from '@testing-library/react';
+/**
+ * @vitest-environment jsdom
+ */
 import * as ReactCoreUtils from '@patternfly/react-core/src/helpers/util';
+import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 
-import { NavList } from '../../NavList';
 import { NavContext } from '../../Nav';
+import { NavList } from '../../NavList';
+
+vi.spyOn(ReactCoreUtils, 'isElementInView').mockReturnValue(true);
 
 describe('NavList', () => {
-  beforeAll(() => {
-    jest.spyOn(ReactCoreUtils, 'isElementInView').mockReturnValue(true);
-  });
-
   it('should match snapshot', () => {
     const { asFragment } = render(
       <NavContext.Provider
         value={{
-          onSelect: jest.fn(),
-          onToggle: jest.fn(),
-          updateIsScrollable: jest.fn(),
+          onSelect: vi.fn(),
+          onToggle: vi.fn(),
+          updateIsScrollable: vi.fn(),
           isHorizontal: false,
           flyoutRef: undefined,
-          setFlyoutRef: jest.fn()
+          setFlyoutRef: vi.fn()
         }}
       >
         <NavList children={<>ReactNode</>} className="" ariaLeftScroll="Scroll left" ariaRightScroll="Scroll right" />

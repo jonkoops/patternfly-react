@@ -1,10 +1,15 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
 import { OptionsMenu, OptionsMenuDirection, OptionsMenuPosition } from '../OptionsMenu';
-import { OptionsMenuToggle } from '../OptionsMenuToggle';
-import { OptionsMenuItemGroup } from '../OptionsMenuItemGroup';
 import { OptionsMenuItem } from '../OptionsMenuItem';
+import { OptionsMenuItemGroup } from '../OptionsMenuItemGroup';
 import { OptionsMenuSeparator } from '../OptionsMenuSeparator';
+import { OptionsMenuToggle } from '../OptionsMenuToggle';
 import { OptionsMenuToggleWithText } from '../OptionsMenuToggleWithText';
 
 const menuItems = [
@@ -32,7 +37,7 @@ describe('optionsMenu', () => {
   });
 
   test('renders in strict mode', () => {
-    const consoleError = jest.spyOn(console, 'error');
+    const consoleError = vi.spyOn(console, 'error');
     const { asFragment } = render(
       <React.StrictMode>
         <OptionsMenu

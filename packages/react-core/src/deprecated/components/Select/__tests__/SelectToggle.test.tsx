@@ -1,14 +1,17 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { SelectToggle } from '../SelectToggle';
 
 describe('SelectToggle', () => {
   describe('API', () => {
     test('click on closed', async () => {
-      const mockToggle = jest.fn();
+      const mockToggle = vi.fn();
       const user = userEvent.setup();
 
       render(
@@ -22,7 +25,7 @@ describe('SelectToggle', () => {
     });
 
     test('click on opened', async () => {
-      const mockToggle = jest.fn();
+      const mockToggle = vi.fn();
       const user = userEvent.setup();
 
       render(
@@ -41,7 +44,7 @@ describe('SelectToggle', () => {
     });
 
     test('click on document', async () => {
-      const mockToggle = jest.fn();
+      const mockToggle = vi.fn();
       const user = userEvent.setup();
 
       render(
@@ -60,7 +63,7 @@ describe('SelectToggle', () => {
     });
 
     test('on click outside has been removed', async () => {
-      const mockToggle = jest.fn();
+      const mockToggle = vi.fn();
       const user = userEvent.setup();
 
       render(

@@ -1,7 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { TreeViewList } from '../TreeViewList';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/TreeView/tree-view';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { TreeViewList } from '../TreeViewList';
 
 test(`Renders with class ${styles.treeView}__list by default`, () => {
   render(<TreeViewList>Content</TreeViewList>);

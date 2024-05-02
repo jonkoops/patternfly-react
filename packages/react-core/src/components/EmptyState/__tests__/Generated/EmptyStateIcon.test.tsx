@@ -1,12 +1,13 @@
 /**
- * This test was generated
+ * @vitest-environment jsdom
  */
-import * as React from 'react';
-import { render } from '@testing-library/react';
 import { UserIcon } from '@patternfly/react-icons';
-import { EmptyStateIcon } from '../../EmptyStateIcon';
-// any missing imports can usually be resolved by adding them here
+import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, it } from 'vitest';
+
 import { Spinner } from '../../../Spinner/Spinner';
+import { EmptyStateIcon } from '../../EmptyStateIcon';
 
 it('EmptyStateIcon should match snapshot (auto-generated)', () => {
   const { asFragment } = render(

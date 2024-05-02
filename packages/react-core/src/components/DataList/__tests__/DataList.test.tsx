@@ -1,13 +1,15 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/DataList/data-list';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { DataList } from '../DataList';
 import { DataListItem } from '../DataListItem';
 import { DataListItemRow } from '../DataListItemRow';
-
-import styles from '@patternfly/react-styles/css/components/DataList/data-list';
 
 test('Renders to match snapshot', () => {
   const { asFragment } = render(<DataList aria-label="list" />);
@@ -106,7 +108,7 @@ test('Does not render with a hidden input to improve a11y when onSelectableRowCh
 });
 
 test('Calls onSelectableRowChange when the selectable input changes', async () => {
-  const mock = jest.fn();
+  const mock = vi.fn();
   const user = userEvent.setup();
 
   render(
@@ -126,7 +128,7 @@ test('Calls onSelectableRowChange when the selectable input changes', async () =
 });
 
 test('Does not call onSelectableRowChange when the selectable input is not changed', () => {
-  const mock = jest.fn();
+  const mock = vi.fn();
 
   render(
     <DataList aria-label="this is a simple list" onSelectableRowChange={mock} selectedDataListItemId="">

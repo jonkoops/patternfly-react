@@ -1,7 +1,10 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { SimpleList } from '../SimpleList';
 import { SimpleListGroup } from '../SimpleListGroup';
@@ -46,7 +49,7 @@ describe('SimpleList', () => {
   });
 
   test('onSelect is called when item is selected', async () => {
-    const onSelect = jest.fn();
+    const onSelect = vi.fn();
     const user = userEvent.setup();
 
     render(<SimpleList onSelect={onSelect}>{items}</SimpleList>);
@@ -61,7 +64,7 @@ describe('SimpleList', () => {
   });
 
   test('onSelect is called when anchor item is selected', async () => {
-    const onSelect = jest.fn();
+    const onSelect = vi.fn();
     const user = userEvent.setup();
 
     render(<SimpleList onSelect={onSelect}>{anchors}</SimpleList>);

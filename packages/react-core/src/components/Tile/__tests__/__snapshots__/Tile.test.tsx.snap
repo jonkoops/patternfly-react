@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Tile basic 1`] = `
+exports[`Tile > basic 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-tile"
@@ -20,7 +20,7 @@ exports[`Tile basic 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Tile renders disabled 1`] = `
+exports[`Tile > renders disabled 1`] = `
 <DocumentFragment>
   <div
     aria-disabled="true"
@@ -41,7 +41,7 @@ exports[`Tile renders disabled 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Tile renders selected 1`] = `
+exports[`Tile > renders selected 1`] = `
 <DocumentFragment>
   <div
     aria-selected="true"
@@ -62,7 +62,7 @@ exports[`Tile renders selected 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Tile renders with icon 1`] = `
+exports[`Tile > renders with icon 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-tile"
@@ -99,7 +99,7 @@ exports[`Tile renders with icon 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Tile renders with stacked icon 1`] = `
+exports[`Tile > renders with stacked icon 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-tile"
@@ -136,7 +136,7 @@ exports[`Tile renders with stacked icon 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Tile renders with stacked large icon 1`] = `
+exports[`Tile > renders with stacked large icon 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-tile pf-m-display-lg"
@@ -173,7 +173,7 @@ exports[`Tile renders with stacked large icon 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Tile renders with subtext 1`] = `
+exports[`Tile > renders with subtext 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-tile"

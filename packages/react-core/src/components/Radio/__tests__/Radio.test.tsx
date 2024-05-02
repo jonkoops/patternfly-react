@@ -1,12 +1,15 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { Radio } from '../Radio';
 
 const props = {
-  onChange: jest.fn()
+  onChange: vi.fn()
 };
 
 describe('Radio', () => {
@@ -93,7 +96,7 @@ describe('Radio', () => {
   });
 
   test('should throw console error when no id is given', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { ...global.console, error: myMock };
 
     render(<Radio id={undefined} name="check" aria-label="check" description="Text description..." />);

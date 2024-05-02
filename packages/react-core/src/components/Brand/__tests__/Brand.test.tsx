@@ -1,7 +1,11 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
 import { Brand } from '../Brand';
-import '@testing-library/jest-dom';
 
 test('simple brand', () => {
   render(<Brand alt="brand" />);
@@ -82,7 +86,7 @@ test('styles get spread when there are children', () => {
       <div>test width</div>
     </Brand>
   );
-  expect(screen.getByTestId('brand')).toHaveStyle(`color: blue`);
+  expect(screen.getByTestId('brand')).toHaveStyle(`color: rgb(0, 0, 255)`);
 });
 
 test('styles get spread when there are no children', () => {

@@ -1,12 +1,16 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Tabs/tabs';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
 import { OverflowTab } from '../OverflowTab';
 import { TabsContext } from '../TabsContext';
-import styles from '@patternfly/react-styles/css/components/Tabs/tabs';
 
-jest.mock('../../../helpers', () => ({
+vi.mock('../../../helpers', () => ({
   Popper: ({ trigger, popper, isVisible, appendTo }) => (
     <div data-testid="popper-mock">
       <div data-testid="trigger">{trigger}</div>
@@ -16,27 +20,24 @@ jest.mock('../../../helpers', () => ({
   )
 }));
 
-jest.mock('../../Menu', () => {
-  const { forwardRef } = jest.requireActual('react');
-  return {
-    Menu: forwardRef((props: { children; onSelect }, ref) => (
-      <div data-testid="menu-mock" ref={ref}>
-        {props.children}
-        <button onClick={() => props.onSelect('mouseEvent', 1, 'fakeRef')}>Select</button>
-      </div>
-    )),
-    MenuContent: ({ children }) => <div data-testid="menu-content-mock">{children}</div>,
-    MenuList: ({ children }) => <ul data-testid="menu-list-mock">{children}</ul>,
-    MenuItem: ({ children, itemId, isSelected }) => (
-      <>
-        <li id={`${itemId}-menu-item-mock`}>
-          {children}
-          <p>Selected: {`${isSelected}`}</p>
-        </li>
-      </>
-    )
-  };
-});
+vi.mock('../../Menu', () => ({
+  Menu: React.forwardRef((props: { children; onSelect }, ref) => (
+    <div data-testid="menu-mock" ref={ref}>
+      {props.children}
+      <button onClick={() => props.onSelect('mouseEvent', 1, 'fakeRef')}>Select</button>
+    </div>
+  )),
+  MenuContent: ({ children }) => <div data-testid="menu-content-mock">{children}</div>,
+  MenuList: ({ children }) => <ul data-testid="menu-list-mock">{children}</ul>,
+  MenuItem: ({ children, itemId, isSelected }) => (
+    <>
+      <li id={`${itemId}-menu-item-mock`}>
+        {children}
+        <p>Selected: {`${isSelected}`}</p>
+      </li>
+    </>
+  )
+}));
 
 const tabsContextDefaultProps = {
   variant: 'default' as const,
@@ -179,7 +180,7 @@ test('Renders tabs passed via overflowingTabs when expanded', async () => {
 test('Renders tabs passed via overflowingTabs when expanded in strict mode', async () => {
   const user = userEvent.setup();
 
-  const consoleError = jest.spyOn(console, 'error');
+  const consoleError = vi.spyOn(console, 'error');
   const { asFragment } = render(
     <React.StrictMode>
       <OverflowTab
@@ -244,7 +245,7 @@ test('Closes the overflowing tabs menu when the user clicks outside of the menu'
 
 test('Calls the onTabClick callback provided via context when a tab is clicked', async () => {
   const user = userEvent.setup();
-  const mockHandleTabClick = jest.fn();
+  const mockHandleTabClick = vi.fn();
 
   render(
     <TabsContext.Provider value={{ ...tabsContextDefaultProps, handleTabClick: mockHandleTabClick }}>

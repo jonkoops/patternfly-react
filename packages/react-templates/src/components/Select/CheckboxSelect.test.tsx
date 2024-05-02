@@ -83,7 +83,7 @@ test('calls the onSelect callback with the selected value when an option is sele
   ];
 
   const user = userEvent.setup();
-  const onSelectMock = jest.fn();
+  const onSelectMock = vi.fn();
 
   render(<CheckboxSelect initialOptions={initialOptions} onSelect={onSelectMock} />);
 
@@ -107,7 +107,7 @@ test('does not call the onSelect callback when no options are selected', async (
   ];
 
   const user = userEvent.setup();
-  const onSelectMock = jest.fn();
+  const onSelectMock = vi.fn();
 
   render(<CheckboxSelect initialOptions={initialOptions} onSelect={onSelectMock} />);
 
@@ -164,7 +164,7 @@ test('calls the onToggle callback when the select opens or closes', async () => 
   ];
 
   const user = userEvent.setup();
-  const onToggleMock = jest.fn();
+  const onToggleMock = vi.fn();
 
   render(<CheckboxSelect initialOptions={initialOptions} onToggle={onToggleMock} />);
 
@@ -188,7 +188,7 @@ test('does not call the onToggle callback when the toggle is not clicked', async
     { content: 'Option 3', value: 'option3' }
   ];
 
-  const onToggleMock = jest.fn();
+  const onToggleMock = vi.fn();
 
   render(<CheckboxSelect initialOptions={initialOptions} onToggle={onToggleMock} />);
 

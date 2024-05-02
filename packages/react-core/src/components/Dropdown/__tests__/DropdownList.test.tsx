@@ -1,8 +1,13 @@
-import { DropdownList } from '../../Dropdown';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../Menu');
+import { DropdownList } from '../../Dropdown';
+
+vi.mock('../../Menu');
 
 const dropdownListChildren = <div>Dropdown List children</div>;
 

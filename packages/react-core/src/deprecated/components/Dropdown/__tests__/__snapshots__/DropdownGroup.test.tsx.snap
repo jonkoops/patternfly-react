@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`dropdown groups basic render 1`] = `
+exports[`dropdown groups > basic render 1`] = `
 <DocumentFragment>
   <section
     class=""

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MultipleFileUploadTitle renders custom class names 1`] = `
+exports[`MultipleFileUploadTitle > renders custom class names 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__title test"
@@ -8,7 +8,7 @@ exports[`MultipleFileUploadTitle renders custom class names 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadTitle renders with expected class names 1`] = `
+exports[`MultipleFileUploadTitle > renders with expected class names 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__title"
@@ -16,7 +16,7 @@ exports[`MultipleFileUploadTitle renders with expected class names 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadTitle renders with title icon 1`] = `
+exports[`MultipleFileUploadTitle > renders with title icon 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__title"
@@ -30,7 +30,7 @@ exports[`MultipleFileUploadTitle renders with title icon 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadTitle renders with title text 1`] = `
+exports[`MultipleFileUploadTitle > renders with title text 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__title"
@@ -44,7 +44,7 @@ exports[`MultipleFileUploadTitle renders with title text 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUploadTitle renders with title text separator 1`] = `
+exports[`MultipleFileUploadTitle > renders with title text separator 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload__title"

@@ -1,15 +1,18 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { configure, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
-import { Select } from '../Select';
-import { SelectOption, SelectOptionObject } from '../SelectOption';
-import { SelectGroup } from '../SelectGroup';
-import { SelectVariant, SelectDirection } from '../selectConstants';
 import { KeyTypes } from '../../../../helpers';
+import { Select } from '../Select';
+import { SelectGroup } from '../SelectGroup';
+import { SelectOption, SelectOptionObject } from '../SelectOption';
+import { SelectDirection, SelectVariant } from '../selectConstants';
 
-jest.mock('../../../../helpers/GenerateId/GenerateId');
+vi.mock('../../../../helpers/GenerateId/GenerateId');
 
 class User implements SelectOptionObject {
   private firstName: string;
@@ -49,8 +52,8 @@ describe('Select', () => {
         <Select
           toggleId="single-select-closed"
           variant={SelectVariant.single}
-          onSelect={jest.fn()}
-          onToggle={jest.fn()}
+          onSelect={vi.fn()}
+          onToggle={vi.fn()}
           ouiaId="test-id"
         >
           {selectOptions}
@@ -64,8 +67,8 @@ describe('Select', () => {
         <Select
           toggleId="single-select-disabled"
           variant={SelectVariant.single}
-          onSelect={jest.fn()}
-          onToggle={jest.fn()}
+          onSelect={vi.fn()}
+          onToggle={vi.fn()}
           isDisabled
           ouiaId="test-id"
         >
@@ -77,7 +80,7 @@ describe('Select', () => {
 
     test('renders expanded successfully', () => {
       const { asFragment } = render(
-        <Select variant={SelectVariant.single} onSelect={jest.fn()} onToggle={jest.fn()} isOpen ouiaId="test-id">
+        <Select variant={SelectVariant.single} onSelect={vi.fn()} onToggle={vi.fn()} isOpen ouiaId="test-id">
           {selectOptions}
         </Select>
       );
@@ -85,10 +88,10 @@ describe('Select', () => {
     });
 
     test('renders expanded in strict mode successfully', () => {
-      const consoleError = jest.spyOn(console, 'error');
+      const consoleError = vi.spyOn(console, 'error');
       const { asFragment } = render(
         <React.StrictMode>
-          <Select variant={SelectVariant.single} onSelect={jest.fn()} onToggle={jest.fn()} isOpen ouiaId="test-id">
+          <Select variant={SelectVariant.single} onSelect={vi.fn()} onToggle={vi.fn()} isOpen ouiaId="test-id">
             {selectOptions}
           </Select>
         </React.StrictMode>
@@ -99,7 +102,7 @@ describe('Select', () => {
 
     test('renders expanded successfully with custom objects', () => {
       const { asFragment } = render(
-        <Select variant={SelectVariant.single} onSelect={jest.fn()} onToggle={jest.fn()} isOpen ouiaId="test-id">
+        <Select variant={SelectVariant.single} onSelect={vi.fn()} onToggle={vi.fn()} isOpen ouiaId="test-id">
           {selectOptionsCustom}
         </Select>
       );
@@ -113,8 +116,8 @@ describe('Select', () => {
         toggleId="select-up"
         variant={SelectVariant.single}
         direction={SelectDirection.up}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
         ouiaId="test-id"
       >
         {selectOptions}
@@ -144,8 +147,8 @@ describe('Select', () => {
         <Select
           toggleId="custom-select-filters"
           variant={SelectVariant.typeahead}
-          onSelect={jest.fn()}
-          onToggle={jest.fn()}
+          onSelect={vi.fn()}
+          onToggle={vi.fn()}
           onFilter={customFilter}
           isOpen
           ouiaId="test-id"
@@ -165,14 +168,7 @@ describe('Select', () => {
 
   test('renders select groups successfully', () => {
     const { asFragment } = render(
-      <Select
-        variant={SelectVariant.single}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
-        isOpen
-        isGrouped
-        ouiaId="test-id"
-      >
+      <Select variant={SelectVariant.single} onSelect={vi.fn()} onToggle={vi.fn()} isOpen isGrouped ouiaId="test-id">
         <SelectGroup label="group 1">{selectOptions}</SelectGroup>
         <SelectGroup label="group 2">{selectOptions}</SelectGroup>
       </Select>
@@ -191,11 +187,11 @@ test('renders select with favorites successfully', () => {
   const { asFragment } = render(
     <Select
       variant={SelectVariant.single}
-      onSelect={jest.fn()}
-      onToggle={jest.fn()}
+      onSelect={vi.fn()}
+      onToggle={vi.fn()}
       isOpen
       isGrouped
-      onFavorite={jest.fn()}
+      onFavorite={vi.fn()}
       favorites={['option-1']}
       ouiaId="test-id"
     >
@@ -216,8 +212,8 @@ describe('checkbox select', () => {
       <Select
         toggleId="checkbox-select-closed"
         variant={SelectVariant.checkbox}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
         ouiaId="test-id"
       >
         {selectOptions}
@@ -231,7 +227,7 @@ describe('checkbox select', () => {
       <Select
         toggleId="checkbox-select-selections"
         variant={SelectVariant.checkbox}
-        onToggle={jest.fn()}
+        onToggle={vi.fn()}
         selections={[selectOptions[0]]}
         ouiaId="test-id"
       >
@@ -246,7 +242,7 @@ describe('checkbox select', () => {
       <Select
         toggleId="checkbox-select-hidden-badge"
         variant={SelectVariant.checkbox}
-        onToggle={jest.fn()}
+        onToggle={vi.fn()}
         isCheckboxSelectionBadgeHidden
         selections={[selectOptions[0]]}
         ouiaId="test-id"
@@ -259,7 +255,7 @@ describe('checkbox select', () => {
 
   test('renders expanded successfully', () => {
     const { asFragment } = render(
-      <Select variant={SelectVariant.checkbox} onSelect={jest.fn()} onToggle={jest.fn()} isOpen ouiaId="test-id">
+      <Select variant={SelectVariant.checkbox} onSelect={vi.fn()} onToggle={vi.fn()} isOpen ouiaId="test-id">
         {selectOptions}
       </Select>
     );
@@ -271,9 +267,9 @@ describe('checkbox select', () => {
       <Select
         toggleId="checkbox-select-expanded-filtered"
         variant={SelectVariant.checkbox}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
-        onClear={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
+        onClear={vi.fn()}
         isOpen
         hasInlineFilter
         ouiaId="test-id"
@@ -286,7 +282,7 @@ describe('checkbox select', () => {
 
   test('renders expanded successfully with custom objects', () => {
     const { asFragment } = render(
-      <Select variant={SelectVariant.checkbox} onSelect={jest.fn()} onToggle={jest.fn()} isOpen ouiaId="test-id">
+      <Select variant={SelectVariant.checkbox} onSelect={vi.fn()} onToggle={vi.fn()} isOpen ouiaId="test-id">
         {selectOptionsCustom}
       </Select>
     );
@@ -295,14 +291,7 @@ describe('checkbox select', () => {
 
   test('renders checkbox select groups successfully', () => {
     const { asFragment } = render(
-      <Select
-        variant={SelectVariant.checkbox}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
-        isOpen
-        isGrouped
-        ouiaId="test-id"
-      >
+      <Select variant={SelectVariant.checkbox} onSelect={vi.fn()} onToggle={vi.fn()} isOpen isGrouped ouiaId="test-id">
         <SelectGroup label="group 1">{selectOptions}</SelectGroup>
         <SelectGroup label="group 2">{selectOptions}</SelectGroup>
       </Select>
@@ -317,8 +306,8 @@ describe('typeahead select', () => {
       <Select
         toggleId="typeahead-select-closed"
         variant={SelectVariant.typeahead}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
         ouiaId="test-id"
       >
         {selectOptions}
@@ -329,7 +318,7 @@ describe('typeahead select', () => {
 
   test('renders expanded successfully', () => {
     const { asFragment } = render(
-      <Select variant={SelectVariant.typeahead} onSelect={jest.fn()} onToggle={jest.fn()} isOpen ouiaId="test-id">
+      <Select variant={SelectVariant.typeahead} onSelect={vi.fn()} onToggle={vi.fn()} isOpen ouiaId="test-id">
         {selectOptions}
       </Select>
     );
@@ -341,8 +330,8 @@ describe('typeahead select', () => {
       <Select
         variant={SelectVariant.typeahead}
         selections="Mr"
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
         isOpen
         ouiaId="test-id"
       >
@@ -356,7 +345,7 @@ describe('typeahead select', () => {
     const user = userEvent.setup();
 
     render(
-      <Select variant={SelectVariant.typeahead} onToggle={jest.fn()} isOpen ouiaId="test-id">
+      <Select variant={SelectVariant.typeahead} onToggle={vi.fn()} isOpen ouiaId="test-id">
         {selectOptions}
       </Select>
     );
@@ -375,8 +364,8 @@ describe('typeahead multi select', () => {
       <Select
         toggleId="typeahead-multi-select-closed"
         variant={SelectVariant.typeaheadMulti}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
         ouiaId="test-id"
       >
         {selectOptions}
@@ -387,7 +376,7 @@ describe('typeahead multi select', () => {
 
   test('renders expanded successfully', () => {
     const { asFragment } = render(
-      <Select variant={SelectVariant.typeaheadMulti} onSelect={jest.fn()} onToggle={jest.fn()} isOpen ouiaId="test-id">
+      <Select variant={SelectVariant.typeaheadMulti} onSelect={vi.fn()} onToggle={vi.fn()} isOpen ouiaId="test-id">
         {selectOptions}
       </Select>
     );
@@ -400,8 +389,8 @@ describe('typeahead multi select', () => {
         toggleId="typeahead-multi-select-selected"
         variant={SelectVariant.typeaheadMulti}
         selections={['Mr', 'Mrs']}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
         isOpen
         ouiaId="test-id"
       >
@@ -414,8 +403,8 @@ describe('typeahead multi select', () => {
 
 describe('API', () => {
   test('click on item', async () => {
-    const mockToggle = jest.fn();
-    const mockSelect = jest.fn();
+    const mockToggle = vi.fn();
+    const mockSelect = vi.fn();
     const user = userEvent.setup();
 
     render(
@@ -431,11 +420,11 @@ describe('API', () => {
   });
 
   test('children only, no console error', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { ...global.console, error: myMock };
 
     render(
-      <Select variant="single" onSelect={jest.fn()} onToggle={jest.fn()} isOpen>
+      <Select variant="single" onSelect={vi.fn()} onToggle={vi.fn()} isOpen>
         {selectOptions}
       </Select>
     );
@@ -453,8 +442,8 @@ describe('toggle icon', () => {
         toggleId="select-toggle-icon-single"
         toggleIcon={ToggleIcon}
         variant={SelectVariant.single}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
       >
         {selectOptions}
       </Select>
@@ -468,8 +457,8 @@ describe('toggle icon', () => {
         toggleId="checkbox-select-toggle-icon"
         toggleIcon={ToggleIcon}
         variant={SelectVariant.checkbox}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
       >
         {selectOptions}
       </Select>
@@ -483,8 +472,8 @@ describe('toggle icon', () => {
         toggleId="typeahead-select-toggle-icon"
         toggleIcon={ToggleIcon}
         variant={SelectVariant.typeahead}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
       >
         {selectOptions}
       </Select>
@@ -498,8 +487,8 @@ describe('toggle icon', () => {
         toggleId="multi-typeahead-select-toggle-icon"
         toggleIcon={ToggleIcon}
         variant={SelectVariant.typeaheadMulti}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
       >
         {selectOptions}
       </Select>
@@ -510,27 +499,27 @@ describe('toggle icon', () => {
 
 describe('select with custom content', () => {
   test('renders closed successfully', () => {
-    render(<Select toggleId="select-custom-content" customContent="testing custom" onToggle={jest.fn()} />);
+    render(<Select toggleId="select-custom-content" customContent="testing custom" onToggle={vi.fn()} />);
     expect(screen.queryByText('testing custom')).toBeNull();
   });
 
   test('renders expanded successfully', () => {
-    render(<Select customContent="testing custom" onToggle={jest.fn()} isOpen />);
+    render(<Select customContent="testing custom" onToggle={vi.fn()} isOpen />);
     expect(screen.getByText('testing custom')).toBeInTheDocument();
   });
 });
 
 describe('select with placeholder', () => {
   test('applies the placeholder class when not selected', () => {
-    render(<Select variant={SelectVariant.single} onSelect={jest.fn()} onToggle={jest.fn()} hasPlaceholderStyle />);
+    render(<Select variant={SelectVariant.single} onSelect={vi.fn()} onToggle={vi.fn()} hasPlaceholderStyle />);
     expect(screen.getByRole('button', { name: 'Options menu' })).toHaveClass('pf-m-placeholder');
   });
   test('does not apply the placeholder class when selected', () => {
     render(
       <Select
         variant={SelectVariant.single}
-        onSelect={jest.fn()}
-        onToggle={jest.fn()}
+        onSelect={vi.fn()}
+        onToggle={vi.fn()}
         hasPlaceholderStyle
         selections={['selected option']}
       />

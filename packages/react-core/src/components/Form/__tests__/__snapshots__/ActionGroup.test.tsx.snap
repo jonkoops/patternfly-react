@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ActionGroup component should render default action group variant 1`] = `
+exports[`ActionGroup component > should render default action group variant 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-form__group pf-m-action"
@@ -20,7 +20,7 @@ exports[`ActionGroup component should render default action group variant 1`] = 
 </DocumentFragment>
 `;
 
-exports[`ActionGroup component should render horizontal form ActionGroup variant 1`] = `
+exports[`ActionGroup component > should render horizontal form ActionGroup variant 1`] = `
 <DocumentFragment>
   <form
     class="pf-v5-c-form pf-m-horizontal"

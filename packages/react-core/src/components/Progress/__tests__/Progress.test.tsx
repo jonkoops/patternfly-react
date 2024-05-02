@@ -1,7 +1,12 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
 import { Progress, ProgressSize } from '../Progress';
-import { ProgressVariant, ProgressMeasureLocation } from '../ProgressContainer';
+import { ProgressMeasureLocation, ProgressVariant } from '../ProgressContainer';
 
 test('Simple progress', () => {
   const { asFragment } = render(<Progress value={33} id="progress-simple-example" />);
@@ -92,7 +97,7 @@ describe('Progress measure location', () => {
 });
 
 test('progress component generates console warning when no accessible name is provided', () => {
-  const consoleWarnMock = jest.fn();
+  const consoleWarnMock = vi.fn();
   global.console = { warn: consoleWarnMock } as any;
   render(<Progress value={33} />);
   expect(consoleWarnMock).toHaveBeenCalled();

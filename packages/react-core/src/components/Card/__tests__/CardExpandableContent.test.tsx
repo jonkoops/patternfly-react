@@ -1,7 +1,12 @@
+/**
+ * @vitest-environment jsdom
+ */
+import { render } from '@testing-library/react';
 import React from 'react';
+import { expect, test } from 'vitest';
+
 import { CardContext } from '../Card';
 import { CardExpandableContent } from '../CardExpandableContent';
-import { render } from '@testing-library/react';
 
 test('renders successfully', () => {
   const { asFragment } = render(

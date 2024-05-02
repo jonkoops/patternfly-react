@@ -1,6 +1,11 @@
-import * as React from 'react';
-import { BreadcrumbItem } from '../BreadcrumbItem';
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
+import { BreadcrumbItem } from '../BreadcrumbItem';
 
 describe('BreadcrumbItem component', () => {
   test('should render default breadcrumbItem', () => {
@@ -44,7 +49,7 @@ describe('BreadcrumbItem component', () => {
 
   test('should render breadcrumbItem with component', () => {
     const MyComponent = () => <div>My component contents</div>;
-    const consoleError = jest.spyOn(console, 'error').mockImplementation();
+    const consoleError = vi.spyOn(console, 'error').mockImplementation();
     const { asFragment } = render(<BreadcrumbItem component={MyComponent}>Stuff</BreadcrumbItem>);
     expect(asFragment()).toMatchSnapshot();
     expect(consoleError).not.toHaveBeenCalled();

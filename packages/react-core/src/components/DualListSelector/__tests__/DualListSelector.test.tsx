@@ -1,6 +1,11 @@
+/**
+ * @vitest-environment jsdom
+ */
 import { render } from '@testing-library/react';
-import { DualListSelector } from '../../DualListSelector';
 import React from 'react';
+import { expect, describe, test } from 'vitest';
+
+import { DualListSelector } from '../../DualListSelector';
 
 describe('DualListSelector', () => {
   test('basic', () => {

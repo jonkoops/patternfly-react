@@ -1,9 +1,14 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { TreeViewListItem } from '../TreeViewListItem';
-import { TreeView } from '../TreeView';
-import userEvent from '@testing-library/user-event';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/TreeView/tree-view';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
+import { TreeView } from '../TreeView';
+import { TreeViewListItem } from '../TreeViewListItem';
 
 const requiredProps = {
   name: 'Item name',
@@ -436,7 +441,7 @@ test(`Does not render ${styles.treeViewNode} element with ${styles.modifiers.cur
 });
 
 describe('compareItems callback', () => {
-  const compareItemsMock = jest.fn();
+  const compareItemsMock = vi.fn();
   const activeItems = [{ name: 'Active item' }];
   const itemData = { name: 'Item data' };
 
@@ -501,7 +506,7 @@ describe('compareItems callback', () => {
 
 test('Does not call onCheck by default', async () => {
   const user = userEvent.setup();
-  const onCheckMock = jest.fn();
+  const onCheckMock = vi.fn();
 
   render(<TreeViewListItem hasCheckbox {...requiredProps} />);
 
@@ -512,7 +517,7 @@ test('Does not call onCheck by default', async () => {
 
 test('Calls onCheck callback when checkbox is clicked', async () => {
   const user = userEvent.setup();
-  const onCheckMock = jest.fn();
+  const onCheckMock = vi.fn();
 
   render(<TreeViewListItem onCheck={onCheckMock} hasCheckbox {...requiredProps} />);
 
@@ -524,7 +529,7 @@ test('Calls onCheck callback when checkbox is clicked', async () => {
 
 test('Does not call onSelect by default', async () => {
   const user = userEvent.setup();
-  const onSelectMock = jest.fn();
+  const onSelectMock = vi.fn();
 
   render(<TreeViewListItem {...requiredProps} />);
 
@@ -535,7 +540,7 @@ test('Does not call onSelect by default', async () => {
 
 test(`Calls onSelect when ${styles.treeViewNode} is clicked`, async () => {
   const user = userEvent.setup();
-  const onSelectMock = jest.fn();
+  const onSelectMock = vi.fn();
 
   render(<TreeViewListItem onSelect={onSelectMock} {...requiredProps} />);
 
@@ -547,7 +552,7 @@ test(`Calls onSelect when ${styles.treeViewNode} is clicked`, async () => {
 
 test('Does not call onSelect when hasCheckbox is passed', async () => {
   const user = userEvent.setup();
-  const onSelectMock = jest.fn();
+  const onSelectMock = vi.fn();
 
   render(<TreeViewListItem onSelect={onSelectMock} hasCheckbox {...requiredProps} />);
 
@@ -559,7 +564,7 @@ test('Does not call onSelect when hasCheckbox is passed', async () => {
 
 test('Does not call onExpand by default', async () => {
   const user = userEvent.setup();
-  const onExpandMock = jest.fn();
+  const onExpandMock = vi.fn();
 
   render(<TreeViewListItem {...requiredProps}>Content</TreeViewListItem>);
 
@@ -570,7 +575,7 @@ test('Does not call onExpand by default', async () => {
 
 test(`Calls onExpand when ${styles.treeViewNode} is collapsed and clicked`, async () => {
   const user = userEvent.setup();
-  const onExpandMock = jest.fn();
+  const onExpandMock = vi.fn();
 
   render(
     <TreeViewListItem onExpand={onExpandMock} {...requiredProps}>
@@ -586,7 +591,7 @@ test(`Calls onExpand when ${styles.treeViewNode} is collapsed and clicked`, asyn
 
 test(`Calls onExpand when ${styles.treeViewNodeToggle} is clicked and isSelectable is passed`, async () => {
   const user = userEvent.setup();
-  const onExpandMock = jest.fn();
+  const onExpandMock = vi.fn();
 
   render(
     <TreeViewListItem isSelectable onExpand={onExpandMock} {...requiredProps}>
@@ -603,7 +608,7 @@ test(`Calls onExpand when ${styles.treeViewNodeToggle} is clicked and isSelectab
 
 test(`Calls onExpand when ${styles.treeViewNodeToggle} is clicked and hasCheckbox is passed`, async () => {
   const user = userEvent.setup();
-  const onExpandMock = jest.fn();
+  const onExpandMock = vi.fn();
 
   render(
     <TreeViewListItem hasCheckbox onExpand={onExpandMock} {...requiredProps}>
@@ -620,7 +625,7 @@ test(`Calls onExpand when ${styles.treeViewNodeToggle} is clicked and hasCheckbo
 
 test('Does not call onCollapse by default', async () => {
   const user = userEvent.setup();
-  const onCollapseMock = jest.fn();
+  const onCollapseMock = vi.fn();
 
   render(
     <TreeViewListItem isExpanded {...requiredProps}>
@@ -635,7 +640,7 @@ test('Does not call onCollapse by default', async () => {
 
 test(`Calls onCollapse when ${styles.treeViewNode} is expanded and clicked`, async () => {
   const user = userEvent.setup();
-  const onCollapseMock = jest.fn();
+  const onCollapseMock = vi.fn();
 
   render(
     <TreeViewListItem isExpanded onCollapse={onCollapseMock} {...requiredProps}>
@@ -651,7 +656,7 @@ test(`Calls onCollapse when ${styles.treeViewNode} is expanded and clicked`, asy
 
 test(`Calls onCollapse when ${styles.treeViewNodeToggle} is clicked and isSelectable is passed`, async () => {
   const user = userEvent.setup();
-  const onCollapseMock = jest.fn();
+  const onCollapseMock = vi.fn();
 
   render(
     <TreeViewListItem isExpanded isSelectable onCollapse={onCollapseMock} {...requiredProps}>
@@ -668,7 +673,7 @@ test(`Calls onCollapse when ${styles.treeViewNodeToggle} is clicked and isSelect
 
 test(`Calls onCollapse when ${styles.treeViewNodeToggle} is clicked and hasCheckbox is passed`, async () => {
   const user = userEvent.setup();
-  const onCollapseMock = jest.fn();
+  const onCollapseMock = vi.fn();
 
   render(
     <TreeViewListItem isExpanded hasCheckbox onCollapse={onCollapseMock} {...requiredProps}>

@@ -1,10 +1,15 @@
-import React, { RefObject } from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { BackToTop } from '../BackToTop';
-import userEvent from '@testing-library/user-event';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/BackToTop/back-to-top';
+import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../Button');
+import { BackToTop } from '../BackToTop';
+
+vi.mock('../../Button');
 
 test('Renders BackToTop', () => {
   render(
@@ -39,7 +44,7 @@ test('ScrollTo event is fired after clicking BackToTop', async () => {
   render(<BackToTop />);
   const user = userEvent.setup();
   fireEvent.scroll(window, { target: { scrollY: 401 } });
-  global.scrollTo = jest.fn();
+  global.scrollTo = vi.fn();
 
   await user.click(screen.getByRole(`button`).parentElement as Element);
   expect(global.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: 'smooth' });
@@ -78,7 +83,7 @@ test('Renders with passed aria-label', () => {
 test('BackToTop can be accessed via passed innerRef', () => {
   const testRef: RefObject<HTMLElement> = React.createRef();
   render(<BackToTop innerRef={testRef} isAlwaysVisible />);
-  global.scrollTo = jest.fn();
+  global.scrollTo = vi.fn();
   testRef.current?.click();
   expect(global.scrollTo).toBeCalledTimes(1);
 });
@@ -116,7 +121,7 @@ test('Clicking backToTop scrolls back to top of the element passed via scrollabl
   const wrapper = document.getElementById('backToTopWrapper');
   fireEvent.scroll(wrapper as HTMLElement, { target: { scrollY: 401 } });
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  wrapper!.scrollTo = jest.fn();
+  wrapper!.scrollTo = vi.fn();
   await user.click(screen.getByRole(`button`).parentElement as Element);
 
   expect(wrapper?.scrollTo).toHaveBeenCalledTimes(1);

@@ -1,15 +1,19 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Alert/alert';
+import cssAlertTitleMaxLines from '@patternfly/react-tokens/dist/esm/c_alert__title_max_lines';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
 import { act } from 'react-dom/test-utils';
+import { expect, test, vi } from 'vitest';
 
+import { capitalize } from '../../../helpers';
 import { Alert, AlertVariant } from '../Alert';
 import { AlertContext } from '../AlertContext';
-import { capitalize } from '../../../helpers';
-import cssAlertTitleMaxLines from '@patternfly/react-tokens/dist/esm/c_alert__title_max_lines';
-import styles from '@patternfly/react-styles/css/components/Alert/alert';
 
-jest.mock('../AlertToggleExpandButton', () => ({
+vi.mock('../AlertToggleExpandButton', () => ({
   AlertToggleExpandButton: ({ isExpanded, onToggleExpand, ...props }) => (
     <button onClick={onToggleExpand} {...props}>
       isExpanded: {`${isExpanded}`}
@@ -17,7 +21,7 @@ jest.mock('../AlertToggleExpandButton', () => ({
   )
 }));
 
-jest.mock('../AlertIcon', () => ({
+vi.mock('../AlertIcon', () => ({
   AlertIcon: ({ variant, className, customIcon, ...props }) => (
     <div {...props} className={className}>
       <p>custom icon: {customIcon}</p>
@@ -320,20 +324,20 @@ test('Has an aria-live value of polite and aria-atomic value of false when isLiv
 });
 
 test('Renders with no timeout by default', () => {
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   render(<Alert title="Some title">Some alert</Alert>);
 
   act(() => {
-    jest.advanceTimersByTime(8000);
+    vi.advanceTimersByTime(8000);
   });
 
   expect(screen.getByText('Some alert')).toBeVisible();
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Removes the alert after 8000ms when timeout = true', () => {
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   render(
     <Alert title="Some title" timeout>
@@ -342,21 +346,21 @@ test('Removes the alert after 8000ms when timeout = true', () => {
   );
 
   act(() => {
-    jest.advanceTimersByTime(7999);
+    vi.advanceTimersByTime(7999);
   });
 
   expect(screen.getByText('Some alert')).toBeVisible();
 
   act(() => {
-    jest.advanceTimersByTime(1);
+    vi.advanceTimersByTime(1);
   });
 
   expect(screen.queryByText('Some alert')).not.toBeInTheDocument();
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Removes the alert after a custom time when timeout is passed with a number', () => {
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   render(
     <Alert title="Some title" timeout={2000}>
@@ -365,24 +369,24 @@ test('Removes the alert after a custom time when timeout is passed with a number
   );
 
   act(() => {
-    jest.advanceTimersByTime(1999);
+    vi.advanceTimersByTime(1999);
   });
 
   expect(screen.getByText('Some alert')).toBeVisible();
 
   act(() => {
-    jest.advanceTimersByTime(1);
+    vi.advanceTimersByTime(1);
   });
 
   expect(screen.queryByText('Some alert')).not.toBeInTheDocument();
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Does not remove the alert on timeout if the user is focused on the alert', async () => {
   const user = userEvent.setup({
-    advanceTimers: (delay) => jest.advanceTimersByTime(delay)
+    advanceTimers: (delay) => vi.advanceTimersByTime(delay)
   });
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   render(
     <Alert title="Some title" timeout>
@@ -395,18 +399,18 @@ test('Does not remove the alert on timeout if the user is focused on the alert',
   await user.click(alert);
 
   act(() => {
-    jest.advanceTimersByTime(8000);
+    vi.advanceTimersByTime(8000);
   });
 
   expect(screen.getByText('Some alert')).toBeVisible();
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Does not remove the alert on timeout if the user is hovered over the alert', async () => {
   const user = userEvent.setup({
-    advanceTimers: (delay) => jest.advanceTimersByTime(delay)
+    advanceTimers: (delay) => vi.advanceTimersByTime(delay)
   });
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   render(
     <Alert title="Some title" timeout>
@@ -419,18 +423,18 @@ test('Does not remove the alert on timeout if the user is hovered over the alert
   await user.hover(alert);
 
   act(() => {
-    jest.advanceTimersByTime(8000);
+    vi.advanceTimersByTime(8000);
   });
 
   expect(alert).toBeVisible();
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Removes the alert after the user removes focus from the alert and 3000ms have passed', async () => {
   const user = userEvent.setup({
-    advanceTimers: (delay) => jest.advanceTimersByTime(delay)
+    advanceTimers: (delay) => vi.advanceTimersByTime(delay)
   });
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   render(
     <div>
@@ -446,24 +450,24 @@ test('Removes the alert after the user removes focus from the alert and 3000ms h
   await user.click(alert);
 
   act(() => {
-    jest.advanceTimersByTime(8000);
+    vi.advanceTimersByTime(8000);
   });
 
   await user.click(screen.getByRole('textbox'));
 
   act(() => {
-    jest.advanceTimersByTime(3000);
+    vi.advanceTimersByTime(3000);
   });
 
   expect(screen.queryByText('Some alert')).not.toBeInTheDocument();
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Removes the alert after the user removes hover from the alert and 3000ms have passed', async () => {
   const user = userEvent.setup({
-    advanceTimers: (delay) => jest.advanceTimersByTime(delay)
+    advanceTimers: (delay) => vi.advanceTimersByTime(delay)
   });
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   render(
     <div>
@@ -479,24 +483,24 @@ test('Removes the alert after the user removes hover from the alert and 3000ms h
   await user.hover(alert);
 
   act(() => {
-    jest.advanceTimersByTime(8000);
+    vi.advanceTimersByTime(8000);
   });
 
   await user.hover(screen.getByRole('textbox'));
 
   act(() => {
-    jest.advanceTimersByTime(3000);
+    vi.advanceTimersByTime(3000);
   });
 
   expect(screen.queryByText('Some alert')).not.toBeInTheDocument();
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Removes the alert after the user removes hover from the alert and timeoutAnimation time has passed', async () => {
   const user = userEvent.setup({
-    advanceTimers: (delay) => jest.advanceTimersByTime(delay)
+    advanceTimers: (delay) => vi.advanceTimersByTime(delay)
   });
-  jest.useFakeTimers();
+  vi.useFakeTimers();
 
   render(
     <div>
@@ -512,22 +516,22 @@ test('Removes the alert after the user removes hover from the alert and timeoutA
   await user.hover(alert);
 
   act(() => {
-    jest.advanceTimersByTime(8000);
+    vi.advanceTimersByTime(8000);
   });
 
   await user.hover(screen.getByRole('textbox'));
 
   act(() => {
-    jest.advanceTimersByTime(1000);
+    vi.advanceTimersByTime(1000);
   });
 
   expect(screen.queryByText('Some alert')).not.toBeInTheDocument();
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Does not call the onTimeout callback before the timeout period has expired', () => {
-  jest.useFakeTimers();
-  const onTimeoutMock = jest.fn();
+  vi.useFakeTimers();
+  const onTimeoutMock = vi.fn();
 
   render(
     <Alert title="Some title" timeout onTimeout={onTimeoutMock}>
@@ -536,16 +540,16 @@ test('Does not call the onTimeout callback before the timeout period has expired
   );
 
   act(() => {
-    jest.advanceTimersByTime(7999);
+    vi.advanceTimersByTime(7999);
   });
 
   expect(onTimeoutMock).not.toHaveBeenCalled();
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Calls the onTimeout callback after the timeout period has expired', () => {
-  jest.useFakeTimers();
-  const onTimeoutMock = jest.fn();
+  vi.useFakeTimers();
+  const onTimeoutMock = vi.fn();
 
   render(
     <Alert title="Some title" timeout onTimeout={onTimeoutMock}>
@@ -554,11 +558,11 @@ test('Calls the onTimeout callback after the timeout period has expired', () => 
   );
 
   act(() => {
-    jest.advanceTimersByTime(8000);
+    vi.advanceTimersByTime(8000);
   });
 
   expect(onTimeoutMock).toHaveBeenCalledTimes(1);
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 test('Renders titles without truncation styling by default', () => {

@@ -1,8 +1,13 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { TreeViewSearch } from '../TreeViewSearch';
-import userEvent from '@testing-library/user-event';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/TreeView/tree-view';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
+
+import { TreeViewSearch } from '../TreeViewSearch';
 
 test(`Renders with ${styles.treeViewSearch} by default`, () => {
   render(<TreeViewSearch />);
@@ -62,7 +67,7 @@ test(`Spreads additional props`, () => {
 
 test(`Calls onSearch when input is typed into`, async () => {
   const user = userEvent.setup();
-  const onSearchMock = jest.fn();
+  const onSearchMock = vi.fn();
   render(<TreeViewSearch onSearch={onSearchMock} />);
 
   await user.type(screen.getByRole('searchbox'), 'a');
@@ -72,7 +77,7 @@ test(`Calls onSearch when input is typed into`, async () => {
 
 test(`Does not call onSearch when input is not typed into`, async () => {
   const user = userEvent.setup();
-  const onSearchMock = jest.fn();
+  const onSearchMock = vi.fn();
 
   render(
     <>

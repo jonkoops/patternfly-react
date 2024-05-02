@@ -1,13 +1,16 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { renderHook } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-import { useWizardFooter } from '../useWizardFooter';
 import * as WizardContext from '../../WizardContext';
+import { useWizardFooter } from '../useWizardFooter';
 
 const customFooter = <>My custom footer</>;
-const useWizardContextSpy = jest.spyOn(WizardContext, 'useWizardContext');
-const setFooter = jest.fn();
+const useWizardContextSpy = vi.spyOn(WizardContext, 'useWizardContext');
+const setFooter = vi.fn();
 
 test('sets the footer when one is provided without a stepId', () => {
   useWizardContextSpy.mockReturnValueOnce({ setFooter } as any);

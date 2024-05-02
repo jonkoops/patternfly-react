@@ -1,7 +1,10 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { LoginForm } from '../LoginForm';
 
@@ -12,7 +15,7 @@ describe('LoginForm', () => {
   });
 
   test('should call onChangeUsername callback', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     const user = userEvent.setup();
 
     render(<LoginForm onChangeUsername={mockFn} rememberMeLabel="Remember me" />);
@@ -22,7 +25,7 @@ describe('LoginForm', () => {
   });
 
   test('should call onChangePassword callback', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     const user = userEvent.setup();
 
     render(<LoginForm onChangePassword={mockFn} rememberMeLabel="Remember me" />);
@@ -32,7 +35,7 @@ describe('LoginForm', () => {
   });
 
   test('should call onChangeRememberMe callback', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
     const user = userEvent.setup();
 
     render(<LoginForm onChangeRememberMe={mockFn} rememberMeLabel="Remember me" />);

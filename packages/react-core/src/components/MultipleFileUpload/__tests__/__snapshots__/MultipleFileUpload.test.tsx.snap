@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MultipleFileUpload renders custom class names 1`] = `
+exports[`MultipleFileUpload > renders custom class names 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload test"
@@ -18,7 +18,7 @@ exports[`MultipleFileUpload renders custom class names 1`] = `
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUpload renders with expected class names when horizontal 1`] = `
+exports[`MultipleFileUpload > renders with expected class names when horizontal 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload pf-m-horizontal"
@@ -36,7 +36,7 @@ exports[`MultipleFileUpload renders with expected class names when horizontal 1`
 </DocumentFragment>
 `;
 
-exports[`MultipleFileUpload renders with expected class names when not horizontal 1`] = `
+exports[`MultipleFileUpload > renders with expected class names when not horizontal 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-multiple-file-upload"

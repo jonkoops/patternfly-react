@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Pagination API verify inset2xl inset breakpoints 1`] = `
+exports[`Pagination > API > verify inset2xl inset breakpoints 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-inset-2xl pf-m-inset-2xl-on-sm pf-m-inset-2xl-on-md pf-m-inset-2xl-on-lg pf-m-inset-2xl-on-xl pf-m-inset-2xl-on-2xl"
@@ -206,7 +206,7 @@ exports[`Pagination API verify inset2xl inset breakpoints 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination API verify insetLg inset breakpoints 1`] = `
+exports[`Pagination > API > verify insetLg inset breakpoints 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-inset-lg pf-m-inset-lg-on-sm pf-m-inset-lg-on-md pf-m-inset-lg-on-lg pf-m-inset-lg-on-xl pf-m-inset-lg-on-2xl"
@@ -412,7 +412,7 @@ exports[`Pagination API verify insetLg inset breakpoints 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination API verify insetMd inset breakpoints 1`] = `
+exports[`Pagination > API > verify insetMd inset breakpoints 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-inset-md pf-m-inset-md-on-sm pf-m-inset-md-on-md pf-m-inset-md-on-lg pf-m-inset-md-on-xl pf-m-inset-md-on-2xl"
@@ -618,7 +618,7 @@ exports[`Pagination API verify insetMd inset breakpoints 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination API verify insetNone inset breakpoints 1`] = `
+exports[`Pagination > API > verify insetNone inset breakpoints 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-inset-none pf-m-inset-none-on-sm pf-m-inset-none-on-md pf-m-inset-none-on-lg pf-m-inset-none-on-xl pf-m-inset-none-on-2xl"
@@ -824,7 +824,7 @@ exports[`Pagination API verify insetNone inset breakpoints 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination API verify insetSm inset breakpoints 1`] = `
+exports[`Pagination > API > verify insetSm inset breakpoints 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-inset-sm pf-m-inset-sm-on-sm pf-m-inset-sm-on-md pf-m-inset-sm-on-lg pf-m-inset-sm-on-xl pf-m-inset-sm-on-2xl"
@@ -1030,7 +1030,7 @@ exports[`Pagination API verify insetSm inset breakpoints 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination API verify insetXl inset breakpoints 1`] = `
+exports[`Pagination > API > verify insetXl inset breakpoints 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-inset-xl pf-m-inset-xl-on-sm pf-m-inset-xl-on-md pf-m-inset-xl-on-lg pf-m-inset-xl-on-xl pf-m-inset-xl-on-2xl"
@@ -1236,7 +1236,7 @@ exports[`Pagination API verify insetXl inset breakpoints 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render custom pagination toggle 1`] = `
+exports[`Pagination > component render > custom pagination toggle 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -1432,7 +1432,7 @@ exports[`Pagination component render custom pagination toggle 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render custom perPageOptions 1`] = `
+exports[`Pagination > component render > custom perPageOptions 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -1642,7 +1642,7 @@ exports[`Pagination component render custom perPageOptions 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render custom start end 1`] = `
+exports[`Pagination > component render > custom start end 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -1850,7 +1850,7 @@ exports[`Pagination component render custom start end 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render empty per page options 1`] = `
+exports[`Pagination > component render > empty per page options 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -2019,7 +2019,7 @@ exports[`Pagination component render empty per page options 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render last page 1`] = `
+exports[`Pagination > component render > last page 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -2229,7 +2229,7 @@ exports[`Pagination component render last page 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render limited number of pages 1`] = `
+exports[`Pagination > component render > limited number of pages 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -2442,7 +2442,7 @@ exports[`Pagination component render limited number of pages 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render should render correctly bottom 1`] = `
+exports[`Pagination > component render > should render correctly bottom 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-bottom"
@@ -2640,7 +2640,7 @@ exports[`Pagination component render should render correctly bottom 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render should render correctly bottom sticky 1`] = `
+exports[`Pagination > component render > should render correctly bottom sticky 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-bottom pf-m-sticky"
@@ -2838,7 +2838,7 @@ exports[`Pagination component render should render correctly bottom sticky 1`] =
 </DocumentFragment>
 `;
 
-exports[`Pagination component render should render correctly compact 1`] = `
+exports[`Pagination > component render > should render correctly compact 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-compact"
@@ -2967,7 +2967,7 @@ exports[`Pagination component render should render correctly compact 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render should render correctly disabled 1`] = `
+exports[`Pagination > component render > should render correctly disabled 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -3181,7 +3181,7 @@ exports[`Pagination component render should render correctly disabled 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render should render correctly sticky 1`] = `
+exports[`Pagination > component render > should render correctly sticky 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination pf-m-sticky"
@@ -3391,7 +3391,7 @@ exports[`Pagination component render should render correctly sticky 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render should render correctly top 1`] = `
+exports[`Pagination > component render > should render correctly top 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -3601,7 +3601,7 @@ exports[`Pagination component render should render correctly top 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render titles 1`] = `
+exports[`Pagination > component render > titles 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -3811,7 +3811,7 @@ exports[`Pagination component render titles 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render up drop direction 1`] = `
+exports[`Pagination > component render > up drop direction 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"
@@ -4021,7 +4021,7 @@ exports[`Pagination component render up drop direction 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Pagination component render zero results 1`] = `
+exports[`Pagination > component render > zero results 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-pagination"

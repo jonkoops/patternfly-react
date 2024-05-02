@@ -1,14 +1,17 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
+import * as ReactCoreUtils from '@patternfly/react-core/src/helpers/util';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
-import { TextInput, TextInputBase } from '../TextInput';
 import { ValidatedOptions } from '../../../helpers/constants';
-import * as ReactCoreUtils from '@patternfly/react-core/src/helpers/util';
+import { TextInput, TextInputBase } from '../TextInput';
 
 const props = {
-  onChange: jest.fn(),
+  onChange: vi.fn(),
   value: 'test input'
 };
 
@@ -78,7 +81,7 @@ describe('TextInput', () => {
   });
 
   test('should throw console error when no aria-label, id or aria-labelledby is given', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { ...global.console, error: myMock };
 
     render(<TextInput {...props} />);
@@ -87,7 +90,7 @@ describe('TextInput', () => {
   });
 
   test('should not throw console error when id is given but no aria-label or aria-labelledby', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { ...global.console, error: myMock };
 
     render(<TextInput {...props} id="5" />);
@@ -96,7 +99,7 @@ describe('TextInput', () => {
   });
 
   test('should not throw console error when aria-label is given but no id or aria-labelledby', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { ...global.console, error: myMock };
 
     render(<TextInput {...props} aria-label="test input" />);
@@ -105,7 +108,7 @@ describe('TextInput', () => {
   });
 
   test('should not throw console error when aria-labelledby is given but no id or aria-label', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { ...global.console, error: myMock };
 
     render(<TextInput {...props} aria-labelledby="test input" />);
@@ -114,14 +117,14 @@ describe('TextInput', () => {
   });
 
   test('trimLeft is called when isStartTruncated is true', async () => {
-    const trimLeftFn = jest.spyOn(ReactCoreUtils, 'trimLeft').mockImplementation();
+    const trimLeftFn = vi.spyOn(ReactCoreUtils, 'trimLeft').mockImplementation();
 
     render(<TextInput isStartTruncated aria-label="start truncated text input" />);
     expect(trimLeftFn).toHaveBeenCalled();
   });
 
   test('trimLeft is called when isLeftTruncated is true', async () => {
-    const trimLeftFn = jest.spyOn(ReactCoreUtils, 'trimLeft').mockImplementation();
+    const trimLeftFn = vi.spyOn(ReactCoreUtils, 'trimLeft').mockImplementation();
 
     render(<TextInput isLeftTruncated aria-label="start truncated text input" />);
     expect(trimLeftFn).toHaveBeenCalled();

@@ -1,7 +1,10 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, it, test, vi } from 'vitest';
 
 import { TimePicker, TimePickerProps } from '../TimePicker';
 
@@ -9,7 +12,7 @@ describe('TimePicker', () => {
   test('Renders in strict mode', () => {
     const validateTime = (_time: string) => true;
 
-    const consoleError = jest.spyOn(console, 'error');
+    const consoleError = vi.spyOn(console, 'error');
     render(
       <React.StrictMode>
         <TimePicker value={'00:00'} validateTime={validateTime} aria-label="time picker" />
@@ -27,7 +30,7 @@ describe('TimePicker', () => {
       inputProps: TimePickerProps;
       expects: { hour: number; minutes: number; seconds: number };
     }) => {
-      const onChange = jest.fn();
+      const onChange = vi.fn();
       const user = userEvent.setup();
 
       render(<TimePicker onChange={onChange} {...inputProps} aria-label="time picker" />);
@@ -85,9 +88,8 @@ describe('TimePicker', () => {
       });
     });
 
-    // Disabling because this test does not work on CI
-    xtest('should call onChange when pressing Enter', async () => {
-      const onChange = jest.fn();
+    test('should call onChange when pressing Enter', async () => {
+      const onChange = vi.fn();
       const user = userEvent.setup();
 
       render(<TimePicker onChange={onChange} aria-label="time picker" />);

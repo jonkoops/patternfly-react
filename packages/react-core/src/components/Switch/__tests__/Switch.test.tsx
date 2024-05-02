@@ -1,12 +1,15 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { Switch } from '../Switch';
 
 const props = {
-  onChange: jest.fn(),
+  onChange: vi.fn(),
   isChecked: false
 };
 
@@ -85,7 +88,7 @@ describe('Switch', () => {
   });
 
   test('should throw console error when no aria-label or label is given', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
 
     global.console = { ...global.console, error: myMock };
 
@@ -94,7 +97,7 @@ describe('Switch', () => {
   });
 
   test('should not throw console error when label is given but no aria-label', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { ...global.console, error: myMock };
 
     render(<Switch {...props} label="test switch" />);
@@ -103,7 +106,7 @@ describe('Switch', () => {
   });
 
   test('should not throw console error when aria-label is given but no label', () => {
-    const myMock = jest.fn();
+    const myMock = vi.fn();
     global.console = { ...global.console, error: myMock };
 
     render(<Switch {...props} aria-label="test switch" />);

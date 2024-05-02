@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ApplicationLauncher Renders in strict mode 1`] = `
+exports[`ApplicationLauncher > Renders in strict mode 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Application launcher"
@@ -147,7 +147,7 @@ exports[`ApplicationLauncher Renders in strict mode 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ApplicationLauncher custom icon 1`] = `
+exports[`ApplicationLauncher > custom icon 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Application launcher"
@@ -294,7 +294,7 @@ exports[`ApplicationLauncher custom icon 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ApplicationLauncher dropup + right aligned 1`] = `
+exports[`ApplicationLauncher > dropup + right aligned 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Application launcher"
@@ -333,7 +333,7 @@ exports[`ApplicationLauncher dropup + right aligned 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ApplicationLauncher dropup 1`] = `
+exports[`ApplicationLauncher > dropup 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Application launcher"
@@ -372,7 +372,7 @@ exports[`ApplicationLauncher dropup 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ApplicationLauncher expanded 1`] = `
+exports[`ApplicationLauncher > expanded 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Application launcher"
@@ -518,7 +518,7 @@ exports[`ApplicationLauncher expanded 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ApplicationLauncher regular 1`] = `
+exports[`ApplicationLauncher > regular 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Application launcher"
@@ -557,7 +557,7 @@ exports[`ApplicationLauncher regular 1`] = `
 </DocumentFragment>
 `;
 
-exports[`ApplicationLauncher right aligned 1`] = `
+exports[`ApplicationLauncher > right aligned 1`] = `
 <DocumentFragment>
   <nav
     aria-label="Application launcher"

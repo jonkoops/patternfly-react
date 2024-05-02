@@ -1,7 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { TooltipContent } from '../TooltipContent';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/Tooltip/tooltip';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { TooltipContent } from '../TooltipContent';
 
 test('Renders with children', () => {
   render(<TooltipContent>Test content</TooltipContent>);

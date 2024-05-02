@@ -1,13 +1,16 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
+import { Button } from '../../Button';
 import { FormFieldGroup } from '../FormFieldGroup';
 import { FormFieldGroupExpandable } from '../FormFieldGroupExpandable';
 import { FormFieldGroupHeader } from '../FormFieldGroupHeader';
-import { Button } from '../../Button';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 test('Check form field group example against snapshot', () => {
   const FieldGroup = (
@@ -44,7 +47,7 @@ test('Check expandable form field group example against snapshot', () => {
 });
 
 test('Verify console error logged when there is no aria-label or title', () => {
-  const consoleErrorMock = jest.fn();
+  const consoleErrorMock = vi.fn();
   global.console = { error: consoleErrorMock } as any;
   const FieldGroup = (
     <FormFieldGroupExpandable

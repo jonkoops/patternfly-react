@@ -1,11 +1,13 @@
-import * as React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-import { Alert } from '../../Alert';
-import { AlertGroup } from '../../Alert';
 import { AlertActionCloseButton } from '../../../components/Alert/AlertActionCloseButton';
+import { Alert, AlertGroup } from '../../Alert';
 
 test('Alert Group renders without children', () => {
   render(
@@ -30,7 +32,7 @@ test('Alert Group works with n children', () => {
 
 test('Alert group overflow shows up', async () => {
   const overflowMessage = 'View 2 more alerts';
-  const onOverflowClick = jest.fn();
+  const onOverflowClick = vi.fn();
   const user = userEvent.setup();
 
   render(
@@ -69,7 +71,7 @@ test('Toast Alert Group contains expected modifier class', () => {
 });
 
 test('alertgroup closes when alerts are closed', async () => {
-  const onClose = jest.fn();
+  const onClose = vi.fn();
   const user = userEvent.setup();
 
   render(

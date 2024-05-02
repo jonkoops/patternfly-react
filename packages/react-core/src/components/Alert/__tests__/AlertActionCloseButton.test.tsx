@@ -1,11 +1,15 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { AlertActionCloseButton } from '../AlertActionCloseButton';
 import { AlertContext } from '../AlertContext';
 
-jest.mock('../../Button');
+vi.mock('../../Button');
 
 test('Renders without children', () => {
   render(
@@ -48,7 +52,7 @@ test('Renders a Button with variant: ButtonVariant.plain', () => {
 });
 
 test('Does not call the callback provided via onClose when it is not clicked', () => {
-  const onCloseMock = jest.fn();
+  const onCloseMock = vi.fn();
 
   render(
     <AlertContext.Provider value={{ title: 'title', variantLabel: 'variantLabel' }}>
@@ -60,7 +64,7 @@ test('Does not call the callback provided via onClose when it is not clicked', (
 });
 
 test('Calls the callback provided via onClose when clicked', async () => {
-  const onCloseMock = jest.fn();
+  const onCloseMock = vi.fn();
   const user = userEvent.setup();
 
   render(

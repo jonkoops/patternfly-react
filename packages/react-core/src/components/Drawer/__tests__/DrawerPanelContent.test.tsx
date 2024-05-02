@@ -1,9 +1,14 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
-import { DrawerPanelContent } from '../DrawerPanelContent';
-import { Drawer } from '../Drawer';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+import { Drawer } from '../Drawer';
+import { DrawerPanelContent } from '../DrawerPanelContent';
+
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 test('Does not render with aria-labelledby by default', () => {
   render(

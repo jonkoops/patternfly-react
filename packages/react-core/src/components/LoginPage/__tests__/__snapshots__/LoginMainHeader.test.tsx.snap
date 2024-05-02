@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LoginMainHeader className is added to the root element 1`] = `
+exports[`LoginMainHeader > className is added to the root element 1`] = `
 <DocumentFragment>
   <header
     class="pf-v5-c-login__main-header extra-class"
@@ -8,7 +8,7 @@ exports[`LoginMainHeader className is added to the root element 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LoginMainHeader renders with PatternFly Core styles 1`] = `
+exports[`LoginMainHeader > renders with PatternFly Core styles 1`] = `
 <DocumentFragment>
   <header
     class="pf-v5-c-login__main-header"
@@ -16,7 +16,7 @@ exports[`LoginMainHeader renders with PatternFly Core styles 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LoginMainHeader title and subtitle are rendered correctly 1`] = `
+exports[`LoginMainHeader > title and subtitle are rendered correctly 1`] = `
 <DocumentFragment>
   <header
     class="pf-v5-c-login__main-header"

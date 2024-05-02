@@ -1,17 +1,24 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Alert/alert';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { AlertIcon } from '../AlertIcon';
-import styles from '@patternfly/react-styles/css/components/Alert/alert';
 
-jest.mock('@patternfly/react-icons/dist/esm/icons/check-circle-icon', () => () => 'Check circle icon mock');
-jest.mock('@patternfly/react-icons/dist/esm/icons/exclamation-circle-icon', () => () => 'Exclamation circle icon mock');
-jest.mock(
-  '@patternfly/react-icons/dist/esm/icons/exclamation-triangle-icon',
-  () => () => 'Exclamation triangle icon mock'
-);
-jest.mock('@patternfly/react-icons/dist/esm/icons/info-circle-icon', () => () => 'Info circle icon mock');
-jest.mock('@patternfly/react-icons/dist/esm/icons/bell-icon', () => () => 'Bell icon mock');
+vi.mock('@patternfly/react-icons/dist/esm/icons/check-circle-icon', () => ({
+  default: () => 'Check circle icon mock'
+}));
+vi.mock('@patternfly/react-icons/dist/esm/icons/exclamation-circle-icon', () => ({
+  default: () => 'Exclamation circle icon mock'
+}));
+vi.mock('@patternfly/react-icons/dist/esm/icons/exclamation-triangle-icon', () => ({
+  default: () => 'Exclamation triangle icon mock'
+}));
+vi.mock('@patternfly/react-icons/dist/esm/icons/info-circle-icon', () => ({ default: () => 'Info circle icon mock' }));
+vi.mock('@patternfly/react-icons/dist/esm/icons/bell-icon', () => ({ default: () => 'Bell icon mock' }));
 
 test('Renders without children', () => {
   render(

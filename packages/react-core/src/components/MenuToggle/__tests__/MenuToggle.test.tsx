@@ -1,11 +1,16 @@
-import React from 'react';
-import { MenuToggle } from '../MenuToggle';
-import { MenuToggleCheckbox } from '../MenuToggleCheckbox';
-import { Badge } from '../../Badge';
+/**
+ * @vitest-environment jsdom
+ */
 import CogIcon from '@patternfly/react-icons/dist/esm/icons/cog-icon';
 import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
-import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
+import { Badge } from '../../Badge';
+import { MenuToggle } from '../MenuToggle';
+import { MenuToggleCheckbox } from '../MenuToggleCheckbox';
 
 describe('menu toggle', () => {
   test('renders successfully', () => {
@@ -73,7 +78,7 @@ describe('menu toggle', () => {
   });
 
   test('split toggle passes onClick', async () => {
-    const mockClick = jest.fn();
+    const mockClick = vi.fn();
     const user = userEvent.setup();
 
     render(

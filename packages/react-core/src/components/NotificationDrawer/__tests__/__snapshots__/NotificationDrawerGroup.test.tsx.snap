@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NotificationDrawerGroup drawer group with isExpanded applied  1`] = `
+exports[`NotificationDrawerGroup > drawer group with isExpanded applied  1`] = `
 <DocumentFragment>
   <section
     class="pf-v5-c-notification-drawer__group pf-m-expanded"
@@ -47,7 +47,7 @@ exports[`NotificationDrawerGroup drawer group with isExpanded applied  1`] = `
 </DocumentFragment>
 `;
 
-exports[`NotificationDrawerGroup drawer group with isRead applied  1`] = `
+exports[`NotificationDrawerGroup > drawer group with isRead applied  1`] = `
 <DocumentFragment>
   <section
     class="pf-v5-c-notification-drawer__group"
@@ -94,7 +94,7 @@ exports[`NotificationDrawerGroup drawer group with isRead applied  1`] = `
 </DocumentFragment>
 `;
 
-exports[`NotificationDrawerGroup renders correct heading level 1`] = `
+exports[`NotificationDrawerGroup > renders correct heading level 1`] = `
 <DocumentFragment>
   <section
     class="pf-v5-c-notification-drawer__group"
@@ -141,7 +141,7 @@ exports[`NotificationDrawerGroup renders correct heading level 1`] = `
 </DocumentFragment>
 `;
 
-exports[`NotificationDrawerGroup renders with PatternFly Core styles 1`] = `
+exports[`NotificationDrawerGroup > renders with PatternFly Core styles 1`] = `
 <DocumentFragment>
   <section
     class="pf-v5-c-notification-drawer__group"

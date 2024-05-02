@@ -1,11 +1,11 @@
 /**
- * This test was generated
+ * @vitest-environment jsdom
  */
-import * as React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
+import { expect, it } from 'vitest';
+
 import { OptionsMenuSeparator } from '../../OptionsMenuSeparator';
-// any missing imports can usually be resolved by adding them here
-import {} from '../..';
 
 it('OptionsMenuSeparator should match snapshot (auto-generated)', () => {
   const { asFragment } = render(<OptionsMenuSeparator className={"''"} />);

@@ -1,8 +1,13 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
-import { Wizard, WizardStepFunctionType, WizardStep } from '../Wizard';
-import { DrawerPanelContent, DrawerColorVariant, DrawerHead } from '../../../../../src/components/Drawer';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
+
+import { DrawerColorVariant, DrawerHead, DrawerPanelContent } from '../../../../../src/components/Drawer';
+import { Wizard, WizardStep, WizardStepFunctionType } from '../Wizard';
 
 describe('Wizard', () => {
   test('Wizard should match snapshot', () => {
@@ -199,7 +204,7 @@ describe('Wizard', () => {
     const stepC = { name: 'C', component: <p>Step 3</p> };
 
     const steps: WizardStep[] = [stepA, stepB, stepC];
-    const setter = jest.fn();
+    const setter = vi.fn();
     const user = userEvent.setup();
 
     render(<Wizard title="Wiz title" onCurrentStepChanged={setter} steps={steps} />);

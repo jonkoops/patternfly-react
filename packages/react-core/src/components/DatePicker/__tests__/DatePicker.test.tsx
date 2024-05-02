@@ -1,12 +1,15 @@
-import React from 'react';
-
-import { screen, render } from '@testing-library/react';
+/**
+ * @vitest-environment jsdom
+ */
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { HelperText, HelperTextItem } from '../../HelperText';
 import { DatePicker } from '../DatePicker';
 
-jest.mock('../../../helpers/util.ts');
+vi.mock('../../../helpers/util.ts');
 
 test('disabled date picker', () => {
   const { asFragment } = render(<DatePicker value="2020-11-20" isDisabled aria-label="disabled date picker" />);

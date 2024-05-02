@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SimpleList renders aria-labelled content 1`] = `
+exports[`SimpleList > renders aria-labelled content 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-simple-list"
@@ -45,7 +45,7 @@ exports[`SimpleList renders aria-labelled content 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SimpleList renders content 1`] = `
+exports[`SimpleList > renders content 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-simple-list"
@@ -89,7 +89,7 @@ exports[`SimpleList renders content 1`] = `
 </DocumentFragment>
 `;
 
-exports[`SimpleList renders grouped content 1`] = `
+exports[`SimpleList > renders grouped content 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-simple-list"

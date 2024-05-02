@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LabelGroup label group compact 1`] = `
+exports[`LabelGroup > label group compact 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-label-group"
@@ -87,7 +87,7 @@ exports[`LabelGroup label group compact 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LabelGroup label group default 1`] = `
+exports[`LabelGroup > label group default 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-label-group"
@@ -123,7 +123,7 @@ exports[`LabelGroup label group default 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LabelGroup label group with category 1`] = `
+exports[`LabelGroup > label group with category 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-label-group pf-m-category"
@@ -166,7 +166,7 @@ exports[`LabelGroup label group with category 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LabelGroup label group with category and tooltip 1`] = `
+exports[`LabelGroup > label group with category and tooltip 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-label-group pf-m-category"
@@ -209,7 +209,7 @@ exports[`LabelGroup label group with category and tooltip 1`] = `
 </DocumentFragment>
 `;
 
-exports[`LabelGroup label group with closable category 1`] = `
+exports[`LabelGroup > label group with closable category 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-label-group pf-m-category"

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Select renders select groups successfully 1`] = `
+exports[`Select > renders select groups successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -184,7 +184,7 @@ exports[`Select renders select groups successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Select renders up direction successfully 1`] = `
+exports[`Select > renders up direction successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-top"
@@ -232,7 +232,7 @@ exports[`Select renders up direction successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Select single select renders closed successfully 1`] = `
+exports[`Select > single select > renders closed successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select"
@@ -280,7 +280,7 @@ exports[`Select single select renders closed successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Select single select renders disabled successfully 1`] = `
+exports[`Select > single select > renders disabled successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select"
@@ -329,7 +329,7 @@ exports[`Select single select renders disabled successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Select single select renders expanded in strict mode successfully 1`] = `
+exports[`Select > single select > renders expanded in strict mode successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -435,7 +435,7 @@ exports[`Select single select renders expanded in strict mode successfully 1`] =
 </DocumentFragment>
 `;
 
-exports[`Select single select renders expanded successfully 1`] = `
+exports[`Select > single select > renders expanded successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -541,7 +541,7 @@ exports[`Select single select renders expanded successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Select single select renders expanded successfully with custom objects 1`] = `
+exports[`Select > single select > renders expanded successfully with custom objects 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -634,7 +634,7 @@ exports[`Select single select renders expanded successfully with custom objects 
 </DocumentFragment>
 `;
 
-exports[`checkbox select renders checkbox select groups successfully 1`] = `
+exports[`checkbox select > renders checkbox select groups successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -827,7 +827,7 @@ exports[`checkbox select renders checkbox select groups successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`checkbox select renders checkbox select selections properly 1`] = `
+exports[`checkbox select > renders checkbox select selections properly 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select"
@@ -881,7 +881,7 @@ exports[`checkbox select renders checkbox select selections properly 1`] = `
 </DocumentFragment>
 `;
 
-exports[`checkbox select renders checkbox select selections properly when isCheckboxSelectionBadgeHidden is true 1`] = `
+exports[`checkbox select > renders checkbox select selections properly when isCheckboxSelectionBadgeHidden is true 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select"
@@ -926,7 +926,7 @@ exports[`checkbox select renders checkbox select selections properly when isChec
 </DocumentFragment>
 `;
 
-exports[`checkbox select renders closed successfully 1`] = `
+exports[`checkbox select > renders closed successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select"
@@ -971,7 +971,7 @@ exports[`checkbox select renders closed successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`checkbox select renders expanded successfully 1`] = `
+exports[`checkbox select > renders expanded successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -1078,7 +1078,7 @@ exports[`checkbox select renders expanded successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`checkbox select renders expanded successfully with custom objects 1`] = `
+exports[`checkbox select > renders expanded successfully with custom objects 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -1171,7 +1171,7 @@ exports[`checkbox select renders expanded successfully with custom objects 1`] =
 </DocumentFragment>
 `;
 
-exports[`checkbox select renders expanded with filtering successfully 1`] = `
+exports[`checkbox select > renders expanded with filtering successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -1656,7 +1656,7 @@ exports[`renders select with favorites successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`typeahead multi select renders closed successfully 1`] = `
+exports[`typeahead multi select > renders closed successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select"
@@ -1716,7 +1716,7 @@ exports[`typeahead multi select renders closed successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`typeahead multi select renders expanded successfully 1`] = `
+exports[`typeahead multi select > renders expanded successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -1834,7 +1834,7 @@ exports[`typeahead multi select renders expanded successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`typeahead multi select renders selected successfully 1`] = `
+exports[`typeahead multi select > renders selected successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -2106,7 +2106,7 @@ exports[`typeahead multi select renders selected successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`typeahead select renders closed successfully 1`] = `
+exports[`typeahead select > renders closed successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select"
@@ -2166,7 +2166,7 @@ exports[`typeahead select renders closed successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`typeahead select renders expanded successfully 1`] = `
+exports[`typeahead select > renders expanded successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"
@@ -2284,7 +2284,7 @@ exports[`typeahead select renders expanded successfully 1`] = `
 </DocumentFragment>
 `;
 
-exports[`typeahead select renders selected successfully 1`] = `
+exports[`typeahead select > renders selected successfully 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-select pf-m-expanded"

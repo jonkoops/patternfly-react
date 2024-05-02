@@ -1,8 +1,13 @@
-import * as React from 'react';
-import { FormSection } from '../FormSection';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+import { FormSection } from '../FormSection';
+
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 test('Check form section example against snapshot', () => {
   const Section = <FormSection />;

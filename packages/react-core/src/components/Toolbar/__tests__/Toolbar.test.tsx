@@ -1,16 +1,19 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
 
-import { ToolbarToggleGroup } from '../ToolbarToggleGroup';
+import { Button } from '../../Button/Button';
 import { Toolbar } from '../Toolbar';
-import { ToolbarItem } from '../ToolbarItem';
 import { ToolbarContent } from '../ToolbarContent';
 import { ToolbarFilter } from '../ToolbarFilter';
 import { ToolbarGroup } from '../ToolbarGroup';
-import { Button } from '../../Button/Button';
+import { ToolbarItem } from '../ToolbarItem';
+import { ToolbarToggleGroup } from '../ToolbarToggleGroup';
 
-jest.mock('../../../helpers/GenerateId/GenerateId');
+vi.mock('../../../helpers/GenerateId/GenerateId');
 
 describe('Toolbar', () => {
   it('should render inset', () => {

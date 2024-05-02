@@ -1,11 +1,15 @@
-import * as React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
+import styles from '@patternfly/react-styles/css/components/Panel/panel';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import React, { useEffect } from 'react';
+import { expect, test } from 'vitest';
+
 import { Panel } from '../Panel';
 import { PanelMain } from '../PanelMain';
 import { PanelMainBody } from '../PanelMainBody';
-import userEvent from '@testing-library/user-event';
-import { useEffect } from 'react';
-import styles from '@patternfly/react-styles/css/components/Panel/panel';
 
 test('Renders without children', () => {
   render(

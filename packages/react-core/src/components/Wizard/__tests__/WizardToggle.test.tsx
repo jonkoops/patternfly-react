@@ -1,7 +1,10 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
 import { KeyTypes } from '../../../../helpers';
 import { WizardToggle, WizardToggleProps } from '../WizardToggle';
@@ -20,7 +23,7 @@ const defaultProps: WizardToggleProps = {
   'aria-label': 'Some label'
 };
 
-jest.mock('../WizardStep', () => ({ WizardStep: () => <div>step stub</div> }));
+vi.mock('../WizardStep', () => ({ WizardStep: () => <div>step stub</div> }));
 
 test('renders provided footer, nav, and current step content', () => {
   render(<WizardToggle {...defaultProps} />);
@@ -45,7 +48,7 @@ test('has expanded properties when isNavExpanded is true', async () => {
 });
 
 test('calls toggleNavExpanded on toggle button click', async () => {
-  const toggleNavExpanded = jest.fn();
+  const toggleNavExpanded = vi.fn();
   const user = userEvent.setup();
 
   render(<WizardToggle {...defaultProps} aria-label="Some label" toggleNavExpanded={toggleNavExpanded} />);

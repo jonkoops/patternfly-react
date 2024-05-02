@@ -1,7 +1,12 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { Tile } from '../Tile';
+/**
+ * @vitest-environment jsdom
+ */
 import PlusIcon from '@patternfly/react-icons/dist/esm/icons/plus-icon';
+import { render } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+
+import { Tile } from '../Tile';
 
 describe('Tile', () => {
   test('basic', () => {

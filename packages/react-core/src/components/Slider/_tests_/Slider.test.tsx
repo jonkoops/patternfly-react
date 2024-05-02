@@ -1,7 +1,12 @@
-import React from 'react';
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
-import { Slider } from '../Slider';
+import React from 'react';
+import { describe, expect, test } from 'vitest';
+
 import { Button } from '../../Button';
+import { Slider } from '../Slider';
 
 describe('slider', () => {
   test('renders continuous slider', () => {

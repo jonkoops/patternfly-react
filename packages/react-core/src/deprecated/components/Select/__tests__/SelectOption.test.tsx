@@ -1,6 +1,9 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { describe, expect, test, vi } from 'vitest';
 
 import { SelectOption, SelectOptionObject } from '../SelectOption';
 import { SelectProvider } from '../selectConstants';
@@ -32,7 +35,7 @@ describe('SelectOption', () => {
           shouldResetOnSelect: true
         }}
       >
-        <SelectOption id="option-1" value="test" sendRef={jest.fn()} data-testid="test-id" />
+        <SelectOption id="option-1" value="test" sendRef={vi.fn()} data-testid="test-id" />
       </SelectProvider>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -54,7 +57,7 @@ describe('SelectOption', () => {
           id="option-1"
           value="test"
           description="This is a description"
-          sendRef={jest.fn()}
+          sendRef={vi.fn()}
           data-testid="test-id"
         />
       </SelectProvider>
@@ -74,7 +77,7 @@ describe('SelectOption', () => {
           shouldResetOnSelect: true
         }}
       >
-        <SelectOption id="option-1" value="test" itemCount={3} sendRef={jest.fn()} data-testid="test-id" />
+        <SelectOption id="option-1" value="test" itemCount={3} sendRef={vi.fn()} data-testid="test-id" />
       </SelectProvider>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -92,7 +95,7 @@ describe('SelectOption', () => {
           shouldResetOnSelect: true
         }}
       >
-        <SelectOption id="option-1" value="test" sendRef={jest.fn()}>
+        <SelectOption id="option-1" value="test" sendRef={vi.fn()}>
           <div>test display</div>
         </SelectOption>
       </SelectProvider>
@@ -112,7 +115,7 @@ describe('SelectOption', () => {
           shouldResetOnSelect: true
         }}
       >
-        <SelectOption id="option-1" value={new User('Mr.', 'Test', 'User')} sendRef={jest.fn()} data-testid="test-id" />
+        <SelectOption id="option-1" value={new User('Mr.', 'Test', 'User')} sendRef={vi.fn()} data-testid="test-id" />
       </SelectProvider>
     );
     expect(asFragment()).toMatchSnapshot();
@@ -130,7 +133,7 @@ describe('SelectOption', () => {
           shouldResetOnSelect: true
         }}
       >
-        <SelectOption id="option-1" value={new User('Mr.', 'Test', 'User')} sendRef={jest.fn()}>
+        <SelectOption id="option-1" value={new User('Mr.', 'Test', 'User')} sendRef={vi.fn()}>
           <div>test display</div>
         </SelectOption>
       </SelectProvider>
@@ -150,7 +153,7 @@ describe('SelectOption', () => {
           shouldResetOnSelect: true
         }}
       >
-        <SelectOption id="option-1" value={new User('Mr.', 'Test', 'User')} sendRef={jest.fn()} component="div">
+        <SelectOption id="option-1" value={new User('Mr.', 'Test', 'User')} sendRef={vi.fn()} component="div">
           <div>test display</div>
         </SelectOption>
       </SelectProvider>
@@ -171,7 +174,7 @@ describe('SelectOption', () => {
             shouldResetOnSelect: true
           }}
         >
-          <SelectOption id="option-1" isDisabled value="test" sendRef={jest.fn()} data-testid="test-id" />
+          <SelectOption id="option-1" isDisabled value="test" sendRef={vi.fn()} data-testid="test-id" />
         </SelectProvider>
       );
 
@@ -193,7 +196,7 @@ describe('SelectOption', () => {
             shouldResetOnSelect: true
           }}
         >
-          <SelectOption id="option-1" isSelected value="test" sendRef={jest.fn()} data-testid="test-id" />
+          <SelectOption id="option-1" isSelected value="test" sendRef={vi.fn()} data-testid="test-id" />
         </SelectProvider>
       );
       expect(asFragment()).toMatchSnapshot();
@@ -213,7 +216,7 @@ describe('SelectOption', () => {
             shouldResetOnSelect: true
           }}
         >
-          <SelectOption id="option-1" isChecked value="test" sendRef={jest.fn()} data-testid="test-id" />
+          <SelectOption id="option-1" isChecked value="test" sendRef={vi.fn()} data-testid="test-id" />
         </SelectProvider>
       );
       expect(asFragment()).toMatchSnapshot();
@@ -222,7 +225,7 @@ describe('SelectOption', () => {
 
   describe('favorites warning', () => {
     test('generates warning when id is undefined and isFavorites is set', () => {
-      const myMock = jest.fn() as any;
+      const myMock = vi.fn() as any;
       global.console = { error: myMock } as any;
 
       render(
@@ -236,7 +239,7 @@ describe('SelectOption', () => {
             shouldResetOnSelect: true
           }}
         >
-          <SelectOption isFavorite value="test" sendRef={jest.fn()} />
+          <SelectOption isFavorite value="test" sendRef={vi.fn()} />
         </SelectProvider>
       );
 

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CardHeader actions are rendered 1`] = `
+exports[`CardHeader > actions are rendered 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-card__header"
@@ -12,7 +12,7 @@ exports[`CardHeader actions are rendered 1`] = `
 </DocumentFragment>
 `;
 
-exports[`CardHeader onExpand adds the toggle button 1`] = `
+exports[`CardHeader > onExpand adds the toggle button 1`] = `
 <DocumentFragment>
   <div
     class="pf-v5-c-card__header"

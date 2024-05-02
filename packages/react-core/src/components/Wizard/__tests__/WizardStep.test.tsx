@@ -1,10 +1,13 @@
-import React from 'react';
-
+/**
+ * @vitest-environment jsdom
+ */
 import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test, vi } from 'vitest';
 
-import { WizardStep, WizardStepProps } from '../WizardStep';
-import * as WizardContext from '../WizardContext';
 import { WizardStepType } from '..';
+import * as WizardContext from '../WizardContext';
+import { WizardStep, WizardStepProps } from '../WizardStep';
 
 const testStepProps: WizardStepProps = {
   id: 'test-step',
@@ -17,28 +20,24 @@ const testStep: WizardStepType = {
   index: 1
 };
 
-const setStep = jest.fn();
+const setStep = vi.fn();
 
 const wizardContext: WizardContext.WizardContextProps = {
   setStep,
   steps: [testStep],
   activeStep: testStep,
   footer: <>Wizard footer</>,
-  goToNextStep: jest.fn(),
-  goToPrevStep: jest.fn(),
-  close: jest.fn(),
-  goToStepById: jest.fn(),
-  goToStepByName: jest.fn(),
-  goToStepByIndex: jest.fn(),
-  setFooter: jest.fn(),
-  getStep: jest.fn()
+  goToNextStep: vi.fn(),
+  goToPrevStep: vi.fn(),
+  close: vi.fn(),
+  goToStepById: vi.fn(),
+  goToStepByName: vi.fn(),
+  goToStepByIndex: vi.fn(),
+  setFooter: vi.fn(),
+  getStep: vi.fn()
 };
 
-const useWizardContextSpy = jest.spyOn(WizardContext, 'useWizardContext');
-
-beforeEach(() => {
-  useWizardContextSpy.mockReturnValue(wizardContext);
-});
+vi.spyOn(WizardContext, 'useWizardContext').mockReturnValue(wizardContext);
 
 test('renders without children', () => {
   const { container } = render(<WizardStep id="test-step" name="Test step" />);

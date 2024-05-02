@@ -1,7 +1,12 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { ActionListItem } from '../ActionListItem';
+/**
+ * @vitest-environment jsdom
+ */
 import styles from '@patternfly/react-styles/css/components/ActionList/action-list';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
+import { expect, test } from 'vitest';
+
+import { ActionListItem } from '../ActionListItem';
 
 test('Renders without children', () => {
   render(<ActionListItem data-testid="action-list-item" />);
