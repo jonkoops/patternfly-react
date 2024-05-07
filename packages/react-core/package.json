@@ -43,7 +43,8 @@
     "clean": "rimraf dist components layouts helpers next deprecated",
     "generate": "node scripts/copyStyles.js",
     "subpaths": "node ../../scripts/exportSubpaths.js --config subpaths.config.json",
-    "clean:exports": "node scripts/cleanDistExports.js"
+    "clean:exports": "node scripts/cleanDistExports.js",
+    "lint:package": "publint"
   },
   "dependencies": {
     "@patternfly/react-icons": "^5.4.0-prerelease.2",

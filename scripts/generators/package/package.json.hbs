@@ -29,8 +29,9 @@
   "homepage": "https://github.com/patternfly/patternfly-react#readme",
   "scripts": {
     {{#if buildsWithTypescript}}
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
     {{/if}}
+    "lint:package": "publint"
   },
   "dependencies": {},
   "devDependencies": {

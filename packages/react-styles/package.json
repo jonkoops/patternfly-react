@@ -15,7 +15,8 @@
   },
   "scripts": {
     "generate": "rimraf css && node scripts/writeClassMaps.js && node scripts/copyStyles.js",
-    "clean": "rimraf dist css"
+    "clean": "rimraf dist css",
+    "lint:package": "publint"
   },
   "devDependencies": {
     "@patternfly/patternfly": "5.4.0-prerelease.2",

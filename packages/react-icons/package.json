@@ -26,7 +26,8 @@
   "scripts": {
     "build:single:packages": "node ../../scripts/build-single-packages.js --config single-packages.config.json",
     "clean": "rimraf dist src/icons src/index.js src/index.d.ts",
-    "generate": "rimraf dist/esm/icons dist/js/icons && node scripts/writeIcons.mjs"
+    "generate": "rimraf dist/esm/icons dist/js/icons && node scripts/writeIcons.mjs",
+    "lint:package": "publint"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.14.0",

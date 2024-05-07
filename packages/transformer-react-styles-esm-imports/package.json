@@ -6,6 +6,9 @@
   "main": "index.ts",
   "author": "Red Hat",
   "license": "MIT",
+  "scripts": {
+    "lint:package": "publint"
+  },
   "peerDependencies": {
     "typescript": ">=3.7.2"
   }

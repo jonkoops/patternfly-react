@@ -25,7 +25,8 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "serve:integration": "cd demo-app-ts && yarn serve:demo-app",
-    "test:integration": "node --max-old-space-size=4096 ./node_modules/.bin/cypress run"
+    "test:integration": "node --max-old-space-size=4096 ./node_modules/.bin/cypress run",
+    "lint:package": "publint"
   },
   "devDependencies": {
     "cypress": "^8.0.0",

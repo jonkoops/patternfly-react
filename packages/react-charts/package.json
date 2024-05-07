@@ -57,7 +57,8 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build:single:packages": "node ../../scripts/build-single-packages.js --config single-packages.config.json"
+    "build:single:packages": "node ../../scripts/build-single-packages.js --config single-packages.config.json",
+    "lint:package": "publint"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.157",

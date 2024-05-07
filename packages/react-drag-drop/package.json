@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/patternfly/patternfly-react/tree/main/packages/react-drag-drop#readme",
   "scripts": {
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "lint:package": "publint"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.0.8",

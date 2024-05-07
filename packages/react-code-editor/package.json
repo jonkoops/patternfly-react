@@ -26,7 +26,8 @@
   },
   "homepage": "https://github.com/patternfly/patternfly-react/tree/main/packages/react-code-editor#readme",
   "scripts": {
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "lint:package": "publint"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",

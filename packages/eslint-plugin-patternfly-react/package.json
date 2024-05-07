@@ -7,6 +7,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "lint:package": "publint"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/patternfly/patternfly-react.git"

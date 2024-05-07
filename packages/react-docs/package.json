@@ -19,7 +19,8 @@
     "start": "pf-docs-framework start",
     "serve": "pf-docs-framework serve public",
     "screenshots": "pf-docs-framework screenshots --urlPrefix http://localhost:5000",
-    "test:a11y": "patternfly-a11y --config patternfly-a11y.config"
+    "test:a11y": "patternfly-a11y --config patternfly-a11y.config",
+    "lint:package": "publint"
   },
   "dependencies": {
     "@patternfly/patternfly": "5.4.0-prerelease.2",
