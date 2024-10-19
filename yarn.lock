@@ -3142,7 +3142,7 @@ __metadata:
   dependencies:
     "@patternfly/react-styles": "workspace:^"
     "@patternfly/react-tokens": "workspace:^"
-    "@types/lodash": "npm:^4.17.5"
+    "@types/lodash": "npm:^4.17.12"
     fs-extra: "npm:^11.2.0"
     hoist-non-react-statics: "npm:^3.3.2"
     lodash: "npm:^4.17.21"
@@ -4338,10 +4338,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.17.5":
-  version: 4.17.5
-  resolution: "@types/lodash@npm:4.17.5"
-  checksum: 10c0/55924803ed853e72261512bd3eaf2c5b16558c3817feb0a3125ef757afe46e54b86f33d1960e40b7606c0ddab91a96f47966bf5e6006b7abfd8994c13b04b19b
+"@types/lodash@npm:^4.17.12":
+  version: 4.17.12
+  resolution: "@types/lodash@npm:4.17.12"
+  checksum: 10c0/106008f628ea3c74ed7ee7842dee79e230c84e3721ac38c293700031adb5bd130113048c22f476dbde0d0c119506b0fc447d4bd62eca922682d11e00e1377967
   languageName: node
   linkType: hard
 
