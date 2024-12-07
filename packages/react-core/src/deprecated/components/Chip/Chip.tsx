@@ -1,13 +1,13 @@
-import * as React from 'react';
+import { ReactNode, MouseEvent, Component, Fragment } from 'react';
 import { TooltipPosition } from '../../../components/Tooltip';
 import { Label, LabelProps } from '../../../components/Label';
 import { getOUIAProps, OUIAProps, getDefaultOUIAId } from '../../../helpers';
 
 export interface ChipProps extends LabelProps, OUIAProps {
   /** Badge to add to the chip. The badge will be rendered after the chip text. */
-  badge?: React.ReactNode;
+  badge?: ReactNode;
   /** Content rendered inside the chip text */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Aria Label for close button */
   closeBtnAriaLabel?: string;
   /** Additional classes added to the chip item */
@@ -17,9 +17,9 @@ export interface ChipProps extends LabelProps, OUIAProps {
   /** Flag indicating if chip is read only */
   isReadOnly?: boolean;
   /** Function that is called when clicking on the chip close button */
-  onClick?: (event: React.MouseEvent) => void;
+  onClick?: (event: MouseEvent) => void;
   /** @deprecated Component that will be used for chip. It is recommended that <button> or <li>  are used when the chip is an overflow chip. */
-  component?: React.ReactNode;
+  component?: ReactNode;
   /** Position of the tooltip which is displayed if text is longer */
   tooltipPosition?:
     | TooltipPosition
@@ -43,7 +43,7 @@ export interface ChipProps extends LabelProps, OUIAProps {
   ouiaId?: number | string;
 }
 
-class Chip extends React.Component<ChipProps> {
+class Chip extends Component<ChipProps> {
   static displayName = 'Chip';
   constructor(props: ChipProps) {
     super(props);
@@ -55,7 +55,7 @@ class Chip extends React.Component<ChipProps> {
     isReadOnly: false,
     tooltipPosition: 'top' as 'auto' | 'top' | 'bottom' | 'left' | 'right',
 
-    onClick: (_e: React.MouseEvent) => undefined as any,
+    onClick: (_e: MouseEvent) => undefined as any,
     textMaxWidth: '16ch'
   };
 
@@ -95,7 +95,7 @@ class Chip extends React.Component<ChipProps> {
         {...props}
       >
         {children}
-        {badge && <React.Fragment> {badge}</React.Fragment>}
+        {badge && <Fragment> {badge}</Fragment>}
       </Label>
     );
   }

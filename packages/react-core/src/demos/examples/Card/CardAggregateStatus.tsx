@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import * as React from 'react';
+import { ReactNode, FunctionComponent, CSSProperties, Fragment } from 'react';
 import {
   Card,
   CardBody,
@@ -19,7 +19,7 @@ import ExclamationTriangleIcon from '@patternfly/react-icons/dist/js/icons/excla
 import l_gallery_GridTemplateColumns_min from '@patternfly/react-tokens/dist/esm/l_gallery_GridTemplateColumns_min';
 
 interface ContentType {
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   count?: number;
   status?: string;
   subtitle?: string;
@@ -223,7 +223,7 @@ const cardData: CardData = {
   ]
 };
 
-export const CardAggregateStatus: React.FunctionComponent = () => {
+export const CardAggregateStatus: FunctionComponent = () => {
   const renderContent = (content: ContentType[], layout: string) => {
     if (layout === 'icon') {
       return content[0].icon;
@@ -232,7 +232,7 @@ export const CardAggregateStatus: React.FunctionComponent = () => {
       return (
         <Flex display={{ default: 'inlineFlex' }}>
           {content.map(({ icon, count }, index: number) => (
-            <React.Fragment key={index}>
+            <Fragment key={index}>
               <Flex spaceItems={{ default: 'spaceItemsSm' }}>
                 <FlexItem>{icon}</FlexItem>
                 <FlexItem>
@@ -247,7 +247,7 @@ export const CardAggregateStatus: React.FunctionComponent = () => {
                   }}
                 />
               )}
-            </React.Fragment>
+            </Fragment>
           ))}
         </Flex>
       );
@@ -283,17 +283,14 @@ export const CardAggregateStatus: React.FunctionComponent = () => {
         }
         return (
           <GridItem key={groupIndex}>
-            <Gallery
-              hasGutter
-              style={{ [l_gallery_GridTemplateColumns_min.name]: galleryWidth } as React.CSSProperties}
-            >
+            <Gallery hasGutter style={{ [l_gallery_GridTemplateColumns_min.name]: galleryWidth } as CSSProperties}>
               {cardData[cardGroup].map(({ title, content, layout }, cardIndex: number) => (
                 <Card
-                  style={{ textAlign: cardAlign } as React.CSSProperties}
+                  style={{ textAlign: cardAlign } as CSSProperties}
                   key={`${groupIndex}${cardIndex}`}
                   component="div"
                 >
-                  <CardTitle style={{ textAlign: titleAlign } as React.CSSProperties}>{title}</CardTitle>
+                  <CardTitle style={{ textAlign: titleAlign } as CSSProperties}>{title}</CardTitle>
                   <CardBody>{renderContent(content, layout)}</CardBody>
                 </Card>
               ))}

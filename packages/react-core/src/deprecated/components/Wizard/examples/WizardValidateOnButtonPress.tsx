@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, useState, useEffect } from 'react';
 import {
   EmptyState,
   EmptyStateFooter,
@@ -25,8 +25,8 @@ interface finishedProps {
   onClose: () => void;
 }
 
-const FinishedStep: React.FunctionComponent<finishedProps> = (props: finishedProps) => {
-  const [percent, setPercent] = React.useState(0);
+const FinishedStep: FunctionComponent<finishedProps> = (props: finishedProps) => {
+  const [percent, setPercent] = useState(0);
 
   const tick = () => {
     setPercent((prevPercent) => {
@@ -38,7 +38,7 @@ const FinishedStep: React.FunctionComponent<finishedProps> = (props: finishedPro
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => tick(), 1000);
 
     if (percent >= 100) {
@@ -81,9 +81,9 @@ interface sampleFormProps {
   onChange?: (isValid: boolean, value: string) => void;
 }
 
-const SampleForm: React.FunctionComponent<sampleFormProps> = (props: sampleFormProps) => {
-  const [value, setValue] = React.useState(props.formValue);
-  const [isValid, setIsValid] = React.useState(props.isFormValid);
+const SampleForm: FunctionComponent<sampleFormProps> = (props: sampleFormProps) => {
+  const [value, setValue] = useState(props.formValue);
+  const [isValid, setIsValid] = useState(props.isFormValid);
 
   const handleTextInputChange = (_event, value: string) => {
     const valid = /^\d+$/.test(value);
@@ -116,11 +116,11 @@ const SampleForm: React.FunctionComponent<sampleFormProps> = (props: sampleFormP
   );
 };
 
-export const WizardValidateButtonPress: React.FunctionComponent = () => {
-  const [isFormValid, setIsFormValid] = React.useState(false);
-  const [formValue, setFormValue] = React.useState('Validating on button press');
-  const [stepsValid, setStepsValid] = React.useState(0);
-  const [errorText, setErrorText] = React.useState(false);
+export const WizardValidateButtonPress: FunctionComponent = () => {
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [formValue, setFormValue] = useState('Validating on button press');
+  const [stepsValid, setStepsValid] = useState(0);
+  const [errorText, setErrorText] = useState(false);
 
   const closeWizard = () => {
     // eslint-disable-next-line no-console

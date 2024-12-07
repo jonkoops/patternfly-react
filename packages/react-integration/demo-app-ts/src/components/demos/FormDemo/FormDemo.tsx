@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { RefObject, FormEvent, KeyboardEvent, Ref, createRef, Component } from 'react';
 import {
   Button,
   Divider,
@@ -74,14 +74,14 @@ export class FormDemo extends Component<FormProps, FormState> {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
-  labelHelpRef: React.RefObject<HTMLSpanElement> = React.createRef();
-  textInputRef: React.RefObject<HTMLInputElement> = React.createRef();
+  labelHelpRef: RefObject<HTMLSpanElement> = createRef();
+  textInputRef: RefObject<HTMLInputElement> = createRef();
 
-  handleTextInputChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  handleTextInputChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     this.setState({ value, isValid: /^\d+$/.test(value) });
   };
 
-  handleValidatedTextInputChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  handleValidatedTextInputChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     let validated = ValidatedOptions.default;
     if (value.length === 0) {
       validated = ValidatedOptions.warning;
@@ -183,7 +183,7 @@ export class FormDemo extends Component<FormProps, FormState> {
     this.setActiveAndFocusedItem(indexToFocus);
   };
 
-  onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  onInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     const { selectOptions, isOpen, focusedItemIndex } = this.state;
     const focusedItem = focusedItemIndex !== null ? selectOptions[focusedItemIndex] : null;
 
@@ -230,7 +230,7 @@ export class FormDemo extends Component<FormProps, FormState> {
     }
   };
 
-  onTextInputChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  onTextInputChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     let newSelectOptions: SelectOptionProps[] = initialSelectOptions;
     if (value) {
       newSelectOptions = initialSelectOptions.filter((menuItem) =>
@@ -279,7 +279,7 @@ export class FormDemo extends Component<FormProps, FormState> {
     } = this.state;
     const titleId = 'multi-typeahead-select-id';
 
-    const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+    const toggle = (toggleRef: Ref<MenuToggleElement>) => (
       <MenuToggle
         variant="typeahead"
         aria-label="Multi typeahead menu toggle"

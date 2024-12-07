@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { FormEvent, Component } from 'react';
 import { Switch, Button } from '@patternfly/react-core';
 import { Table, TableBody, TableHeader } from '@patternfly/react-table/deprecated';
 
@@ -28,11 +28,11 @@ export class SwitchDemo extends Component<{}, SwitchState> {
     }
   };
 
-  handleChangeSimple = (_event: React.FormEvent<HTMLInputElement>, isChecked: boolean) => {
+  handleChangeSimple = (_event: FormEvent<HTMLInputElement>, isChecked: boolean) => {
     this.setState({ simple: { isChecked } });
   };
 
-  handleChangeTable = (id: string) => (_event: React.FormEvent<HTMLInputElement>, isChecked: boolean) => {
+  handleChangeTable = (id: string) => (_event: FormEvent<HTMLInputElement>, isChecked: boolean) => {
     this.setState({
       table: {
         ...this.state.table,

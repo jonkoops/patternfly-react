@@ -1,16 +1,32 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Select, SelectOption, SelectList, MenuToggle, MenuToggleElement, Checkbox } from '@patternfly/react-core';
 
-export const SelectBasic: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<string>('Select a value');
-  const [isDisabled, setIsDisabled] = React.useState<boolean>(false);
+export const SelectBasic: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<string>('Select a value');
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
   const onToggleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
     // eslint-disable-next-line no-console
     console.log('selected', value);
 
@@ -18,7 +34,7 @@ export const SelectBasic: React.FunctionComponent = () => {
     setIsOpen(false);
   };
 
-  const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const toggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       ref={toggleRef}
       onClick={onToggleClick}
@@ -27,7 +43,7 @@ export const SelectBasic: React.FunctionComponent = () => {
       style={
         {
           width: '200px'
-        } as React.CSSProperties
+        } as CSSProperties
       }
     >
       {selected}
@@ -35,7 +51,7 @@ export const SelectBasic: React.FunctionComponent = () => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <Checkbox
         id="toggle-disabled"
         label="isDisabled"
@@ -58,6 +74,6 @@ export const SelectBasic: React.FunctionComponent = () => {
           <SelectOption value="Option 3">Option 3</SelectOption>
         </SelectList>
       </Select>
-    </React.Fragment>
+    </>
   );
 };

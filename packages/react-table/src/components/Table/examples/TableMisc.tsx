@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Table, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table';
 /* eslint-disable camelcase */
 import t_global_background_color_secondary_default from '@patternfly/react-tokens/dist/esm/t_global_background_color_secondary_default';
@@ -11,7 +11,7 @@ interface Repository {
   lastCommit: string;
 }
 
-export const TableMisc: React.FunctionComponent = () => {
+export const TableMisc: FunctionComponent = () => {
   // In real usage, this data would come from some external source like an API via props.
   const repositories: Repository[] = [
     { name: 'one', branches: 'two', prs: 'three', workspaces: 'four', lastCommit: 'five' },

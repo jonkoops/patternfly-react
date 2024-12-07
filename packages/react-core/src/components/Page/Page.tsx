@@ -1,4 +1,24 @@
-import * as React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  createRef,
+  type TransitionEvent as ReactTransitionEvent,
+  ReactElement,
+  Component
+} from 'react';
 import styles from '@patternfly/react-styles/css/components/Page/page';
 import { css } from '@patternfly/react-styles';
 import globalBreakpointXl from '@patternfly/react-tokens/dist/esm/t_global_breakpoint_xl';
@@ -15,17 +35,17 @@ export enum PageLayouts {
   vertical = 'vertical',
   horizontal = 'horizontal'
 }
-export interface PageProps extends React.HTMLProps<HTMLDivElement> {
+export interface PageProps extends HTMLProps<HTMLDivElement> {
   /** Content rendered inside the main section of the page layout (e.g. <PageSection />) */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the page layout */
   className?: string;
   /** Masthead component (e.g. <Masthead />) */
-  masthead?: React.ReactNode;
+  masthead?: ReactNode;
   /** Sidebar component for a side nav (e.g. <PageSidebar />) */
-  sidebar?: React.ReactNode;
+  sidebar?: ReactNode;
   /** Notification drawer component for an optional notification drawer (e.g. <NotificationDrawer />) */
-  notificationDrawer?: React.ReactNode;
+  notificationDrawer?: ReactNode;
   /** Flag indicating Notification drawer in expanded */
   isNotificationDrawerExpanded?: boolean;
   /** Sets default drawer size */
@@ -37,9 +57,9 @@ export interface PageProps extends React.HTMLProps<HTMLDivElement> {
   /** Flag indicating if breadcrumb width should be limited */
   isBreadcrumbWidthLimited?: boolean;
   /** Callback when notification drawer panel is finished expanding. */
-  onNotificationDrawerExpand?: (event: KeyboardEvent | React.MouseEvent | React.TransitionEvent) => void;
+  onNotificationDrawerExpand?: (event: KeyboardEvent | ReactMouseEvent | ReactTransitionEvent) => void;
   /** Skip to content component for the page */
-  skipToContent?: React.ReactElement;
+  skipToContent?: ReactElement;
   /** Sets the value for role on the <main> element */
   role?: string;
   /** an id to use for the [role="main"] element */
@@ -61,7 +81,7 @@ export interface PageProps extends React.HTMLProps<HTMLDivElement> {
    * Can add callback to be notified when resize occurs, for example to set the sidebar isSidebarOpen prop to false for a width < 768px
    * Returns object { mobileView: boolean, windowSize: number }
    */
-  onPageResize?: ((event: MouseEvent | TouchEvent | React.KeyboardEvent, object: any) => void) | null;
+  onPageResize?: ((event: MouseEvent | TouchEvent | KeyboardEvent, object: any) => void) | null;
   /**
    * The page resize observer uses the breakpoints returned from this function when adding the pf-m-breakpoint-[default|sm|md|lg|xl|2xl] class
    * You can override the default getBreakpoint function to return breakpoints at different sizes than the default
@@ -78,11 +98,11 @@ export interface PageProps extends React.HTMLProps<HTMLDivElement> {
   getVerticalBreakpoint?: (height: number | null) => 'default' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
   /** Banner component for the page. This will be rendered above a breadcrumb if one is also passed.
    */
-  banner?: React.ReactNode;
+  banner?: ReactNode;
   /** Breadcrumb component for the page */
-  breadcrumb?: React.ReactNode;
+  breadcrumb?: ReactNode;
   /** Horizontal sub navigation component for the page */
-  horizontalSubnav?: React.ReactNode;
+  horizontalSubnav?: ReactNode;
   /** Accessible label, can be used to name main section */
   mainAriaLabel?: string;
   /** Flag indicating if the horizontal sub navigation should be in a group */
@@ -90,7 +110,7 @@ export interface PageProps extends React.HTMLProps<HTMLDivElement> {
   /** Flag indicating if the breadcrumb should be in a group */
   isBreadcrumbGrouped?: boolean;
   /** Additional content of the group */
-  additionalGroupedContent?: React.ReactNode;
+  additionalGroupedContent?: ReactNode;
   /** HTML component used as main component of the page. Defaults to 'main', only pass in 'div' if another 'main' element already exists. */
   mainComponent?: 'main' | 'div';
   /** Additional props of the group */
@@ -109,7 +129,7 @@ export interface PageState {
   height: number;
 }
 
-class Page extends React.Component<PageProps, PageState> {
+class Page extends Component<PageProps, PageState> {
   static displayName = 'Page';
   static defaultProps: PageProps = {
     isManagedSidebar: false,
@@ -122,8 +142,8 @@ class Page extends React.Component<PageProps, PageState> {
     getBreakpoint,
     getVerticalBreakpoint
   };
-  mainRef = React.createRef<HTMLDivElement>();
-  pageRef = React.createRef<HTMLDivElement>();
+  mainRef = createRef<HTMLDivElement>();
+  pageRef = createRef<HTMLDivElement>();
   observer: any = () => {};
 
   constructor(props: PageProps) {
@@ -178,7 +198,7 @@ class Page extends React.Component<PageProps, PageState> {
     // eslint-disable-next-line radix
     this.getWindowWidth() < Number.parseInt(globalBreakpointXl.value, 10) * 16;
 
-  resize = (_event?: MouseEvent | TouchEvent | React.KeyboardEvent<Element>) => {
+  resize = (_event?: MouseEvent | TouchEvent | ReactKeyboardEvent<Element>) => {
     const { onPageResize } = this.props;
     const mobileView = this.isMobile();
     if (onPageResize) {

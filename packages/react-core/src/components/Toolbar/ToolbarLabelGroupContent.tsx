@@ -1,16 +1,15 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, Component, RefObject } from 'react';
 import styles from '@patternfly/react-styles/css/components/Toolbar/toolbar';
 import { css } from '@patternfly/react-styles';
 import { canUseDOM } from '../../helpers/util';
 
-import { RefObject } from 'react';
 import { ToolbarItem } from './ToolbarItem';
 import { Button } from '../Button';
 import { ToolbarGroup } from './ToolbarGroup';
 import { globalBreakpoints } from './ToolbarUtils';
 import { PickOptional } from '../../helpers/typeUtils';
 
-export interface ToolbarLabelGroupContentProps extends React.HTMLProps<HTMLDivElement> {
+export interface ToolbarLabelGroupContentProps extends HTMLProps<HTMLDivElement> {
   /** Classes applied to root element of the data toolbar content row */
   className?: string;
   /** Flag indicating if a data toolbar toggle group's expandable content is expanded */
@@ -30,10 +29,10 @@ export interface ToolbarLabelGroupContentProps extends React.HTMLProps<HTMLDivEl
   /** The breakpoint at which the listed filters in label groups are collapsed down to a summary */
   collapseListedFiltersBreakpoint?: 'all' | 'md' | 'lg' | 'xl' | '2xl';
   /** Custom additional content appended to the generated labels. To maintain spacing and styling, each node should be a ToolbarItem or ToolbarGroup. This property will remove the built in "Clear all filters" button. */
-  customLabelGroupContent?: React.ReactNode;
+  customLabelGroupContent?: ReactNode;
 }
 
-class ToolbarLabelGroupContent extends React.Component<ToolbarLabelGroupContentProps> {
+class ToolbarLabelGroupContent extends Component<ToolbarLabelGroupContentProps> {
   static displayName = 'ToolbarLabelGroupContent';
   static defaultProps: PickOptional<ToolbarLabelGroupContentProps> = {
     clearFiltersButtonText: 'Clear all filters',

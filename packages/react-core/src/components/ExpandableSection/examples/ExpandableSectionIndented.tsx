@@ -1,11 +1,11 @@
-import React, { FormEvent } from 'react';
+import { FunctionComponent, MouseEvent, useState, FormEvent } from 'react';
 import { ExpandableSection, Checkbox } from '@patternfly/react-core';
 
-export const ExpandableSectionIndented: React.FunctionComponent = () => {
-  const [isExpanded, setIsExpanded] = React.useState(true);
-  const [isDisplayLgChecked, setIsDisplayLgChecked] = React.useState(false);
+export const ExpandableSectionIndented: FunctionComponent = () => {
+  const [isExpanded, setIsExpanded] = useState(true);
+  const [isDisplayLgChecked, setIsDisplayLgChecked] = useState(false);
 
-  const onToggle = (_event: React.MouseEvent, isExpanded: boolean) => {
+  const onToggle = (_event: MouseEvent, isExpanded: boolean) => {
     setIsExpanded(isExpanded);
   };
 

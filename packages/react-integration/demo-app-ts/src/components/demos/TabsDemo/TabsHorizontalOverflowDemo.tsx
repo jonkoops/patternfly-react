@@ -1,13 +1,29 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Tabs, Tab, TabTitleText, Checkbox } from '@patternfly/react-core';
 
-export const TabsHorizontalOverflowDemo: React.FunctionComponent = () => {
-  const [activeTabKey, setActiveTabKey] = React.useState<string | number>(0);
-  const [showTabCount, setShowTabCount] = React.useState(false);
-  const [defaultTitleText, setDefaultTitleText] = React.useState<string>();
-  const [toggleAriaLabel, setToggleAriaLabel] = React.useState<string>();
+export const TabsHorizontalOverflowDemo: FunctionComponent = () => {
+  const [activeTabKey, setActiveTabKey] = useState<string | number>(0);
+  const [showTabCount, setShowTabCount] = useState(false);
+  const [defaultTitleText, setDefaultTitleText] = useState<string>();
+  const [toggleAriaLabel, setToggleAriaLabel] = useState<string>();
 
-  const handleTabClick = (_event: React.MouseEvent<HTMLElement, MouseEvent>, tabIndex: string | number) => {
+  const handleTabClick = (_event: ReactMouseEvent<HTMLElement, MouseEvent>, tabIndex: string | number) => {
     setActiveTabKey(tabIndex);
   };
 

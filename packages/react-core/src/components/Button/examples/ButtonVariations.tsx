@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Button, Flex } from '@patternfly/react-core';
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
 import PlusCircleIcon from '@patternfly/react-icons/dist/esm/icons/plus-circle-icon';
@@ -6,7 +6,7 @@ import ExternalLinkSquareAltIcon from '@patternfly/react-icons/dist/esm/icons/ex
 import CopyIcon from '@patternfly/react-icons/dist/esm/icons/copy-icon';
 import BellIcon from '@patternfly/react-icons/dist/esm/icons/bell-icon';
 
-export const ButtonVariations: React.FunctionComponent = () => (
+export const ButtonVariations: FunctionComponent = () => (
   <>
     <Flex columnGap={{ default: 'columnGapSm' }}>
       <Button variant="primary" ouiaId="Primary">

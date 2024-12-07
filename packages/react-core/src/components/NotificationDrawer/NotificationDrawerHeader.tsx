@@ -1,13 +1,13 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, MouseEvent, FunctionComponent } from 'react';
 
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/NotificationDrawer/notification-drawer';
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
 import { Button, ButtonVariant } from '../Button';
 
-export interface NotificationDrawerHeaderProps extends React.HTMLProps<HTMLDivElement> {
+export interface NotificationDrawerHeaderProps extends HTMLProps<HTMLDivElement> {
   /**  Content rendered inside the drawer */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /**  Additional classes for notification drawer header. */
   className?: string;
   /** Adds custom accessible text to the notification drawer close button. */
@@ -17,14 +17,14 @@ export interface NotificationDrawerHeaderProps extends React.HTMLProps<HTMLDivEl
   /**  Notification drawer heading custom text which can be used instead of providing count/unreadText */
   customText?: string;
   /**  Callback for when close button is clicked */
-  onClose?: (event: KeyboardEvent | React.MouseEvent) => void;
+  onClose?: (event: KeyboardEvent | MouseEvent) => void;
   /**  Notification drawer heading title */
   title?: string;
   /**  Notification drawer heading unread text used in combination with a count */
   unreadText?: string;
 }
 
-export const NotificationDrawerHeader: React.FunctionComponent<NotificationDrawerHeaderProps> = ({
+export const NotificationDrawerHeader: FunctionComponent<NotificationDrawerHeaderProps> = ({
   children,
   className = '',
   count,

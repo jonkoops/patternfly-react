@@ -1,9 +1,9 @@
-import React from 'react';
+import { FunctionComponent, Fragment } from 'react';
 import { PageSection, PageSectionTypes, Wizard, WizardStep } from '@patternfly/react-core';
 import { DashboardWrapper } from '@patternfly/react-core/src/demos/DashboardWrapper';
 
-export const WizardFullPage: React.FunctionComponent = () => (
-  <React.Fragment>
+export const WizardFullPage: FunctionComponent = () => (
+  <Fragment>
     <DashboardWrapper hasPageTemplateTitle>
       <PageSection type={PageSectionTypes.wizard}>
         <Wizard>
@@ -31,5 +31,5 @@ export const WizardFullPage: React.FunctionComponent = () => (
         </Wizard>
       </PageSection>
     </DashboardWrapper>
-  </React.Fragment>
+  </Fragment>
 );

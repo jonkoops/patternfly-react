@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Button, Flex } from '@patternfly/react-core';
 
-export const ButtonSmall: React.FunctionComponent = () => (
+export const ButtonSmall: FunctionComponent = () => (
   <Flex columnGap={{ default: 'columnGapSm' }}>
     <Button variant="primary" size="sm">
       Primary

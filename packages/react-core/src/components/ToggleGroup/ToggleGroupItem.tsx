@@ -1,13 +1,29 @@
-import * as React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/ToggleGroup/toggle-group';
 import { ToggleGroupItemVariant, ToggleGroupItemElement } from './ToggleGroupItemElement';
 
-export interface ToggleGroupItemProps extends Omit<React.HTMLProps<HTMLDivElement>, 'onChange'> {
+export interface ToggleGroupItemProps extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
   /** Text rendered inside the toggle group item */
-  text?: React.ReactNode;
+  text?: ReactNode;
   /** Icon rendered inside the toggle group item */
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   /** Sets position of the icon when text is also passed in */
   iconPosition?: 'start' | 'end';
   /** Additional classes added to the toggle group item */
@@ -21,10 +37,10 @@ export interface ToggleGroupItemProps extends Omit<React.HTMLProps<HTMLDivElemen
   /** Optional id for the button within the toggle group item */
   buttonId?: string;
   /** A callback for when the toggle group item selection changes. */
-  onChange?: (event: React.MouseEvent<any> | React.KeyboardEvent | MouseEvent, selected: boolean) => void;
+  onChange?: (event: ReactMouseEvent<any> | KeyboardEvent | MouseEvent, selected: boolean) => void;
 }
 
-export const ToggleGroupItem: React.FunctionComponent<ToggleGroupItemProps> = ({
+export const ToggleGroupItem: FunctionComponent<ToggleGroupItemProps> = ({
   text,
   icon,
   iconPosition = 'start',

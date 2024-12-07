@@ -1,14 +1,14 @@
-import React from 'react';
+import { FunctionComponent, Fragment } from 'react';
 import { Label } from '@patternfly/react-core';
 import CubeIcon from '@patternfly/react-icons/dist/esm/icons/cube-icon';
 
-export const LabelFilled: React.FunctionComponent = () => {
+export const LabelFilled: FunctionComponent = () => {
   const logColor = (color: string) => {
     // eslint-disable-next-line no-console
     console.log(color, 'label clicked');
   };
   return (
-    <React.Fragment>
+    <Fragment>
       <strong>Non-status:</strong>
       <br />
       <br />
@@ -447,6 +447,6 @@ export const LabelFilled: React.FunctionComponent = () => {
       <Label status="custom" onClose={() => Function.prototype} textMaxWidth="16ch">
         Custom label with text that overflows
       </Label>
-    </React.Fragment>
+    </Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import { MouseEvent, HTMLProps, Component } from 'react';
 import {
   Button,
   Modal,
@@ -28,7 +28,7 @@ interface ModalDemoState {
   isCustomFocusModalOpen: boolean;
 }
 
-export class ModalDemo extends React.Component<React.HTMLProps<HTMLDivElement>, ModalDemoState> {
+export class ModalDemo extends Component<HTMLProps<HTMLDivElement>, ModalDemoState> {
   static displayName = 'ModalDemo';
 
   state = {
@@ -47,7 +47,7 @@ export class ModalDemo extends React.Component<React.HTMLProps<HTMLDivElement>, 
     isCustomFocusModalOpen: false
   };
 
-  handleModalToggle = (_event: KeyboardEvent | React.MouseEvent) => {
+  handleModalToggle = (_event: KeyboardEvent | MouseEvent) => {
     this.setState(({ isModalOpen }) => ({
       isModalOpen: !isModalOpen
     }));

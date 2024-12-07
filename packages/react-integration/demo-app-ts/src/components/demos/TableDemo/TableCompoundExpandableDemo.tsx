@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { MouseEvent, Component } from 'react';
 import { compoundExpand, IRow, ICell, IRowCell } from '@patternfly/react-table';
 import { Table, TableHeader, TableBody, TableProps } from '@patternfly/react-table/deprecated';
 
@@ -195,7 +195,7 @@ export class TableCompoundExpandableDemo extends Component<TableProps, TableStat
     this.onExpand = this.onExpand.bind(this);
   }
 
-  onExpand(_event: React.MouseEvent, rowIndex: number, colIndex: number, isOpen: boolean) {
+  onExpand(_event: MouseEvent, rowIndex: number, colIndex: number, isOpen: boolean) {
     const newRows = Array.from(this.state.rows);
     const rowCells = Array.from(newRows[rowIndex].cells as IRowCell[]);
     const thisCell = rowCells[colIndex];

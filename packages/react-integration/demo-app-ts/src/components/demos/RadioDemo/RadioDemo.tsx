@@ -1,11 +1,11 @@
 import { Radio, RadioProps } from '@patternfly/react-core';
-import React, { Component } from 'react';
+import { FormEvent, Component } from 'react';
 export class RadioDemo extends Component {
   state = {
     value: '4'
   };
 
-  handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+  handleChange = (event: FormEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget;
     this.setState({ value });
   };

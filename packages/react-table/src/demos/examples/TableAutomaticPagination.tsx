@@ -1,8 +1,8 @@
-import React from 'react';
 import { Pagination } from '@patternfly/react-core';
-import { Table, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
+import { type FunctionComponent, type MouseEvent as ReactMouseEvent, useState } from 'react';
 
-export const TableAutomaticPagination: React.FunctionComponent = () => {
+export const TableAutomaticPagination: FunctionComponent = () => {
   const columns = {
     firstColumn: 'First column',
     secondColumn: 'Second column',
@@ -25,12 +25,12 @@ export const TableAutomaticPagination: React.FunctionComponent = () => {
   ];
   const defaultPerPage = 10;
 
-  const [perPage, setPerPage] = React.useState(defaultPerPage);
-  const [page, setPage] = React.useState(1);
-  const [rows, setRows] = React.useState(defaultRows.slice(0, defaultPerPage));
+  const [perPage, setPerPage] = useState(defaultPerPage);
+  const [page, setPage] = useState(1);
+  const [rows, setRows] = useState(defaultRows.slice(0, defaultPerPage));
 
   const handleSetPage = (
-    _evt: React.MouseEvent | React.KeyboardEvent | MouseEvent,
+    _evt: ReactMouseEvent | KeyboardEvent | MouseEvent,
     newPage: number,
     _perPage: number,
     startIdx: number,
@@ -41,7 +41,7 @@ export const TableAutomaticPagination: React.FunctionComponent = () => {
   };
 
   const handlePerPageSelect = (
-    _evt: React.MouseEvent | React.KeyboardEvent | MouseEvent,
+    _evt: ReactMouseEvent | KeyboardEvent | MouseEvent,
     newPerPage: number,
     newPage: number,
     startIdx: number,
@@ -74,7 +74,7 @@ export const TableAutomaticPagination: React.FunctionComponent = () => {
   );
 
   return (
-    <React.Fragment>
+    <>
       {renderPagination()}
       <Table aria-label="Automated Pagination Table Demo">
         <Thead>
@@ -96,6 +96,6 @@ export const TableAutomaticPagination: React.FunctionComponent = () => {
           ))}
         </Tbody>
       </Table>
-    </React.Fragment>
+    </>
   );
 };

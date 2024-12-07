@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   Menu,
   MenuList,
@@ -10,11 +26,11 @@ import {
   SearchInput
 } from '@patternfly/react-core';
 
-export const MenuFilteringWithSearchInput: React.FunctionComponent = () => {
-  const [activeItem, setActiveItem] = React.useState(0);
-  const [input, setInput] = React.useState('');
+export const MenuFilteringWithSearchInput: FunctionComponent = () => {
+  const [activeItem, setActiveItem] = useState(0);
+  const [input, setInput] = useState('');
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
     const item = itemId as number; // eslint-disable-next-line no-console
     console.log(`clicked ${itemId}`);
     setActiveItem(item);

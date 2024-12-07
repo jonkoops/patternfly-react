@@ -9,7 +9,7 @@ import {
 } from '@patternfly/react-core';
 import FolderIcon from '@patternfly/react-icons/dist/esm/icons/folder-icon';
 import FolderOpenIcon from '@patternfly/react-icons/dist/esm/icons/folder-open-icon';
-import React, { Component } from 'react';
+import { MouseEvent, ChangeEvent, Component } from 'react';
 
 export class TreeViewDemo extends Component {
   componentDidMount() {
@@ -135,19 +135,19 @@ export class TreeViewDemo extends Component {
     filteredItems: this.options
   };
 
-  onClick = (_evt: React.MouseEvent, treeViewItem: TreeViewDataItem, parentItem: TreeViewDataItem) => {
+  onClick = (_evt: MouseEvent, treeViewItem: TreeViewDataItem, parentItem: TreeViewDataItem) => {
     this.setState({
       activeItems: [treeViewItem, parentItem]
     });
   };
 
-  onClick2 = (_evt: React.MouseEvent, treeViewItem: TreeViewDataItem, parentItem: TreeViewDataItem) => {
+  onClick2 = (_evt: MouseEvent, treeViewItem: TreeViewDataItem, parentItem: TreeViewDataItem) => {
     this.setState({
       activeItems2: [treeViewItem, parentItem]
     });
   };
 
-  onChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  onChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const input = evt.target.value;
     if (input === '') {
       this.setState({ filteredItems: this.options });

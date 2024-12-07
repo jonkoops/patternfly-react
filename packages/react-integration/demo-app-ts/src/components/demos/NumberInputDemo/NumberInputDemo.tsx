@@ -1,5 +1,5 @@
 import { NumberInput } from '@patternfly/react-core';
-import React, { Component } from 'react';
+import { FormEvent, Component } from 'react';
 
 export interface NumberInputDemoState {
   value: number;
@@ -29,13 +29,13 @@ export class NumberInputDemo extends Component<NumberInputDemoState> {
     });
   };
 
-  onChange = (event: React.FormEvent<HTMLInputElement>) => {
+  onChange = (event: FormEvent<HTMLInputElement>) => {
     this.setState({
       value: Number((event.target as HTMLInputElement).value)
     });
   };
 
-  onChange2 = (event: React.FormEvent<HTMLInputElement>) => {
+  onChange2 = (event: FormEvent<HTMLInputElement>) => {
     this.setState({
       value2: Number((event.target as HTMLInputElement).value)
     });

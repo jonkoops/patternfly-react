@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactElement, Context, FunctionComponent, createContext, useState, useContext } from 'react';
 
 import { Radio, Wizard, WizardStep } from '@patternfly/react-core';
 
@@ -10,14 +10,14 @@ interface SomeContextProps {
 }
 type SomeContextRenderProps = Pick<SomeContextProps, 'successMessage', 'errorMessage'>;
 interface SomeContextProviderProps {
-  children: (context: SomeContextRenderProps) => React.ReactElement;
+  children: (context: SomeContextRenderProps) => ReactElement;
 }
 
-const SomeContext: React.Context<SomeContextProps> = React.createContext({} as SomeContextProps);
+const SomeContext: Context<SomeContextProps> = createContext({} as SomeContextProps);
 
 const SomeContextProvider = ({ children }: SomeContextProviderProps) => {
-  const [errorMessage, setErrorMessage] = React.useState<string>();
-  const [successMessage, setSuccessMessage] = React.useState<string>();
+  const [errorMessage, setErrorMessage] = useState<string>();
+  const [successMessage, setSuccessMessage] = useState<string>();
 
   return (
     <SomeContext.Provider value={{ errorMessage, setErrorMessage, successMessage, setSuccessMessage }}>
@@ -27,7 +27,7 @@ const SomeContextProvider = ({ children }: SomeContextProviderProps) => {
 };
 
 const StepContentWithAction = () => {
-  const { errorMessage, setErrorMessage, successMessage, setSuccessMessage } = React.useContext(SomeContext);
+  const { errorMessage, setErrorMessage, successMessage, setSuccessMessage } = useContext(SomeContext);
 
   return (
     <>
@@ -55,7 +55,7 @@ const StepContentWithAction = () => {
   );
 };
 
-export const WizardStepStatus: React.FunctionComponent = () => (
+export const WizardStepStatus: FunctionComponent = () => (
   <SomeContextProvider>
     {({ errorMessage, successMessage }) => {
       let status = 'default';

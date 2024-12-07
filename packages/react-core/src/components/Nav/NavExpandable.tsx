@@ -1,4 +1,23 @@
-import * as React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  Component,
+  DetailedHTMLProps,
+  LiHTMLAttributes
+} from 'react';
 import styles from '@patternfly/react-styles/css/components/Nav/nav';
 import { css } from '@patternfly/react-styles';
 import AngleRightIcon from '@patternfly/react-icons/dist/esm/icons/angle-right-icon';
@@ -9,16 +28,16 @@ import { PickOptional } from '../../helpers/typeUtils';
 import { getOUIAProps, OUIAProps, getDefaultOUIAId } from '../../helpers';
 
 export interface NavExpandableProps
-  extends Omit<React.DetailedHTMLProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>, 'title'>,
+  extends Omit<DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>, 'title'>,
     OUIAProps {
   /** Title content shown for the expandable list */
-  title: React.ReactNode;
+  title: ReactNode;
   /** If defined, screen readers will read this text instead of the list title */
   srText?: string;
   /** Boolean to programatically expand or collapse section */
   isExpanded?: boolean;
   /** Anything that can be rendered inside of the expandable list */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the container */
   className?: string;
   /** Group identifier, will be returned with the onToggle and onSelect callback passed to the Nav component */
@@ -28,7 +47,7 @@ export interface NavExpandableProps
   /** Identifier to use for the section aria label */
   id?: string;
   /** allow consumer to optionally override this callback and manage expand state externally. if passed will not call Nav's onToggle. */
-  onExpand?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, val: boolean) => void;
+  onExpand?: (event: ReactMouseEvent<HTMLButtonElement, MouseEvent>, val: boolean) => void;
   /** Additional props added to the NavExpandable <button> */
   buttonProps?: any;
   /** Value to overwrite the randomly generated data-ouia-component-id.*/
@@ -40,7 +59,7 @@ interface NavExpandableState {
   ouiaStateId: string;
 }
 
-class NavExpandable extends React.Component<NavExpandableProps, NavExpandableState> {
+class NavExpandable extends Component<NavExpandableProps, NavExpandableState> {
   static displayName = 'NavExpandable';
   static defaultProps: PickOptional<NavExpandableProps> = {
     srText: '',
@@ -70,9 +89,9 @@ class NavExpandable extends React.Component<NavExpandableProps, NavExpandableSta
   }
 
   onExpand = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event: ReactMouseEvent<HTMLButtonElement, MouseEvent>,
     onToggle: (
-      event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+      event: ReactMouseEvent<HTMLButtonElement, MouseEvent>,
       groupId: string | number,
       expandedState: boolean
     ) => void

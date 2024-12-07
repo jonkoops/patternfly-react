@@ -1,14 +1,14 @@
-import React from 'react';
+import { FunctionComponent, FormEvent, useState } from 'react';
 import { Card, CardHeader, CardBody, Gallery, Flex } from '@patternfly/react-core';
 import PlusIcon from '@patternfly/react-icons/dist/esm/icons/plus-icon';
 
-export const CardTile: React.FunctionComponent = () => {
-  const [isChecked, setIsChecked] = React.useState('');
+export const CardTile: FunctionComponent = () => {
+  const [isChecked, setIsChecked] = useState('');
   const id1 = 'tile-1';
   const id2 = 'tile-2';
   const id3 = 'tile-3';
 
-  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const onChange = (event: FormEvent<HTMLInputElement>) => {
     setIsChecked(event.currentTarget.id);
   };
 

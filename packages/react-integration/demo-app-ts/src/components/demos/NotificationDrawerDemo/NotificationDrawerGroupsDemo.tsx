@@ -1,4 +1,22 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  Component,
+  SyntheticEvent
+} from 'react';
 import {
   Button,
   EmptyState,
@@ -33,7 +51,7 @@ interface GroupsNotificationDrawerDemoState {
   thirdGroupExpanded: boolean;
 }
 
-class GroupsNotificationDrawerDemo extends React.Component<NotificationDrawerProps, GroupsNotificationDrawerDemoState> {
+class GroupsNotificationDrawerDemo extends Component<NotificationDrawerProps, GroupsNotificationDrawerDemoState> {
   static displayName = 'GroupsNotificationDrawerDemo';
   constructor(props: NotificationDrawerProps) {
     super(props);
@@ -46,7 +64,7 @@ class GroupsNotificationDrawerDemo extends React.Component<NotificationDrawerPro
     };
   }
 
-  onDrawerClose = (_event: KeyboardEvent | React.MouseEvent<Element, MouseEvent>) => {
+  onDrawerClose = (_event: KeyboardEvent | ReactMouseEvent<Element, MouseEvent>) => {
     this.setState({
       isDrawerOpen: false
     });
@@ -62,17 +80,17 @@ class GroupsNotificationDrawerDemo extends React.Component<NotificationDrawerPro
       isOpenMap: {}
     });
   };
-  toggleFirstDrawer = (_event: React.SyntheticEvent<HTMLElement>, value: boolean) => {
+  toggleFirstDrawer = (_event: SyntheticEvent<HTMLElement>, value: boolean) => {
     this.setState({
       firstGroupExpanded: value
     });
   };
-  toggleSecondDrawer = (_event: React.SyntheticEvent<HTMLElement>, value: boolean) => {
+  toggleSecondDrawer = (_event: SyntheticEvent<HTMLElement>, value: boolean) => {
     this.setState({
       secondGroupExpanded: value
     });
   };
-  toggleThirdDrawer = (_event: React.SyntheticEvent<HTMLElement>, value: boolean) => {
+  toggleThirdDrawer = (_event: SyntheticEvent<HTMLElement>, value: boolean) => {
     this.setState({
       thirdGroupExpanded: value
     });

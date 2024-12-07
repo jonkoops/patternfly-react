@@ -1,4 +1,4 @@
-import React from 'react';
+import { HTMLProps, ReactNode, ElementType, useState, useContext, useEffect } from 'react';
 
 import styles from '@patternfly/react-styles/css/components/Wizard/wizard';
 import { css } from '@patternfly/react-styles';
@@ -10,9 +10,9 @@ import { getResizeObserver } from '../../helpers/resizeObserver';
  * Used as a wrapper for WizardStep content, where the wrapping element is customizable.
  */
 
-export interface WizardBodyProps extends React.HTMLProps<HTMLElement> {
+export interface WizardBodyProps extends HTMLProps<HTMLElement> {
   /** Anything that can be rendered in the Wizard body */
-  children: React.ReactNode;
+  children: ReactNode;
   /** Additional classes spread to the wizard body */
   className?: string;
   /** Flag to remove the default body padding */
@@ -26,7 +26,7 @@ export interface WizardBodyProps extends React.HTMLProps<HTMLElement> {
    */
   'aria-labelledby'?: string;
   /** Component used as the wrapping content container */
-  component?: React.ElementType;
+  component?: ElementType;
 }
 
 export const WizardBody = ({
@@ -38,13 +38,13 @@ export const WizardBody = ({
   component = 'div',
   ...props
 }: WizardBodyProps) => {
-  const [hasScrollbar, setHasScrollbar] = React.useState(false);
-  const [previousWidth, setPreviousWidth] = React.useState<number | undefined>(undefined);
+  const [hasScrollbar, setHasScrollbar] = useState(false);
+  const [previousWidth, setPreviousWidth] = useState<number | undefined>(undefined);
   const WrapperComponent = component;
-  const { activeStep, shouldFocusContent, mainWrapperRef } = React.useContext(WizardContext);
+  const { activeStep, shouldFocusContent, mainWrapperRef } = useContext(WizardContext);
   const defaultAriaLabel = ariaLabel || `${activeStep?.name} content`;
 
-  React.useEffect(() => {
+  useEffect(() => {
     const resize = () => {
       if (mainWrapperRef?.current) {
         const { offsetWidth, offsetHeight, scrollHeight } = mainWrapperRef.current;

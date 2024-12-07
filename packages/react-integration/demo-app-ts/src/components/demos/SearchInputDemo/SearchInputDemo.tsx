@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { RefObject, createRef, Component } from 'react';
 import { SearchInput, SearchInputProps, Button } from '@patternfly/react-core';
 
 interface SearchInputState {
@@ -9,10 +9,10 @@ interface SearchInputState {
 
 export class SearchInputDemo extends Component<SearchInputProps, SearchInputState> {
   static displayName = 'SearchInputDemo';
-  inputRef: React.RefObject<HTMLInputElement>;
+  inputRef: RefObject<HTMLInputElement>;
   constructor(props: SearchInputProps) {
     super(props);
-    this.inputRef = React.createRef();
+    this.inputRef = createRef();
     this.state = {
       value: '',
       resultsCount: 0,

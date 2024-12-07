@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { FormEvent, Component } from 'react';
 import { headerCol, ICell, IRow, RowSelectVariant } from '@patternfly/react-table';
 import { Table, TableHeader, TableBody, TableProps } from '@patternfly/react-table/deprecated';
 import spacing from '@patternfly/react-styles/css/utilities/Spacing/spacing';
@@ -46,7 +46,7 @@ export class TableSelectableDemo extends Component<TableProps, TableState> {
     this.toggleSelect = this.toggleSelect.bind(this);
   }
 
-  onSelect(_event: React.FormEvent, isSelected: boolean, rowId: number) {
+  onSelect(_event: FormEvent, isSelected: boolean, rowId: number) {
     let rows: IRow[];
     if (rowId === -1 && this.state.selectVariant) {
       rows = this.state.rows.map((oneRow) => {

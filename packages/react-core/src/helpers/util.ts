@@ -1,4 +1,4 @@
-import * as ReactDOM from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import { globalWidthBreakpoints, globalHeightBreakpoints, SIDE } from './constants';
 
 /**
@@ -181,7 +181,7 @@ export function keyHandler(
       refsCollection[nextIndex].focus();
     }
     // eslint-disable-next-line react/no-find-dom-node
-    const element = ReactDOM.findDOMNode(refsCollection[nextIndex]) as HTMLElement;
+    const element = findDOMNode(refsCollection[nextIndex]) as HTMLElement;
     element.focus();
   } else if (position !== 'tab') {
     if (isMultiDimensional) {

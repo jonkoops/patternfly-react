@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { MenuToggle } from '@patternfly/react-core';
 
-export const MenuToggleSmall: React.FunctionComponent = () => <MenuToggle size="sm">Small toggle</MenuToggle>;
+export const MenuToggleSmall: FunctionComponent = () => <MenuToggle size="sm">Small toggle</MenuToggle>;

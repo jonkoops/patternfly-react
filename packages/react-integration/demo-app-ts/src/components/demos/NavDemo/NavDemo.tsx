@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { FormEvent, Component } from 'react';
 
 import {
   Nav,
@@ -41,17 +41,17 @@ export class NavDemo extends Component {
     window.scrollTo(0, 0);
   }
 
-  onDefaultSelect = (_event: React.FormEvent<HTMLInputElement>, result: SelectedItem) => {
+  onDefaultSelect = (_event: FormEvent<HTMLInputElement>, result: SelectedItem) => {
     this.setState({ defaultActiveItem: result.itemId });
   };
 
-  onFlyoutSelect = (_event: React.FormEvent<HTMLInputElement>, result: SelectedItem) => {
+  onFlyoutSelect = (_event: FormEvent<HTMLInputElement>, result: SelectedItem) => {
     this.setState({ flyoutActiveItem: result.itemId });
   };
 
   handleNoNavigateLink = (
     /* eslint-disable no-console */
-    _event: React.FormEvent<HTMLInputElement>,
+    _event: FormEvent<HTMLInputElement>,
     itemId: number | string
   ): void => {
     console.log(`No Navigate Link clicked: ${itemId}`);
@@ -89,7 +89,7 @@ export class NavDemo extends Component {
                 isActive={defaultActiveItem === 4}
                 onClick={
                   this.handleNoNavigateLink as (
-                    e: React.FormEvent<HTMLInputElement>,
+                    e: FormEvent<HTMLInputElement>,
                     itemId: number | string,
                     groupId: number | string,
                     to: string
@@ -105,7 +105,7 @@ export class NavDemo extends Component {
     );
   }
 
-  onExpandableSelect = (_event: React.FormEvent<HTMLInputElement>, result: SelectedItem) => {
+  onExpandableSelect = (_event: FormEvent<HTMLInputElement>, result: SelectedItem) => {
     this.setState({
       expandableActiveGroup: result.groupId,
       expandableActiveItem: result.itemId
@@ -113,7 +113,7 @@ export class NavDemo extends Component {
   };
 
   handleItemOnclick = (
-    _event: React.FormEvent<HTMLInputElement>,
+    _event: FormEvent<HTMLInputElement>,
     itemId: number | string,
     groupId: number | string
   ): void => {
@@ -241,7 +241,7 @@ export class NavDemo extends Component {
     );
   }
 
-  onHorizontalSelect = (_event: React.FormEvent<HTMLInputElement>, result: SelectedItem) => {
+  onHorizontalSelect = (_event: FormEvent<HTMLInputElement>, result: SelectedItem) => {
     this.setState({ horizontalActiveItem: result.itemId });
   };
 

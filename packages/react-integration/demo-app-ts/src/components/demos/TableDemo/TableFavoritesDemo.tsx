@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { FormEvent, MouseEvent, Component } from 'react';
 import { sortable, ICell, IRow, ISortBy } from '@patternfly/react-table';
 import { Table, TableHeader, TableBody, TableProps } from '@patternfly/react-table/deprecated';
 import { Checkbox } from '@patternfly/react-core';
@@ -50,7 +50,7 @@ export class TableFavoritesDemo extends Component<TableProps, TableState> {
     this.toggleFavsSort = this.toggleFavsSort.bind(this);
   }
 
-  onSelect(_event: React.FormEvent, isSelected: boolean, rowId: number) {
+  onSelect(_event: FormEvent, isSelected: boolean, rowId: number) {
     let rows;
     if (rowId === -1) {
       // header row
@@ -68,7 +68,7 @@ export class TableFavoritesDemo extends Component<TableProps, TableState> {
     });
   }
 
-  onFavorite(_event: React.MouseEvent, isFavorited: boolean, rowId: number) {
+  onFavorite(_event: MouseEvent, isFavorited: boolean, rowId: number) {
     this.setState({
       rows: this.state.rows.map((row, index) => {
         if (index === rowId) {
@@ -84,7 +84,7 @@ export class TableFavoritesDemo extends Component<TableProps, TableState> {
     });
   }
 
-  onSort(_: React.MouseEvent, index: number, direction: 'asc' | 'desc') {
+  onSort(_: MouseEvent, index: number, direction: 'asc' | 'desc') {
     let sortedRows;
     if (index === 1) {
       // favorites column

@@ -1,11 +1,11 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent, createContext } from 'react';
 import styles from '@patternfly/react-styles/css/components/Card/card';
 import { css } from '@patternfly/react-styles';
 import { useOUIAProps, OUIAProps } from '../../helpers';
 
-export interface CardProps extends React.HTMLProps<HTMLElement>, OUIAProps {
+export interface CardProps extends HTMLProps<HTMLElement>, OUIAProps {
   /** Content rendered inside the Card */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** ID of the Card. Also passed back in the CardHeader onExpand callback. */
   id?: string;
   /** Additional classes added to the Card */
@@ -54,7 +54,7 @@ interface CardContextProps {
   isDisabled: boolean;
 }
 
-export const CardContext = React.createContext<Partial<CardContextProps>>({
+export const CardContext = createContext<Partial<CardContextProps>>({
   cardId: '',
   isExpanded: false,
   isClickable: false,
@@ -64,7 +64,7 @@ export const CardContext = React.createContext<Partial<CardContextProps>>({
   isDisabled: false
 });
 
-export const Card: React.FunctionComponent<CardProps> = ({
+export const Card: FunctionComponent<CardProps> = ({
   children,
   id = '',
   className,

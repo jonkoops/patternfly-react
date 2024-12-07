@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/ExpandableSection/expandable-section';
 import { css } from '@patternfly/react-styles';
 import AngleRightIcon from '@patternfly/react-icons/dist/esm/icons/angle-right-icon';
@@ -8,9 +8,9 @@ import { Button } from '../Button';
  * property passed in. Allows for more custom control over the expandable section's toggle.
  */
 
-export interface ExpandableSectionToggleProps extends React.HTMLProps<HTMLDivElement> {
+export interface ExpandableSectionToggleProps extends HTMLProps<HTMLDivElement> {
   /** Content rendered inside the expandable toggle. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the expandable toggle. */
   className?: string;
   /** Id of the toggle's respective expandable section content. The value passed into this
@@ -31,7 +31,7 @@ export interface ExpandableSectionToggleProps extends React.HTMLProps<HTMLDivEle
   onToggle?: (isExpanded: boolean) => void;
 }
 
-export const ExpandableSectionToggle: React.FunctionComponent<ExpandableSectionToggleProps> = ({
+export const ExpandableSectionToggle: FunctionComponent<ExpandableSectionToggleProps> = ({
   children,
   className = '',
   isExpanded = false,

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Content/content';
 import { useOUIAProps, OUIAProps } from '../../helpers';
@@ -24,7 +24,7 @@ export enum ContentVariants {
   dd = 'dd'
 }
 
-export interface ContentProps extends React.HTMLProps<HTMLElement>, OUIAProps {
+export interface ContentProps extends HTMLProps<HTMLElement>, OUIAProps {
   /** The content component. If none provided, it will be a 'div' and styling will be applied to all its child components. */
   component?:
     | 'h1'
@@ -46,7 +46,7 @@ export interface ContentProps extends React.HTMLProps<HTMLElement>, OUIAProps {
     | 'dt'
     | 'dd';
   /** Children rendered within the Content. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the Content. */
   className?: string;
   /** Modifies the list (ul, ol and dl components) to have plain styling. */
@@ -83,7 +83,7 @@ const componentStyles = {
   dd: styles.contentDd
 };
 
-export const Content: React.FunctionComponent<ContentProps> = ({
+export const Content: FunctionComponent<ContentProps> = ({
   children,
   className = '',
   component,

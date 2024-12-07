@@ -1,16 +1,16 @@
-import * as React from 'react';
+import { HTMLProps, MouseEvent, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/Wizard/wizard';
 import { css } from '@patternfly/react-styles';
 import { Button } from '../Button';
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
 
-export interface WizardHeaderProps extends React.HTMLProps<HTMLDivElement> {
+export interface WizardHeaderProps extends HTMLProps<HTMLDivElement> {
   /** Callback function called when the X (Close) button is clicked */
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
   /** Title of the wizard */
   title: string;
   /** Description of the wizard */
-  description?: React.ReactNode;
+  description?: ReactNode;
   /** Component type of the description */
   descriptionComponent?: 'div' | 'p';
   /** Flag indicating whether the close button should be in the header */
@@ -25,7 +25,7 @@ export interface WizardHeaderProps extends React.HTMLProps<HTMLDivElement> {
   className?: string;
 }
 
-export const WizardHeader: React.FunctionComponent<WizardHeaderProps> = ({
+export const WizardHeader: FunctionComponent<WizardHeaderProps> = ({
   onClose = () => undefined,
   title,
   description,

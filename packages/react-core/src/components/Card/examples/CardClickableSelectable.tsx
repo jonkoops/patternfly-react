@@ -1,12 +1,12 @@
-import React from 'react';
+import { FunctionComponent, FormEvent, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardBody, Button, Checkbox, Gallery } from '@patternfly/react-core';
 
-export const CardClickable: React.FunctionComponent = () => {
-  const [isChecked1, setIsChecked1] = React.useState(false);
-  const [isChecked2, setIsChecked2] = React.useState(false);
-  const [isChecked3, setIsChecked3] = React.useState(false);
-  const [isClicked, setIsClicked] = React.useState(false);
-  const [isSecondary, setIsSecondary] = React.useState<boolean>(false);
+export const CardClickable: FunctionComponent = () => {
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const [isChecked3, setIsChecked3] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isSecondary, setIsSecondary] = useState<boolean>(false);
 
   const id1 = 'clickable-selectable-card-input-1';
   const id2 = 'clickable-selectable-card-input-2';
@@ -16,7 +16,7 @@ export const CardClickable: React.FunctionComponent = () => {
     setIsClicked((prevState) => !prevState);
   };
 
-  const onChange = (event: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  const onChange = (event: FormEvent<HTMLInputElement>, checked: boolean) => {
     const name = event.currentTarget.name;
 
     switch (name) {

@@ -1,8 +1,8 @@
-import React from 'react';
+import { FunctionComponent, useState } from 'react';
 import { Form, FormGroup, FormHelperText, TextInput, HelperText, HelperTextItem } from '@patternfly/react-core';
 
-export const HelperTextStaticText: React.FunctionComponent = () => {
-  const [value, setValue] = React.useState('');
+export const HelperTextStaticText: FunctionComponent = () => {
+  const [value, setValue] = useState('');
 
   const handleInputChange = (_event, inputValue: string) => {
     setValue(inputValue);

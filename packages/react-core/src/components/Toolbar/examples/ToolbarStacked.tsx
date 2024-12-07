@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  ChangeEvent
+} from 'react';
 import {
   Button,
   ButtonVariant,
@@ -26,20 +43,20 @@ import {
 import FilterIcon from '@patternfly/react-icons/dist/esm/icons/filter-icon';
 import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
 
-export const ToolbarStacked: React.FunctionComponent = () => {
+export const ToolbarStacked: FunctionComponent = () => {
   // toggle group - three option menus with labels, two icon buttons, Kebab menu - right aligned
   // pagination - right aligned
   const resourceOptions = ['All resources', 'Deployment', 'Pod'];
   const statusOptions = ['New', 'Pending', 'Running', 'Cancelled'];
 
-  const [kebabIsOpen, setKebabIsOpen] = React.useState(false);
-  const [resourceIsExpanded, setResourceIsExpanded] = React.useState(false);
-  const [resourceSelected, setResourceSelected] = React.useState('');
-  const [statusIsExpanded, setStatusIsExpanded] = React.useState(false);
-  const [statusSelected, setStatusSelected] = React.useState('');
-  const [isSplitButtonDropdownOpen, setIsSplitButtonDropdownOpen] = React.useState(false);
-  const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(20);
+  const [kebabIsOpen, setKebabIsOpen] = useState(false);
+  const [resourceIsExpanded, setResourceIsExpanded] = useState(false);
+  const [resourceSelected, setResourceSelected] = useState('');
+  const [statusIsExpanded, setStatusIsExpanded] = useState(false);
+  const [statusSelected, setStatusSelected] = useState('');
+  const [isSplitButtonDropdownOpen, setIsSplitButtonDropdownOpen] = useState(false);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(20);
 
   const onKebabToggle = () => {
     setKebabIsOpen(!kebabIsOpen);
@@ -49,7 +66,7 @@ export const ToolbarStacked: React.FunctionComponent = () => {
     setResourceIsExpanded(!resourceIsExpanded);
   };
 
-  const onResourceSelect = (_event: React.ChangeEvent | React.MouseEvent, selection: string) => {
+  const onResourceSelect = (_event: ChangeEvent | ReactMouseEvent, selection: string) => {
     setResourceSelected(selection);
     setResourceIsExpanded(false);
   };
@@ -62,20 +79,16 @@ export const ToolbarStacked: React.FunctionComponent = () => {
     setStatusIsExpanded(!statusIsExpanded);
   };
 
-  const onStatusSelect = (_event: React.ChangeEvent | React.MouseEvent, selection: string) => {
+  const onStatusSelect = (_event: ChangeEvent | ReactMouseEvent, selection: string) => {
     setStatusSelected(selection);
     setStatusIsExpanded(false);
   };
 
-  const onSetPage = (_event: React.MouseEvent | React.KeyboardEvent | MouseEvent, pageNumber: number) => {
+  const onSetPage = (_event: ReactMouseEvent | KeyboardEvent | MouseEvent, pageNumber: number) => {
     setPage(pageNumber);
   };
 
-  const onPerPageSelect = (
-    _event: React.MouseEvent | React.KeyboardEvent | MouseEvent,
-    perPage: number,
-    page: number
-  ) => {
+  const onPerPageSelect = (_event: ReactMouseEvent | KeyboardEvent | MouseEvent, perPage: number, page: number) => {
     setPage(page);
     setPerPage(perPage);
   };
@@ -128,13 +141,13 @@ export const ToolbarStacked: React.FunctionComponent = () => {
   );
 
   const toggleGroupItems = (
-    <React.Fragment>
+    <>
       <ToolbarItem variant="label" id="stacked-example-resource-select">
         Resource
       </ToolbarItem>
       <ToolbarItem>
         <Select
-          toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+          toggle={(toggleRef: Ref<MenuToggleElement>) => (
             <MenuToggle
               ref={toggleRef}
               onClick={() => onResourceToggle()}
@@ -142,7 +155,7 @@ export const ToolbarStacked: React.FunctionComponent = () => {
               style={
                 {
                   width: '150px'
-                } as React.CSSProperties
+                } as CSSProperties
               }
             >
               {resourceSelected || 'Resource'}
@@ -168,7 +181,7 @@ export const ToolbarStacked: React.FunctionComponent = () => {
       </ToolbarItem>
       <ToolbarItem>
         <Select
-          toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+          toggle={(toggleRef: Ref<MenuToggleElement>) => (
             <MenuToggle
               ref={toggleRef}
               onClick={() => onStatusToggle()}
@@ -176,7 +189,7 @@ export const ToolbarStacked: React.FunctionComponent = () => {
               style={
                 {
                   width: '150px'
-                } as React.CSSProperties
+                } as CSSProperties
               }
             >
               {statusSelected || 'Status'}
@@ -196,11 +209,11 @@ export const ToolbarStacked: React.FunctionComponent = () => {
           </SelectList>
         </Select>
       </ToolbarItem>
-    </React.Fragment>
+    </>
   );
 
   const firstRowItems = (
-    <React.Fragment>
+    <>
       <Toolbar>
         <ToolbarContent>
           <ToolbarToggleGroup variant="label-group" toggleIcon={<FilterIcon />} breakpoint="lg">
@@ -222,7 +235,7 @@ export const ToolbarStacked: React.FunctionComponent = () => {
                 <Dropdown
                   onSelect={onResourceSelectDropdown}
                   onOpenChange={(isOpen: boolean) => setKebabIsOpen(isOpen)}
-                  toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                  toggle={(toggleRef: Ref<MenuToggleElement>) => (
                     <MenuToggle
                       ref={toggleRef}
                       aria-label="Kebab overflow menu"
@@ -241,11 +254,11 @@ export const ToolbarStacked: React.FunctionComponent = () => {
           </ToolbarItem>
         </ToolbarContent>
       </Toolbar>
-    </React.Fragment>
+    </>
   );
 
   const secondRowItems = (
-    <React.Fragment>
+    <>
       <Toolbar>
         <ToolbarContent>
           <ToolbarItem>
@@ -253,7 +266,7 @@ export const ToolbarStacked: React.FunctionComponent = () => {
               onSelect={onSplitButtonSelect}
               isOpen={isSplitButtonDropdownOpen}
               onOpenChange={(isOpen: boolean) => setIsSplitButtonDropdownOpen(isOpen)}
-              toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+              toggle={(toggleRef: Ref<MenuToggleElement>) => (
                 <MenuToggle
                   ref={toggleRef}
                   isExpanded={isSplitButtonDropdownOpen}
@@ -284,14 +297,14 @@ export const ToolbarStacked: React.FunctionComponent = () => {
           </ToolbarItem>
         </ToolbarContent>
       </Toolbar>
-    </React.Fragment>
+    </>
   );
 
   return (
-    <React.Fragment>
+    <>
       {firstRowItems}
       <Divider />
       {secondRowItems}
-    </React.Fragment>
+    </>
   );
 };

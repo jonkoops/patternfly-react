@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Content, ContentVariants } from '@patternfly/react-core';
 
-export const ContentHeadings: React.FunctionComponent = () => (
+export const ContentHeadings: FunctionComponent = () => (
   <>
     <Content component={ContentVariants.h1}>Hello World</Content>
     <Content component={ContentVariants.h2}>Second level</Content>

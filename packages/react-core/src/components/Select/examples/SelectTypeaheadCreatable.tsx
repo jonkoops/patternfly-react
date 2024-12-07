@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  FormEvent
+} from 'react';
 import {
   Select,
   SelectOption,
@@ -22,19 +39,19 @@ let initialSelectOptions: SelectOptionProps[] = [
   { value: 'North Carolina', children: 'North Carolina' }
 ];
 
-export const SelectTypeaheadCreatable: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<string>('');
-  const [inputValue, setInputValue] = React.useState<string>('');
-  const [filterValue, setFilterValue] = React.useState<string>('');
-  const [selectOptions, setSelectOptions] = React.useState<SelectOptionProps[]>(initialSelectOptions);
-  const [focusedItemIndex, setFocusedItemIndex] = React.useState<number | null>(null);
-  const [activeItemId, setActiveItemId] = React.useState<string | null>(null);
-  const textInputRef = React.useRef<HTMLInputElement>();
+export const SelectTypeaheadCreatable: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>('');
+  const [filterValue, setFilterValue] = useState<string>('');
+  const [selectOptions, setSelectOptions] = useState<SelectOptionProps[]>(initialSelectOptions);
+  const [focusedItemIndex, setFocusedItemIndex] = useState<number | null>(null);
+  const [activeItemId, setActiveItemId] = useState<string | null>(null);
+  const textInputRef = useRef<HTMLInputElement>();
 
   const CREATE_NEW = 'create';
 
-  React.useEffect(() => {
+  useEffect(() => {
     let newSelectOptions: SelectOptionProps[] = initialSelectOptions;
 
     // Filter menu items based on the text input value when one exists
@@ -94,7 +111,7 @@ export const SelectTypeaheadCreatable: React.FunctionComponent = () => {
     closeMenu();
   };
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
     if (value) {
       if (value === CREATE_NEW) {
         if (!initialSelectOptions.some((item) => item.children === filterValue)) {
@@ -110,7 +127,7 @@ export const SelectTypeaheadCreatable: React.FunctionComponent = () => {
     }
   };
 
-  const onTextInputChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  const onTextInputChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     setInputValue(value);
     setFilterValue(value);
 
@@ -169,7 +186,7 @@ export const SelectTypeaheadCreatable: React.FunctionComponent = () => {
     setActiveAndFocusedItem(indexToFocus);
   };
 
-  const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const onInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     const focusedItem = focusedItemIndex !== null ? selectOptions[focusedItemIndex] : null;
 
     switch (event.key) {
@@ -204,7 +221,7 @@ export const SelectTypeaheadCreatable: React.FunctionComponent = () => {
     textInputRef?.current?.focus();
   };
 
-  const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const toggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       ref={toggleRef}
       variant="typeahead"

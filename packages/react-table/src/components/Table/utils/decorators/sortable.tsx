@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { MouseEvent, ReactNode } from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Table/table';
 import { IExtra, IFormatterValueType, ITransform } from '../../TableTypes';
@@ -38,9 +38,9 @@ export const sortable: ITransform = (
 
   const isSortedBy = sortBy && columnIndex === sortBy.index;
   /**
-   * @param {React.MouseEvent} event - React mouse event
+   * @param {ReactMouseEvent} event - React mouse event
    */
-  function sortClicked(event: React.MouseEvent) {
+  function sortClicked(event: MouseEvent) {
     let reversedDirection: SortByDirection;
     if (!isSortedBy) {
       reversedDirection = sortBy.defaultDirection ? (sortBy.defaultDirection as SortByDirection) : SortByDirection.asc;
@@ -65,7 +65,7 @@ export const sortable: ITransform = (
         tooltipHasDefaultBehavior={tooltipHasDefaultBehavior}
         favoriteButtonProps={favoriteButtonProps}
       >
-        {label as React.ReactNode}
+        {label as ReactNode}
       </SortColumn>
     )
   };

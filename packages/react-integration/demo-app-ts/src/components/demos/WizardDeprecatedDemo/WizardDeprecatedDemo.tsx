@@ -1,13 +1,13 @@
 import { Button } from '@patternfly/react-core';
 import { Wizard, WizardStep } from '@patternfly/react-core/deprecated';
-import React from 'react';
+import { HTMLProps, Component } from 'react';
 
 interface WizardDeprecatedDemoState {
   isOpen: boolean;
   isOpenWithRole: boolean;
 }
 
-export class WizardDeprecatedDemo extends React.Component<React.HTMLProps<HTMLDivElement>, WizardDeprecatedDemoState> {
+export class WizardDeprecatedDemo extends Component<HTMLProps<HTMLDivElement>, WizardDeprecatedDemoState> {
   static displayName = 'WizardDemo';
   state = {
     isOpen: false,

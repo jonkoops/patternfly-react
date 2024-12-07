@@ -1,17 +1,17 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/TextInputGroup/text-input-group';
 import { css } from '@patternfly/react-styles';
 
-export interface TextInputGroupIconProps extends React.HTMLProps<HTMLSpanElement> {
+export interface TextInputGroupIconProps extends HTMLProps<HTMLSpanElement> {
   /** Content rendered inside the text input group utilities div */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes applied to the text input group utilities container */
   className?: string;
   /** Flag indicating if the icon is a status icon and should inherit status styling. */
   isStatus?: boolean;
 }
 
-export const TextInputGroupIcon: React.FunctionComponent<TextInputGroupIconProps> = ({
+export const TextInputGroupIcon: FunctionComponent<TextInputGroupIconProps> = ({
   children,
   className,
   isStatus,

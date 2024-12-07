@@ -1,4 +1,22 @@
-import * as React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  SyntheticEvent,
+  ReactElement
+} from 'react';
 import { ToggleTemplate, PaginationToggleTemplateProps } from './ToggleTemplate';
 import styles from '@patternfly/react-styles/css/components/Pagination/pagination';
 import { css } from '@patternfly/react-styles';
@@ -78,7 +96,7 @@ export interface PaginationTitles {
 }
 
 export type OnSetPage = (
-  event: React.MouseEvent | React.KeyboardEvent | MouseEvent,
+  event: ReactMouseEvent | KeyboardEvent | MouseEvent,
   newPage: number,
   perPage?: number,
   startIdx?: number,
@@ -86,7 +104,7 @@ export type OnSetPage = (
 ) => void;
 
 export type OnPerPageSelect = (
-  event: React.MouseEvent | React.KeyboardEvent | MouseEvent,
+  event: ReactMouseEvent | KeyboardEvent | MouseEvent,
   newPerPage: number,
   newPage: number,
   startIdx?: number,
@@ -95,9 +113,9 @@ export type OnPerPageSelect = (
 
 /** The main pagination component. */
 
-export interface PaginationProps extends React.HTMLProps<HTMLDivElement>, OUIAProps {
+export interface PaginationProps extends HTMLProps<HTMLDivElement>, OUIAProps {
   /** What should be rendered inside the pagination. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes for the pagination container. */
   className?: string;
   /** Indicate whether to show last full page of results when user selects perPage value
@@ -142,17 +160,17 @@ export interface PaginationProps extends React.HTMLProps<HTMLDivElement>, OUIAPr
   /** Array of the number of items per page options. */
   perPageOptions?: PerPageOptions[];
   /** Function called when user clicks on navigate to first page. */
-  onFirstClick?: (event: React.SyntheticEvent<HTMLButtonElement>, page: number) => void;
+  onFirstClick?: (event: SyntheticEvent<HTMLButtonElement>, page: number) => void;
   /** Function called when user clicks on navigate to last page. */
-  onLastClick?: (event: React.SyntheticEvent<HTMLButtonElement>, page: number) => void;
+  onLastClick?: (event: SyntheticEvent<HTMLButtonElement>, page: number) => void;
   /** Function called when user clicks on navigate to next page. */
-  onNextClick?: (event: React.SyntheticEvent<HTMLButtonElement>, page: number) => void;
+  onNextClick?: (event: SyntheticEvent<HTMLButtonElement>, page: number) => void;
   /** Function called when user inputs page number. */
-  onPageInput?: (event: React.KeyboardEvent<HTMLInputElement>, page: number) => void;
+  onPageInput?: (event: ReactKeyboardEvent<HTMLInputElement>, page: number) => void;
   /** Function called when user selects number of items per page. */
   onPerPageSelect?: OnPerPageSelect;
   /** Function called when user clicks on navigate to previous page. */
-  onPreviousClick?: (event: React.SyntheticEvent<HTMLButtonElement>, page: number) => void;
+  onPreviousClick?: (event: SyntheticEvent<HTMLButtonElement>, page: number) => void;
   /** Function called when user sets page. */
   onSetPage?: OnSetPage;
   /** Object with titles to display in pagination. */
@@ -160,7 +178,7 @@ export interface PaginationProps extends React.HTMLProps<HTMLDivElement>, OUIAPr
   /** This will be shown in pagination toggle span. You can use firstIndex, lastIndex,
    * itemCount, itemsTitle, and/or ofWord props.
    */
-  toggleTemplate?: ((props: PaginationToggleTemplateProps) => React.ReactElement) | string;
+  toggleTemplate?: ((props: PaginationToggleTemplateProps) => ReactElement) | string;
   /** Position where pagination is rendered. */
   variant?: 'top' | 'bottom' | PaginationVariant;
   /** Id to ideintify widget on page. */
@@ -185,7 +203,7 @@ const handleInputWidth = (lastPage: number, node: HTMLDivElement) => {
   }
 };
 
-export const Pagination: React.FunctionComponent<PaginationProps> = ({
+export const Pagination: FunctionComponent<PaginationProps> = ({
   children,
   className = '',
   variant = PaginationVariant.top,
@@ -234,14 +252,14 @@ export const Pagination: React.FunctionComponent<PaginationProps> = ({
   menuAppendTo,
   ...props
 }: PaginationProps) => {
-  const paginationRef = React.useRef<HTMLDivElement>(null);
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const paginationRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const getLastPage = () =>
     // when itemCount is not known let's set lastPage as page+1 as we don't know the total count
     itemCount || itemCount === 0 ? Math.ceil(itemCount / perPage) || 0 : page + 1;
 
-  React.useEffect(() => {
+  useEffect(() => {
     const node = paginationRef.current;
     handleInputWidth(getLastPage(), node);
   }, [perPage, itemCount]);
@@ -304,9 +322,7 @@ export const Pagination: React.FunctionComponent<PaginationProps> = ({
             fillTemplate(toggleTemplate, PaginationToggleTemplateProps)}
           {toggleTemplate &&
             typeof toggleTemplate !== 'string' &&
-            (toggleTemplate as (props: PaginationToggleTemplateProps) => React.ReactElement)(
-              PaginationToggleTemplateProps
-            )}
+            (toggleTemplate as (props: PaginationToggleTemplateProps) => ReactElement)(PaginationToggleTemplateProps)}
           {!toggleTemplate && (
             <ToggleTemplate
               firstIndex={firstIndex}

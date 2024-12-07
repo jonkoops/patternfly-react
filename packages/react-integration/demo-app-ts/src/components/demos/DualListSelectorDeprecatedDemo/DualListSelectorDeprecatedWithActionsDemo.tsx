@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode, MouseEvent, ChangeEvent, KeyboardEvent, Component } from 'react';
 import { Button, ButtonVariant, Dropdown, DropdownItem, DropdownList, MenuToggle } from '@patternfly/react-core';
 import {
   DualListSelector as DLSDeprecated,
@@ -9,25 +9,25 @@ import PficonSortCommonAscIcon from '@patternfly/react-icons/dist/esm/icons/pfic
 import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
 
 interface DualListSelectorState {
-  availableOptions: React.ReactNode[];
-  chosenOptions: React.ReactNode[];
+  availableOptions: ReactNode[];
+  chosenOptions: ReactNode[];
   isAvailableKebabOpen: boolean;
   isChosenKebabOpen: boolean;
   availableDescending: boolean;
   chosenDescending: boolean;
 }
 
-class DualListSelectorDeprecatedWithActionsDemo extends React.Component<DLSPropsDeprecated, DualListSelectorState> {
+class DualListSelectorDeprecatedWithActionsDemo extends Component<DLSPropsDeprecated, DualListSelectorState> {
   static displayName = 'DualListSelectorDemo';
   onSort: (panel: string) => void;
   onListChange: (
-    event: React.MouseEvent<HTMLElement> | undefined,
-    newAvailableOptions: React.ReactNode[],
-    newChosenOptions: React.ReactNode[]
+    event: MouseEvent<HTMLElement> | undefined,
+    newAvailableOptions: ReactNode[],
+    newChosenOptions: ReactNode[]
   ) => void;
   onToggle: (pane: string) => void;
-  filterOption: (option: React.ReactNode, input: string) => boolean;
-  onOptionSelect: (event: React.MouseEvent | React.ChangeEvent | React.KeyboardEvent) => void;
+  filterOption: (option: ReactNode, input: string) => boolean;
+  onOptionSelect: (event: MouseEvent | ChangeEvent | KeyboardEvent) => void;
 
   constructor(props: DLSPropsDeprecated) {
     super(props);

@@ -1,8 +1,8 @@
-import React from 'react';
+import { FunctionComponent, useState } from 'react';
 import { Hint, HintTitle, HintBody, Button, Checkbox } from '@patternfly/react-core';
 
-export const HintActionsWithNoOffset: React.FunctionComponent = () => {
-  const [hasNoActionsOffset, setHasNoActionsOffset] = React.useState<boolean>(false);
+export const HintActionsWithNoOffset: FunctionComponent = () => {
+  const [hasNoActionsOffset, setHasNoActionsOffset] = useState<boolean>(false);
 
   const toggleOffset = (checked: boolean) => {
     setHasNoActionsOffset(checked);

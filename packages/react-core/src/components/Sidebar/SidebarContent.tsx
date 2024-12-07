@@ -1,9 +1,9 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Sidebar/sidebar';
 
-export interface SidebarContentProps extends React.HTMLProps<HTMLDivElement> {
-  children: React.ReactNode;
+export interface SidebarContentProps extends HTMLProps<HTMLDivElement> {
+  children: ReactNode;
   /** Removes the background color. */
   hasNoBackground?: boolean;
   /** Adds padding to the content. */
@@ -12,7 +12,7 @@ export interface SidebarContentProps extends React.HTMLProps<HTMLDivElement> {
   backgroundVariant?: 'default' | 'secondary';
 }
 
-export const SidebarContent: React.FunctionComponent<SidebarContentProps> = ({
+export const SidebarContent: FunctionComponent<SidebarContentProps> = ({
   className,
   children,
   hasNoBackground,

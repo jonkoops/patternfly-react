@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Ref, Component } from 'react';
 import { RowWrapperProps, ICell, IRow } from '@patternfly/react-table';
 import { Table, TableHeader, TableBody, TableProps } from '@patternfly/react-table/deprecated';
 
@@ -40,7 +40,7 @@ export class TableRowWrapperDemo extends Component<TableProps, ITableRowWrapperD
       };
       return (
         <tr
-          ref={trRef as React.Ref<any>}
+          ref={trRef as Ref<any>}
           className={css(
             className,
             isOddRow ? 'odd-row-class' : 'even-row-class',

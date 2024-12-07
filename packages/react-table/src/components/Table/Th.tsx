@@ -1,4 +1,15 @@
-import * as React from 'react';
+import {
+  HTMLProps,
+  ReactNode,
+  FunctionComponent,
+  RefObject,
+  CSSProperties,
+  Ref,
+  useState,
+  createRef,
+  useEffect,
+  forwardRef
+} from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Table/table';
 import scrollStyles from '@patternfly/react-styles/css/components/Table/table-scrollable';
@@ -14,9 +25,7 @@ import cssStickyCellMinWidth from '@patternfly/react-tokens/dist/esm/c_table__st
 import cssStickyCellInlineStart from '@patternfly/react-tokens/dist/esm/c_table__sticky_cell_InsetInlineStart';
 import cssStickyCellInlineEnd from '@patternfly/react-tokens/dist/esm/c_table__sticky_cell_InsetInlineEnd';
 
-export interface ThProps
-  extends BaseCellProps,
-    Omit<React.HTMLProps<HTMLTableHeaderCellElement>, 'onSelect' | 'width'> {
+export interface ThProps extends BaseCellProps, Omit<HTMLProps<HTMLTableHeaderCellElement>, 'onSelect' | 'width'> {
   /**
    * The column header the cell corresponds to. Applicable when this component is used as a direct child to <Tr>.
    * This attribute replaces table header in mobile viewport. It is rendered by ::before pseudo element.
@@ -34,7 +43,7 @@ export interface ThProps
    * If you want to show a tooltip that differs from the header text, you can set it here.
    * To disable it completely you can set it to null.
    */
-  tooltip?: React.ReactNode;
+  tooltip?: ReactNode;
   /** other props to pass to the tooltip */
   tooltipProps?: Omit<TooltipProps, 'content'>;
   /** Callback on mouse enter */
@@ -67,7 +76,7 @@ export interface ThProps
   'aria-label'?: string;
 }
 
-const ThBase: React.FunctionComponent<ThProps> = ({
+const ThBase: FunctionComponent<ThProps> = ({
   children,
   className,
   component = 'th',
@@ -103,9 +112,9 @@ const ThBase: React.FunctionComponent<ThProps> = ({
     );
   }
 
-  const [showTooltip, setShowTooltip] = React.useState(false);
-  const [truncated, setTruncated] = React.useState(false);
-  const cellRef = innerRef ? innerRef : React.createRef();
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [truncated, setTruncated] = useState(false);
+  const cellRef = innerRef ? innerRef : createRef();
   const onMouseEnter = (event: any) => {
     if (event.target.offsetWidth < event.target.scrollWidth) {
       !showTooltip && setShowTooltip(true);
@@ -196,10 +205,9 @@ const ThBase: React.FunctionComponent<ThProps> = ({
     ...mergedProps
   } = merged;
 
-  React.useEffect(() => {
+  useEffect(() => {
     setTruncated(
-      (cellRef as React.RefObject<HTMLElement>).current.offsetWidth <
-        (cellRef as React.RefObject<HTMLElement>).current.scrollWidth
+      (cellRef as RefObject<HTMLElement>).current.offsetWidth < (cellRef as RefObject<HTMLElement>).current.scrollWidth
     );
   }, [cellRef]);
 
@@ -233,7 +241,7 @@ const ThBase: React.FunctionComponent<ThProps> = ({
           [cssStickyCellInlineStart.name]: stickyLeftOffset ? stickyLeftOffset : 0,
           [cssStickyCellInlineEnd.name]: stickyRightOffset ? stickyRightOffset : 0,
           ...props.style
-        } as React.CSSProperties
+        } as CSSProperties
       })}
     >
       {transformedChildren ||
@@ -247,7 +255,7 @@ const ThBase: React.FunctionComponent<ThProps> = ({
     <>
       {cell}
       <Tooltip
-        triggerRef={cellRef as React.RefObject<any>}
+        triggerRef={cellRef as RefObject<any>}
         content={tooltip || (tooltip === '' && children)}
         isVisible
         {...tooltipProps}
@@ -258,7 +266,7 @@ const ThBase: React.FunctionComponent<ThProps> = ({
   );
 };
 
-export const Th = React.forwardRef((props: ThProps, ref: React.Ref<HTMLTableHeaderCellElement>) => (
+export const Th = forwardRef((props: ThProps, ref: Ref<HTMLTableHeaderCellElement>) => (
   <ThBase {...props} innerRef={ref} />
 ));
 Th.displayName = 'Th';

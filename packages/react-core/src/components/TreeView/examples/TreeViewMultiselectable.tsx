@@ -1,10 +1,10 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, useState } from 'react';
 import { TreeView, TreeViewDataItem } from '@patternfly/react-core';
 
-export const TreeViewMultiselectable: React.FunctionComponent = () => {
-  const [activeItems, setActiveItems] = React.useState<TreeViewDataItem[]>([]);
+export const TreeViewMultiselectable: FunctionComponent = () => {
+  const [activeItems, setActiveItems] = useState<TreeViewDataItem[]>([]);
 
-  const onSelect = (_event: React.MouseEvent, treeViewItem: TreeViewDataItem) => {
+  const onSelect = (_event: MouseEvent, treeViewItem: TreeViewDataItem) => {
     // Ignore folders for selection
     if (treeViewItem && !treeViewItem.children) {
       setActiveItems((prevActiveItems) => [...prevActiveItems, treeViewItem]);

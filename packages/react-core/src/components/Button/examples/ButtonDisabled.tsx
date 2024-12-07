@@ -1,10 +1,10 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Button, Flex } from '@patternfly/react-core';
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
 import PlusCircleIcon from '@patternfly/react-icons/dist/esm/icons/plus-circle-icon';
 import CopyIcon from '@patternfly/react-icons/dist/esm/icons/copy-icon';
 
-export const ButtonDisabled: React.FunctionComponent = () => (
+export const ButtonDisabled: FunctionComponent = () => (
   <>
     <Flex columnGap={{ default: 'columnGapSm' }}>
       <Button isDisabled>Primary</Button>

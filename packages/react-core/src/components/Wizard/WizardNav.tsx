@@ -1,8 +1,8 @@
-import * as React from 'react';
+import { HTMLProps, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/Wizard/wizard';
 import { css } from '@patternfly/react-styles';
 
-export interface WizardNavProps extends Omit<React.HTMLProps<HTMLOListElement>, 'type' | 'ref'> {
+export interface WizardNavProps extends Omit<HTMLProps<HTMLOListElement>, 'type' | 'ref'> {
   /** children should be WizardNavItem components */
   children?: any;
   /** Aria-label applied to the navigation element */
@@ -17,7 +17,7 @@ export interface WizardNavProps extends Omit<React.HTMLProps<HTMLOListElement>, 
   className?: string;
 }
 
-export const WizardNav: React.FunctionComponent<WizardNavProps> = ({
+export const WizardNav: FunctionComponent<WizardNavProps> = ({
   children,
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledBy,

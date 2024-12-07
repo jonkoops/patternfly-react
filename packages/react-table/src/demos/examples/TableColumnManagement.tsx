@@ -1,19 +1,14 @@
-import React from 'react';
-
 import {
   Button,
   Card,
   Content,
   DataList,
+  DataListCell,
   DataListCheck,
   DataListItem,
-  DataListItemRow,
-  DataListCell,
   DataListItemCells,
+  DataListItemRow,
   Label,
-  Toolbar,
-  ToolbarContent,
-  ToolbarItem,
   MenuToggle,
   Modal,
   OverflowMenu,
@@ -21,29 +16,33 @@ import {
   OverflowMenuItem,
   PageSection,
   Pagination,
-  PaginationVariant
+  PaginationVariant,
+  Toolbar,
+  ToolbarContent,
+  ToolbarItem
 } from '@patternfly/react-core';
-import { Table, TableText, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table';
 import FilterIcon from '@patternfly/react-icons/dist/esm/icons/filter-icon';
 import SortAmountDownIcon from '@patternfly/react-icons/dist/esm/icons/sort-amount-down-icon';
+import { Table, TableText, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
 import { DashboardWrapper } from '@patternfly/react-table/dist/esm/demos/DashboardWrapper';
+import { columns, rows, SampleDataRow } from '@patternfly/react-table/dist/esm/demos/sampleData';
 import { capitalize } from '@patternfly/react-table/src/components/Table/utils/utils';
-import { rows, columns, SampleDataRow } from '@patternfly/react-table/dist/esm/demos/sampleData';
+import { type FunctionComponent, type MouseEvent as ReactMouseEvent, FormEvent, useEffect, useState } from 'react';
 
-export const TableColumnManagement: React.FunctionComponent = () => {
+export const TableColumnManagement: FunctionComponent = () => {
   const defaultColumns = columns;
   const defaultRows = rows;
 
-  const [filters, setFilters] = React.useState<string[]>([]);
-  const [filteredColumns, setFilteredColumns] = React.useState<string[]>([]);
-  const [filteredRows, setFilteredRows] = React.useState<SampleDataRow[]>([]);
-  const [managedColumns, setManagedColumns] = React.useState<string[]>(defaultColumns);
-  const [managedRows, setManagedRows] = React.useState<SampleDataRow[]>(defaultRows);
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [checkedState, setCheckedState] = React.useState<boolean[]>(Array(columns.length).fill(true));
-  const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(10);
-  const [paginatedRows, setPaginatedRows] = React.useState<any[]>(rows);
+  const [filters, setFilters] = useState<string[]>([]);
+  const [filteredColumns, setFilteredColumns] = useState<string[]>([]);
+  const [filteredRows, setFilteredRows] = useState<SampleDataRow[]>([]);
+  const [managedColumns, setManagedColumns] = useState<string[]>(defaultColumns);
+  const [managedRows, setManagedRows] = useState<SampleDataRow[]>(defaultRows);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [checkedState, setCheckedState] = useState<boolean[]>(Array(columns.length).fill(true));
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const [paginatedRows, setPaginatedRows] = useState<any[]>(rows);
 
   const matchCheckboxNameToColumn = (name: string): string => {
     switch (name) {
@@ -93,14 +92,14 @@ export const TableColumnManagement: React.FunctionComponent = () => {
 
   // Pagination logic
   const handleSetPage = (
-    _evt: MouseEvent | React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>,
+    _evt: MouseEvent | ReactMouseEvent<Element, MouseEvent> | KeyboardEvent<Element>,
     newPage: number
   ) => {
     setPage(newPage);
   };
 
   const handlePerPageSelect = (
-    _evt: MouseEvent | React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>,
+    _evt: MouseEvent | ReactMouseEvent<Element, MouseEvent> | KeyboardEvent<Element>,
     newPerPage: number
   ) => {
     setPerPage(newPerPage);
@@ -121,7 +120,7 @@ export const TableColumnManagement: React.FunctionComponent = () => {
     />
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     setPaginatedRows(managedRows.slice((page - 1) * perPage, page * perPage - 1));
   }, [managedRows, page, perPage]);
 
@@ -176,7 +175,7 @@ export const TableColumnManagement: React.FunctionComponent = () => {
     setFilteredRows(defaultRows);
   };
 
-  const handleChange = (event: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  const handleChange = (event: FormEvent<HTMLInputElement>, checked: boolean) => {
     const target = event.currentTarget;
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
@@ -189,7 +188,7 @@ export const TableColumnManagement: React.FunctionComponent = () => {
     setCheckedState(updatedCheckedState);
   };
 
-  const handleModalToggle = (_event: React.MouseEvent<Element, MouseEvent> | KeyboardEvent) => {
+  const handleModalToggle = (_event: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent) => {
     setIsModalOpen(!isModalOpen);
   };
 
@@ -393,7 +392,7 @@ export const TableColumnManagement: React.FunctionComponent = () => {
   };
 
   const toolbarItems = (
-    <React.Fragment>
+    <>
       <Toolbar id="page-layout-table-column-management-action-toolbar-top">
         <span id="page-layout-table-column-management-action-toolbar-top-select-checkbox-label" hidden>
           Choose one
@@ -426,11 +425,11 @@ export const TableColumnManagement: React.FunctionComponent = () => {
           <ToolbarItem variant="pagination">{renderPagination('top', false)}</ToolbarItem>
         </ToolbarContent>
       </Toolbar>
-    </React.Fragment>
+    </>
   );
 
   return (
-    <React.Fragment>
+    <>
       <DashboardWrapper hasPageTemplateTitle>
         <PageSection isFilled>
           <Card>
@@ -479,6 +478,6 @@ export const TableColumnManagement: React.FunctionComponent = () => {
           </Card>
         </PageSection>
       </DashboardWrapper>
-    </React.Fragment>
+    </>
   );
 };

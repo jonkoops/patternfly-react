@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, Fragment } from 'react';
 import {
   Button,
   Content,
@@ -30,11 +30,11 @@ import ExclamationTriangleIcon from '@patternfly/react-icons/dist/esm/icons/excl
 import CheckCircleIcon from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
 import TimesCircleIcon from '@patternfly/react-icons/dist/esm/icons/times-circle-icon';
 
-export const DataListBasic: React.FunctionComponent = () => {
+export const DataListBasic: FunctionComponent = () => {
   const renderPagination = () => <Pagination itemCount={5} page={1} variant="top" isCompact />;
 
   const toolbarItems = (
-    <React.Fragment>
+    <Fragment>
       <ToolbarItem variant="bulk-select">
         <MenuToggle
           aria-label="Select cards"
@@ -63,11 +63,11 @@ export const DataListBasic: React.FunctionComponent = () => {
       <ToolbarItem variant="pagination" align={{ default: 'alignEnd' }}>
         {renderPagination()}
       </ToolbarItem>
-    </React.Fragment>
+    </Fragment>
   );
 
   return (
-    <React.Fragment>
+    <Fragment>
       <DashboardWrapper mainContainerId="main-content-datalist-view-default-nav" breadcrumb={null}>
         <PageSection>
           <Content>
@@ -302,6 +302,6 @@ export const DataListBasic: React.FunctionComponent = () => {
           </DataList>
         </PageSection>
       </DashboardWrapper>
-    </React.Fragment>
+    </Fragment>
   );
 };

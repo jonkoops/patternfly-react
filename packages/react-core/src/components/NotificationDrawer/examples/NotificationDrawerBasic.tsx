@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   NotificationDrawer,
   NotificationDrawerBody,
@@ -15,8 +31,8 @@ import {
 } from '@patternfly/react-core';
 import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
 
-export const NotificationDrawerBasic: React.FunctionComponent = () => {
-  const [isOpenMap, setIsOpenMap] = React.useState(new Array(7).fill(false));
+export const NotificationDrawerBasic: FunctionComponent = () => {
+  const [isOpenMap, setIsOpenMap] = useState(new Array(7).fill(false));
 
   const onToggle = (index: number) => () => {
     const newState = [...isOpenMap.slice(0, index), !isOpenMap[index], ...isOpenMap.slice(index + 1)];
@@ -27,7 +43,7 @@ export const NotificationDrawerBasic: React.FunctionComponent = () => {
     setIsOpenMap(new Array(7).fill(false));
   };
 
-  const onDrawerClose = (_event: React.MouseEvent<Element, MouseEvent> | KeyboardEvent) => {
+  const onDrawerClose = (_event: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent) => {
     setIsOpenMap(new Array(7).fill(false));
   };
 
@@ -57,7 +73,7 @@ export const NotificationDrawerBasic: React.FunctionComponent = () => {
           isOpen={isOpen0}
           onOpenChange={() => setIsOpenMap(new Array(7).fill(false))}
           popperProps={{ position: 'right' }}
-          toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+          toggle={(toggleRef: Ref<MenuToggleElement>) => (
             <MenuToggle
               ref={toggleRef}
               isExpanded={isOpen0}
@@ -84,7 +100,7 @@ export const NotificationDrawerBasic: React.FunctionComponent = () => {
                 isOpen={isOpen1}
                 onOpenChange={() => setIsOpenMap(new Array(7).fill(false))}
                 popperProps={{ position: 'right' }}
-                toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                toggle={(toggleRef: Ref<MenuToggleElement>) => (
                   <MenuToggle
                     ref={toggleRef}
                     isExpanded={isOpen0}
@@ -113,7 +129,7 @@ export const NotificationDrawerBasic: React.FunctionComponent = () => {
                 isOpen={isOpen2}
                 onOpenChange={() => setIsOpenMap(new Array(7).fill(false))}
                 popperProps={{ position: 'right' }}
-                toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                toggle={(toggleRef: Ref<MenuToggleElement>) => (
                   <MenuToggle
                     ref={toggleRef}
                     isExpanded={isOpen2}
@@ -144,7 +160,7 @@ export const NotificationDrawerBasic: React.FunctionComponent = () => {
                 isOpen={isOpen3}
                 onOpenChange={() => setIsOpenMap(new Array(7).fill(false))}
                 popperProps={{ position: 'right' }}
-                toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                toggle={(toggleRef: Ref<MenuToggleElement>) => (
                   <MenuToggle
                     ref={toggleRef}
                     isExpanded={isOpen3}
@@ -174,7 +190,7 @@ export const NotificationDrawerBasic: React.FunctionComponent = () => {
                 isOpen={isOpen4}
                 onOpenChange={() => setIsOpenMap(new Array(7).fill(false))}
                 popperProps={{ position: 'right' }}
-                toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                toggle={(toggleRef: Ref<MenuToggleElement>) => (
                   <MenuToggle
                     ref={toggleRef}
                     isExpanded={isOpen4}
@@ -203,7 +219,7 @@ export const NotificationDrawerBasic: React.FunctionComponent = () => {
                 isOpen={isOpen5}
                 onOpenChange={() => setIsOpenMap(new Array(7).fill(false))}
                 popperProps={{ position: 'right' }}
-                toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                toggle={(toggleRef: Ref<MenuToggleElement>) => (
                   <MenuToggle
                     ref={toggleRef}
                     isExpanded={isOpen5}
@@ -228,7 +244,7 @@ export const NotificationDrawerBasic: React.FunctionComponent = () => {
                 isOpen={isOpen6}
                 onOpenChange={() => setIsOpenMap(new Array(7).fill(false))}
                 popperProps={{ position: 'right' }}
-                toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                toggle={(toggleRef: Ref<MenuToggleElement>) => (
                   <MenuToggle
                     ref={toggleRef}
                     isExpanded={isOpen6}

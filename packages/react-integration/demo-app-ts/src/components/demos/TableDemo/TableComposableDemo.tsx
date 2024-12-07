@@ -1,5 +1,21 @@
 /* eslint-disable no-console */
-import * as React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   Table,
   Thead,
@@ -40,7 +56,7 @@ export const TableComposableDemo = () => {
       ['one - 2', null, null, 'four - 2', 'five - 2'],
       ['one - 3', 'two - 3', 'three - 3', 'four - 3', 'five - 3']
     ];
-    const [hasFirstColumnHeader, setHasFirstColumnHeader] = React.useState(false);
+    const [hasFirstColumnHeader, setHasFirstColumnHeader] = useState(false);
 
     return (
       <>
@@ -98,7 +114,7 @@ export const TableComposableDemo = () => {
       [{ title: 'one - 2', colSpan: 3 }, null, null, 'four - 2', 'five - 2'],
       ['one - 3', 'two - 3', 'three - 3', 'four - 3', { title: 'five - 3 (not centered)', textCenter: false }]
     ];
-    const onRowClick = (_event: React.MouseEvent, rowIndex: number, row: any[]) => {
+    const onRowClick = (_event: ReactMouseEvent, rowIndex: number, row: any[]) => {
       console.log(`handle row click ${rowIndex}`, row);
     };
     return (
@@ -193,16 +209,16 @@ export const TableComposableDemo = () => {
       'This is a really long table header that goes on for a long time 4.',
       'This is a really long table header that goes on for a long time 5.'
     ];
-    const [rows, setRows] = React.useState([
+    const [rows, setRows] = useState([
       ['one', 'two', 'a', 'four', 'five'],
       ['a', 'two', 'k', 'four', 'five'],
       ['p', 'two', 'b', 'four', 'five']
     ]);
     // index of the currently active column
-    const [activeSortIndex, setActiveSortIndex] = React.useState(-1);
+    const [activeSortIndex, setActiveSortIndex] = useState(-1);
     // sort direction of the currently active column
-    const [activeSortDirection, setActiveSortDirection] = React.useState<'asc' | 'desc' | 'none'>('none');
-    const onSort = (_event: React.MouseEvent, index: number, direction: 'asc' | 'desc' | 'none') => {
+    const [activeSortDirection, setActiveSortDirection] = useState<'asc' | 'desc' | 'none'>('none');
+    const onSort = (_event: ReactMouseEvent, index: number, direction: 'asc' | 'desc' | 'none') => {
       setActiveSortIndex(index);
       setActiveSortDirection(direction);
       // sorts the rows
@@ -262,9 +278,9 @@ export const TableComposableDemo = () => {
       ['a', 'two', 'k', 'four', 'five'],
       ['p', 'two', 'b', 'four', 'five']
     ];
-    const [allRowsSelected, setAllRowsSelected] = React.useState(false);
+    const [allRowsSelected, setAllRowsSelected] = useState(false);
 
-    const [selected, setSelected] = React.useState(rows.map(() => false));
+    const [selected, setSelected] = useState(rows.map(() => false));
     const onSelect: OnSelect = (_event, isSelected, rowId) => {
       setSelected(selected.map((sel, index) => (index === rowId ? isSelected : sel)));
       if (!isSelected && allRowsSelected) {
@@ -339,7 +355,7 @@ export const TableComposableDemo = () => {
       ['a', 'two', 'k', 'four', 'five'],
       ['p', 'two', 'b', 'four', 'five']
     ];
-    const [selected, setSelected] = React.useState(-1);
+    const [selected, setSelected] = useState(-1);
     const onSelect: OnSelect = (_event, _isSelected, rowId) => {
       setSelected(rowId);
     };
@@ -482,8 +498,8 @@ export const TableComposableDemo = () => {
       ['4', '2', 'b', 'four', 'five'],
       ['5', '2', 'b', 'four', 'five']
     ];
-    const [choice, setChoice] = React.useState('default');
-    const handleItemClick = (event: React.MouseEvent<any> | React.KeyboardEvent | MouseEvent) => {
+    const [choice, setChoice] = useState('default');
+    const handleItemClick = (event: ReactMouseEvent<any> | KeyboardEvent | MouseEvent) => {
       const id = event.currentTarget.id;
       setChoice(id);
     };
@@ -583,10 +599,8 @@ export const TableComposableDemo = () => {
     ];
     const numColumns = columns.length;
     // Init all to true
-    const [expanded, setExpanded] = React.useState(
-      Object.fromEntries(Object.entries(rowPairs).map(([k]) => [k, true]))
-    );
-    const [compact, setCompact] = React.useState(true);
+    const [expanded, setExpanded] = useState(Object.fromEntries(Object.entries(rowPairs).map(([k]) => [k, true])));
+    const [compact, setCompact] = useState(true);
     const toggleCompact = (checked: boolean) => {
       setCompact(checked);
     };
@@ -711,7 +725,7 @@ export const TableComposableDemo = () => {
       ['siemur/test-space', 3, 4, 2, '10 minutes', 'Open in Github']
     ];
     // index corresponds to row index, and value corresponds to column index of the expanded, null means no cell is expanded
-    const [activeChild, setActiveChild] = React.useState([1, null]);
+    const [activeChild, setActiveChild] = useState([1, null]);
     const DemoSortableTable = ({ firstColumnRows, id }: { firstColumnRows: string[]; id: string }) => {
       const columns = ['Repositories', 'Branches', 'Pull requests', 'Workspaces', 'Last Commit'];
       const rows = [firstColumnRows, ['a', 'two', 'k', 'four', 'five'], ['p', 'two', 'b', 'four', 'five']];
@@ -1038,15 +1052,15 @@ export const TableComposableDemo = () => {
 
   const ComposableTableFavoritable = () => {
     const columns = ['Repositories', 'Branches', 'Pull requests', 'Workspaces', 'Last commit'];
-    const [rows, setRows] = React.useState([
+    const [rows, setRows] = useState([
       { favorited: true, cells: ['one', 'two', 'three', 'four', 'five'] },
       { favorited: false, cells: ['one - 2', null, null, 'four - 2', 'five - 2'] },
       { favorited: false, cells: ['one - 3', 'two - 3', 'three - 3', 'four - 3', 'five - 3'] }
     ]);
     // index of the currently active column
-    const [activeSortIndex, setActiveSortIndex] = React.useState(-1);
+    const [activeSortIndex, setActiveSortIndex] = useState(-1);
     // sort direction of the currently active column
-    const [activeSortDirection, setActiveSortDirection] = React.useState('none');
+    const [activeSortDirection, setActiveSortDirection] = useState('none');
     const onSort: OnSort = (_event, index, direction) => {
       setActiveSortIndex(index);
       setActiveSortDirection(direction);

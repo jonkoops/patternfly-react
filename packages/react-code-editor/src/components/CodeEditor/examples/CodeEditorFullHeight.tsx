@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { CodeEditor, Language } from '@patternfly/react-code-editor';
 
-export const CodeEditorFullHeight: React.FunctionComponent = () => {
+export const CodeEditorFullHeight: FunctionComponent = () => {
   const onEditorDidMount = (editor, monaco) => {
     editor.layout();
     editor.focus();

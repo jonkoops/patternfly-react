@@ -1,4 +1,20 @@
-import * as React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   Card,
   CardBody,
@@ -62,9 +78,9 @@ const descriptionListData = [
   }
 ];
 
-export const CardStatusTabbed: React.FunctionComponent = () => {
-  const [activeTabKey, setActiveTabKey] = React.useState(0);
-  const handleTabClick = (_e: React.MouseEvent<HTMLElement, MouseEvent>, tabIndex: string | number) => {
+export const CardStatusTabbed: FunctionComponent = () => {
+  const [activeTabKey, setActiveTabKey] = useState(0);
+  const handleTabClick = (_e: ReactMouseEvent<HTMLElement, MouseEvent>, tabIndex: string | number) => {
     setActiveTabKey(Number(tabIndex));
   };
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { MouseEvent, Component } from 'react';
 import {
   DualListSelector as DLSDeprecated,
   DualListSelectorProps as DLSPropsDeprecated,
@@ -12,7 +12,7 @@ interface DualListSelectorState {
 class DualListSelectorDeprecatedTreeDemo extends Component<DLSPropsDeprecated, DualListSelectorState> {
   static displayName = 'DualListSelectorTreeDemo';
   onListChange: (
-    event: React.MouseEvent<HTMLElement>,
+    event: MouseEvent<HTMLElement>,
     newAvailableOptions: DLSTreeItemDataDeprecated[],
     newChosenOptions: DLSTreeItemDataDeprecated[]
   ) => void;

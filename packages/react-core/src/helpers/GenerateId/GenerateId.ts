@@ -11,7 +11,7 @@
  *  );
  */
 
-import * as React from 'react';
+import { ReactNode, Component } from 'react';
 import { getUniqueId } from '../util';
 
 let currentId = 0;
@@ -29,12 +29,12 @@ export interface GenerateIdProps {
   /** String to prefix the random id with */
   prefix?: string;
   /** Component to be rendered with the generated id */
-  children(id: string): React.ReactNode;
+  children(id: string): ReactNode;
   /** Flag to add randomness to the generated id, should be used whenever possible */
   isRandom?: boolean;
 }
 
-class GenerateId extends React.Component<GenerateIdProps, {}> {
+class GenerateId extends Component<GenerateIdProps, {}> {
   static displayName = 'GenerateId';
   static defaultProps = {
     prefix: 'pf-random-id-',

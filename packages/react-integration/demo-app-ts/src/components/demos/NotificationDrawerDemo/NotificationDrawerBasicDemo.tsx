@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  Component
+} from 'react';
 import {
   NotificationDrawer,
   NotificationDrawerProps,
@@ -22,10 +39,7 @@ interface BasicNotificationDrawerDemoState {
   isOpen: boolean[];
 }
 
-export class BasicNotificationDrawerDemo extends React.Component<
-  NotificationDrawerProps,
-  BasicNotificationDrawerDemoState
-> {
+export class BasicNotificationDrawerDemo extends Component<NotificationDrawerProps, BasicNotificationDrawerDemoState> {
   static displayName = 'BasicNotificationDrawerDemo';
   constructor(props: NotificationDrawerProps) {
     super(props);
@@ -34,7 +48,7 @@ export class BasicNotificationDrawerDemo extends React.Component<
       isOpen: new Array(6).fill(false)
     };
   }
-  onDrawerClose = (_event: KeyboardEvent | React.MouseEvent<Element, MouseEvent>) => {
+  onDrawerClose = (_event: KeyboardEvent | ReactMouseEvent<Element, MouseEvent>) => {
     this.setState({
       isDrawerOpen: false
     });
@@ -67,7 +81,7 @@ export class BasicNotificationDrawerDemo extends React.Component<
             isOpen={isOpen[0]}
             onOpenChange={(_isOpen) => this.setState({ isOpen: new Array(6).fill(false) })}
             popperProps={{ position: 'right' }}
-            toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+            toggle={(toggleRef: Ref<MenuToggleElement>) => (
               <MenuToggle
                 ref={toggleRef}
                 isExpanded={isOpen[0]}
@@ -97,7 +111,7 @@ export class BasicNotificationDrawerDemo extends React.Component<
                   isOpen={isOpen[1]}
                   onOpenChange={(_isOpen) => this.setState({ isOpen: new Array(6).fill(false) })}
                   popperProps={{ position: 'right' }}
-                  toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                  toggle={(toggleRef: Ref<MenuToggleElement>) => (
                     <MenuToggle
                       ref={toggleRef}
                       isExpanded={isOpen[1]}
@@ -126,7 +140,7 @@ export class BasicNotificationDrawerDemo extends React.Component<
                   isOpen={isOpen[2]}
                   onOpenChange={(_isOpen) => this.setState({ isOpen: new Array(6).fill(false) })}
                   popperProps={{ position: 'right' }}
-                  toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                  toggle={(toggleRef: Ref<MenuToggleElement>) => (
                     <MenuToggle
                       ref={toggleRef}
                       isExpanded={isOpen[2]}
@@ -157,7 +171,7 @@ export class BasicNotificationDrawerDemo extends React.Component<
                   onOpenChange={(_isOpen) => this.setState({ isOpen: new Array(6).fill(false) })}
                   id="notification-3"
                   popperProps={{ position: 'right' }}
-                  toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                  toggle={(toggleRef: Ref<MenuToggleElement>) => (
                     <MenuToggle
                       ref={toggleRef}
                       isExpanded={isOpen[3]}
@@ -190,7 +204,7 @@ export class BasicNotificationDrawerDemo extends React.Component<
                   onOpenChange={(_isOpen) => this.setState({ isOpen: new Array(6).fill(false) })}
                   id="notification-4"
                   popperProps={{ position: 'right' }}
-                  toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                  toggle={(toggleRef: Ref<MenuToggleElement>) => (
                     <MenuToggle
                       ref={toggleRef}
                       isExpanded={isOpen[4]}
@@ -216,7 +230,7 @@ export class BasicNotificationDrawerDemo extends React.Component<
                   onOpenChange={(_isOpen) => this.setState({ isOpen: new Array(6).fill(false) })}
                   id="notification-5"
                   popperProps={{ position: 'right' }}
-                  toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                  toggle={(toggleRef: Ref<MenuToggleElement>) => (
                     <MenuToggle
                       ref={toggleRef}
                       isExpanded={isOpen[5]}

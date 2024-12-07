@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, useState, useMemo } from 'react';
 import { CheckboxSelect, CheckboxSelectOption } from '@patternfly/react-templates';
 
 const Options: { content: string; value: string; description?: string; isDisabled?: boolean }[] = [
@@ -8,10 +8,10 @@ const Options: { content: string; value: string; description?: string; isDisable
   { content: 'Option 4', value: 'option-4' }
 ];
 
-export const SelectBasic: React.FunctionComponent = () => {
-  const [selected, setSelected] = React.useState<string[]>(['option-2']);
+export const SelectBasic: FunctionComponent = () => {
+  const [selected, setSelected] = useState<string[]>(['option-2']);
 
-  const initialOptions = React.useMemo<CheckboxSelectOption[]>(
+  const initialOptions = useMemo<CheckboxSelectOption[]>(
     () => Options.map((o) => ({ ...o, selected: selected.includes(o.value) })),
     [selected]
   );

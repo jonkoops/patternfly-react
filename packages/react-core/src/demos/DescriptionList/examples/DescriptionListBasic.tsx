@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import {
   DescriptionList,
   DescriptionListTerm,
@@ -17,7 +17,7 @@ import {
 import CheckCircleIcon from '@patternfly/react-icons/dist/esm/icons/check-circle-icon';
 import { DashboardWrapper } from '@patternfly/react-core/dist/js/demos/DashboardWrapper';
 
-export const DescriptionListBasic: React.FunctionComponent = () => (
+export const DescriptionListBasic: FunctionComponent = () => (
   <DashboardWrapper>
     <PageSection>
       <Content>

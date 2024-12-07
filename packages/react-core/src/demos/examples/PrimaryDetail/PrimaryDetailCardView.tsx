@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  FormEvent
+} from 'react';
 import {
   Badge,
   Button,
@@ -52,21 +69,21 @@ import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-ico
 import { DashboardWrapper } from '@patternfly/react-core/src/demos/DashboardWrapper';
 import { data } from '@patternfly/react-core/src/demos/CardView/examples/CardViewData.jsx';
 
-export const PrimaryDetailCardView: React.FunctionComponent = () => {
-  const [totalItemCount, setTotalItemCount] = React.useState(10);
-  const [cardData, setCardData] = React.useState(data);
-  const [isChecked, setIsChecked] = React.useState(false);
-  const [isDrawerExpanded, setIsDrawerExpanded] = React.useState(false);
-  const [selectedItems, setSelectedItems] = React.useState<number[]>([]);
-  const [areAllSelected, setAreAllSelected] = React.useState<boolean>(false);
-  const [splitButtonDropdownIsOpen, setSplitButtonDropdownIsOpen] = React.useState(false);
-  const [isLowerToolbarDropdownOpen, setIsLowerToolbarDropdownOpen] = React.useState(false);
-  const [isLowerToolbarKebabDropdownOpen, setIsLowerToolbarKebabDropdownOpen] = React.useState(false);
-  const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(10);
-  const [filters, setFilters] = React.useState<Record<string, string[]>>({ products: [] });
-  const [state, setState] = React.useState({});
-  const [activeCard, setActiveCard] = React.useState(-1);
+export const PrimaryDetailCardView: FunctionComponent = () => {
+  const [totalItemCount, setTotalItemCount] = useState(10);
+  const [cardData, setCardData] = useState(data);
+  const [isChecked, setIsChecked] = useState(false);
+  const [isDrawerExpanded, setIsDrawerExpanded] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [areAllSelected, setAreAllSelected] = useState<boolean>(false);
+  const [splitButtonDropdownIsOpen, setSplitButtonDropdownIsOpen] = useState(false);
+  const [isLowerToolbarDropdownOpen, setIsLowerToolbarDropdownOpen] = useState(false);
+  const [isLowerToolbarKebabDropdownOpen, setIsLowerToolbarKebabDropdownOpen] = useState(false);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const [filters, setFilters] = useState<Record<string, string[]>>({ products: [] });
+  const [state, setState] = useState({});
+  const [activeCard, setActiveCard] = useState(-1);
 
   interface ProductType {
     id: number;
@@ -88,7 +105,7 @@ export const PrimaryDetailCardView: React.FunctionComponent = () => {
   };
 
   const onCardKebabDropdownToggle = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.MouseEvent<HTMLDivElement, MouseEvent>,
+    event: ReactMouseEvent<HTMLButtonElement, MouseEvent> | ReactMouseEvent<HTMLDivElement, MouseEvent>,
     key: string
   ) => {
     setState({
@@ -157,7 +174,7 @@ export const PrimaryDetailCardView: React.FunctionComponent = () => {
     setIsDrawerExpanded(false);
   };
 
-  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const onChange = (event: FormEvent<HTMLInputElement>) => {
     const name = event.currentTarget.name;
     const productId = Number(name.charAt(name.length - 1));
 
@@ -446,7 +463,7 @@ export const PrimaryDetailCardView: React.FunctionComponent = () => {
     </>
   );
   const toolbarItems = (
-    <React.Fragment>
+    <>
       <ToolbarItem>{buildSelectDropdown()}</ToolbarItem>
       <ToolbarItem>{buildFilterDropdown()}</ToolbarItem>
       <ToolbarItem>
@@ -477,7 +494,7 @@ export const PrimaryDetailCardView: React.FunctionComponent = () => {
       <ToolbarItem variant="pagination" align={{ default: 'alignEnd' }}>
         {renderPagination()}
       </ToolbarItem>
-    </React.Fragment>
+    </>
   );
 
   const filtered =
@@ -516,7 +533,7 @@ export const PrimaryDetailCardView: React.FunctionComponent = () => {
                     isOpen={!!state[key] ?? false}
                     onOpenChange={(isOpen) => setState({ [key]: isOpen })}
                     popperProps={{ position: 'right' }}
-                    toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                    toggle={(toggleRef: Ref<MenuToggleElement>) => (
                       <MenuToggle
                         ref={toggleRef}
                         aria-label={`${product.name} actions`}

@@ -1,11 +1,11 @@
-import React from 'react';
+import { FunctionComponent, FormEvent, useState, Fragment } from 'react';
 import { CodeEditor, Language } from '@patternfly/react-code-editor';
 import { Grid, GridItem, Label, Radio } from '@patternfly/react-core';
 
-export const CodeEditorShortcutMainHeader: React.FunctionComponent = () => {
+export const CodeEditorShortcutMainHeader: FunctionComponent = () => {
   type ShortcutMode = 'PC' | 'Mac';
 
-  const [currentShortcutMode, setCurrentShortcutMode] = React.useState<ShortcutMode>('PC');
+  const [currentShortcutMode, setCurrentShortcutMode] = useState<ShortcutMode>('PC');
 
   const onEditorDidMount = (editor, monaco) => {
     editor.layout();
@@ -18,7 +18,7 @@ export const CodeEditorShortcutMainHeader: React.FunctionComponent = () => {
     console.log(value);
   };
 
-  const onShortcutModeChange = (event: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  const onShortcutModeChange = (event: FormEvent<HTMLInputElement>, checked: boolean) => {
     if (checked) {
       const newMode = event.currentTarget.value as ShortcutMode;
       setCurrentShortcutMode(newMode);
@@ -51,7 +51,7 @@ export const CodeEditorShortcutMainHeader: React.FunctionComponent = () => {
     bodyContent: (
       <Grid span={6} hasGutter key="grid">
         {shortcuts.map((shortcut, index) => (
-          <React.Fragment key={index}>
+          <Fragment key={index}>
             <GridItem style={{ textAlign: 'right', marginRight: '1em' }}>
               {shortcut[currentShortcutMode]
                 .map((key) => (
@@ -64,7 +64,7 @@ export const CodeEditorShortcutMainHeader: React.FunctionComponent = () => {
                 ))}
             </GridItem>
             <GridItem>{shortcut.description}</GridItem>
-          </React.Fragment>
+          </Fragment>
         ))}
       </Grid>
     ),

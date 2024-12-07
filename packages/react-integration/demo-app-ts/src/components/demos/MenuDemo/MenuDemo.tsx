@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { MouseEvent, FormEvent, FunctionComponent, Component } from 'react';
 
 import {
   Menu,
@@ -89,11 +89,11 @@ export class MenuDemo extends Component {
     });
   };
 
-  onSimpleSelect = (_event?: React.MouseEvent, itemId?: string | number) => {
+  onSimpleSelect = (_event?: MouseEvent, itemId?: string | number) => {
     this.setState({ activeItem: itemId });
   };
 
-  onActionSelect = (_event?: React.MouseEvent, itemId?: string | number) => {
+  onActionSelect = (_event?: MouseEvent, itemId?: string | number) => {
     if (typeof itemId !== 'number') {
       return;
     }
@@ -124,14 +124,14 @@ export class MenuDemo extends Component {
     }
   };
 
-  onSingleOptionSelect = (_event?: React.MouseEvent, itemId?: string | number) => {
+  onSingleOptionSelect = (_event?: MouseEvent, itemId?: string | number) => {
     this.setState({
       activeItem: itemId,
       selectedItem: itemId
     });
   };
 
-  onMultiOptionSelect = (_event?: React.MouseEvent, itemId?: string | number) => {
+  onMultiOptionSelect = (_event?: MouseEvent, itemId?: string | number) => {
     if (typeof itemId !== 'number') {
       return;
     }
@@ -151,7 +151,7 @@ export class MenuDemo extends Component {
     window.scrollTo(0, 0);
   }
 
-  onChange = (_event: React.FormEvent, value: string) => {
+  onChange = (_event: FormEvent, value: string) => {
     this.setState({
       input: value
     });
@@ -333,7 +333,7 @@ export class MenuDemo extends Component {
   renderMenuWithTitledGroups() {
     const { activeItem } = this.state;
 
-    const GroupMenuExampleCmp: React.FunctionComponent<{ className: string }> = ({ className }) => (
+    const GroupMenuExampleCmp: FunctionComponent<{ className: string }> = ({ className }) => (
       <div>
         <h1 className={className}>Group 4</h1>
       </div>

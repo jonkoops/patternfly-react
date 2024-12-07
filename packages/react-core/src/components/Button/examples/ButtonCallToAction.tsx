@@ -1,8 +1,8 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Button, Flex } from '@patternfly/react-core';
 import ArrowRightIcon from '@patternfly/react-icons/dist/esm/icons/arrow-right-icon';
 
-export const ButtonCallToAction: React.FunctionComponent = () => (
+export const ButtonCallToAction: FunctionComponent = () => (
   <Flex columnGap={{ default: 'columnGapSm' }}>
     <Button variant="primary" size="lg">
       Call to action

@@ -1,4 +1,22 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  FormEvent,
+  SyntheticEvent
+} from 'react';
 import {
   Badge,
   Button,
@@ -28,29 +46,29 @@ import DownloadIcon from '@patternfly/react-icons/dist/esm/icons/download-icon';
 import CogIcon from '@patternfly/react-icons/dist/esm/icons/cog-icon';
 import SearchIcon from '@patternfly/react-icons/dist/esm/icons/search-icon';
 
-export const ConsoleLogViewerToolbar: React.FC = () => {
+export const ConsoleLogViewerToolbar: FunctionComponent = () => {
   const firstOptions = {
     'container-sample-1': { type: 'C' },
     'container-sample-2': { type: 'D' },
     'container-sample-3': { type: 'E' }
   };
 
-  const [containerExpanded, setContainerExpanded] = React.useState(false);
-  const [containerExpandedMobile, setContainerExpandedMobile] = React.useState(false);
-  const [containerSelected, setContainerSelected] = React.useState(Object.keys(firstOptions)[0]);
-  const [optionExpanded, setOptionExpanded] = React.useState(false);
-  const [optionExpandedMobile, setOptionExpandedMobile] = React.useState(false);
-  const [isPaused, setIsPaused] = React.useState(false);
-  const [firstSwitchChecked, setFirstSwitchChecked] = React.useState(true);
-  const [secondSwitchChecked, setSecondSwitchChecked] = React.useState(false);
-  const [searchValue, setSearchValue] = React.useState('');
-  const [searchResultsCount, setSearchResultsCount] = React.useState(3);
-  const [currentSearchResult, setCurrentSearchResult] = React.useState(1);
-  const [externalExpanded, setExternalExpanded] = React.useState(false);
-  const [externalExpandedMobile, setExternalExpandedMobile] = React.useState(false);
-  const [downloadExpanded, setDownloadExpanded] = React.useState(false);
-  const [downloadExpandedMobile, setDownloadExpandedMobile] = React.useState(false);
-  const [mobileView, setMobileView] = React.useState(window.innerWidth >= 1450 ? false : true);
+  const [containerExpanded, setContainerExpanded] = useState(false);
+  const [containerExpandedMobile, setContainerExpandedMobile] = useState(false);
+  const [containerSelected, setContainerSelected] = useState(Object.keys(firstOptions)[0]);
+  const [optionExpanded, setOptionExpanded] = useState(false);
+  const [optionExpandedMobile, setOptionExpandedMobile] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [firstSwitchChecked, setFirstSwitchChecked] = useState(true);
+  const [secondSwitchChecked, setSecondSwitchChecked] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const [searchResultsCount, setSearchResultsCount] = useState(3);
+  const [currentSearchResult, setCurrentSearchResult] = useState(1);
+  const [externalExpanded, setExternalExpanded] = useState(false);
+  const [externalExpandedMobile, setExternalExpandedMobile] = useState(false);
+  const [downloadExpanded, setDownloadExpanded] = useState(false);
+  const [downloadExpandedMobile, setDownloadExpandedMobile] = useState(false);
+  const [mobileView, setMobileView] = useState(window.innerWidth >= 1450 ? false : true);
 
   const onContainerToggle = () => {
     setContainerExpanded((prevState) => !prevState);
@@ -60,19 +78,19 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
     setContainerExpandedMobile((prevState) => !prevState);
   };
 
-  const onContainerSelect = (_event: React.MouseEvent | undefined, selection: string | number | undefined) => {
+  const onContainerSelect = (_event: ReactMouseEvent | undefined, selection: string | number | undefined) => {
     setContainerSelected(selection as string);
     setContainerExpanded(false);
   };
 
-  const onContainerSelectMobile = (_event: React.MouseEvent | undefined, selection: string | number | undefined) => {
+  const onContainerSelectMobile = (_event: ReactMouseEvent | undefined, selection: string | number | undefined) => {
     setContainerSelected(selection as string);
     setContainerExpandedMobile(false);
   };
 
-  const onOptionSelect = (_event: React.MouseEvent | undefined) => {};
+  const onOptionSelect = (_event: ReactMouseEvent | undefined) => {};
 
-  const onOptionSelectMobile = (_event: React.MouseEvent | undefined) => {};
+  const onOptionSelectMobile = (_event: ReactMouseEvent | undefined) => {};
 
   const onOptionToggle = () => {
     setOptionExpanded((prevState) => !prevState);
@@ -114,17 +132,17 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
     setDownloadExpandedMobile(false);
   };
 
-  const onExternalClick = (_event: React.MouseEvent<HTMLButtonElement>) => {
+  const onExternalClick = (_event: ReactMouseEvent<HTMLButtonElement>) => {
     // eslint-disable-next-line no-console
     console.log('External logs opened!');
   };
 
-  const onDownloadClick = (_event: React.MouseEvent<HTMLButtonElement>) => {
+  const onDownloadClick = (_event: ReactMouseEvent<HTMLButtonElement>) => {
     // eslint-disable-next-line no-console
     console.log('Download action clicked!');
   };
 
-  const pauseOrStart = (_event: React.MouseEvent<HTMLButtonElement>) => {
+  const pauseOrStart = (_event: ReactMouseEvent<HTMLButtonElement>) => {
     setIsPaused((prevState) => !prevState);
   };
 
@@ -148,18 +166,18 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
     console.log('Logs cleared!');
   };
 
-  const onSearchChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  const onSearchChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     setSearchValue(value);
     setSearchResultsCount(3);
   };
 
-  const onSearchClear = (_event: React.SyntheticEvent<HTMLButtonElement, Event>) => {
+  const onSearchClear = (_event: SyntheticEvent<HTMLButtonElement, Event>) => {
     setSearchValue('');
     setSearchResultsCount(0);
     setCurrentSearchResult(1);
   };
 
-  const onSearchNext = (_event: React.SyntheticEvent<HTMLButtonElement, Event>) => {
+  const onSearchNext = (_event: SyntheticEvent<HTMLButtonElement, Event>) => {
     setCurrentSearchResult((prevState) => {
       const newCurrentResult = prevState + 1;
 
@@ -167,7 +185,7 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
     });
   };
 
-  const onSearchPrevious = (_event: React.SyntheticEvent<HTMLButtonElement, Event>) => {
+  const onSearchPrevious = (_event: SyntheticEvent<HTMLButtonElement, Event>) => {
     setCurrentSearchResult((prevState) => {
       const newCurrentResult = prevState - 1;
       return newCurrentResult > 0 ? newCurrentResult : 1;
@@ -175,7 +193,7 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
   };
 
   const onPageResize = (
-    _event: MouseEvent | TouchEvent | React.KeyboardEvent<Element>,
+    _event: MouseEvent | TouchEvent | ReactKeyboardEvent<Element>,
     { windowSize }: { windowSize: number }
   ) => {
     if (windowSize >= 1450) {
@@ -247,10 +265,10 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
       return 'Select';
     }
     return (
-      <React.Fragment>
+      <>
         <Badge>{firstOptions[containerSelected].type}</Badge>
         {showText && ` ${containerSelected}`}
-      </React.Fragment>
+      </>
     );
   };
 
@@ -271,7 +289,7 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
   );
 
   const leftAlignedItemsDesktop = (
-    <React.Fragment>
+    <>
       <ToolbarItem visibility={{ default: 'hidden', '2xl': 'visible' }}>
         <Select
           role="menu"
@@ -319,11 +337,11 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
           {isPaused ? ` Resume Log` : ` Pause Log`}
         </Button>
       </ToolbarItem>
-    </React.Fragment>
+    </>
   );
 
   const leftAlignedItemsMobile = (
-    <React.Fragment>
+    <>
       <ToolbarItem visibility={{ default: 'visible', '2xl': 'hidden' }}>
         <Tooltip position="top" content={<div>Select container</div>}>
           <Select
@@ -375,18 +393,18 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
           />
         </Tooltip>
       </ToolbarItem>
-    </React.Fragment>
+    </>
   );
 
   const leftAlignedItems = (
-    <React.Fragment>
+    <>
       {leftAlignedItemsDesktop}
       {leftAlignedItemsMobile}
-    </React.Fragment>
+    </>
   );
 
   const rightAlignedItemsDesktop = (
-    <React.Fragment>
+    <>
       <ToolbarItem visibility={{ default: 'hidden', '2xl': 'visible' }}>
         <Dropdown
           isOpen={externalExpanded}
@@ -415,11 +433,11 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
           <DropdownList>{downloadDropdownItems}</DropdownList>
         </Dropdown>
       </ToolbarItem>
-    </React.Fragment>
+    </>
   );
 
   const rightAlignedItemsMobile = (
-    <React.Fragment>
+    <>
       <ToolbarItem visibility={{ default: 'visible', '2xl': 'hidden' }}>
         <Tooltip position="top" content={<div>External logs</div>}>
           <Dropdown
@@ -461,11 +479,11 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
           </Dropdown>
         </Tooltip>
       </ToolbarItem>
-    </React.Fragment>
+    </>
   );
 
   const rightAlignedItems = (
-    <React.Fragment>
+    <>
       <ToolbarItem>{LogsSearchInput}</ToolbarItem>
       {rightAlignedItemsDesktop}
       {rightAlignedItemsMobile}
@@ -474,14 +492,14 @@ export const ConsoleLogViewerToolbar: React.FC = () => {
           <Button variant="plain" aria-label="expand" icon={<ExpandIcon />} />
         </Tooltip>
       </ToolbarItem>
-    </React.Fragment>
+    </>
   );
 
   const items = (
-    <React.Fragment>
+    <>
       <ToolbarGroup align={{ default: 'alignStart' }}>{leftAlignedItems}</ToolbarGroup>
       <ToolbarGroup align={{ default: 'alignEnd' }}>{rightAlignedItems}</ToolbarGroup>
-    </React.Fragment>
+    </>
   );
 
   return (

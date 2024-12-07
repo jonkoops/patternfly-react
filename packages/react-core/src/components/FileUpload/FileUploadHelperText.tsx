@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/FileUpload/file-upload';
 import { css } from '@patternfly/react-styles';
 
@@ -6,16 +6,16 @@ import { css } from '@patternfly/react-styles';
  * the main file upload or file upload field component.
  */
 
-export interface FileUploadHelperTextProps extends React.HTMLProps<HTMLDivElement> {
+export interface FileUploadHelperTextProps extends HTMLProps<HTMLDivElement> {
   /** Content to render inside the file upload helper text container. Typically this will be
    * the helper text component.
    */
-  children: React.ReactNode;
+  children: ReactNode;
   /** Additional classes added to the file upload helper text container element. */
   className?: string;
 }
 
-export const FileUploadHelperText: React.FunctionComponent<FileUploadHelperTextProps> = ({
+export const FileUploadHelperText: FunctionComponent<FileUploadHelperTextProps> = ({
   children,
   className,
   ...props

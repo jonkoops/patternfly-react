@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, FormEvent, KeyboardEvent, Ref, useState, useRef, useEffect } from 'react';
 import {
   Select,
   SelectOption,
@@ -24,18 +24,18 @@ const initialSelectOptions: SelectOptionProps[] = [
   { value: 'North Carolina', children: 'North Carolina' }
 ];
 
-export const SelectMultiTypeahead: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [inputValue, setInputValue] = React.useState<string>('');
-  const [selected, setSelected] = React.useState<string[]>([]);
-  const [selectOptions, setSelectOptions] = React.useState<SelectOptionProps[]>(initialSelectOptions);
-  const [focusedItemIndex, setFocusedItemIndex] = React.useState<number | null>(null);
-  const [activeItemId, setActiveItemId] = React.useState<string | null>(null);
-  const textInputRef = React.useRef<HTMLInputElement>();
+export const SelectMultiTypeahead: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState<string>('');
+  const [selected, setSelected] = useState<string[]>([]);
+  const [selectOptions, setSelectOptions] = useState<SelectOptionProps[]>(initialSelectOptions);
+  const [focusedItemIndex, setFocusedItemIndex] = useState<number | null>(null);
+  const [activeItemId, setActiveItemId] = useState<string | null>(null);
+  const textInputRef = useRef<HTMLInputElement>();
 
   const NO_RESULTS = 'no results';
 
-  React.useEffect(() => {
+  useEffect(() => {
     let newSelectOptions: SelectOptionProps[] = initialSelectOptions;
 
     // Filter menu items based on the text input value when one exists
@@ -99,7 +99,7 @@ export const SelectMultiTypeahead: React.FunctionComponent = () => {
     textInputRef.current?.focus();
   };
 
-  const onTextInputChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  const onTextInputChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     setInputValue(value);
     resetActiveAndFocusedItem();
   };
@@ -152,7 +152,7 @@ export const SelectMultiTypeahead: React.FunctionComponent = () => {
     setActiveAndFocusedItem(indexToFocus);
   };
 
-  const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const onInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     const focusedItem = focusedItemIndex !== null ? selectOptions[focusedItemIndex] : null;
 
     switch (event.key) {
@@ -186,7 +186,7 @@ export const SelectMultiTypeahead: React.FunctionComponent = () => {
     textInputRef?.current?.focus();
   };
 
-  const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const toggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       variant="typeahead"
       aria-label="Multi typeahead menu toggle"

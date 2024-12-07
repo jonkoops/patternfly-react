@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { css } from '@patternfly/react-styles';
 import { Menu, MenuContent, MenuProps } from '../Menu';
 import { Popper } from '../../helpers/Popper/Popper';
@@ -31,9 +47,9 @@ export interface SelectPopperProps {
 
 export interface SelectToggleProps {
   /**  Select toggle node. */
-  toggleNode: React.ReactNode;
+  toggleNode: ReactNode;
   /** Reference to the toggle. */
-  toggleRef?: React.RefObject<HTMLButtonElement>;
+  toggleRef?: RefObject<HTMLButtonElement>;
 }
 
 /**
@@ -42,7 +58,7 @@ export interface SelectToggleProps {
 
 export interface SelectProps extends MenuProps, OUIAProps {
   /** Anything which can be rendered in a select */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Classes applied to root element of select */
   className?: string;
   /** Flag to indicate if select is open */
@@ -50,13 +66,13 @@ export interface SelectProps extends MenuProps, OUIAProps {
   /** Single select option value for single select menus, or array of select option values for multi select. You can also specify isSelected on the SelectOption. */
   selected?: any | any[];
   /** Select toggle. The toggle should either be a renderer function which forwards the given toggle ref, or a direct ReactNode that should be passed along with the toggleRef property. */
-  toggle: SelectToggleProps | ((toggleRef: React.RefObject<any>) => React.ReactNode);
+  toggle: SelectToggleProps | ((toggleRef: RefObject<any>) => ReactNode);
   /** Flag indicating the toggle should be focused after a selection. If this use case is too restrictive, the optional toggleRef property with a node toggle may be used to control focus. */
   shouldFocusToggleOnSelect?: boolean;
   /** @beta Flag indicating the first menu item should be focused after opening the menu. */
   shouldFocusFirstItemOnOpen?: boolean;
   /** Function callback when user selects an option. */
-  onSelect?: (event?: React.MouseEvent<Element, MouseEvent>, value?: string | number) => void;
+  onSelect?: (event?: ReactMouseEvent<Element, MouseEvent>, value?: string | number) => void;
   /** Callback to allow the select component to change the open state of the menu.
    * Triggered by clicking outside of the menu, or by pressing any keys specificed in onOpenChangeKeys. */
   onOpenChange?: (isOpen: boolean) => void;
@@ -69,7 +85,7 @@ export interface SelectProps extends MenuProps, OUIAProps {
   /** Indicates if the select should be without the outer box-shadow */
   isPlain?: boolean;
   /** @hide Forwarded ref */
-  innerRef?: React.Ref<HTMLDivElement>;
+  innerRef?: Ref<HTMLDivElement>;
   /** z-index of the select menu */
   zIndex?: number;
   /** Determines the accessible role of the select. For a checkbox select pass in "menu". */
@@ -88,7 +104,7 @@ export interface SelectProps extends MenuProps, OUIAProps {
   focusTimeoutDelay?: number;
 }
 
-const SelectBase: React.FunctionComponent<SelectProps & OUIAProps> = ({
+const SelectBase: FunctionComponent<SelectProps & OUIAProps> = ({
   children,
   className,
   onSelect,
@@ -113,17 +129,17 @@ const SelectBase: React.FunctionComponent<SelectProps & OUIAProps> = ({
   focusTimeoutDelay = 0,
   ...props
 }: SelectProps & OUIAProps) => {
-  const localMenuRef = React.useRef<HTMLDivElement>();
-  const localToggleRef = React.useRef<HTMLButtonElement>();
+  const localMenuRef = useRef<HTMLDivElement>();
+  const localToggleRef = useRef<HTMLButtonElement>();
 
-  const menuRef = (innerRef as React.RefObject<HTMLDivElement>) || localMenuRef;
+  const menuRef = (innerRef as RefObject<HTMLDivElement>) || localMenuRef;
   const toggleRef =
     typeof toggle === 'function' || (typeof toggle !== 'function' && !toggle.toggleRef)
       ? localToggleRef
-      : (toggle?.toggleRef as React.RefObject<HTMLButtonElement>);
+      : (toggle?.toggleRef as RefObject<HTMLButtonElement>);
 
-  const prevIsOpen = React.useRef<boolean>(isOpen);
-  React.useEffect(() => {
+  const prevIsOpen = useRef<boolean>(isOpen);
+  useEffect(() => {
     // menu was opened, focus on first menu item
     if (prevIsOpen.current === false && isOpen === true && shouldFocusFirstItemOnOpen) {
       setTimeout(() => {
@@ -136,7 +152,7 @@ const SelectBase: React.FunctionComponent<SelectProps & OUIAProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleMenuKeys = (event: KeyboardEvent) => {
       // Close the menu on tab or escape if onOpenChange is provided
       if (
@@ -225,8 +241,6 @@ const SelectBase: React.FunctionComponent<SelectProps & OUIAProps> = ({
   );
 };
 
-export const Select = React.forwardRef((props: SelectProps, ref: React.Ref<any>) => (
-  <SelectBase innerRef={ref} {...props} />
-));
+export const Select = forwardRef((props: SelectProps, ref: Ref<any>) => <SelectBase innerRef={ref} {...props} />);
 
 Select.displayName = 'Select';

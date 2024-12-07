@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   MenuToggle,
   MenuToggleElement,
@@ -14,12 +30,12 @@ import {
 } from '@patternfly/react-core';
 import FilterIcon from '@patternfly/react-icons/dist/esm/icons/filter-icon';
 
-export const ToolbarComponentManagedToggleGroup: React.FunctionComponent = () => {
-  const [inputValue, setInputValue] = React.useState('');
-  const [statusIsExpanded, setStatusIsExpanded] = React.useState(false);
-  const [statusSelected, setStatusSelected] = React.useState('');
-  const [riskIsExpanded, setRiskIsExpanded] = React.useState(false);
-  const [riskSelected, setRiskSelected] = React.useState('');
+export const ToolbarComponentManagedToggleGroup: FunctionComponent = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [statusIsExpanded, setStatusIsExpanded] = useState(false);
+  const [statusSelected, setStatusSelected] = useState('');
+  const [riskIsExpanded, setRiskIsExpanded] = useState(false);
+  const [riskSelected, setRiskSelected] = useState('');
 
   const statusOptions = ['New', 'Pending', 'Running', 'Cancelled'];
   const riskOptions = ['Risk', 'Low', 'Medium', 'High'];
@@ -32,7 +48,7 @@ export const ToolbarComponentManagedToggleGroup: React.FunctionComponent = () =>
     setStatusIsExpanded(!statusIsExpanded);
   };
 
-  const onStatusSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, selection: string) => {
+  const onStatusSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, selection: string) => {
     setStatusSelected(selection);
     setStatusIsExpanded(false);
   };
@@ -41,13 +57,13 @@ export const ToolbarComponentManagedToggleGroup: React.FunctionComponent = () =>
     setRiskIsExpanded(!riskIsExpanded);
   };
 
-  const onRiskSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, selection: string) => {
+  const onRiskSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, selection: string) => {
     setRiskSelected(selection);
     setRiskIsExpanded(false);
   };
 
   const toggleGroupItems = (
-    <React.Fragment>
+    <>
       <ToolbarItem>
         <SearchInput
           aria-label="Component toggle groups example search input"
@@ -61,7 +77,7 @@ export const ToolbarComponentManagedToggleGroup: React.FunctionComponent = () =>
       <ToolbarGroup variant="filter-group">
         <ToolbarItem>
           <Select
-            toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+            toggle={(toggleRef: Ref<MenuToggleElement>) => (
               <MenuToggle
                 ref={toggleRef}
                 onClick={() => onStatusToggle()}
@@ -69,7 +85,7 @@ export const ToolbarComponentManagedToggleGroup: React.FunctionComponent = () =>
                 style={
                   {
                     width: '150px'
-                  } as React.CSSProperties
+                  } as CSSProperties
                 }
               >
                 {statusSelected || 'Status'}
@@ -91,7 +107,7 @@ export const ToolbarComponentManagedToggleGroup: React.FunctionComponent = () =>
         </ToolbarItem>
         <ToolbarItem>
           <Select
-            toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+            toggle={(toggleRef: Ref<MenuToggleElement>) => (
               <MenuToggle
                 ref={toggleRef}
                 onClick={() => onRiskToggle()}
@@ -99,7 +115,7 @@ export const ToolbarComponentManagedToggleGroup: React.FunctionComponent = () =>
                 style={
                   {
                     width: '120px'
-                  } as React.CSSProperties
+                  } as CSSProperties
                 }
               >
                 {riskSelected || 'Risk'}
@@ -120,7 +136,7 @@ export const ToolbarComponentManagedToggleGroup: React.FunctionComponent = () =>
           </Select>
         </ToolbarItem>
       </ToolbarGroup>
-    </React.Fragment>
+    </>
   );
 
   const items = (

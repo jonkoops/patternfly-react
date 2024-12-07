@@ -1,5 +1,22 @@
 import { Tabs, Tab, TabContent, TabTitleText } from '@patternfly/react-core';
-import React, { Component, RefObject } from 'react';
+import { Component, createRef, RefObject } from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 
 export class TabsStringEventKeyDemo extends Component {
   state = {
@@ -13,13 +30,13 @@ export class TabsStringEventKeyDemo extends Component {
   constructor(props: {}) {
     super(props);
 
-    this.contentRefOne = React.createRef<HTMLDivElement>();
-    this.contentRefTwo = React.createRef<HTMLDivElement>();
-    this.contentRefThree = React.createRef<HTMLDivElement>();
+    this.contentRefOne = createRef<HTMLDivElement>();
+    this.contentRefTwo = createRef<HTMLDivElement>();
+    this.contentRefThree = createRef<HTMLDivElement>();
   }
 
   // Toggle currently active tab
-  private handleTabClick = (_event: React.MouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
+  private handleTabClick = (_event: ReactMouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
     this.setState({
       activeTabKey2: tabIndex
     });

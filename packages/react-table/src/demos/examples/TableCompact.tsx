@@ -1,33 +1,33 @@
-import React from 'react';
 import {
   Button,
   Card,
+  Label,
   MenuToggle,
   MenuToggleElement,
-  Pagination,
   PageSection,
+  Pagination,
+  PaginationVariant,
   Select,
   SelectOption,
   Toolbar,
   ToolbarContent,
   ToolbarGroup,
-  ToolbarItem,
-  Label,
-  PaginationVariant
+  ToolbarItem
 } from '@patternfly/react-core';
-import { Table, TableText, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table';
 import FilterIcon from '@patternfly/react-icons/dist/esm/icons/filter-icon';
-import { rows, columns } from '@patternfly/react-table/dist/esm/demos/sampleData';
+import { Table, TableText, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
 import { DashboardWrapper } from '@patternfly/react-table/dist/esm/demos/DashboardWrapper';
+import { columns, rows } from '@patternfly/react-table/dist/esm/demos/sampleData';
+import { type FunctionComponent, type MouseEvent as ReactMouseEvent, type Ref, useState } from 'react';
 
-export const TableCompact: React.FunctionComponent = () => {
-  const [isSelectOpen, setIsSelectOpen] = React.useState<boolean>(false);
-  const [page, setPage] = React.useState<number>(1);
-  const [perPage, setPerPage] = React.useState<number>(10);
-  const [paginatedRows, setPaginatedRows] = React.useState(rows.slice(0, 10));
+export const TableCompact: FunctionComponent = () => {
+  const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [perPage, setPerPage] = useState<number>(10);
+  const [paginatedRows, setPaginatedRows] = useState(rows.slice(0, 10));
 
   const handleSetPage = (
-    _evt: React.MouseEvent | React.KeyboardEvent | MouseEvent,
+    _evt: ReactMouseEvent | KeyboardEvent | MouseEvent,
     newPage: number,
     _perPage: number,
     startIdx: number,
@@ -38,7 +38,7 @@ export const TableCompact: React.FunctionComponent = () => {
   };
 
   const handlePerPageSelect = (
-    _evt: React.MouseEvent | React.KeyboardEvent | MouseEvent,
+    _evt: ReactMouseEvent | KeyboardEvent | MouseEvent,
     newPerPage: number,
     newPage: number,
     startIdx: number,
@@ -71,7 +71,7 @@ export const TableCompact: React.FunctionComponent = () => {
           <Select
             id="select-example"
             aria-label="Select Input"
-            toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+            toggle={(toggleRef: Ref<MenuToggleElement>) => (
               <MenuToggle
                 icon={<FilterIcon />}
                 ref={toggleRef}
@@ -127,7 +127,7 @@ export const TableCompact: React.FunctionComponent = () => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <DashboardWrapper hasPageTemplateTitle>
         <PageSection isFilled>
           <Card>
@@ -171,6 +171,6 @@ export const TableCompact: React.FunctionComponent = () => {
           </Card>
         </PageSection>
       </DashboardWrapper>
-    </React.Fragment>
+    </>
   );
 };

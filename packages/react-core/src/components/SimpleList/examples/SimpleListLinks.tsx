@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { SimpleList, SimpleListItem } from '@patternfly/react-core';
 
-export const SimpleListLinks: React.FunctionComponent = () => {
+export const SimpleListLinks: FunctionComponent = () => {
   const items = [
     <SimpleListItem key="item1" component="a" href="#" isActive>
       List item 1

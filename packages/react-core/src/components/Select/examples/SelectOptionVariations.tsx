@@ -1,16 +1,32 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Select, SelectOption, SelectList, MenuToggle, MenuToggleElement } from '@patternfly/react-core';
 import BellIcon from '@patternfly/react-icons/dist/esm/icons/bell-icon';
 
-export const SelectOptionVariations: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<string>('Select a value');
+export const SelectOptionVariations: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<string>('Select a value');
 
   const onToggleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
     // eslint-disable-next-line no-console
     console.log('selected', value);
 
@@ -18,7 +34,7 @@ export const SelectOptionVariations: React.FunctionComponent = () => {
     setIsOpen(false);
   };
 
-  const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const toggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       ref={toggleRef}
       onClick={onToggleClick}
@@ -26,7 +42,7 @@ export const SelectOptionVariations: React.FunctionComponent = () => {
       style={
         {
           width: '200px'
-        } as React.CSSProperties
+        } as CSSProperties
       }
     >
       {selected}

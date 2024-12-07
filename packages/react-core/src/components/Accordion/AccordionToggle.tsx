@@ -1,22 +1,22 @@
-import * as React from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode, ElementType, FunctionComponent, useContext } from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Accordion/accordion';
 import AngleRightIcon from '@patternfly/react-icons/dist/esm/icons/angle-right-icon';
 import { AccordionContext, AccordionItemContext } from './AccordionContext';
 
 export interface AccordionToggleProps
-  extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+  extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
   /** Content rendered inside the Accordion toggle  */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the Accordion Toggle  */
   className?: string;
   /** Identify the Accordion toggle number  */
   id: string;
   /** Container to override the default for toggle */
-  component?: React.ElementType;
+  component?: ElementType;
 }
 
-export const AccordionToggle: React.FunctionComponent<AccordionToggleProps> = ({
+export const AccordionToggle: FunctionComponent<AccordionToggleProps> = ({
   className = '',
   id,
   children = null,
@@ -29,7 +29,7 @@ export const AccordionToggle: React.FunctionComponent<AccordionToggleProps> = ({
     </span>
   );
 
-  const { isExpanded } = React.useContext(AccordionItemContext);
+  const { isExpanded } = useContext(AccordionItemContext);
 
   return (
     <AccordionContext.Consumer>

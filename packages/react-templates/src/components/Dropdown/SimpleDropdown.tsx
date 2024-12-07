@@ -1,18 +1,26 @@
-import React from 'react';
+import { Divider } from '@patternfly/react-core/dist/esm/components/Divider';
 import {
   Dropdown,
   DropdownItem,
-  DropdownList,
   DropdownItemProps,
+  DropdownList,
   DropdownProps
 } from '@patternfly/react-core/dist/esm/components/Dropdown';
 import { MenuToggle, MenuToggleElement, MenuToggleProps } from '@patternfly/react-core/dist/esm/components/MenuToggle';
-import { Divider } from '@patternfly/react-core/dist/esm/components/Divider';
 import { OUIAProps } from '@patternfly/react-core/dist/esm/helpers';
+import {
+  type CSSProperties,
+  type FunctionComponent,
+  type MouseEvent as ReactMouseEvent,
+  type ReactNode,
+  type Ref,
+  forwardRef,
+  useState
+} from 'react';
 
 export interface SimpleDropdownItem extends Omit<DropdownItemProps, 'content'> {
   /** Content of the dropdown item. If the isDivider prop is true, this prop will be ignored. */
-  content?: React.ReactNode;
+  content?: ReactNode;
   /** Unique identifier for the dropdown item, which is used in the dropdown onSelect callback */
   value: string | number;
   /** Callback for when the dropdown item is clicked. */
@@ -29,13 +37,13 @@ export interface SimpleDropdownProps extends Omit<DropdownProps, 'toggle'>, OUIA
   /** Initial items of the dropdown. */
   initialItems?: SimpleDropdownItem[];
   /** @hide Forwarded ref */
-  innerRef?: React.Ref<any>;
+  innerRef?: Ref<any>;
   /** Flag indicating the dropdown should be disabled. */
   isDisabled?: boolean;
   /** Flag indicated whether the dropdown toggle should take up the full width of its parent. */
   isToggleFullWidth?: boolean;
   /** Callback triggered when any dropdown item is clicked. */
-  onSelect?: (event?: React.MouseEvent<Element, MouseEvent>, value?: string | number) => void;
+  onSelect?: (event?: ReactMouseEvent<Element, MouseEvent>, value?: string | number) => void;
   /** Callback triggered when the dropdown toggle opens or closes. */
   onToggle?: (nextIsOpen: boolean) => void;
   /** Flag indicating the dropdown toggle should be focused after a dropdown item is clicked. */
@@ -45,7 +53,7 @@ export interface SimpleDropdownProps extends Omit<DropdownProps, 'toggle'>, OUIA
    */
   toggleAriaLabel?: string;
   /** Content of the toggle. */
-  toggleContent: React.ReactNode;
+  toggleContent: ReactNode;
   /** Variant style of the dropdown toggle. */
   toggleVariant?: 'default' | 'plain' | 'plainText';
   /** Width of the toggle. */
@@ -54,7 +62,7 @@ export interface SimpleDropdownProps extends Omit<DropdownProps, 'toggle'>, OUIA
   toggleProps?: MenuToggleProps;
 }
 
-const SimpleDropdownBase: React.FunctionComponent<SimpleDropdownProps> = ({
+const SimpleDropdownBase: FunctionComponent<SimpleDropdownProps> = ({
   innerRef,
   initialItems,
   onSelect: onSelectProp,
@@ -69,9 +77,9 @@ const SimpleDropdownBase: React.FunctionComponent<SimpleDropdownProps> = ({
   shouldFocusToggleOnSelect,
   ...props
 }: SimpleDropdownProps) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const onSelect = (event: React.MouseEvent<Element, MouseEvent>, value: string | number) => {
+  const onSelect = (event: ReactMouseEvent<Element, MouseEvent>, value: string | number) => {
     onSelectProp && onSelectProp(event, value);
     onToggleProp && onToggleProp(false);
     setIsOpen(false);
@@ -82,7 +90,7 @@ const SimpleDropdownBase: React.FunctionComponent<SimpleDropdownProps> = ({
     setIsOpen(!isOpen);
   };
 
-  const dropdownToggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const dropdownToggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       ref={toggleRef}
       onClick={onToggle}
@@ -94,7 +102,7 @@ const SimpleDropdownBase: React.FunctionComponent<SimpleDropdownProps> = ({
       style={
         {
           width: toggleWidth
-        } as React.CSSProperties
+        } as CSSProperties
       }
       {...toggleProps}
     >
@@ -132,7 +140,7 @@ const SimpleDropdownBase: React.FunctionComponent<SimpleDropdownProps> = ({
   );
 };
 
-export const SimpleDropdown = React.forwardRef((props: SimpleDropdownProps, ref: React.Ref<any>) => (
+export const SimpleDropdown = forwardRef((props: SimpleDropdownProps, ref: Ref<any>) => (
   <SimpleDropdownBase {...props} innerRef={ref} />
 ));
 

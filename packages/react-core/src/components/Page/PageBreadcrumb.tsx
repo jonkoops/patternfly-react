@@ -1,15 +1,15 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, useContext, useEffect } from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Page/page';
 import { formatBreakpointMods, Mods } from '../../helpers/util';
 import { PageContext } from './PageContext';
 import { PageBody } from './PageBody';
 
-export interface PageBreadcrumbProps extends React.HTMLProps<HTMLElement> {
+export interface PageBreadcrumbProps extends HTMLProps<HTMLElement> {
   /** Additional classes to apply to the PageBreadcrumb */
   className?: string;
   /** Content rendered inside of the PageBreadcrumb */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Limits the width of the breadcrumb */
   isWidthLimited?: boolean;
   /** Modifier indicating if the PageBreadcrumb is sticky to the top or bottom at various breakpoints */
@@ -47,9 +47,9 @@ export const PageBreadcrumb = ({
   hasBodyWrapper = true,
   ...props
 }: PageBreadcrumbProps) => {
-  const { height, getVerticalBreakpoint } = React.useContext(PageContext);
+  const { height, getVerticalBreakpoint } = useContext(PageContext);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (hasOverflowScroll && !ariaLabel) {
       /* eslint-disable no-console */
       console.warn('PageBreadcrumb: An accessible aria-label is required when hasOverflowScroll is set to true.');

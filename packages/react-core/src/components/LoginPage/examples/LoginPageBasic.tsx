@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  FormEvent
+} from 'react';
 import brandImg2 from '../../assets/brandImgColor2.svg';
 import {
   LoginFooterItem,
@@ -17,19 +34,19 @@ import DropboxIcon from '@patternfly/react-icons/dist/esm/icons/dropbox-icon';
 import FacebookSquareIcon from '@patternfly/react-icons/dist/esm/icons/facebook-square-icon';
 import GitlabIcon from '@patternfly/react-icons/dist/esm/icons/gitlab-icon';
 
-export const SimpleLoginPage: React.FunctionComponent = () => {
-  const [showHelperText, setShowHelperText] = React.useState(false);
-  const [username, setUsername] = React.useState('');
-  const [isValidUsername, setIsValidUsername] = React.useState(true);
-  const [password, setPassword] = React.useState('');
-  const [isValidPassword, setIsValidPassword] = React.useState(true);
-  const [isRememberMeChecked, setIsRememberMeChecked] = React.useState(false);
+export const SimpleLoginPage: FunctionComponent = () => {
+  const [showHelperText, setShowHelperText] = useState(false);
+  const [username, setUsername] = useState('');
+  const [isValidUsername, setIsValidUsername] = useState(true);
+  const [password, setPassword] = useState('');
+  const [isValidPassword, setIsValidPassword] = useState(true);
+  const [isRememberMeChecked, setIsRememberMeChecked] = useState(false);
 
-  const handleUsernameChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  const handleUsernameChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     setUsername(value);
   };
 
-  const handlePasswordChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  const handlePasswordChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     setPassword(value);
   };
 
@@ -37,7 +54,7 @@ export const SimpleLoginPage: React.FunctionComponent = () => {
     setIsRememberMeChecked(!isRememberMeChecked);
   };
 
-  const onLoginButtonClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const onLoginButtonClick = (event: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     setIsValidUsername(!!username);
     setIsValidPassword(!!password);
@@ -45,7 +62,7 @@ export const SimpleLoginPage: React.FunctionComponent = () => {
   };
 
   const socialMediaLoginContent = (
-    <React.Fragment>
+    <>
       <LoginMainFooterLinksItem>
         <Button variant="plain" aria-label="Login with Google" icon={<GoogleIcon />} />
       </LoginMainFooterLinksItem>
@@ -61,7 +78,7 @@ export const SimpleLoginPage: React.FunctionComponent = () => {
       <LoginMainFooterLinksItem>
         <Button variant="plain" aria-label="Login with Gitlab" icon={<GitlabIcon />} />
       </LoginMainFooterLinksItem>
-    </React.Fragment>
+    </>
   );
 
   const signUpForAccountMessage = (
@@ -77,7 +94,7 @@ export const SimpleLoginPage: React.FunctionComponent = () => {
   );
 
   const listItem = (
-    <React.Fragment>
+    <>
       <ListItem>
         <LoginFooterItem href="https://www.patternfly.org/">Terms of Use </LoginFooterItem>
       </ListItem>
@@ -87,7 +104,7 @@ export const SimpleLoginPage: React.FunctionComponent = () => {
       <ListItem>
         <LoginFooterItem href="https://www.patternfly.org/">Privacy Policy</LoginFooterItem>
       </ListItem>
-    </React.Fragment>
+    </>
   );
 
   const loginForm = (

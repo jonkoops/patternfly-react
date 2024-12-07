@@ -1,4 +1,15 @@
-import React from 'react';
+import {
+  type Ref,
+  type KeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useState,
+  useRef,
+  useEffect,
+  type FormEvent,
+  type CSSProperties,
+  forwardRef
+} from 'react';
 import {
   Select,
   SelectOption,
@@ -24,12 +35,12 @@ export interface TypeaheadSelectOption extends Omit<SelectOptionProps, 'content'
 
 export interface TypeaheadSelectProps extends Omit<SelectProps, 'toggle' | 'onSelect'> {
   /** @hide Forwarded ref */
-  innerRef?: React.Ref<any>;
+  innerRef?: Ref<any>;
   /** Initial options of the select. */
   initialOptions: TypeaheadSelectOption[];
   /** Callback triggered on selection. */
   onSelect?: (
-    _event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<HTMLInputElement> | undefined,
+    _event: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent<HTMLInputElement> | undefined,
     selection: string | number
   ) => void;
   /** Callback triggered when the select opens or closes. */
@@ -61,7 +72,7 @@ export interface TypeaheadSelectProps extends Omit<SelectProps, 'toggle' | 'onSe
 const defaultNoOptionsFoundMessage = (filter: string) => `No results found for "${filter}"`;
 const defaultCreateOptionMessage = (newValue: string) => `Create "${newValue}"`;
 
-export const TypeaheadSelectBase: React.FunctionComponent<TypeaheadSelectProps> = ({
+export const TypeaheadSelectBase: FunctionComponent<TypeaheadSelectProps> = ({
   innerRef,
   initialOptions,
   onSelect,
@@ -79,20 +90,18 @@ export const TypeaheadSelectBase: React.FunctionComponent<TypeaheadSelectProps> 
   toggleProps,
   ...props
 }: TypeaheadSelectProps) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<string>(String(initialOptions.find((o) => o.selected)?.content ?? ''));
-  const [inputValue, setInputValue] = React.useState<string>(
-    String(initialOptions.find((o) => o.selected)?.content ?? '')
-  );
-  const [filterValue, setFilterValue] = React.useState<string>('');
-  const [selectOptions, setSelectOptions] = React.useState<TypeaheadSelectOption[]>(initialOptions);
-  const [focusedItemIndex, setFocusedItemIndex] = React.useState<number | null>(null);
-  const [activeItemId, setActiveItemId] = React.useState<string | null>(null);
-  const textInputRef = React.useRef<HTMLInputElement>();
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<string>(String(initialOptions.find((o) => o.selected)?.content ?? ''));
+  const [inputValue, setInputValue] = useState<string>(String(initialOptions.find((o) => o.selected)?.content ?? ''));
+  const [filterValue, setFilterValue] = useState<string>('');
+  const [selectOptions, setSelectOptions] = useState<TypeaheadSelectOption[]>(initialOptions);
+  const [focusedItemIndex, setFocusedItemIndex] = useState<number | null>(null);
+  const [activeItemId, setActiveItemId] = useState<string | null>(null);
+  const textInputRef = useRef<HTMLInputElement>();
 
   const NO_RESULTS = 'no results';
 
-  React.useEffect(() => {
+  useEffect(() => {
     let newSelectOptions: TypeaheadSelectOption[] = initialOptions;
 
     // Filter menu items based on the text input value when one exists
@@ -153,7 +162,7 @@ export const TypeaheadSelectBase: React.FunctionComponent<TypeaheadSelectProps> 
     noOptionsAvailableMessage
   ]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // If the selected option changed and the current input value is the previously selected item, update the displayed value.
     const selectedOption = initialOptions.find((o) => o.selected);
     if (inputValue === selected && selectedOption?.value !== selected) {
@@ -200,7 +209,7 @@ export const TypeaheadSelectBase: React.FunctionComponent<TypeaheadSelectProps> 
   };
 
   const selectOption = (
-    _event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<HTMLInputElement> | undefined,
+    _event: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent<HTMLInputElement> | undefined,
     option: TypeaheadSelectOption
   ) => {
     onSelect && onSelect(_event, option.value);
@@ -212,14 +221,14 @@ export const TypeaheadSelectBase: React.FunctionComponent<TypeaheadSelectProps> 
     closeMenu();
   };
 
-  const _onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
+  const _onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
     if (value && value !== NO_RESULTS) {
       const optionToSelect = selectOptions.find((option) => option.value === value);
       selectOption(_event, optionToSelect);
     }
   };
 
-  const onTextInputChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  const onTextInputChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     setInputValue(value);
     onInputChange && onInputChange(value);
     setFilterValue(value);
@@ -273,7 +282,7 @@ export const TypeaheadSelectBase: React.FunctionComponent<TypeaheadSelectProps> 
     setActiveAndFocusedItem(indexToFocus);
   };
 
-  const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const onInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     const focusedItem = focusedItemIndex !== null ? selectOptions[focusedItemIndex] : null;
 
     switch (event.key) {
@@ -309,7 +318,7 @@ export const TypeaheadSelectBase: React.FunctionComponent<TypeaheadSelectProps> 
     onClearSelection && onClearSelection();
   };
 
-  const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const toggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       ref={toggleRef}
       variant="typeahead"
@@ -321,7 +330,7 @@ export const TypeaheadSelectBase: React.FunctionComponent<TypeaheadSelectProps> 
       style={
         {
           width: toggleWidth
-        } as React.CSSProperties
+        } as CSSProperties
       }
       {...toggleProps}
     >
@@ -381,7 +390,7 @@ export const TypeaheadSelectBase: React.FunctionComponent<TypeaheadSelectProps> 
 };
 TypeaheadSelectBase.displayName = 'TypeaheadSelectBase';
 
-export const TypeaheadSelect = React.forwardRef((props: TypeaheadSelectProps, ref: React.Ref<any>) => (
+export const TypeaheadSelect = forwardRef((props: TypeaheadSelectProps, ref: Ref<any>) => (
   <TypeaheadSelectBase {...props} innerRef={ref} />
 ));
 

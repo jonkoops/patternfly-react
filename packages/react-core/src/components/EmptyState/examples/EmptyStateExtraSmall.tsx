@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import {
   Button,
   EmptyState,
@@ -9,7 +9,7 @@ import {
 } from '@patternfly/react-core';
 import CubesIcon from '@patternfly/react-icons/dist/esm/icons/cubes-icon';
 
-export const EmptyStateExtraSmall: React.FunctionComponent = () => (
+export const EmptyStateExtraSmall: FunctionComponent = () => (
   <EmptyState variant={EmptyStateVariant.xs} titleText="Empty state" headingLevel="h4" icon={CubesIcon}>
     <EmptyStateBody>This represents an the empty state pattern in PatternFly. The icon is optional.</EmptyStateBody>
     <EmptyStateFooter>

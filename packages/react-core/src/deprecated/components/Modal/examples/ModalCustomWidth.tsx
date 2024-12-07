@@ -1,16 +1,16 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, useState, Fragment } from 'react';
 import { Button } from '@patternfly/react-core';
 import { Modal as ModalDeprecated } from '@patternfly/react-core/deprecated';
 
-export const ModalCustomWidth: React.FunctionComponent = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+export const ModalCustomWidth: FunctionComponent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleModalToggle = (_event: KeyboardEvent | React.MouseEvent) => {
+  const handleModalToggle = (_event: KeyboardEvent | MouseEvent) => {
     setIsModalOpen(!isModalOpen);
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Button variant="primary" onClick={handleModalToggle}>
         Show custom width modal
       </Button>
@@ -34,6 +34,6 @@ export const ModalCustomWidth: React.FunctionComponent = () => {
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
         laborum.
       </ModalDeprecated>
-    </React.Fragment>
+    </Fragment>
   );
 };

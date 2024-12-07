@@ -1,34 +1,33 @@
-import React from 'react';
-
 import {
   Dropdown,
-  DropdownList,
   DropdownItem,
+  DropdownList,
   MenuToggle,
   MenuToggleCheckbox,
   MenuToggleElement,
   PageSection,
   Pagination,
+  PaginationVariant,
   Toolbar,
   ToolbarContent,
   ToolbarGroup,
-  ToolbarItem,
-  PaginationVariant
+  ToolbarItem
 } from '@patternfly/react-core';
-import { Table, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table';
-import { rows, columns, SampleDataRow } from '@patternfly/react-table/dist/esm/demos/sampleData';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
 import { DashboardWrapper } from '@patternfly/react-table/dist/esm/demos/DashboardWrapper';
+import { columns, rows, SampleDataRow } from '@patternfly/react-table/dist/esm/demos/sampleData';
+import { type FunctionComponent, type MouseEvent as ReactMouseEvent, type Ref, FormEvent, useState } from 'react';
 
-export const TableBulkSelect: React.FunctionComponent = () => {
-  const [isBulkSelectDropdownOpen, setIsBulkSelectDropdownOpen] = React.useState(false);
-  const [bulkSelection, setBulkSelection] = React.useState('');
-  const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(10);
-  const [paginatedRows, setPaginatedRows] = React.useState(rows.slice(0, 10));
-  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
+export const TableBulkSelect: FunctionComponent = () => {
+  const [isBulkSelectDropdownOpen, setIsBulkSelectDropdownOpen] = useState(false);
+  const [bulkSelection, setBulkSelection] = useState('');
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const [paginatedRows, setPaginatedRows] = useState(rows.slice(0, 10));
+  const [selectedRows, setSelectedRows] = useState<string[]>([]);
 
   const handleSetPage = (
-    _evt: React.MouseEvent | React.KeyboardEvent | MouseEvent,
+    _evt: ReactMouseEvent | KeyboardEvent | MouseEvent,
     newPage: number,
     _perPage: number,
     startIdx: number,
@@ -39,7 +38,7 @@ export const TableBulkSelect: React.FunctionComponent = () => {
   };
 
   const handlePerPageSelect = (
-    _evt: React.MouseEvent | React.KeyboardEvent | MouseEvent,
+    _evt: ReactMouseEvent | KeyboardEvent | MouseEvent,
     newPerPage: number,
     newPage: number,
     startIdx: number,
@@ -95,7 +94,7 @@ export const TableBulkSelect: React.FunctionComponent = () => {
     return (
       <Dropdown
         role="menu"
-        onSelect={(_event: React.MouseEvent<Element, MouseEvent>, value: string) => {
+        onSelect={(_event: ReactMouseEvent<Element, MouseEvent>, value: string) => {
           if (value === 'all') {
             selectAllRows(bulkSelection !== 'all');
           } else if (value === 'page') {
@@ -107,7 +106,7 @@ export const TableBulkSelect: React.FunctionComponent = () => {
         }}
         isOpen={isBulkSelectDropdownOpen}
         onOpenChange={(isOpen: boolean) => setIsBulkSelectDropdownOpen(isOpen)}
-        toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+        toggle={(toggleRef: Ref<MenuToggleElement>) => (
           <MenuToggle
             ref={toggleRef}
             isExpanded={isBulkSelectDropdownOpen}
@@ -165,7 +164,7 @@ export const TableBulkSelect: React.FunctionComponent = () => {
                 <Td
                   select={{
                     rowIndex,
-                    onSelect: (_event: React.FormEvent<HTMLInputElement>, isSelecting: boolean) =>
+                    onSelect: (_event: FormEvent<HTMLInputElement>, isSelecting: boolean) =>
                       setRowSelected(row, isSelecting),
                     isSelected: isRowSelected(row)
                   }}

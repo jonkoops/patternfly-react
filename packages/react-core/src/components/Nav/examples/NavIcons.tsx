@@ -1,14 +1,14 @@
-import React from 'react';
+import { FunctionComponent, FormEvent, useState } from 'react';
 import { Nav, NavItem, NavList } from '@patternfly/react-core';
 import CubeIcon from '@patternfly/react-icons/dist/esm/icons/cube-icon';
 import FolderIcon from '@patternfly/react-icons/dist/esm/icons/folder-icon';
 import CloudIcon from '@patternfly/react-icons/dist/esm/icons/cloud-icon';
 import LinkIcon from '@patternfly/react-icons/dist/esm/icons/link-icon';
 
-export const NavIcons: React.FunctionComponent = () => {
-  const [activeItem, setActiveItem] = React.useState(0);
+export const NavIcons: FunctionComponent = () => {
+  const [activeItem, setActiveItem] = useState(0);
 
-  const onSelect = (_event: React.FormEvent<HTMLInputElement>, result: { itemId: number | string }) => {
+  const onSelect = (_event: FormEvent<HTMLInputElement>, result: { itemId: number | string }) => {
     setActiveItem(result.itemId as number);
   };
 

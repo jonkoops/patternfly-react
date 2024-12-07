@@ -1,14 +1,27 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Tabs, Tab, TabTitleText, Checkbox } from '@patternfly/react-core';
 
-export const TabsFilled: React.FunctionComponent = () => {
-  const [activeTabKey, setActiveTabKey] = React.useState<string | number>(0);
-  const [isBox, setIsBox] = React.useState<boolean>(false);
+export const TabsFilled: FunctionComponent = () => {
+  const [activeTabKey, setActiveTabKey] = useState<string | number>(0);
+  const [isBox, setIsBox] = useState<boolean>(false);
   // Toggle currently active tab
-  const handleTabClick = (
-    event: React.MouseEvent<any> | React.KeyboardEvent | MouseEvent,
-    tabIndex: string | number
-  ) => {
+  const handleTabClick = (event: ReactMouseEvent<any> | KeyboardEvent | MouseEvent, tabIndex: string | number) => {
     setActiveTabKey(tabIndex);
   };
 

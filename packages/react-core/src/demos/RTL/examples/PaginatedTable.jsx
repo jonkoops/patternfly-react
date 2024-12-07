@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, useEffect, Fragment } from 'react';
 
 import {
   Avatar,
@@ -58,9 +58,9 @@ import HandPaperIcon from '@patternfly/react-icons/dist/esm/icons/hand-paper-ico
 import imgAvatar from '@patternfly/react-core/src/components/assets/avatarImg.svg';
 
 export const PaginatedTableAction = () => {
-  const [translation, setTranslation] = React.useState(translationsEn);
-  const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(10);
+  const [translation, setTranslation] = useState(translationsEn);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
 
   const columns = [
     translation.table.columns.servers,
@@ -108,9 +108,9 @@ export const PaginatedTableAction = () => {
   };
 
   const rows = createRows();
-  const [managedRows, setManagedRows] = React.useState(rows);
-  const [paginatedRows, setPaginatedRows] = React.useState(rows.slice(0, 10));
-  const [isDirRTL, setIsDirRTL] = React.useState(false);
+  const [managedRows, setManagedRows] = useState(rows);
+  const [paginatedRows, setPaginatedRows] = useState(rows.slice(0, 10));
+  const [isDirRTL, setIsDirRTL] = useState(false);
 
   const capitalize = (input) => input[0].toUpperCase() + input.substring(1);
 
@@ -119,13 +119,13 @@ export const PaginatedTableAction = () => {
     setTranslation((prevTranslation) => (prevTranslation === translationsEn ? translationsHe : translationsEn));
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const newRows = createRows();
     setManagedRows(newRows);
     setPaginatedRows(newRows.slice((page - 1) * perPage, page * perPage));
   }, [translation]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const html = document.querySelector('html');
     html.dir = isDirRTL ? 'rtl' : 'ltr';
   }, [isDirRTL]);
@@ -228,7 +228,7 @@ export const PaginatedTableAction = () => {
   };
 
   const toolbarItems = (
-    <React.Fragment>
+    <Fragment>
       <Toolbar id="rtl-paginated-table">
         <ToolbarContent>
           <ToolbarItem>
@@ -248,7 +248,7 @@ export const PaginatedTableAction = () => {
           <ToolbarItem variant="pagination">{renderPagination(PaginationVariant.top)}</ToolbarItem>
         </ToolbarContent>
       </Toolbar>
-    </React.Fragment>
+    </Fragment>
   );
 
   const pageNav = (
@@ -279,9 +279,9 @@ export const PaginatedTableAction = () => {
     </PageSidebar>
   );
 
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const [isKebabDropdownOpen, setIsKebabDropdownOpen] = React.useState(false);
-  const [isFullKebabDropdownOpen, setIsFullKebabDropdownOpen] = React.useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isKebabDropdownOpen, setIsKebabDropdownOpen] = useState(false);
+  const [isFullKebabDropdownOpen, setIsFullKebabDropdownOpen] = useState(false);
 
   const kebabDropdownItems = (
     <>
@@ -433,7 +433,7 @@ export const PaginatedTableAction = () => {
   );
 
   return (
-    <React.Fragment>
+    (<Fragment>
       <Page sidebar={sidebar} masthead={masthead} isManagedSidebar>
         <PageBreadcrumb>
           <Breadcrumb aria-label={translation.breadcrumbs.ariaLabel || undefined}>
@@ -477,11 +477,11 @@ export const PaginatedTableAction = () => {
                           return (
                             // Passing dir="rtl" forces truncation at the start of the URL,
                             // resulting in the unique portion being visible regardless of language
-                            <Td key={key} dataLabel="URL" width={15}>
+                            (<Td key={key} dataLabel="URL" width={15}>
                               <a href="#">
                                 <Truncate content={row.url} position={isDirRTL ? 'end' : 'start'} />
                               </a>
-                            </Td>
+                            </Td>)
                           );
                         } else {
                           return (
@@ -500,6 +500,6 @@ export const PaginatedTableAction = () => {
           </Card>
         </PageSection>
       </Page>
-    </React.Fragment>
+    </Fragment>)
   );
 };

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactNode, Component } from 'react';
 import { OUIAProps, getDefaultOUIAId } from '@patternfly/react-core';
 import inlineStyles from '@patternfly/react-styles/css/components/InlineEdit/inline-edit';
 import { css } from '@patternfly/react-styles';
@@ -33,7 +33,7 @@ export interface TableProps extends OUIAProps {
   /** Adds an accessible name for the Table */
   'aria-label'?: string;
   /** Content rendered inside the Table */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the Table  */
   className?: string;
   /** Style variant for the Table  */
@@ -75,9 +75,9 @@ export interface TableProps extends OUIAProps {
   /** Specifies if the Kebab for actions is disabled */
   areActionsDisabled?: IAreActionsDisabled;
   /** Component to place in the header */
-  header?: React.ReactNode;
+  header?: ReactNode;
   /** Component used for caption*/
-  caption?: React.ReactNode;
+  caption?: ReactNode;
   /** label for row */
   rowLabeledBy?: string;
   /** ID for expand */
@@ -97,7 +97,7 @@ export interface TableProps extends OUIAProps {
    */
   actionsMenuAppendTo?: HTMLElement | (() => HTMLElement) | 'inline' | 'parent';
   /** The toggle of the actions menu dropdown. A KebabToggle or DropdownToggle component */
-  actionsToggle?: (props: CustomActionsToggleProps) => React.ReactNode;
+  actionsToggle?: (props: CustomActionsToggleProps) => ReactNode;
   /** Row data */
   rows: (IRow | string[])[];
   /** Cell/column data */
@@ -131,11 +131,11 @@ export interface TableProps extends OUIAProps {
   ouiaSafe?: boolean;
 }
 
-class Table extends React.Component<TableProps, {}> {
+class Table extends Component<TableProps, {}> {
   static displayName = 'Table';
   static hasWarnBeta = false;
   static defaultProps: Partial<TableProps> = {
-    children: null as React.ReactNode,
+    children: null as ReactNode,
     className: '',
     variant: null as TableVariant,
     borders: true,
@@ -145,8 +145,8 @@ class Table extends React.Component<TableProps, {}> {
     dropdownPosition: 'right',
     dropdownDirection: 'down',
     actionsMenuAppendTo: 'inline',
-    header: undefined as React.ReactNode,
-    caption: undefined as React.ReactNode,
+    header: undefined as ReactNode,
+    caption: undefined as ReactNode,
     'aria-label': undefined as string,
     gridBreakPoint: TableGridBreakpoint.gridMd,
     role: 'grid',

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   Button,
   Card,
@@ -8,44 +6,45 @@ import {
   DropdownList,
   Flex,
   FlexItem,
+  Label,
   MenuToggle,
   MenuToggleElement,
-  PageSection,
-  Pagination,
-  SelectOption,
-  SelectList,
-  SelectGroup,
-  Toolbar,
-  ToolbarContent,
-  ToolbarGroup,
-  ToolbarItem,
-  OverflowMenuDropdownItem,
-  PaginationVariant,
-  Label,
-  Select,
   OverflowMenu,
   OverflowMenuContent,
   OverflowMenuControl,
+  OverflowMenuDropdownItem,
   OverflowMenuGroup,
   OverflowMenuItem,
-  PageSectionVariants
+  PageSection,
+  PageSectionVariants,
+  Pagination,
+  PaginationVariant,
+  Select,
+  SelectGroup,
+  SelectList,
+  SelectOption,
+  Toolbar,
+  ToolbarContent,
+  ToolbarGroup,
+  ToolbarItem
 } from '@patternfly/react-core';
-import { Table, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table';
 import CloneIcon from '@patternfly/react-icons/dist/esm/icons/clone-icon';
-import EditIcon from '@patternfly/react-icons/dist/esm/icons/edit-icon';
-import SyncIcon from '@patternfly/react-icons/dist/esm/icons/sync-icon';
-import CodeIcon from '@patternfly/react-icons/dist/esm/icons/code-icon';
 import CodeBranchIcon from '@patternfly/react-icons/dist/esm/icons/code-branch-icon';
-import SortAmountDownIcon from '@patternfly/react-icons/dist/esm/icons/sort-amount-down-icon';
+import CodeIcon from '@patternfly/react-icons/dist/esm/icons/code-icon';
 import CubeIcon from '@patternfly/react-icons/dist/esm/icons/cube-icon';
-import { DashboardWrapper } from '@patternfly/react-table/dist/esm/demos/DashboardWrapper';
+import EditIcon from '@patternfly/react-icons/dist/esm/icons/edit-icon';
 import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
-import { rows, columns, SampleDataRow } from '@patternfly/react-table/dist/esm/demos/sampleData';
+import SortAmountDownIcon from '@patternfly/react-icons/dist/esm/icons/sort-amount-down-icon';
+import SyncIcon from '@patternfly/react-icons/dist/esm/icons/sync-icon';
+import { Table, Tbody, Td, Th, Thead, Tr } from '@patternfly/react-table';
+import { DashboardWrapper } from '@patternfly/react-table/dist/esm/demos/DashboardWrapper';
+import { columns, rows, SampleDataRow } from '@patternfly/react-table/dist/esm/demos/sampleData';
+import { type FunctionComponent, type MouseEvent as ReactMouseEvent, type Ref, useEffect, useState } from 'react';
 
 type Direction = 'asc' | 'desc' | undefined;
 
-export const TableSortableResponsive: React.FunctionComponent = () => {
-  const [isKebabDropdownOpen, setIsKebabDropdownOpen] = React.useState(false);
+export const TableSortableResponsive: FunctionComponent = () => {
+  const [isKebabDropdownOpen, setIsKebabDropdownOpen] = useState(false);
 
   const sortRows = (rows: SampleDataRow[], sortIndex: number, sortDirection: Direction) =>
     [...rows].sort((a, b) => {
@@ -65,17 +64,17 @@ export const TableSortableResponsive: React.FunctionComponent = () => {
       return returnValue;
     });
 
-  const [sortedData, setSortedData] = React.useState([...sortRows(rows, 0, 'asc')]);
-  const [sortedRows, setSortedRows] = React.useState([...sortedData]);
-  const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(10);
+  const [sortedData, setSortedData] = useState([...sortRows(rows, 0, 'asc')]);
+  const [sortedRows, setSortedRows] = useState([...sortedData]);
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(10);
 
   // index of the currently active column
-  const [activeSortIndex, setActiveSortIndex] = React.useState(0);
+  const [activeSortIndex, setActiveSortIndex] = useState(0);
   // sort direction of the currently active column
-  const [activeSortDirection, setActiveSortDirection] = React.useState<Direction>('asc');
+  const [activeSortDirection, setActiveSortDirection] = useState<Direction>('asc');
   // sort dropdown expansion
-  const [isSortDropdownOpen, setIsSortDropdownOpen] = React.useState(false);
+  const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
 
   const onSort = (_event: any, index: number, direction: Direction) => {
     setActiveSortIndex(index);
@@ -86,15 +85,15 @@ export const TableSortableResponsive: React.FunctionComponent = () => {
 
   const kebabDropdownItems = [<OverflowMenuDropdownItem key="kebab-1">Some action</OverflowMenuDropdownItem>];
 
-  React.useEffect(() => {
+  useEffect(() => {
     setSortedRows(sortedData.slice((page - 1) * perPage, page * perPage));
   }, [sortedData, page, perPage]);
 
-  const handleSetPage = (_evt: React.MouseEvent | React.KeyboardEvent | MouseEvent, newPage: number) => {
+  const handleSetPage = (_evt: ReactMouseEvent | KeyboardEvent | MouseEvent, newPage: number) => {
     setPage(newPage);
   };
 
-  const handlePerPageSelect = (_evt: React.MouseEvent | React.KeyboardEvent | MouseEvent, newPerPage: number) => {
+  const handlePerPageSelect = (_evt: ReactMouseEvent | KeyboardEvent | MouseEvent, newPerPage: number) => {
     setPerPage(newPerPage);
   };
 
@@ -140,14 +139,14 @@ export const TableSortableResponsive: React.FunctionComponent = () => {
             isOpen={isSortDropdownOpen}
             selected={[activeSortDirection, activeSortIndex]}
             onOpenChange={(isOpen: boolean) => setIsSortDropdownOpen(isOpen)}
-            onSelect={(event: React.MouseEvent<Element, MouseEvent>, value: string | number) => {
+            onSelect={(event: ReactMouseEvent<Element, MouseEvent>, value: string | number) => {
               if (value === 'asc' || value === 'desc') {
                 onSort(event, activeSortIndex, value);
               } else {
                 onSort(event, value as number, activeSortDirection ?? 'asc');
               }
             }}
-            toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+            toggle={(toggleRef: Ref<MenuToggleElement>) => (
               <MenuToggle
                 ref={toggleRef}
                 onClick={() => setIsSortDropdownOpen(!isSortDropdownOpen)}
@@ -194,7 +193,7 @@ export const TableSortableResponsive: React.FunctionComponent = () => {
               <Dropdown
                 onSelect={() => setIsKebabDropdownOpen(!isKebabDropdownOpen)}
                 onOpenChange={(isKebabDropdownOpen: boolean) => setIsKebabDropdownOpen(isKebabDropdownOpen)}
-                toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                toggle={(toggleRef: Ref<MenuToggleElement>) => (
                   <MenuToggle
                     ref={toggleRef}
                     aria-label="overflow menu"
@@ -228,7 +227,7 @@ export const TableSortableResponsive: React.FunctionComponent = () => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <DashboardWrapper>
         <PageSection isWidthLimited variant={PageSectionVariants.light}>
           <Content>
@@ -327,6 +326,6 @@ export const TableSortableResponsive: React.FunctionComponent = () => {
           </Card>
         </PageSection>
       </DashboardWrapper>
-    </React.Fragment>
+    </>
   );
 };

@@ -1,4 +1,13 @@
-import * as React from 'react';
+import {
+  ButtonHTMLAttributes,
+  HTMLAttributes,
+  DetailedHTMLProps,
+  ReactNode,
+  Ref,
+  isValidElement,
+  Component,
+  forwardRef
+} from 'react';
 import styles from '@patternfly/react-styles/css/components/MenuToggle/menu-toggle';
 import { css } from '@patternfly/react-styles';
 import CaretDownIcon from '@patternfly/react-icons/dist/esm/icons/caret-down-icon';
@@ -23,15 +32,12 @@ export type MenuToggleElement = HTMLDivElement | HTMLButtonElement;
 
 export interface MenuToggleProps
   extends Omit<
-      React.DetailedHTMLProps<
-        React.ButtonHTMLAttributes<HTMLButtonElement> & React.HTMLAttributes<HTMLDivElement>,
-        MenuToggleElement
-      >,
+      DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement> & HTMLAttributes<HTMLDivElement>, MenuToggleElement>,
       'ref'
     >,
     OUIAProps {
   /** Content rendered inside the toggle */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the toggle */
   className?: string;
   /** Flag indicating the toggle has expanded styling */
@@ -45,23 +51,23 @@ export interface MenuToggleProps
   /** Flag indicating the toggle contains placeholder text */
   isPlaceholder?: boolean;
   /** Elements to display before the toggle button. When included, renders the menu toggle as a split button. */
-  splitButtonItems?: React.ReactNode[];
+  splitButtonItems?: ReactNode[];
   /** Variant styles of the menu toggle */
   variant?: 'default' | 'plain' | 'primary' | 'plainText' | 'secondary' | 'typeahead';
   /** Status styles of the menu toggle */
   status?: 'success' | 'warning' | 'danger';
   /** Overrides the status icon */
-  statusIcon?: React.ReactNode;
+  statusIcon?: ReactNode;
   /** Optional icon or image rendered inside the toggle, before the children content. It is
    * recommended to wrap most basic icons in our icon component.
    */
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   /** Optional badge rendered inside the toggle, after the children content */
-  badge?: BadgeProps | React.ReactNode;
+  badge?: BadgeProps | ReactNode;
   /** Adds styling which affects the size of the menu toggle */
   size?: 'default' | 'sm';
   /** @hide Forwarded ref */
-  innerRef?: React.Ref<MenuToggleElement>;
+  innerRef?: Ref<MenuToggleElement>;
   /** Value to overwrite the randomly generated data-ouia-component-id. It will always target the toggle button. */
   ouiaId?: number | string;
   /** Set the value of data-ouia-safe. Only set to true when the component is in a static state, i.e. no animations are occurring. At all other times, this value must be false. */
@@ -72,7 +78,7 @@ interface MenuToggleState {
   ouiaStateId: string;
 }
 
-class MenuToggleBase extends React.Component<MenuToggleProps, MenuToggleState> {
+class MenuToggleBase extends Component<MenuToggleProps, MenuToggleState> {
   displayName = 'MenuToggleBase';
   static defaultProps: MenuToggleProps = {
     className: '',
@@ -146,7 +152,7 @@ class MenuToggleBase extends React.Component<MenuToggleProps, MenuToggleState> {
       <>
         {icon && <span className={css(styles.menuToggleIcon)}>{icon}</span>}
         {isTypeahead ? children : children && <span className={css(styles.menuToggleText)}>{children}</span>}
-        {React.isValidElement(badge) && <span className={css(styles.menuToggleCount)}>{badge}</span>}
+        {isValidElement(badge) && <span className={css(styles.menuToggleCount)}>{badge}</span>}
         {isTypeahead ? (
           <button
             type="button"
@@ -190,7 +196,7 @@ class MenuToggleBase extends React.Component<MenuToggleProps, MenuToggleState> {
     if (isTypeahead) {
       return (
         <div
-          ref={innerRef as React.Ref<HTMLDivElement>}
+          ref={innerRef as Ref<HTMLDivElement>}
           className={css(commonStyles, styles.modifiers.typeahead)}
           {...componentProps}
         />
@@ -199,7 +205,7 @@ class MenuToggleBase extends React.Component<MenuToggleProps, MenuToggleState> {
 
     if (splitButtonItems) {
       return (
-        <div ref={innerRef as React.Ref<HTMLDivElement>} className={css(commonStyles, styles.modifiers.splitButton)}>
+        <div ref={innerRef as Ref<HTMLDivElement>} className={css(commonStyles, styles.modifiers.splitButton)}>
           {splitButtonItems}
           <button
             className={css(styles.menuToggleButton, children && styles.modifiers.text)}
@@ -224,7 +230,7 @@ class MenuToggleBase extends React.Component<MenuToggleProps, MenuToggleState> {
         type="button"
         aria-label={ariaLabel}
         aria-expanded={isExpanded}
-        ref={innerRef as React.Ref<HTMLButtonElement>}
+        ref={innerRef as Ref<HTMLButtonElement>}
         disabled={isDisabled}
         onClick={onClick}
         {...componentProps}
@@ -234,7 +240,7 @@ class MenuToggleBase extends React.Component<MenuToggleProps, MenuToggleState> {
   }
 }
 
-export const MenuToggle = React.forwardRef((props: MenuToggleProps, ref: React.Ref<MenuToggleElement>) => (
+export const MenuToggle = forwardRef((props: MenuToggleProps, ref: Ref<MenuToggleElement>) => (
   <MenuToggleBase innerRef={ref} {...props} />
 ));
 

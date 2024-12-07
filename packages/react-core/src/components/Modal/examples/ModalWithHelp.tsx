@@ -1,16 +1,16 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, useState, Fragment } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Popover } from '@patternfly/react-core';
 import HelpIcon from '@patternfly/react-icons/dist/esm/icons/help-icon';
 
-export const ModalWithHelp: React.FunctionComponent = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+export const ModalWithHelp: FunctionComponent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleModalToggle = (_event: KeyboardEvent | React.MouseEvent) => {
+  const handleModalToggle = (_event: KeyboardEvent | MouseEvent) => {
     setIsModalOpen(!isModalOpen);
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Button variant="primary" onClick={handleModalToggle}>
         Show with help modal
       </Button>
@@ -55,6 +55,6 @@ export const ModalWithHelp: React.FunctionComponent = () => {
           </Button>
         </ModalFooter>
       </Modal>
-    </React.Fragment>
+    </Fragment>
   );
 };

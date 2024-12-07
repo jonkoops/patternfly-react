@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactElement, MouseEvent, useCallback, useEffect, Fragment } from 'react';
 
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Wizard/wizard';
@@ -23,15 +23,15 @@ export interface WizardToggleProps {
   /** The current step */
   activeStep: WizardStepType;
   /** Wizard footer */
-  footer: React.ReactElement;
+  footer: ReactElement;
   /** Wizard navigation */
-  nav: React.ReactElement<WizardNavProps>;
+  nav: ReactElement<WizardNavProps>;
   /** The expandable dropdown button's aria-label */
   'aria-label'?: string;
   /** Flag to determine whether the dropdown navigation is expanded */
   isNavExpanded?: boolean;
   /** Callback to expand or collapse the dropdown navigation */
-  toggleNavExpanded?: (event: React.MouseEvent<HTMLButtonElement> | KeyboardEvent) => void;
+  toggleNavExpanded?: (event: MouseEvent<HTMLButtonElement> | KeyboardEvent) => void;
 }
 
 export const WizardToggle = ({
@@ -49,7 +49,7 @@ export const WizardToggle = ({
   const wizardToggleIndex = nonSubSteps.indexOf(parentStep || activeStep) + 1;
   const isActiveStepStatus = activeStep.status;
 
-  const handleKeyClicks = React.useCallback(
+  const handleKeyClicks = useCallback(
     (event: KeyboardEvent): void => {
       if (isNavExpanded && event.key === KeyTypes.Escape) {
         toggleNavExpanded?.(event);
@@ -59,7 +59,7 @@ export const WizardToggle = ({
   );
 
   // Open/close collapsable navigation on keydown event
-  React.useEffect(() => {
+  useEffect(() => {
     const target = typeof document !== 'undefined' ? document.body : null;
     target?.addEventListener('keydown', handleKeyClicks, false);
 
@@ -73,13 +73,12 @@ export const WizardToggle = ({
     const { children, body, ...propsWithoutChildren } = props;
 
     return (
-      <React.Fragment key={step.id}>
+      <Fragment key={step.id}>
         {activeStep?.id === step.id && <WizardBody {...body}>{children}</WizardBody>}
-
         <div key={step.id} style={{ display: 'none' }}>
           <WizardStep {...propsWithoutChildren} />
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   });
 

@@ -1,22 +1,38 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Pagination, PaginationVariant, Gallery, GalleryItem, Card, CardBody } from '@patternfly/react-core';
 
-export const PaginationSticky: React.FunctionComponent = () => {
-  const [page, setPage] = React.useState(1);
-  const [perPage, setPerPage] = React.useState(100);
-  const [isTopSticky, setIsTopSticky] = React.useState(true);
+export const PaginationSticky: FunctionComponent = () => {
+  const [page, setPage] = useState(1);
+  const [perPage, setPerPage] = useState(100);
+  const [isTopSticky, setIsTopSticky] = useState(true);
   const itemCount = 523;
 
   const onToggleSticky = () => {
     setIsTopSticky((prev) => !prev);
   };
 
-  const onSetPage = (_event: React.MouseEvent | React.KeyboardEvent | MouseEvent, newPage: number) => {
+  const onSetPage = (_event: ReactMouseEvent | KeyboardEvent | MouseEvent, newPage: number) => {
     setPage(newPage);
   };
 
   const onPerPageSelect = (
-    _event: React.MouseEvent | React.KeyboardEvent | MouseEvent,
+    _event: ReactMouseEvent | KeyboardEvent | MouseEvent,
     newPerPage: number,
     newPage: number
   ) => {
@@ -37,7 +53,7 @@ export const PaginationSticky: React.FunctionComponent = () => {
   };
 
   return isTopSticky ? (
-    <React.Fragment>
+    <>
       <Pagination
         itemCount={itemCount}
         perPage={perPage}
@@ -50,9 +66,9 @@ export const PaginationSticky: React.FunctionComponent = () => {
         <button onClick={onToggleSticky}>Toggle to bottom position</button>
       </Pagination>
       <Gallery hasGutter>{buildCards()}</Gallery>
-    </React.Fragment>
+    </>
   ) : (
-    <React.Fragment>
+    <>
       <Gallery hasGutter>{buildCards()}</Gallery>
       <Pagination
         itemCount={itemCount}
@@ -66,6 +82,6 @@ export const PaginationSticky: React.FunctionComponent = () => {
       >
         <button onClick={onToggleSticky}>Toggle to top position</button>
       </Pagination>
-    </React.Fragment>
+    </>
   );
 };

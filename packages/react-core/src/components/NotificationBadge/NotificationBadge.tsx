@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactNode, FunctionComponent } from 'react';
 import { Button, ButtonVariant, ButtonProps } from '../Button';
 import AttentionBellIcon from '@patternfly/react-icons/dist/esm/icons/attention-bell-icon';
 import BellIcon from '@patternfly/react-icons/dist/esm/icons/bell-icon';
@@ -13,15 +13,15 @@ export interface NotificationBadgeProps extends Omit<ButtonProps, 'variant'> {
   /** Adds an accessible label to the notification badge. */
   'aria-label'?: string;
   /** Icon to display for attention variant. */
-  attentionIcon?: React.ReactNode;
+  attentionIcon?: ReactNode;
   /** Content rendered inside the notification badge. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the notification badge. */
   className?: string;
   /** A number displayed in the badge alongside the icon. */
   count?: number;
   /** Icon to display in the notification badge. */
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   /** Flag for applying expanded styling and setting the aria-expanded attribute on the
    * notification badge.
    */
@@ -30,7 +30,7 @@ export interface NotificationBadgeProps extends Omit<ButtonProps, 'variant'> {
   variant?: NotificationBadgeVariant | 'read' | 'unread' | 'attention';
 }
 
-export const NotificationBadge: React.FunctionComponent<NotificationBadgeProps> = ({
+export const NotificationBadge: FunctionComponent<NotificationBadgeProps> = ({
   children,
   variant = NotificationBadgeVariant.read,
   count = 0,

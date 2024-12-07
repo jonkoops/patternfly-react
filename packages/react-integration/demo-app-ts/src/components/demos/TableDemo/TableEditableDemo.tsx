@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { FormEvent, MouseEvent, ChangeEvent, Component } from 'react';
 import {
   TableVariant,
   ICell,
@@ -43,7 +43,7 @@ interface TableState {
   columns: (ICell | string)[];
 }
 
-export class TableEditableDemo extends React.Component<TableProps, TableState> {
+export class TableEditableDemo extends Component<TableProps, TableState> {
   static displayName = 'TableEditableDemo';
 
   constructor(props: TableProps) {
@@ -320,7 +320,7 @@ export class TableEditableDemo extends React.Component<TableProps, TableState> {
     });
   };
 
-  handleTextInputChange = (newValue: string, _event: React.FormEvent, rowIndex: number, cellIndex: number) => {
+  handleTextInputChange = (newValue: string, _event: FormEvent, rowIndex: number, cellIndex: number) => {
     const newRows = Array.from(this.state.rows);
     const rowCells = newRows[rowIndex].cells;
     if (rowCells) {
@@ -332,7 +332,7 @@ export class TableEditableDemo extends React.Component<TableProps, TableState> {
   };
 
   onSelect = (
-    _: React.MouseEvent | React.ChangeEvent,
+    _: MouseEvent | ChangeEvent,
     newValue: string,
     rowIndex: number,
     cellIndex: number,
@@ -405,7 +405,7 @@ export class TableEditableDemo extends React.Component<TableProps, TableState> {
     }
   };
 
-  clearSelection = (_event: React.MouseEvent, rowIndex: number, cellIndex: number) => {
+  clearSelection = (_event: MouseEvent, rowIndex: number, cellIndex: number) => {
     const newRows = Array.from(this.state.rows);
     const newCell = newRows?.[rowIndex].cells?.[cellIndex];
     const newCellProps = (newCell as IRowCell).props;

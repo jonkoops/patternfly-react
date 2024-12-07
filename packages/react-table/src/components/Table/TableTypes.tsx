@@ -1,7 +1,7 @@
 import { formatterValueType, ColumnType, RowType, RowKeyType, HeaderType } from './base/types';
 import { SortByDirection } from './SortColumn';
 import { DropdownItemProps } from '@patternfly/react-core/dist/esm/components/Dropdown';
-import * as React from 'react';
+import { MouseEvent, FormEvent, ReactNode, HTMLProps, ReactText } from 'react';
 import { CustomActionsToggleProps } from './ActionsColumn';
 import { ButtonProps } from '@patternfly/react-core/dist/esm/components/Button';
 import { TooltipProps } from '@patternfly/react-core/dist/esm/components/Tooltip';
@@ -26,20 +26,20 @@ export interface RowErrors {
 }
 
 export type OnSort = (
-  event: React.MouseEvent,
+  event: MouseEvent,
   columnIndex: number,
   sortByDirection: SortByDirection,
   extraData: IExtraColumnData
 ) => void;
 export type OnCollapse = (
-  event: React.MouseEvent,
+  event: MouseEvent,
   rowIndex: number,
   isOpen: boolean,
   rowData: IRowData,
   extraData: IExtraData
 ) => void;
 export type OnExpand = (
-  event: React.MouseEvent,
+  event: MouseEvent,
   rowIndex: number,
   colIndex: number,
   isOpen: boolean,
@@ -47,34 +47,34 @@ export type OnExpand = (
   extraData: IExtraData
 ) => void;
 export type OnSelect = (
-  event: React.FormEvent<HTMLInputElement>,
+  event: FormEvent<HTMLInputElement>,
   isSelected: boolean,
   rowIndex: number,
   rowData: IRowData,
   extraData: IExtraData
 ) => void;
 export type OnRowEdit = (
-  event: React.MouseEvent<HTMLButtonElement>,
+  event: MouseEvent<HTMLButtonElement>,
   type: RowEditType,
   isEditable?: boolean,
   rowIndex?: number,
   validationErrors?: RowErrors
 ) => void;
 export type OnFavorite = (
-  event: React.MouseEvent,
+  event: MouseEvent,
   isFavorited: boolean,
   rowIndex: number,
   rowData: IRowData,
   extraData: IExtraData
 ) => void;
 
-export type OnTreeRowCollapse = (event: any, rowIndex: number, title: React.ReactNode, rowData: IRowData) => void;
-export type OnToggleRowDetails = (event: any, rowIndex: number, title: React.ReactNode, rowData: IRowData) => void;
+export type OnTreeRowCollapse = (event: any, rowIndex: number, title: ReactNode, rowData: IRowData) => void;
+export type OnToggleRowDetails = (event: any, rowIndex: number, title: ReactNode, rowData: IRowData) => void;
 export type OnCheckChange = (
-  event: React.FormEvent<HTMLInputElement>,
+  event: FormEvent<HTMLInputElement>,
   isChecked: boolean,
   rowIndex: number,
-  title: React.ReactNode,
+  title: ReactNode,
   rowData: IRowData
 ) => void;
 
@@ -103,7 +103,7 @@ export interface IColumn {
     dropdownPosition?: 'right' | 'left';
     dropdownDirection?: 'up' | 'down';
     menuAppendTo?: HTMLElement | (() => HTMLElement) | 'inline' | 'parent';
-    actionsToggle?: (props: CustomActionsToggleProps) => React.ReactNode;
+    actionsToggle?: (props: CustomActionsToggleProps) => ReactNode;
     actionsPopperProps?: any;
     allRowsSelected?: boolean;
     allRowsExpanded?: boolean;
@@ -131,13 +131,13 @@ export interface IExtra extends IExtraData {
   rowData?: IRowData;
   className?: string;
   ariaLabel?: string;
-  tooltip?: React.ReactNode;
+  tooltip?: ReactNode;
   tooltipProps?: Omit<TooltipProps, 'content'>;
   tooltipHasDefaultBehavior?: boolean;
 }
 
 export type IFormatterValueType = formatterValueType & {
-  title?: React.ReactNode;
+  title?: ReactNode;
   props?: any;
 };
 
@@ -156,13 +156,13 @@ export interface IAction extends Omit<DropdownItemProps, 'title' | 'onClick'>, P
   /** Key of actions menu item */
   itemKey?: string;
   /** Content to display in the actions menu item */
-  title?: React.ReactNode;
+  title?: ReactNode;
   /** Render item as aria-disabled option */
   isAriaDisabled?: boolean;
   /** Props for adding a tooltip to a menu item. This is used to display tooltip when hovered over the item  */
   tooltipProps?: TooltipProps;
   /** Click handler for the actions menu item */
-  onClick?: (event: React.MouseEvent, rowIndex: number, rowData: IRowData, extraData: IExtraData) => void;
+  onClick?: (event: MouseEvent, rowIndex: number, rowData: IRowData, extraData: IExtraData) => void;
   /** Flag indicating this action should be placed outside the actions menu, beside the toggle */
   isOutsideDropdown?: boolean;
   /** Flag indicating whether the actions dropdown should close after an item is clicked. */
@@ -178,24 +178,24 @@ export type IActionsResolver = (rowData: IRowData, extraData: IExtraData) => (IA
 export type IAreActionsDisabled = (rowData: IRowData, extraData: IExtraData) => boolean;
 
 // to be removed in future, this interface is no longer accurate
-export interface IDecorator extends React.HTMLProps<HTMLElement> {
+export interface IDecorator extends HTMLProps<HTMLElement> {
   isVisible: boolean;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export interface decoratorReturnType {
   className?: string;
   'aria-sort'?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   textCenter?: boolean;
   component?: string;
   isVisible?: boolean;
-  title?: React.ReactNode;
+  title?: ReactNode;
   props?: any;
   scope?: string;
   parentId?: number;
   colSpan?: number;
-  id?: React.ReactText;
+  id?: ReactText;
 }
 
 export type ITransform = (label?: IFormatterValueType, extra?: IExtra) => decoratorReturnType;
@@ -204,7 +204,7 @@ export type IFormatter = (data?: IFormatterValueType, extra?: IExtra) => formatt
 
 export interface ICell {
   /* cell contents */
-  title?: React.ReactNode;
+  title?: ReactNode;
   /** transformations applied to the header cell */
   transforms?: ITransform[];
   /** transformations applied to the cells within the column's body */
@@ -228,7 +228,7 @@ export interface ICell {
 export type RowCellContent<T = any> = (value?: string, rowIndex?: number, cellIndex?: number, props?: T) => void;
 
 export interface IRowCell<T = any> {
-  title?: React.ReactNode | RowCellContent<T>;
+  title?: ReactNode | RowCellContent<T>;
   props?: T;
   formatters?: IFormatter[];
 }
@@ -240,7 +240,7 @@ export interface IValidatorDef {
 }
 
 export interface IRow extends RowType {
-  cells?: (React.ReactNode | IRowCell)[];
+  cells?: (ReactNode | IRowCell)[];
   isOpen?: boolean;
   isEditable?: boolean;
   isClickable?: boolean;

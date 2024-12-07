@@ -1,19 +1,19 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, ReactNode, useState } from 'react';
 import { DualListSelector as DLSDeprecated } from '@patternfly/react-core/deprecated';
 
-export const DualListSelectorBasicTooltips: React.FunctionComponent = () => {
-  const [availableOptions, setAvailableOptions] = React.useState<React.ReactNode[]>([
+export const DualListSelectorBasicTooltips: FunctionComponent = () => {
+  const [availableOptions, setAvailableOptions] = useState<ReactNode[]>([
     'Option 1',
     'Option 2',
     'Option 3',
     'Option 4'
   ]);
-  const [chosenOptions, setChosenOptions] = React.useState<React.ReactNode[]>([]);
+  const [chosenOptions, setChosenOptions] = useState<ReactNode[]>([]);
 
   const onListChange = (
-    event: React.MouseEvent<HTMLElement>,
-    newAvailableOptions: React.ReactNode[],
-    newChosenOptions: React.ReactNode[]
+    event: MouseEvent<HTMLElement>,
+    newAvailableOptions: ReactNode[],
+    newChosenOptions: ReactNode[]
   ) => {
     setAvailableOptions(newAvailableOptions.sort());
     setChosenOptions(newChosenOptions.sort());

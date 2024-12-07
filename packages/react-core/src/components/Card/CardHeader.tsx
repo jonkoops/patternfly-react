@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactNode, FormEvent, MouseEvent, HTMLProps, FunctionComponent, useId } from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Card/card';
 import { CardContext } from './Card';
@@ -12,7 +12,7 @@ import { Checkbox } from '../Checkbox';
 
 export interface CardHeaderActionsObject {
   /** Actions of the card header */
-  actions: React.ReactNode;
+  actions: ReactNode;
   /** Flag indicating that the actions have no offset */
   hasNoOffset?: boolean;
   /** Additional classes added to the actions wrapper */
@@ -39,9 +39,9 @@ export interface CardHeaderSelectableActionsObject {
    */
   selectableActionAriaLabelledby?: string;
   /** Callback for when a selectable card input changes */
-  onChange?: (event: React.FormEvent<HTMLInputElement>, checked: boolean) => void;
+  onChange?: (event: FormEvent<HTMLInputElement>, checked: boolean) => void;
   /** Action to call when a clickable-only card is clicked. This cannot be combined with the to prop. */
-  onClickAction?: (event: React.MouseEvent) => void;
+  onClickAction?: (event: MouseEvent) => void;
   /** Link to navigate to when a clickable-only card is clicked. This cannot be combined with the onClickAction prop. */
   to?: string;
   /** Additional props spread to a selectable card input or clickable-only card's button/anchor. */
@@ -58,9 +58,9 @@ export interface CardHeaderSelectableActionsObject {
   isHidden?: boolean;
 }
 
-export interface CardHeaderProps extends React.HTMLProps<HTMLDivElement> {
+export interface CardHeaderProps extends HTMLProps<HTMLDivElement> {
   /** Content rendered inside the card header */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the card header */
   className?: string;
   /** Actions of the card header */
@@ -70,14 +70,14 @@ export interface CardHeaderProps extends React.HTMLProps<HTMLDivElement> {
   /** ID of the card header. */
   id?: string;
   /** Callback expandable card */
-  onExpand?: (event: React.MouseEvent, id: string) => void;
+  onExpand?: (event: MouseEvent, id: string) => void;
   /** Additional props for expandable toggle button */
   toggleButtonProps?: any;
   /** Whether to right-align expandable toggle button */
   isToggleRightAligned?: boolean;
 }
 
-export const CardHeader: React.FunctionComponent<CardHeaderProps> = ({
+export const CardHeader: FunctionComponent<CardHeaderProps> = ({
   children,
   className,
   actions,
@@ -88,7 +88,7 @@ export const CardHeader: React.FunctionComponent<CardHeaderProps> = ({
   isToggleRightAligned,
   ...props
 }: CardHeaderProps) => {
-  const uniqueId = React.useId();
+  const uniqueId = useId();
 
   return (
     <CardContext.Consumer>

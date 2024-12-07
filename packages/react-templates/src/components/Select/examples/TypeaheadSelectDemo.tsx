@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, useState, useMemo, useEffect } from 'react';
 import { TypeaheadSelect, TypeaheadSelectOption } from '@patternfly/react-templates';
 import { Checkbox } from '@patternfly/react-core';
 
@@ -12,18 +12,18 @@ const Options = [
 ];
 
 /* eslint-disable no-console */
-export const SelectTypeaheadDemo: React.FunctionComponent = () => {
-  const [selected, setSelected] = React.useState<string | undefined>();
-  const [options, setOptions] = React.useState(Options);
-  const [isCreatable, setIsCreatable] = React.useState<boolean>(false);
-  const [isCreateOptionOnTop, setIsCreateOptionOnTop] = React.useState<boolean>(false);
+export const SelectTypeaheadDemo: FunctionComponent = () => {
+  const [selected, setSelected] = useState<string | undefined>();
+  const [options, setOptions] = useState(Options);
+  const [isCreatable, setIsCreatable] = useState<boolean>(false);
+  const [isCreateOptionOnTop, setIsCreateOptionOnTop] = useState<boolean>(false);
 
-  const initialOptions = React.useMemo<TypeaheadSelectOption[]>(
+  const initialOptions = useMemo<TypeaheadSelectOption[]>(
     () => options.map((o) => ({ ...o, selected: o.value === selected })),
     [options, selected]
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log(`Selected: ${selected || 'none'}`);
   }, [selected]);
 

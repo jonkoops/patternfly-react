@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, useState, useRef } from 'react';
 import {
   Form,
   FormGroup,
@@ -14,11 +14,11 @@ import {
   FormGroupLabelHelp
 } from '@patternfly/react-core';
 
-export const FormLimitWidth: React.FunctionComponent = () => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [phone, setPhone] = React.useState('');
-  const labelHelpRef = React.useRef(null);
+export const FormLimitWidth: FunctionComponent = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const labelHelpRef = useRef(null);
 
   const handleNameChange = (_event, name: string) => {
     setName(name);

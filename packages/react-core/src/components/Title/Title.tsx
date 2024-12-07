@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Title/title';
 import { useOUIAProps, OUIAProps } from '../../helpers';
@@ -14,11 +14,11 @@ export enum TitleSizes {
 
 type Size = 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
 
-export interface TitleProps extends Omit<React.HTMLProps<HTMLHeadingElement>, 'size' | 'className'>, OUIAProps {
+export interface TitleProps extends Omit<HTMLProps<HTMLHeadingElement>, 'size' | 'className'>, OUIAProps {
   /** The size of the Title  */
   size?: Size;
   /** Content rendered inside the Title */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the Title */
   className?: string;
   /** The heading level to use */
@@ -29,7 +29,7 @@ export interface TitleProps extends Omit<React.HTMLProps<HTMLHeadingElement>, 's
   ouiaSafe?: boolean;
 }
 
-export const Title: React.FunctionComponent<TitleProps> = ({
+export const Title: FunctionComponent<TitleProps> = ({
   className = '',
   children = '',
   headingLevel: HeadingLevel,

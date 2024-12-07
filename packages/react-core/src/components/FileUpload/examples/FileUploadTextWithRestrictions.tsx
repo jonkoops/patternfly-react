@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  ChangeEvent
+} from 'react';
 import {
   FileUpload,
   DropzoneErrorCode,
@@ -11,18 +28,18 @@ import {
   Icon
 } from '@patternfly/react-core';
 
-export const TextFileUploadWithRestrictions: React.FunctionComponent = () => {
-  const [value, setValue] = React.useState('');
-  const [filename, setFilename] = React.useState('');
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [isRejected, setIsRejected] = React.useState(false);
-  const [message, setMessage] = React.useState('Must be a CSV file no larger than 1 KB');
+export const TextFileUploadWithRestrictions: FunctionComponent = () => {
+  const [value, setValue] = useState('');
+  const [filename, setFilename] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRejected, setIsRejected] = useState(false);
+  const [message, setMessage] = useState('Must be a CSV file no larger than 1 KB');
 
   const handleFileInputChange = (_, file: File) => {
     setFilename(file.name);
   };
 
-  const handleTextChange = (_event: React.ChangeEvent<HTMLTextAreaElement>, value: string) => {
+  const handleTextChange = (_event: ChangeEvent<HTMLTextAreaElement>, value: string) => {
     setValue(value);
   };
 
@@ -35,7 +52,7 @@ export const TextFileUploadWithRestrictions: React.FunctionComponent = () => {
     setValue('');
   };
 
-  const handleClear = (_event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClear = (_event: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
     reset();
     setIsRejected(false);
   };

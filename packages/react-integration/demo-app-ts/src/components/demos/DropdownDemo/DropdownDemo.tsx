@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Dropdown, DropdownList, DropdownItem, Divider, MenuToggle } from '@patternfly/react-core';
 
 const dropDownItems = (
@@ -34,9 +50,9 @@ const dropDownItems = (
   </DropdownList>
 );
 
-export const DropdownDemo: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [isNoAutofocusOpen, setIsNoAutofocusOpen] = React.useState(false);
+export const DropdownDemo: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isNoAutofocusOpen, setIsNoAutofocusOpen] = useState(false);
 
   const onToggleClick = () => {
     setIsOpen(!isOpen);
@@ -45,10 +61,10 @@ export const DropdownDemo: React.FunctionComponent = () => {
     setIsNoAutofocusOpen(!isNoAutofocusOpen);
   };
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined) => {
     setIsOpen(false);
   };
-  const onNoAutofocusSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined) => {
+  const onNoAutofocusSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined) => {
     setIsNoAutofocusOpen(false);
   };
 

@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { DashboardWrapper } from '@patternfly/react-core/dist/js/demos/DashboardWrapper';
 import {
   PageSection,
@@ -46,12 +62,12 @@ const products: Product[] = [
   }
 ];
 
-export const ModalTabs: React.FunctionComponent = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(true);
-  const [selectedProduct, setSelectedProduct] = React.useState<Product | undefined>(products[0]);
-  const [activeTabKey, setActiveTabKey] = React.useState<string | number>(0);
+export const ModalTabs: FunctionComponent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState<Product | undefined>(products[0]);
+  const [activeTabKey, setActiveTabKey] = useState<string | number>(0);
 
-  const onCardClick = React.useCallback(
+  const onCardClick = useCallback(
     (product: Product) => () => {
       setSelectedProduct(product);
       setIsModalOpen(true);
@@ -59,19 +75,19 @@ export const ModalTabs: React.FunctionComponent = () => {
     []
   );
 
-  const closeModal = React.useCallback(() => {
+  const closeModal = useCallback(() => {
     setSelectedProduct(undefined);
     setIsModalOpen(false);
     setActiveTabKey(0);
   }, []);
 
-  const onTabSelect = React.useCallback(
-    (_event: React.MouseEvent<HTMLElement, MouseEvent>, tabIndex: string | number) => setActiveTabKey(tabIndex),
+  const onTabSelect = useCallback(
+    (_event: ReactMouseEvent<HTMLElement, MouseEvent>, tabIndex: string | number) => setActiveTabKey(tabIndex),
     []
   );
 
   return (
-    <React.Fragment>
+    <>
       <DashboardWrapper mainContainerId="main-content-card-view-default-nav">
         <PageSection>
           <Content>
@@ -107,7 +123,6 @@ export const ModalTabs: React.FunctionComponent = () => {
           </Gallery>
         </PageSection>
       </DashboardWrapper>
-
       {selectedProduct && (
         <Modal
           variant="small"
@@ -148,6 +163,6 @@ export const ModalTabs: React.FunctionComponent = () => {
           </ModalBody>
         </Modal>
       )}
-    </React.Fragment>
+    </>
   );
 };

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { ReactNode, RefObject, ContextType, Component, Fragment } from 'react';
+import { createPortal } from 'react-dom';
 import { ToolbarItem, ToolbarItemProps } from './ToolbarItem';
 import { ToolbarContentContext, ToolbarContext } from './ToolbarUtils';
 import { PickOptional } from '../../helpers/typeUtils';
@@ -16,7 +16,7 @@ export interface ToolbarLabel {
   /** A unique key to identify this label */
   key: string;
   /** The ReactNode to display in the label */
-  node: React.ReactNode;
+  node: ReactNode;
 }
 
 export interface ToolbarFilterProps extends ToolbarItemProps {
@@ -33,23 +33,23 @@ export interface ToolbarFilterProps extends ToolbarItemProps {
   /** Customizeable template string for the label group. Use variable "${remaining}" for the overflow label count. */
   labelGroupCollapsedText?: string;
   /** Content to be rendered inside the data toolbar item associated with the label group */
-  children: React.ReactNode;
+  children: ReactNode;
   /** Unique category name to be used as a label for the label group */
   categoryName: string | ToolbarLabelGroup;
   /** Flag to show the toolbar item */
   showToolbarItem?: boolean;
   /** Reference to a label container created with a custom expandable content group, for non-managed multiple toolbar toggle groups. */
-  expandableLabelContainerRef?: React.RefObject<HTMLDivElement>;
+  expandableLabelContainerRef?: RefObject<HTMLDivElement>;
 }
 
 interface ToolbarFilterState {
   isMounted: boolean;
 }
 
-class ToolbarFilter extends React.Component<ToolbarFilterProps, ToolbarFilterState> {
+class ToolbarFilter extends Component<ToolbarFilterProps, ToolbarFilterState> {
   static displayName = 'ToolbarFilter';
   static contextType = ToolbarContext;
-  context!: React.ContextType<typeof ToolbarContext>;
+  context!: ContextType<typeof ToolbarContext>;
   static defaultProps: PickOptional<ToolbarFilterProps> = {
     labels: [] as (string | ToolbarLabel)[],
     showToolbarItem: true
@@ -131,24 +131,24 @@ class ToolbarFilter extends React.Component<ToolbarFilterProps, ToolbarFilterSta
 
     if (!_isExpanded && this.state.isMounted) {
       return (
-        <React.Fragment>
+        <Fragment>
           {showToolbarItem && <ToolbarItem {...props}>{children}</ToolbarItem>}
           {labelGroupContentRef?.current?.firstElementChild !== null &&
-            ReactDOM.createPortal(labelGroup, labelGroupContentRef.current.firstElementChild)}
-        </React.Fragment>
+            createPortal(labelGroup, labelGroupContentRef.current.firstElementChild)}
+        </Fragment>
       );
     }
 
     return (
       <ToolbarContentContext.Consumer>
         {({ labelContainerRef }) => (
-          <React.Fragment>
+          <Fragment>
             {showToolbarItem && <ToolbarItem {...props}>{children}</ToolbarItem>}
-            {labelContainerRef.current && ReactDOM.createPortal(labelGroup, labelContainerRef.current)}
+            {labelContainerRef.current && createPortal(labelGroup, labelContainerRef.current)}
             {expandableLabelContainerRef &&
               expandableLabelContainerRef.current &&
-              ReactDOM.createPortal(labelGroup, expandableLabelContainerRef.current)}
-          </React.Fragment>
+              createPortal(labelGroup, expandableLabelContainerRef.current)}
+          </Fragment>
         )}
       </ToolbarContentContext.Consumer>
     );

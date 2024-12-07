@@ -1,26 +1,26 @@
-import React from 'react';
+import { FunctionComponent, ReactNode, ReactElement, useState, Fragment } from 'react';
 import { Button, ButtonVariant, Checkbox } from '@patternfly/react-core';
 import { DualListSelector as DLSDeprecated } from '@patternfly/react-core/deprecated';
 import PficonSortCommonAscIcon from '@patternfly/react-icons/dist/esm/icons/pficon-sort-common-asc-icon';
 
-export const DualListSelectorComplexOptionsActions: React.FunctionComponent = () => {
-  const [availableOptions, setAvailableOptions] = React.useState<React.ReactNode[]>([
+export const DualListSelectorComplexOptionsActions: FunctionComponent = () => {
+  const [availableOptions, setAvailableOptions] = useState<ReactNode[]>([
     <span key="option1">Option 1</span>,
     <span key="option3">Option 3</span>,
     <span key="option4">Option 4</span>,
     <span key="option2">Option 2</span>
   ]);
-  const [chosenOptions, setChosenOptions] = React.useState<React.ReactNode[]>([]);
-  const [isDisabled, setIsDisabled] = React.useState(false);
+  const [chosenOptions, setChosenOptions] = useState<ReactNode[]>([]);
+  const [isDisabled, setIsDisabled] = useState(false);
 
-  const onListChange = (newAvailableOptions: React.ReactNode[], newChosenOptions: React.ReactNode[]) => {
+  const onListChange = (newAvailableOptions: ReactNode[], newChosenOptions: ReactNode[]) => {
     setAvailableOptions(newAvailableOptions);
     setChosenOptions(newChosenOptions);
   };
 
   const onSort = (pane: string) => {
     const toSort = pane === 'available' ? [...availableOptions] : [...chosenOptions];
-    (toSort as React.ReactElement[]).sort((a, b) => {
+    (toSort as ReactElement[]).sort((a, b) => {
       if (a.props.children > b.props.children) {
         return 1;
       }
@@ -37,8 +37,7 @@ export const DualListSelectorComplexOptionsActions: React.FunctionComponent = ()
     }
   };
 
-  const filterOption = (option: React.ReactNode, input: string) =>
-    (option as React.ReactElement).props.children.includes(input);
+  const filterOption = (option: ReactNode, input: string) => (option as ReactElement).props.children.includes(input);
 
   const availableOptionsActions = [
     <Button
@@ -63,7 +62,7 @@ export const DualListSelectorComplexOptionsActions: React.FunctionComponent = ()
   ];
 
   return (
-    <React.Fragment>
+    <Fragment>
       <DLSDeprecated
         isSearchable
         availableOptions={availableOptions}
@@ -86,6 +85,6 @@ export const DualListSelectorComplexOptionsActions: React.FunctionComponent = ()
         isChecked={isDisabled}
         onChange={() => setIsDisabled(!isDisabled)}
       />
-    </React.Fragment>
+    </Fragment>
   );
 };

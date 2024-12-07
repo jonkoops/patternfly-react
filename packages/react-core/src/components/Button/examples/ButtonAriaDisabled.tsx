@@ -1,8 +1,8 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Button, Flex, Tooltip } from '@patternfly/react-core';
 import PlusCircleIcon from '@patternfly/react-icons/dist/esm/icons/plus-circle-icon';
 
-export const ButtonAriaDisabled: React.FunctionComponent = () => (
+export const ButtonAriaDisabled: FunctionComponent = () => (
   <>
     <Flex columnGap={{ default: 'columnGapSm' }}>
       <Button isAriaDisabled>Primary aria disabled</Button>

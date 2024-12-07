@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent, ChangeEvent, useState } from 'react';
 import { FileUploadField, FileUploadHelperText, HelperText, HelperTextItem, Checkbox } from '@patternfly/react-core';
 
-export const CustomPreviewFileUpload: React.FunctionComponent = () => {
+export const CustomPreviewFileUpload: FunctionComponent = () => {
   const properties = [
     'filename',
     'isClearButtonDisabled',
@@ -13,16 +13,16 @@ export const CustomPreviewFileUpload: React.FunctionComponent = () => {
     'hasPlaceholderText'
   ];
 
-  const [value, setValue] = React.useState('');
-  const [filename, setFilename] = React.useState(false);
-  const [isClearButtonDisabled, setIsClearButtonDisabled] = React.useState(true);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [isDragActive, setIsDragActive] = React.useState(false);
-  const [hideDefaultPreview, setHideDefaultPreview] = React.useState(false);
-  const [hasCustomFilePreview, setHasCustomFilePreview] = React.useState(false);
-  const [hasHelperText, setHasHelperText] = React.useState(false);
-  const [hasPlaceholderText, setHasPlaceholderText] = React.useState(false);
-  const [checkedState, setCheckedState] = React.useState([
+  const [value, setValue] = useState('');
+  const [filename, setFilename] = useState(false);
+  const [isClearButtonDisabled, setIsClearButtonDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDragActive, setIsDragActive] = useState(false);
+  const [hideDefaultPreview, setHideDefaultPreview] = useState(false);
+  const [hasCustomFilePreview, setHasCustomFilePreview] = useState(false);
+  const [hasHelperText, setHasHelperText] = useState(false);
+  const [hasPlaceholderText, setHasPlaceholderText] = useState(false);
+  const [checkedState, setCheckedState] = useState([
     filename,
     isClearButtonDisabled,
     isLoading,
@@ -33,7 +33,7 @@ export const CustomPreviewFileUpload: React.FunctionComponent = () => {
     hasPlaceholderText
   ]);
 
-  const handleTextAreaChange = (_event: React.ChangeEvent<HTMLTextAreaElement>, value: string) => {
+  const handleTextAreaChange = (_event: ChangeEvent<HTMLTextAreaElement>, value: string) => {
     setValue(value);
   };
 

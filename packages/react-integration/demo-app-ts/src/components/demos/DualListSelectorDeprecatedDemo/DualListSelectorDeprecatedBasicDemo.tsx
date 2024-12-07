@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import { ReactNode, MouseEvent, Component } from 'react';
 import {
   DualListSelector as DLSDeprecated,
   DualListSelectorProps as DLSPropsDeprecated
 } from '@patternfly/react-core/deprecated';
 interface DualListSelectorState {
-  availableOptions: React.ReactNode[];
-  chosenOptions: React.ReactNode[];
+  availableOptions: ReactNode[];
+  chosenOptions: ReactNode[];
 }
 
 class DualListSelectorDeprecatedBasicDemo extends Component<DLSPropsDeprecated, DualListSelectorState> {
   static displayName = 'DualListSelectorDemo';
   onListChange: (
-    event: React.MouseEvent<HTMLElement>,
-    newAvailableOptions: React.ReactNode[],
-    newChosenOptions: React.ReactNode[]
+    event: MouseEvent<HTMLElement>,
+    newAvailableOptions: ReactNode[],
+    newChosenOptions: ReactNode[]
   ) => void;
 
   constructor(props: DLSPropsDeprecated) {

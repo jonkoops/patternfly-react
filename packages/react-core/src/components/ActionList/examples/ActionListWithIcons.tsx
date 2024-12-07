@@ -1,9 +1,9 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { ActionList, ActionListGroup, ActionListItem, Button } from '@patternfly/react-core';
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
 import CheckIcon from '@patternfly/react-icons/dist/esm/icons/check-icon';
 
-export const ActionListWithIcons: React.FunctionComponent = () => (
+export const ActionListWithIcons: FunctionComponent = () => (
   <>
     <h4>With list icons wrapper</h4>
     <ActionList isIconList>

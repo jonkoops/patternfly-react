@@ -1,4 +1,24 @@
-import * as React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  createRef,
+  Component,
+  HTMLAttributes,
+  ContextType
+} from 'react';
 import styles from '@patternfly/react-styles/css/components/Menu/menu';
 import breadcrumbStyles from '@patternfly/react-styles/css/components/Breadcrumb/breadcrumb';
 import { css } from '@patternfly/react-styles';
@@ -6,15 +26,15 @@ import { getOUIAProps, OUIAProps, getDefaultOUIAId } from '../../helpers';
 import { MenuContext } from './MenuContext';
 import { canUseDOM } from '../../helpers/util';
 import { KeyboardHandler } from '../../helpers';
-export interface MenuProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'ref' | 'onSelect'>, OUIAProps {
+export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, 'ref' | 'onSelect'>, OUIAProps {
   /** Anything that can be rendered inside of the Menu */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the Menu */
   className?: string;
   /** ID of the menu */
   id?: string;
   /** Callback for updating when item selection changes. You can also specify onClick on the MenuItem. */
-  onSelect?: (event?: React.MouseEvent, itemId?: string | number) => void;
+  onSelect?: (event?: ReactMouseEvent, itemId?: string | number) => void;
   /** Single itemId for single select menus, or array of itemIds for multi select. You can also specify isSelected on the MenuItem. */
   selected?: any | any[];
   /** Callback called when an MenuItems's action button is clicked. You can also specify it within a MenuItemAction. */
@@ -33,13 +53,13 @@ export interface MenuProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'r
   drilledInMenus?: string[];
   /** Callback for drilling into a submenu */
   onDrillIn?: (
-    event: React.KeyboardEvent | React.MouseEvent,
+    event: ReactKeyboardEvent | ReactMouseEvent,
     fromItemId: string,
     toItemId: string,
     itemId: string
   ) => void;
   /** Callback for drilling out of a submenu */
-  onDrillOut?: (event: React.KeyboardEvent | React.MouseEvent, toItemId: string, itemId: string) => void;
+  onDrillOut?: (event: KeyboardEvent | ReactMouseEvent, toItemId: string, itemId: string) => void;
   /** Callback for collecting menu heights */
   onGetMenuHeight?: (menuId: string, height: number) => void;
   /** ID of parent menu for drilldown menus */
@@ -49,7 +69,7 @@ export interface MenuProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'r
   /** itemId of the currently active item. You can also specify isActive on the MenuItem. */
   activeItemId?: string | number;
   /** @hide Forwarded ref */
-  innerRef?: React.Ref<HTMLDivElement>;
+  innerRef?: Ref<HTMLDivElement>;
   /** Internal flag indicating if the Menu is the root of a menu tree */
   isRootMenu?: boolean;
   /** Indicates if the menu should be without the outer box-shadow */
@@ -68,16 +88,16 @@ export interface MenuProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'r
 export interface MenuState {
   ouiaStateId: string;
   transitionMoveTarget: HTMLElement;
-  flyoutRef: React.Ref<HTMLLIElement> | null;
+  flyoutRef: Ref<HTMLLIElement> | null;
   disableHover: boolean;
   currentDrilldownMenuId: string;
 }
 
-class MenuBase extends React.Component<MenuProps, MenuState> {
+class MenuBase extends Component<MenuProps, MenuState> {
   static displayName = 'Menu';
   static contextType = MenuContext;
-  context!: React.ContextType<typeof MenuContext>;
-  private menuRef = React.createRef<HTMLDivElement>();
+  context!: ContextType<typeof MenuContext>;
+  private menuRef = createRef<HTMLDivElement>();
   private activeMenu = null as Element;
   static defaultProps: MenuProps = {
     ouiaSafe: true,
@@ -90,7 +110,7 @@ class MenuBase extends React.Component<MenuProps, MenuState> {
   constructor(props: MenuProps) {
     super(props);
     if (props.innerRef) {
-      this.menuRef = props.innerRef as React.RefObject<HTMLDivElement>;
+      this.menuRef = props.innerRef as RefObject<HTMLDivElement>;
     }
   }
 
@@ -290,7 +310,7 @@ class MenuBase extends React.Component<MenuProps, MenuState> {
       >
         {isRootMenu && (
           <KeyboardHandler
-            containerRef={(this.menuRef as React.RefObject<HTMLDivElement>) || null}
+            containerRef={(this.menuRef as RefObject<HTMLDivElement>) || null}
             additionalKeyHandler={this.handleExtraKeys}
             createNavigableElements={this.createNavigableElements}
             isActiveElement={(element: Element) =>
@@ -339,7 +359,5 @@ class MenuBase extends React.Component<MenuProps, MenuState> {
   }
 }
 
-export const Menu = React.forwardRef((props: MenuProps, ref: React.Ref<HTMLDivElement>) => (
-  <MenuBase {...props} innerRef={ref} />
-));
+export const Menu = forwardRef((props: MenuProps, ref: Ref<HTMLDivElement>) => <MenuBase {...props} innerRef={ref} />);
 Menu.displayName = 'Menu';

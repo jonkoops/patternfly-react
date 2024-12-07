@@ -1,4 +1,4 @@
-import React from 'react';
+import { type HTMLProps, type ReactNode, type KeyboardEvent as ReactKeyboardEvent, useRef, useState, useEffect, type TouchEvent as ReactTouchEvent, type MouseEvent as ReactMouseEvent, type FunctionComponent, useContext, useCallback, type CSSProperties, type RefObject, type Ref, forwardRef, FormEvent. type TransitionEvent as ReactTransitionEvent } from 'react';
 import {
   Avatar,
   Brand,
@@ -57,15 +57,15 @@ import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-ico
 import imgAvatar from '@patternfly/react-core/src/components/assets/avatarImg.svg';
 import pfLogo from '@patternfly/react-core/src/demos/assets/pf-logo.PF-HorizontalLogo-Color.svg';
 
-export const NotificationDrawerGrouped: React.FunctionComponent = () => {
-  const drawerRef = React.useRef<HTMLElement | null>(null);
+export const NotificationDrawerGrouped: FunctionComponent = () => {
+  const drawerRef = useRef<HTMLElement | null>(null);
 
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const [isKebabDropdownOpen, setIsKebabDropdownOpen] = React.useState(false);
-  const [isDrawerExpanded, setIsDrawerExpanded] = React.useState(false);
-  const [firstDrawerGroupExpanded, setFirstDrawerGroupExpanded] = React.useState(false);
-  const [secondDrawerGroupExpanded, setSecondDrawerGroupExpanded] = React.useState(true);
-  const [thirdDrawerGroupExpanded, setThirdDrawerGroupExpanded] = React.useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isKebabDropdownOpen, setIsKebabDropdownOpen] = useState(false);
+  const [isDrawerExpanded, setIsDrawerExpanded] = useState(false);
+  const [firstDrawerGroupExpanded, setFirstDrawerGroupExpanded] = useState(false);
+  const [secondDrawerGroupExpanded, setSecondDrawerGroupExpanded] = useState(true);
+  const [thirdDrawerGroupExpanded, setThirdDrawerGroupExpanded] = useState(false);
 
   interface UnreadMap {
     [groupName: string]: {
@@ -73,8 +73,8 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
     } | null;
   }
 
-  const [activeItem, setActiveItem] = React.useState<number | string>(0);
-  const [isUnreadMap, setIsUnreadMap] = React.useState<UnreadMap | null>({
+  const [activeItem, setActiveItem] = useState<number | string>(0);
+  const [isUnreadMap, setIsUnreadMap] = useState<UnreadMap | null>({
     'group-1': {
       'notification-5': true,
       'notification-6': true
@@ -86,16 +86,16 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
     'group-3': null
   });
 
-  const [shouldShowNotifications, setShouldShowNotifications] = React.useState(true);
+  const [shouldShowNotifications, setShouldShowNotifications] = useState(true);
 
   interface ActionsMenu {
     [toggleId: string]: boolean;
   }
 
-  const [isActionsMenuOpen, setIsActionsMenuOpen] = React.useState<ActionsMenu | {}>({});
+  const [isActionsMenuOpen, setIsActionsMenuOpen] = useState<ActionsMenu | {}>({});
 
   const onNavSelect = (
-    _event: React.FormEvent<HTMLInputElement>,
+    _event: FormEvent<HTMLInputElement>,
     selectedItem: {
       groupId: number | string;
       itemId: number | string;
@@ -264,7 +264,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                 onSelect={onKebabDropdownSelect}
                 onOpenChange={setIsKebabDropdownOpen}
                 popperProps={{ position: 'right' }}
-                toggle={(toggleRef: React.RefObject<any>) => (
+                toggle={(toggleRef: RefObject<any>) => (
                   <MenuToggle
                     ref={toggleRef}
                     isExpanded={isKebabDropdownOpen}
@@ -286,7 +286,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                 onSelect={onDropdownSelect}
                 onOpenChange={setIsDropdownOpen}
                 popperProps={{ position: 'right' }}
-                toggle={(toggleRef: React.RefObject<any>) => (
+                toggle={(toggleRef: RefObject<any>) => (
                   <MenuToggle
                     ref={toggleRef}
                     isExpanded={isDropdownOpen}
@@ -397,7 +397,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
           id="notification-0"
           onOpenChange={(isOpen: boolean) => !isOpen && closeActionsMenu()}
           popperProps={{ position: 'right' }}
-          toggle={(toggleRef: React.RefObject<any>) => (
+          toggle={(toggleRef: RefObject<any>) => (
             <MenuToggle
               ref={toggleRef}
               id="toggle-id-0"
@@ -438,7 +438,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                       id="notification-5"
                       onOpenChange={(isOpen: boolean) => !isOpen && closeActionsMenu()}
                       popperProps={{ position: 'right' }}
-                      toggle={(toggleRef: React.RefObject<any>) => (
+                      toggle={(toggleRef: RefObject<any>) => (
                         <MenuToggle
                           ref={toggleRef}
                           id="toggle-id-5"
@@ -473,7 +473,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                       id="notification-6"
                       onOpenChange={(isOpen: boolean) => !isOpen && closeActionsMenu()}
                       popperProps={{ position: 'right' }}
-                      toggle={(toggleRef: React.RefObject<any>) => (
+                      toggle={(toggleRef: RefObject<any>) => (
                         <MenuToggle
                           ref={toggleRef}
                           id="toggle-id-6"
@@ -509,7 +509,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                       id="notification-7"
                       onOpenChange={(isOpen: boolean) => !isOpen && closeActionsMenu()}
                       popperProps={{ position: 'right' }}
-                      toggle={(toggleRef: React.RefObject<any>) => (
+                      toggle={(toggleRef: RefObject<any>) => (
                         <MenuToggle
                           ref={toggleRef}
                           id="toggle-id-7"
@@ -544,7 +544,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                       id="notification-8"
                       onOpenChange={(isOpen: boolean) => !isOpen && closeActionsMenu()}
                       popperProps={{ position: 'right' }}
-                      toggle={(toggleRef: React.RefObject<any>) => (
+                      toggle={(toggleRef: RefObject<any>) => (
                         <MenuToggle
                           ref={toggleRef}
                           id="toggle-id-8"
@@ -588,7 +588,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                       id="notification-9"
                       onOpenChange={(isOpen: boolean) => !isOpen && closeActionsMenu()}
                       popperProps={{ position: 'right' }}
-                      toggle={(toggleRef: React.RefObject<any>) => (
+                      toggle={(toggleRef: RefObject<any>) => (
                         <MenuToggle
                           ref={toggleRef}
                           id="toggle-id-9"
@@ -623,7 +623,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                       id="notification-10"
                       onOpenChange={(isOpen: boolean) => !isOpen && closeActionsMenu()}
                       popperProps={{ position: 'right' }}
-                      toggle={(toggleRef: React.RefObject<any>) => (
+                      toggle={(toggleRef: RefObject<any>) => (
                         <MenuToggle
                           ref={toggleRef}
                           id="toggle-id-10"
@@ -659,7 +659,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                       id="notification-11"
                       onOpenChange={(isOpen: boolean) => !isOpen && closeActionsMenu()}
                       popperProps={{ position: 'right' }}
-                      toggle={(toggleRef: React.RefObject<any>) => (
+                      toggle={(toggleRef: RefObject<any>) => (
                         <MenuToggle
                           ref={toggleRef}
                           id="toggle-id-11"
@@ -694,7 +694,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
                       id="notification-12"
                       onOpenChange={(isOpen: boolean) => !isOpen && closeActionsMenu()}
                       popperProps={{ position: 'right' }}
-                      toggle={(toggleRef: React.RefObject<any>) => (
+                      toggle={(toggleRef: RefObject<any>) => (
                         <MenuToggle
                           ref={toggleRef}
                           id="toggle-id-12"
@@ -759,7 +759,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <Page
         masthead={masthead}
         sidebar={Sidebar}
@@ -767,7 +767,7 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
         notificationDrawer={notificationDrawer}
         isNotificationDrawerExpanded={isDrawerExpanded}
         onNotificationDrawerExpand={(
-          event: React.MouseEvent<Element, MouseEvent> | KeyboardEvent | React.TransitionEvent<Element>
+          event: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent | ReactTransitionEvent<Element>
         ) => focusDrawer(event)}
         skipToContent={PageSkipToContent}
         breadcrumb={PageBreadcrumb}
@@ -784,6 +784,6 @@ export const NotificationDrawerGrouped: React.FunctionComponent = () => {
         </PageSection>
         <PageSection>Panel section content</PageSection>
       </Page>
-    </React.Fragment>
+    </>
   );
 };

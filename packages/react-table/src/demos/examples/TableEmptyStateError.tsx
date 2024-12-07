@@ -1,10 +1,10 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Table, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table';
 import { Bullseye, Card, EmptyState, EmptyStateVariant, EmptyStateBody, PageSection } from '@patternfly/react-core';
 import ExclamationCircleIcon from '@patternfly/react-icons/dist/esm/icons/exclamation-circle-icon';
 import { DashboardWrapper } from '@patternfly/react-table/dist/esm/demos/DashboardWrapper';
 
-export const TableEmptyStateError: React.FunctionComponent = () => (
+export const TableEmptyStateError: FunctionComponent = () => (
   <DashboardWrapper hasPageTemplateTitle>
     <PageSection padding={{ default: 'noPadding', xl: 'padding' }}>
       <Card component="div">

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactElement, FunctionComponent, useMemo } from 'react';
 import { DndContextProps, DragEndEvent, DragStartEvent } from '@dnd-kit/core';
 import { Droppable } from './Droppable';
 import { DragDropContainer, DraggableObject } from './DragDropContainer';
@@ -12,7 +12,7 @@ export type DragDropSortDragStartEvent = DragStartEvent;
 export interface DragDropSortProps extends DndContextProps {
   /** Custom defined content wrapper for draggable items. By default, draggable items are wrapped in a styled div.
    * Intended to be a 'DataList' or 'DualListSelectorList' without children. */
-  children?: React.ReactElement;
+  children?: ReactElement;
   /** Sorted array of draggable objects */
   items: DraggableObject[];
   /** Callback when user drops a draggable object */
@@ -29,7 +29,7 @@ export interface DragDropSortProps extends DndContextProps {
   overlayProps?: any;
 }
 
-export const DragDropSort: React.FunctionComponent<DragDropSortProps> = ({
+export const DragDropSort: FunctionComponent<DragDropSortProps> = ({
   items,
   onDrop = () => {},
   onDrag = () => {},
@@ -38,7 +38,7 @@ export const DragDropSort: React.FunctionComponent<DragDropSortProps> = ({
   overlayProps,
   ...props
 }: DragDropSortProps) => {
-  const itemIds = React.useMemo(() => (items ? Array.from(items, (item) => item.id as string) : []), [items]);
+  const itemIds = useMemo(() => (items ? Array.from(items, (item) => item.id as string) : []), [items]);
 
   const handleDragStart = (event: DragStartEvent) => {
     onDrag(event, itemIds.indexOf(event.active.id as string));

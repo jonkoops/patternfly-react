@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import styles from '@patternfly/react-styles/css/components/Tabs/tabs';
 import { css } from '@patternfly/react-styles';
 import AngleRightIcon from '@patternfly/react-icons/dist/esm/icons/angle-right-icon';
@@ -8,7 +24,7 @@ import { TabsContext } from './TabsContext';
 import { TabProps } from './Tab';
 import { TabTitleText } from './TabTitleText';
 
-export interface OverflowTabProps extends React.HTMLProps<HTMLLIElement> {
+export interface OverflowTabProps extends HTMLProps<HTMLLIElement> {
   /** Additional classes added to the overflow tab */
   className?: string;
   /** The tabs that should be displayed in the menu */
@@ -27,7 +43,7 @@ export interface OverflowTabProps extends React.HTMLProps<HTMLLIElement> {
   focusTimeoutDelay?: number;
 }
 
-export const OverflowTab: React.FunctionComponent<OverflowTabProps> = ({
+export const OverflowTab: FunctionComponent<OverflowTabProps> = ({
   className,
   overflowingTabs = [],
   showTabCount,
@@ -38,13 +54,13 @@ export const OverflowTab: React.FunctionComponent<OverflowTabProps> = ({
   focusTimeoutDelay = 0,
   ...props
 }: OverflowTabProps) => {
-  const menuRef = React.useRef<HTMLDivElement>();
-  const overflowTabRef = React.useRef<HTMLButtonElement>();
-  const overflowLIRef = React.useRef<HTMLLIElement>();
+  const menuRef = useRef<HTMLDivElement>();
+  const overflowTabRef = useRef<HTMLButtonElement>();
+  const overflowLIRef = useRef<HTMLLIElement>();
 
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const { localActiveKey, handleTabClick } = React.useContext(TabsContext);
+  const { localActiveKey, handleTabClick } = useContext(TabsContext);
 
   const closeMenu = () => {
     setIsExpanded(false);
@@ -66,7 +82,7 @@ export const OverflowTab: React.FunctionComponent<OverflowTabProps> = ({
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('click', handleClick);
     window.addEventListener('keydown', handleMenuKeys);
 
@@ -123,14 +139,14 @@ export const OverflowTab: React.FunctionComponent<OverflowTabProps> = ({
     </MenuItem>
   ));
 
-  const onTabSelect = (event: React.MouseEvent<HTMLElement, MouseEvent>, key: number | string) => {
+  const onTabSelect = (event: ReactMouseEvent<HTMLElement, MouseEvent>, key: number | string) => {
     closeMenu();
     const selectedTabRef = overflowingTabs.find((tab) => tab.eventKey === key).tabContentRef;
     handleTabClick(event, key, selectedTabRef);
   };
 
   const overflowMenu = (
-    <Menu ref={menuRef} onSelect={(ev, itemId) => onTabSelect(ev as React.MouseEvent<HTMLElement, MouseEvent>, itemId)}>
+    <Menu ref={menuRef} onSelect={(ev, itemId) => onTabSelect(ev as ReactMouseEvent<HTMLElement, MouseEvent>, itemId)}>
       <MenuContent>
         <MenuList>{tabs}</MenuList>
       </MenuContent>
@@ -138,7 +154,7 @@ export const OverflowTab: React.FunctionComponent<OverflowTabProps> = ({
   );
 
   return (
-    <React.Fragment>
+    <>
       {overflowTab}
       <Popper
         triggerRef={overflowTabRef}
@@ -149,7 +165,7 @@ export const OverflowTab: React.FunctionComponent<OverflowTabProps> = ({
         appendTo={overflowLIRef.current}
         zIndex={zIndex}
       />
-    </React.Fragment>
+    </>
   );
 };
 

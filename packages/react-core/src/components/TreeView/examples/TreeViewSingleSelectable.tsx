@@ -1,18 +1,18 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, useState, Fragment } from 'react';
 import { TreeView, Button, TreeViewDataItem } from '@patternfly/react-core';
 
-export const TreeViewSingleSelectable: React.FunctionComponent = () => {
-  const [activeItems, setActiveItems] = React.useState<TreeViewDataItem[]>();
-  const [allExpanded, setAllExpanded] = React.useState<boolean>();
+export const TreeViewSingleSelectable: FunctionComponent = () => {
+  const [activeItems, setActiveItems] = useState<TreeViewDataItem[]>();
+  const [allExpanded, setAllExpanded] = useState<boolean>();
 
-  const onSelect = (_event: React.MouseEvent, treeViewItem: TreeViewDataItem) => {
+  const onSelect = (_event: MouseEvent, treeViewItem: TreeViewDataItem) => {
     // Ignore folders for selection
     if (treeViewItem && !treeViewItem.children) {
       setActiveItems([treeViewItem]);
     }
   };
 
-  const onToggle = (_event: React.MouseEvent) => {
+  const onToggle = (_event: MouseEvent) => {
     setAllExpanded((prevAllExpanded) => !prevAllExpanded);
   };
 
@@ -76,7 +76,7 @@ export const TreeViewSingleSelectable: React.FunctionComponent = () => {
     }
   ];
   return (
-    <React.Fragment>
+    <Fragment>
       <Button variant="link" onClick={onToggle}>
         {allExpanded && 'Collapse all'}
         {!allExpanded && 'Expand all'}
@@ -88,6 +88,6 @@ export const TreeViewSingleSelectable: React.FunctionComponent = () => {
         onSelect={onSelect}
         allExpanded={allExpanded}
       />
-    </React.Fragment>
+    </Fragment>
   );
 };

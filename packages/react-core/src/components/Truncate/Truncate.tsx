@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLProps, FunctionComponent, useState, useRef, useEffect, Fragment } from 'react';
 import styles from '@patternfly/react-styles/css/components/Truncate/truncate';
 import { css } from '@patternfly/react-styles';
 import { Tooltip, TooltipPosition } from '../Tooltip';
@@ -17,7 +17,7 @@ const truncateStyles = {
 
 const minWidthCharacters: number = 12;
 
-interface TruncateProps extends React.HTMLProps<HTMLSpanElement> {
+interface TruncateProps extends HTMLProps<HTMLSpanElement> {
   /** Class to add to outer span */
   className?: string;
   /** Text to truncate */
@@ -46,7 +46,7 @@ interface TruncateProps extends React.HTMLProps<HTMLSpanElement> {
 
 const sliceContent = (str: string, slice: number) => [str.slice(0, str.length - slice), str.slice(-slice)];
 
-export const Truncate: React.FunctionComponent<TruncateProps> = ({
+export const Truncate: FunctionComponent<TruncateProps> = ({
   className,
   position = 'end',
   tooltipPosition = 'top',
@@ -54,13 +54,13 @@ export const Truncate: React.FunctionComponent<TruncateProps> = ({
   content,
   ...props
 }: TruncateProps) => {
-  const [isTruncated, setIsTruncated] = React.useState(true);
-  const [parentElement, setParentElement] = React.useState<HTMLElement>(null);
-  const [textElement, setTextElement] = React.useState<HTMLElement>(null);
+  const [isTruncated, setIsTruncated] = useState(true);
+  const [parentElement, setParentElement] = useState<HTMLElement>(null);
+  const [textElement, setTextElement] = useState<HTMLElement>(null);
 
-  const textRef = React.useRef<HTMLElement>(null);
-  const subParentRef = React.useRef<HTMLDivElement>(null);
-  const observer = React.useRef(null);
+  const textRef = useRef<HTMLElement>(null);
+  const subParentRef = useRef<HTMLDivElement>(null);
+  const observer = useRef(null);
 
   const getActualWidth = (element: Element) => {
     const computedStyle = getComputedStyle(element);
@@ -80,7 +80,7 @@ export const Truncate: React.FunctionComponent<TruncateProps> = ({
     return (firstTextWidth / firstTextLength) * trailingNumChars + firstTextWidth;
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (textRef && textRef.current && !textElement) {
       setTextElement(textRef.current);
     }
@@ -90,7 +90,7 @@ export const Truncate: React.FunctionComponent<TruncateProps> = ({
     }
   }, [textRef, subParentRef]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (textElement && parentElement && !observer.current) {
       const totalTextWidth = calculateTotalTextWidth(textElement, trailingNumChars, content);
       const textWidth = position === 'middle' ? totalTextWidth : textElement.scrollWidth;
@@ -113,17 +113,17 @@ export const Truncate: React.FunctionComponent<TruncateProps> = ({
       {(position === TruncatePosition.end || position === TruncatePosition.start) && (
         <span ref={textRef} className={truncateStyles[position]}>
           {content}
-          {position === TruncatePosition.start && <React.Fragment>&lrm;</React.Fragment>}
+          {position === TruncatePosition.start && <Fragment>&lrm;</Fragment>}
         </span>
       )}
       {position === TruncatePosition.middle &&
         content.slice(0, content.length - trailingNumChars).length > minWidthCharacters && (
-          <React.Fragment>
+          <Fragment>
             <span ref={textRef} className={styles.truncateStart}>
               {sliceContent(content, trailingNumChars)[0]}
             </span>
             <span className={styles.truncateEnd}>{sliceContent(content, trailingNumChars)[1]}</span>
-          </React.Fragment>
+          </Fragment>
         )}
       {position === TruncatePosition.middle &&
         content.slice(0, content.length - trailingNumChars).length <= minWidthCharacters &&

@@ -1,4 +1,16 @@
-import * as React from 'react';
+import {
+  HTMLProps,
+  ReactNode,
+  MouseEvent,
+  KeyboardEvent,
+  FormEvent,
+  RefObject,
+  FunctionComponent,
+  Ref,
+  MutableRefObject,
+  createContext,
+  forwardRef
+} from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/DataList/data-list';
 
@@ -18,15 +30,15 @@ export enum DataListWrapModifier {
   breakWord = 'breakWord'
 }
 
-export interface DataListProps extends React.HTMLProps<HTMLUListElement> {
+export interface DataListProps extends HTMLProps<HTMLUListElement> {
   /** Content rendered inside the DataList list */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the DataList list */
   className?: string;
   /** Adds accessible text to the DataList list */
   'aria-label': string;
   /** Optional callback to make DataList selectable, fired when DataListItem selected */
-  onSelectDataListItem?: (event: React.MouseEvent | React.KeyboardEvent, id: string) => void;
+  onSelectDataListItem?: (event: MouseEvent | KeyboardEvent, id: string) => void;
   /** Id of DataList item currently selected */
   selectedDataListItemId?: string;
   /** Flag indicating if DataList should have compact styling */
@@ -36,23 +48,23 @@ export interface DataListProps extends React.HTMLProps<HTMLUListElement> {
   /** Determines which wrapping modifier to apply to the DataList */
   wrapModifier?: DataListWrapModifier | 'nowrap' | 'truncate' | 'breakWord';
   /** Object that causes the data list to render hidden inputs which improve selectable item a11y */
-  onSelectableRowChange?: (event: React.FormEvent<HTMLInputElement>, id: string) => void;
+  onSelectableRowChange?: (event: FormEvent<HTMLInputElement>, id: string) => void;
   /** @hide custom ref of the DataList */
-  innerRef?: React.RefObject<HTMLUListElement>;
+  innerRef?: RefObject<HTMLUListElement>;
 }
 
 interface DataListContextProps {
   isSelectable: boolean;
   selectedDataListItemId: string;
-  updateSelectedDataListItem: (event: React.MouseEvent | React.KeyboardEvent, id: string) => void;
-  onSelectableRowChange?: (event: React.FormEvent<HTMLInputElement>, id: string) => void;
+  updateSelectedDataListItem: (event: MouseEvent | KeyboardEvent, id: string) => void;
+  onSelectableRowChange?: (event: FormEvent<HTMLInputElement>, id: string) => void;
 }
 
-export const DataListContext = React.createContext<Partial<DataListContextProps>>({
+export const DataListContext = createContext<Partial<DataListContextProps>>({
   isSelectable: false
 });
 
-export const DataListBase: React.FunctionComponent<DataListProps> = ({
+export const DataListBase: FunctionComponent<DataListProps> = ({
   children = null,
   className = '',
   'aria-label': ariaLabel,
@@ -67,7 +79,7 @@ export const DataListBase: React.FunctionComponent<DataListProps> = ({
 }: DataListProps) => {
   const isSelectable = onSelectDataListItem !== undefined;
 
-  const updateSelectedDataListItem = (event: React.MouseEvent | React.KeyboardEvent, id: string) => {
+  const updateSelectedDataListItem = (event: MouseEvent | KeyboardEvent, id: string) => {
     onSelectDataListItem(event, id);
   };
 
@@ -102,8 +114,8 @@ export const DataListBase: React.FunctionComponent<DataListProps> = ({
 
 DataListBase.displayName = 'DataListBase';
 
-export const DataList = React.forwardRef((props: DataListProps, ref: React.Ref<HTMLUListElement>) => (
-  <DataListBase innerRef={ref as React.MutableRefObject<any>} {...props} />
+export const DataList = forwardRef((props: DataListProps, ref: Ref<HTMLUListElement>) => (
+  <DataListBase innerRef={ref as MutableRefObject<any>} {...props} />
 ));
 
 DataList.displayName = 'DataList';

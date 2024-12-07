@@ -1,4 +1,13 @@
-import React from 'react';
+import {
+  MutableRefObject,
+  FunctionComponent,
+  KeyboardEvent,
+  ReactNode,
+  ReactElement,
+  useRef,
+  isValidElement,
+  useState
+} from 'react';
 import { Table, Thead, Tr, Th, Tbody, Td } from '@patternfly/react-table';
 import { Button, Checkbox, Radio, TextInput, KeyTypes, getUniqueId } from '@patternfly/react-core';
 import PencilAltIcon from '@patternfly/react-icons/dist/esm/icons/pencil-alt-icon';
@@ -9,18 +18,18 @@ import { css } from '@patternfly/react-styles';
 
 interface EditButtonsCellProps {
   onClick: (type: 'save' | 'cancel' | 'edit') => void;
-  elementToFocusOnEditRef?: React.MutableRefObject<HTMLElement>;
+  elementToFocusOnEditRef?: MutableRefObject<HTMLElement>;
   rowAriaLabel: string;
 }
 
-const EditButtonsCell: React.FunctionComponent<EditButtonsCellProps> = ({
+const EditButtonsCell: FunctionComponent<EditButtonsCellProps> = ({
   onClick,
   elementToFocusOnEditRef,
   rowAriaLabel = 'row'
 }) => {
-  const editButtonRef = React.useRef<HTMLButtonElement>();
+  const editButtonRef = useRef<HTMLButtonElement>();
 
-  const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, button: 'edit' | 'stopEditing') => {
+  const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>, button: 'edit' | 'stopEditing') => {
     const focusRef = button === 'edit' ? elementToFocusOnEditRef : editButtonRef;
 
     if (event.key === KeyTypes.Enter || event.key === KeyTypes.Space) {
@@ -84,27 +93,27 @@ const EditButtonsCell: React.FunctionComponent<EditButtonsCellProps> = ({
 
 interface EditableCellProps {
   dataLabel: string;
-  staticValue: React.ReactNode;
-  editingValue: React.ReactNode;
+  staticValue: ReactNode;
+  editingValue: ReactNode;
   role?: string;
   ariaLabel?: string;
 }
 
-const EditableCell: React.FunctionComponent<EditableCellProps> = ({
+const EditableCell: FunctionComponent<EditableCellProps> = ({
   dataLabel,
   staticValue,
   editingValue,
   role,
   ariaLabel
 }) => {
-  const hasMultipleInputs = Array.isArray(editingValue) && editingValue.every((elem) => React.isValidElement(elem));
+  const hasMultipleInputs = Array.isArray(editingValue) && editingValue.every((elem) => isValidElement(elem));
 
   return (
     <Td dataLabel={dataLabel}>
       <div className={css(inlineEditStyles.inlineEditValue)}>{staticValue}</div>
       {hasMultipleInputs ? (
         <div className={css(inlineEditStyles.inlineEditGroup, 'pf-m-column')} role={role} aria-label={ariaLabel}>
-          {(editingValue as React.ReactElement[]).map((elem, index) => (
+          {(editingValue as ReactElement[]).map((elem, index) => (
             <div key={index} className={css(inlineEditStyles.inlineEditInput)}>
               {elem}
             </div>
@@ -126,7 +135,7 @@ interface EditableRow {
   rowIndex?: number;
 }
 
-const EditableRow: React.FunctionComponent<EditableRow> = ({
+const EditableRow: FunctionComponent<EditableRow> = ({
   data,
   columnNames,
   dataOptions,
@@ -134,10 +143,10 @@ const EditableRow: React.FunctionComponent<EditableRow> = ({
   ariaLabel,
   rowIndex
 }) => {
-  const [editable, setEditable] = React.useState(false);
-  const [editedData, setEditedData] = React.useState(data);
+  const [editable, setEditable] = useState(false);
+  const [editedData, setEditedData] = useState(data);
 
-  const inputRef = React.useRef();
+  const inputRef = useRef();
 
   return (
     <Tr className={css(inlineEditStyles.inlineEdit, editable ? inlineEditStyles.modifiers.inlineEditable : '')}>
@@ -234,7 +243,7 @@ interface CustomDataOptions {
 
 type ColumnNames<T> = { [K in keyof T]: string };
 
-export const TableEditable: React.FunctionComponent = () => {
+export const TableEditable: FunctionComponent = () => {
   // In real usage, this data would come from some external source like an API via props.
   const initialRows: CustomData[] = [
     {
@@ -273,7 +282,7 @@ export const TableEditable: React.FunctionComponent = () => {
     }
   ];
 
-  const [rows, setRows] = React.useState(initialRows);
+  const [rows, setRows] = useState(initialRows);
 
   const columnNames: ColumnNames<CustomData> = {
     textInput: 'Text input',

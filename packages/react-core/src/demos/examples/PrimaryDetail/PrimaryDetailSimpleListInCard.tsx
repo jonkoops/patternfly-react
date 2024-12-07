@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, useState, Fragment } from 'react';
 import {
   Card,
   Content,
@@ -22,9 +22,9 @@ import {
 } from '@patternfly/react-core';
 import { DashboardWrapper } from '@patternfly/react-core/src/demos/DashboardWrapper';
 
-export const PrimaryDetailSimpleListInCard: React.FunctionComponent = () => {
-  const [drawerPanelBodyContent, setDrawerPanelBodyContent] = React.useState(1);
-  const [isExpanded, setIsExpanded] = React.useState(false);
+export const PrimaryDetailSimpleListInCard: FunctionComponent = () => {
+  const [drawerPanelBodyContent, setDrawerPanelBodyContent] = useState(1);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const onSelectListItem = (_listItem, listItemProps) => {
     const id = listItemProps.children;
@@ -67,7 +67,7 @@ export const PrimaryDetailSimpleListInCard: React.FunctionComponent = () => {
   );
 
   const drawerContent = (
-    <React.Fragment>
+    <Fragment>
       <SimpleList onSelect={onSelectListItem}>
         <SimpleListGroup title="Section 1" id="simple-list-section-1">
           <SimpleListItem key="item1" isActive>
@@ -85,7 +85,7 @@ export const PrimaryDetailSimpleListInCard: React.FunctionComponent = () => {
           <SimpleListItem key="item9">List item 9</SimpleListItem>
         </SimpleListGroup>
       </SimpleList>
-    </React.Fragment>
+    </Fragment>
   );
 
   return (

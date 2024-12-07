@@ -1,4 +1,21 @@
-import React, { useState } from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  FormEvent
+} from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -44,7 +61,7 @@ const PageTemplateTitle = (
   </PageSection>
 );
 
-export const DashboardWrapper: React.FC<DashboardWrapperProps> = ({
+export const DashboardWrapper: FunctionComponent<DashboardWrapperProps> = ({
   children,
   mainContainerId,
   banner,
@@ -61,7 +78,7 @@ export const DashboardWrapper: React.FC<DashboardWrapperProps> = ({
 }: DashboardWrapperProps) => {
   const [activeItem, setActiveItem] = useState(1);
 
-  const onNavSelect = (_event: React.FormEvent<HTMLInputElement>, result: any) => {
+  const onNavSelect = (_event: FormEvent<HTMLInputElement>, result: any) => {
     setActiveItem(result.itemId);
   };
 
@@ -100,7 +117,7 @@ export const DashboardWrapper: React.FC<DashboardWrapperProps> = ({
 
   const defaultContainerId = 'main-content-page-layout-default-nav';
 
-  const handleClick = (event: React.MouseEvent) => {
+  const handleClick = (event: ReactMouseEvent) => {
     event.preventDefault();
 
     const mainContentElement = document.getElementById(mainContainerId ?? defaultContainerId);
@@ -127,7 +144,7 @@ export const DashboardWrapper: React.FC<DashboardWrapperProps> = ({
       notificationDrawer={notificationDrawer}
       isNotificationDrawerExpanded={isNotificationDrawerExpanded}
       {...(typeof onPageResize === 'function' && {
-        onPageResize: (event: MouseEvent | TouchEvent | React.KeyboardEvent<Element>, resizeObject: any) =>
+        onPageResize: (event: MouseEvent | TouchEvent | KeyboardEvent<Element>, resizeObject: any) =>
           onPageResize(event, resizeObject)
       })}
       {...pageProps}

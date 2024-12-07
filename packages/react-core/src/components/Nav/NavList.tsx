@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLAttributes, DetailedHTMLProps, ReactNode, ContextType, createRef, Component, Fragment } from 'react';
 import styles from '@patternfly/react-styles/css/components/Nav/nav';
 import { css } from '@patternfly/react-styles';
 import { Button } from '../Button';
@@ -9,10 +9,9 @@ import { NavContext } from './Nav';
 import { PageSidebarContext } from '../Page/PageSidebar';
 import { getResizeObserver } from '../../helpers/resizeObserver';
 
-export interface NavListProps
-  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLUListElement>, HTMLUListElement> {
+export interface NavListProps extends DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement> {
   /** Children nodes */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the list */
   className?: string;
   /** Aria-label for the back scroll button */
@@ -21,10 +20,10 @@ export interface NavListProps
   forwardScrollAriaLabel?: string;
 }
 
-class NavList extends React.Component<NavListProps> {
+class NavList extends Component<NavListProps> {
   static displayName = 'NavList';
   static contextType = NavContext;
-  context!: React.ContextType<typeof NavContext>;
+  context!: ContextType<typeof NavContext>;
   static defaultProps: NavListProps = {
     backScrollAriaLabel: 'Scroll back',
     forwardScrollAriaLabel: 'Scroll foward'
@@ -36,7 +35,7 @@ class NavList extends React.Component<NavListProps> {
     scrollViewAtEnd: false
   };
 
-  navList = React.createRef<HTMLUListElement>();
+  navList = createRef<HTMLUListElement>();
   observer: any = () => {};
 
   handleScrollButtons = () => {
@@ -128,7 +127,7 @@ class NavList extends React.Component<NavListProps> {
         {({ isHorizontal }) => (
           <PageSidebarContext.Consumer>
             {({ isSidebarOpen }) => (
-              <React.Fragment>
+              <Fragment>
                 {isHorizontal && (!scrollViewAtStart || !scrollViewAtEnd) && (
                   <div className={css(styles.navScrollButton)}>
                     <Button
@@ -162,7 +161,7 @@ class NavList extends React.Component<NavListProps> {
                     />
                   </div>
                 )}
-              </React.Fragment>
+              </Fragment>
             )}
           </PageSidebarContext.Consumer>
         )}

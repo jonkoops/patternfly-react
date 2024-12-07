@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, useState, useEffect } from 'react';
 import {
   EmptyState,
   EmptyStateFooter,
@@ -16,8 +16,8 @@ interface finishedProps {
   onClose: () => void;
 }
 
-const FinishedStep: React.FunctionComponent<finishedProps> = (props: finishedProps) => {
-  const [percent, setPercent] = React.useState(0);
+const FinishedStep: FunctionComponent<finishedProps> = (props: finishedProps) => {
+  const [percent, setPercent] = useState(0);
 
   const tick = () => {
     setPercent((prevPercent) => {
@@ -29,7 +29,7 @@ const FinishedStep: React.FunctionComponent<finishedProps> = (props: finishedPro
     });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => tick(), 1000);
 
     if (percent >= 100) {
@@ -66,7 +66,7 @@ const FinishedStep: React.FunctionComponent<finishedProps> = (props: finishedPro
   );
 };
 
-export const WizardFinished: React.FunctionComponent = () => {
+export const WizardFinished: FunctionComponent = () => {
   const closeWizard = () => {
     // eslint-disable-next-line no-console
     console.log('close wizard');

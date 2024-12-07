@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   Menu,
   MenuList,
@@ -12,14 +28,14 @@ import {
   MenuContainer
 } from '@patternfly/react-core';
 
-export const InlineSearchFilterMenuDemo: React.FunctionComponent = () => {
-  const [activeItem, setActiveItem] = React.useState(0);
-  const [input, setInput] = React.useState('');
-  const [isOpen, setIsOpen] = React.useState(false);
-  const toggleRef = React.useRef<any>();
-  const menuRef = React.useRef<any>();
+export const InlineSearchFilterMenuDemo: FunctionComponent = () => {
+  const [activeItem, setActiveItem] = useState(0);
+  const [input, setInput] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleRef = useRef<any>();
+  const menuRef = useRef<any>();
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
     const item = itemId as number;
     // eslint-disable-next-line no-console
     console.log(`clicked ${itemId}`);

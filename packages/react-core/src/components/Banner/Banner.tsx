@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/Banner/banner';
 import { css } from '@patternfly/react-styles';
 
@@ -6,9 +6,9 @@ export type BannerColor = 'red' | 'orangered' | 'orange' | 'yellow' | 'green' | 
 
 export type BannerStatus = 'success' | 'warning' | 'danger' | 'info' | 'custom';
 
-export interface BannerProps extends React.HTMLProps<HTMLDivElement> {
+export interface BannerProps extends HTMLProps<HTMLDivElement> {
   /** Content rendered inside the banner. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the banner. */
   className?: string;
   /** If set to true, the banner sticks to the top of its container */
@@ -32,7 +32,7 @@ interface NonStatusBanner extends BannerProps {
   status?: never;
 }
 
-export const Banner: React.FunctionComponent<StatusBanner | NonStatusBanner> = ({
+export const Banner: FunctionComponent<StatusBanner | NonStatusBanner> = ({
   children,
   className,
   screenReaderText,

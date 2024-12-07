@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/HelperText/helper-text';
 import { css } from '@patternfly/react-styles';
 import MinusIcon from '@patternfly/react-icons/dist/esm/icons/minus-icon';
@@ -13,9 +13,9 @@ export enum HelperTextItemVariant {
   success = 'success'
 }
 
-export interface HelperTextItemProps extends React.HTMLProps<HTMLDivElement | HTMLLIElement> {
+export interface HelperTextItemProps extends HTMLProps<HTMLDivElement | HTMLLIElement> {
   /** Content rendered inside the helper text item. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes applied to the helper text item. */
   className?: string;
   /** Sets the component type of the helper text item. */
@@ -25,7 +25,7 @@ export interface HelperTextItemProps extends React.HTMLProps<HTMLDivElement | HT
    */
   variant?: 'default' | 'indeterminate' | 'warning' | 'success' | 'error';
   /** Custom icon prefixing the helper text. This property will override the default icon when the variant property is passed in. */
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   /** ID for the helper text item. The value of this prop can be passed into a form component's
    * aria-describedby prop when you intend for only specific helper text items to be announced to
    * assistive technologies.
@@ -44,7 +44,7 @@ const defaultVariantIcons = {
   error: <ExclamationCircleIcon />
 };
 
-export const HelperTextItem: React.FunctionComponent<HelperTextItemProps> = ({
+export const HelperTextItem: FunctionComponent<HelperTextItemProps> = ({
   children,
   className,
   component = 'div',

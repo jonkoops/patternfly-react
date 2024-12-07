@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  FormEvent
+} from 'react';
 import {
   TextInputGroup,
   TextInputGroupMain,
@@ -16,22 +33,22 @@ import {
 import SearchIcon from '@patternfly/react-icons/dist/esm/icons/search-icon';
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
 
-export const AutoCompleteSearch: React.FunctionComponent = () => {
-  const [inputValue, setInputValue] = React.useState('');
-  const [menuIsOpen, setMenuIsOpen] = React.useState(false);
-  const [currentChips, setCurrentChips] = React.useState<string[]>([]);
-  const [hint, setHint] = React.useState('');
+export const AutoCompleteSearch: FunctionComponent = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [currentChips, setCurrentChips] = useState<string[]>([]);
+  const [hint, setHint] = useState('');
 
   /** auto-completing suggestion text items to be shown in the menu */
   const suggestionItems = ['Cluster', 'Kind', 'Label', 'Name', 'Namespace', 'Status'];
-  const [menuItems, setMenuItems] = React.useState<React.ReactElement[]>([]);
+  const [menuItems, setMenuItems] = useState<ReactElement[]>([]);
 
   /** refs used to detect when clicks occur inside vs outside of the textInputGroup and menu popper */
-  const menuRef = React.useRef<HTMLDivElement>();
-  const textInputGroupRef = React.useRef<HTMLDivElement>();
+  const menuRef = useRef<HTMLDivElement>();
+  const textInputGroupRef = useRef<HTMLDivElement>();
 
   /** callback for updating the inputValue state in this component so that the input can be controlled */
-  const handleInputChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  const handleInputChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     setInputValue(value);
   };
 
@@ -47,7 +64,7 @@ export const AutoCompleteSearch: React.FunctionComponent = () => {
     setInputValue('');
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     /** in the menu only show items that include the text in the input */
     const filteredMenuItems = suggestionItems
       .filter((item) => !inputValue || item.toLowerCase().includes(inputValue.toString().toLowerCase()))
@@ -136,7 +153,7 @@ export const AutoCompleteSearch: React.FunctionComponent = () => {
   };
 
   /** enable keyboard only usage while focused on the text input */
-  const handleTextInputKeyDown = (event: React.KeyboardEvent) => {
+  const handleTextInputKeyDown = (event: KeyboardEvent) => {
     switch (event.key) {
       case 'Enter':
         handleEnter();
@@ -162,7 +179,7 @@ export const AutoCompleteSearch: React.FunctionComponent = () => {
   };
 
   /** add the text of the selected item as a new chip */
-  const onSelect = (event: React.MouseEvent<Element, MouseEvent>, _itemId: string | number) => {
+  const onSelect = (event: ReactMouseEvent<Element, MouseEvent>, _itemId: string | number) => {
     const selectedText = (event.target as HTMLElement).innerText;
     addChip(selectedText);
     event.stopPropagation();
@@ -181,7 +198,7 @@ export const AutoCompleteSearch: React.FunctionComponent = () => {
   };
 
   /** enable keyboard only usage while focused on the menu */
-  const handleMenuKeyDown = (event: React.KeyboardEvent) => {
+  const handleMenuKeyDown = (event: KeyboardEvent) => {
     switch (event.key) {
       case 'Tab':
       case 'Escape':

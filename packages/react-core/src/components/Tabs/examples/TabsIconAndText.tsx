@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Tabs, Tab, TabTitleText, TabTitleIcon } from '@patternfly/react-core';
 import UsersIcon from '@patternfly/react-icons/dist/esm/icons/users-icon';
 import BoxIcon from '@patternfly/react-icons/dist/esm/icons/box-icon';
@@ -7,13 +23,10 @@ import ServerIcon from '@patternfly/react-icons/dist/esm/icons/server-icon';
 import LaptopIcon from '@patternfly/react-icons/dist/esm/icons/laptop-icon';
 import ProjectDiagramIcon from '@patternfly/react-icons/dist/esm/icons/project-diagram-icon';
 
-export const TabsIconAndText: React.FunctionComponent = () => {
-  const [activeTabKey, setActiveTabKey] = React.useState<string | number>(0);
+export const TabsIconAndText: FunctionComponent = () => {
+  const [activeTabKey, setActiveTabKey] = useState<string | number>(0);
   // Toggle currently active tab
-  const handleTabClick = (
-    event: React.MouseEvent<any> | React.KeyboardEvent | MouseEvent,
-    tabIndex: string | number
-  ) => {
+  const handleTabClick = (event: ReactMouseEvent<any> | KeyboardEvent | MouseEvent, tabIndex: string | number) => {
     setActiveTabKey(tabIndex);
   };
 

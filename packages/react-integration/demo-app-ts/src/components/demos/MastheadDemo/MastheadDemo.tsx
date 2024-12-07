@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { ReactNode, Ref, Component } from 'react';
 import {
   Masthead,
   MastheadToggle,
@@ -65,7 +65,7 @@ export class MastheadDemo extends Component<MastheadProps> {
     });
   };
 
-  onSelect = (_event: any, value: React.ReactNode) => {
+  onSelect = (_event: any, value: ReactNode) => {
     this.setState({
       selected: value,
       isOpen: !this.state.isOpen
@@ -138,7 +138,7 @@ export class MastheadDemo extends Component<MastheadProps> {
                     })
                   }
                   popperProps={{ position: 'right' }}
-                  toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                  toggle={(toggleRef: Ref<MenuToggleElement>) => (
                     <MenuToggle ref={toggleRef} onClick={this.onToggle} isFullHeight isExpanded={isDropdownOpen}>
                       Ned Username
                     </MenuToggle>

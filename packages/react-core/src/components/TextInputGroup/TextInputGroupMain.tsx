@@ -1,17 +1,28 @@
-import * as React from 'react';
+import {
+  HTMLProps,
+  ReactNode,
+  FormEvent,
+  RefObject,
+  FunctionComponent,
+  Ref,
+  MutableRefObject,
+  useContext,
+  useRef,
+  forwardRef
+} from 'react';
 import styles from '@patternfly/react-styles/css/components/TextInputGroup/text-input-group';
 import { css } from '@patternfly/react-styles';
 import { TextInputGroupContext } from './TextInputGroup';
 import { TextInputGroupIcon } from './TextInputGroupIcon';
 import { statusIcons, ValidatedOptions } from '../../helpers';
 
-export interface TextInputGroupMainProps extends Omit<React.HTMLProps<HTMLDivElement>, 'onChange'> {
+export interface TextInputGroupMainProps extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
   /** Content rendered inside the text input group main div */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes applied to the text input group main container */
   className?: string;
   /** Icon to be shown on the left side of the text input group main container */
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   /** Type that the input accepts. */
   type?:
     | 'text'
@@ -28,7 +39,7 @@ export interface TextInputGroupMainProps extends Omit<React.HTMLProps<HTMLDivEle
   /** Suggestion that will show up like a placeholder even with text in the input */
   hint?: string;
   /** Callback for when there is a change in the input field*/
-  onChange?: (event: React.FormEvent<HTMLInputElement>, value: string) => void;
+  onChange?: (event: FormEvent<HTMLInputElement>, value: string) => void;
   /** Callback for when the input field is focused*/
   onFocus?: (event?: any) => void;
   /** Callback for when focus is lost on the input field*/
@@ -40,7 +51,7 @@ export interface TextInputGroupMainProps extends Omit<React.HTMLProps<HTMLDivEle
   /** Placeholder value for the input */
   placeholder?: string;
   /** @hide A reference object to attach to the input box */
-  innerRef?: React.RefObject<any>;
+  innerRef?: RefObject<any>;
   /** Name for the input */
   name?: string;
   /** The id of the active element. Required if role has a value of "combobox", and focus
@@ -59,7 +70,7 @@ export interface TextInputGroupMainProps extends Omit<React.HTMLProps<HTMLDivEle
   inputId?: string;
 }
 
-const TextInputGroupMainBase: React.FunctionComponent<TextInputGroupMainProps> = ({
+const TextInputGroupMainBase: FunctionComponent<TextInputGroupMainProps> = ({
   children,
   className,
   icon,
@@ -80,12 +91,12 @@ const TextInputGroupMainBase: React.FunctionComponent<TextInputGroupMainProps> =
   inputId,
   ...props
 }: TextInputGroupMainProps) => {
-  const { isDisabled, validated } = React.useContext(TextInputGroupContext);
-  const ref = React.useRef(null);
+  const { isDisabled, validated } = useContext(TextInputGroupContext);
+  const ref = useRef(null);
   const textInputGroupInputInputRef = innerRef || ref;
   const StatusIcon = statusIcons[validated === ValidatedOptions.error ? 'danger' : validated];
 
-  const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleChange = (event: FormEvent<HTMLInputElement>) => {
     onChange(event, event.currentTarget.value);
   };
 
@@ -128,10 +139,8 @@ const TextInputGroupMainBase: React.FunctionComponent<TextInputGroupMainProps> =
   );
 };
 
-export const TextInputGroupMain = React.forwardRef(
-  (props: TextInputGroupMainProps, ref: React.Ref<HTMLInputElement>) => (
-    <TextInputGroupMainBase innerRef={ref as React.MutableRefObject<any>} {...props} />
-  )
-);
+export const TextInputGroupMain = forwardRef((props: TextInputGroupMainProps, ref: Ref<HTMLInputElement>) => (
+  <TextInputGroupMainBase innerRef={ref as MutableRefObject<any>} {...props} />
+));
 
 TextInputGroupMain.displayName = 'TextInputGroupMain';

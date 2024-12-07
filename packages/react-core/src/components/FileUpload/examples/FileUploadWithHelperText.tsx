@@ -1,16 +1,33 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  ChangeEvent
+} from 'react';
 import { FileUpload, FileUploadHelperText, HelperText, HelperTextItem, DropEvent } from '@patternfly/react-core';
 
-export const FileUploadWithHelperText: React.FunctionComponent = () => {
-  const [value, setValue] = React.useState('');
-  const [filename, setFilename] = React.useState('');
-  const [isLoading, setIsLoading] = React.useState(false);
+export const FileUploadWithHelperText: FunctionComponent = () => {
+  const [value, setValue] = useState('');
+  const [filename, setFilename] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFileInputChange = (_, file: File) => {
     setFilename(file.name);
   };
 
-  const handleTextChange = (_event: React.ChangeEvent<HTMLTextAreaElement>, value: string) => {
+  const handleTextChange = (_event: ChangeEvent<HTMLTextAreaElement>, value: string) => {
     setValue(value);
   };
 
@@ -18,7 +35,7 @@ export const FileUploadWithHelperText: React.FunctionComponent = () => {
     setValue(value);
   };
 
-  const handleClear = (_event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClear = (_event: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
     setFilename('');
     setValue('');
   };

@@ -1,22 +1,22 @@
-import React from 'react';
+import { type FunctionComponent, type MouseEvent as ReactMouseEvent, useState } from 'react';
 import { AboutModal, Button, Content } from '@patternfly/react-core';
 import brandImg from '../../assets/PF-IconLogo.svg';
 
-export const AboutModalWithoutProductName: React.FunctionComponent = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+export const AboutModalWithoutProductName: FunctionComponent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleModal = (_event: React.MouseEvent<Element, MouseEvent> | KeyboardEvent | MouseEvent) => {
+  const toggleModal = (_event: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent | MouseEvent) => {
     setIsModalOpen(!isModalOpen);
   };
 
   return (
-    <React.Fragment>
+    <>
       <Button variant="primary" onClick={toggleModal}>
         Show about modal
       </Button>
       <AboutModal
         isOpen={isModalOpen}
-        onClose={(e: React.MouseEvent<Element, MouseEvent> | KeyboardEvent | MouseEvent) => toggleModal(e)}
+        onClose={(e: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent | MouseEvent) => toggleModal(e)}
         trademark="Trademark and copyright information here"
         brandImageSrc={brandImg}
         brandImageAlt="Patternfly Logo"
@@ -42,6 +42,6 @@ export const AboutModalWithoutProductName: React.FunctionComponent = () => {
           </dl>
         </Content>
       </AboutModal>
-    </React.Fragment>
+    </>
   );
 };

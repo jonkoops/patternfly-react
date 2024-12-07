@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   Select,
   SelectOption,
@@ -10,16 +26,16 @@ import {
   HelperTextItem
 } from '@patternfly/react-core';
 
-export const SelectValidated: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<string>('Select a value');
-  const [status, setStatus] = React.useState<MenuToggleStatus>();
+export const SelectValidated: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<string>('Select a value');
+  const [status, setStatus] = useState<MenuToggleStatus>();
 
   const onToggleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
     // eslint-disable-next-line no-console
     console.log('selected', value);
 
@@ -28,7 +44,7 @@ export const SelectValidated: React.FunctionComponent = () => {
     setIsOpen(false);
   };
 
-  const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const toggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       ref={toggleRef}
       onClick={onToggleClick}
@@ -36,7 +52,7 @@ export const SelectValidated: React.FunctionComponent = () => {
       style={
         {
           width: '200px'
-        } as React.CSSProperties
+        } as CSSProperties
       }
       status={status}
     >
@@ -45,7 +61,7 @@ export const SelectValidated: React.FunctionComponent = () => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <Select
         id="single-select"
         isOpen={isOpen}
@@ -69,6 +85,6 @@ export const SelectValidated: React.FunctionComponent = () => {
           </HelperTextItem>
         </HelperText>
       )}
-    </React.Fragment>
+    </>
   );
 };

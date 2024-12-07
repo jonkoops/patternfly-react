@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  FormEvent
+} from 'react';
 import {
   LabelGroup,
   Label,
@@ -17,28 +34,28 @@ import {
 import { Modal as ModalDeprecated, ModalVariant as ModalVariantDeprecated } from '@patternfly/react-core/deprecated';
 import InfoCircleIcon from '@patternfly/react-icons/dist/esm/icons/info-circle-icon';
 
-export const LabelGroupEditableAddModal: React.FunctionComponent = () => {
-  const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
-  const [idIndex, setIdIndex] = React.useState<number>(7);
-  const [labelText, setLabelText] = React.useState<string>('');
-  const [color, setColor] = React.useState<string>();
-  const [icon, setIcon] = React.useState<any>();
-  const [labelType, setLabelType] = React.useState<string>('filled');
-  const [isClosable, setIsCloseable] = React.useState<boolean>(false);
-  const [isEditable, setIsEditable] = React.useState<boolean>(false);
-  const labelInputRef = React.useRef(null);
+export const LabelGroupEditableAddModal: FunctionComponent = () => {
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [idIndex, setIdIndex] = useState<number>(7);
+  const [labelText, setLabelText] = useState<string>('');
+  const [color, setColor] = useState<string>();
+  const [icon, setIcon] = useState<any>();
+  const [labelType, setLabelType] = useState<string>('filled');
+  const [isClosable, setIsCloseable] = useState<boolean>(false);
+  const [isEditable, setIsEditable] = useState<boolean>(false);
+  const labelInputRef = useRef(null);
 
-  const [isColorOpen, setIsColorOpen] = React.useState<boolean>(false);
-  const colorMenuRef = React.useRef<HTMLDivElement>(null);
-  const colorContainerRef = React.useRef<HTMLDivElement>(null);
-  const colorToggleRef = React.useRef<HTMLButtonElement>(null);
+  const [isColorOpen, setIsColorOpen] = useState<boolean>(false);
+  const colorMenuRef = useRef<HTMLDivElement>(null);
+  const colorContainerRef = useRef<HTMLDivElement>(null);
+  const colorToggleRef = useRef<HTMLButtonElement>(null);
 
-  const [isIconOpen, setIsIconOpen] = React.useState<boolean>(false);
-  const iconMenuRef = React.useRef<HTMLDivElement>(null);
-  const iconContainerRef = React.useRef<HTMLDivElement>(null);
-  const iconToggleRef = React.useRef<HTMLButtonElement>(null);
+  const [isIconOpen, setIsIconOpen] = useState<boolean>(false);
+  const iconMenuRef = useRef<HTMLDivElement>(null);
+  const iconContainerRef = useRef<HTMLDivElement>(null);
+  const iconToggleRef = useRef<HTMLButtonElement>(null);
 
-  const [labels, setLabels] = React.useState<any>([
+  const [labels, setLabels] = useState<any>([
     { name: 'Label 1', id: 4 },
     { name: 'Label 2', id: 5 },
     {
@@ -103,11 +120,11 @@ export const LabelGroupEditableAddModal: React.FunctionComponent = () => {
     setIsEditable(false);
   };
 
-  const handleModalToggle = (_event: KeyboardEvent | React.MouseEvent) => {
+  const handleModalToggle = (_event: KeyboardEvent | ReactMouseEvent) => {
     setModalOpen(!isModalOpen);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isModalOpen && labelInputRef && labelInputRef.current) {
       (labelInputRef.current as HTMLInputElement).focus();
     }
@@ -137,7 +154,7 @@ export const LabelGroupEditableAddModal: React.FunctionComponent = () => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('keydown', handleMenuKeys);
     window.addEventListener('click', handleClickOutside);
     return () => {
@@ -146,7 +163,7 @@ export const LabelGroupEditableAddModal: React.FunctionComponent = () => {
     };
   }, [isColorOpen, isIconOpen, colorMenuRef, iconMenuRef]);
 
-  const onColorToggleClick = (ev: React.MouseEvent) => {
+  const onColorToggleClick = (ev: ReactMouseEvent) => {
     ev.stopPropagation(); // Stop handleClickOutside from handling
     setTimeout(() => {
       if (colorMenuRef.current) {
@@ -188,7 +205,7 @@ export const LabelGroupEditableAddModal: React.FunctionComponent = () => {
     </Menu>
   );
 
-  const onIconToggleClick = (ev: React.MouseEvent) => {
+  const onIconToggleClick = (ev: ReactMouseEvent) => {
     ev.stopPropagation(); // Stop handleClickOutside from handling
     setTimeout(() => {
       if (iconMenuRef.current) {
@@ -275,7 +292,7 @@ export const LabelGroupEditableAddModal: React.FunctionComponent = () => {
               id="create-label-form-label-text"
               name="create-label-form-label-text"
               value={labelText}
-              onChange={(_event: React.FormEvent<HTMLInputElement>, value: string) => setLabelText(value)}
+              onChange={(_event: FormEvent<HTMLInputElement>, value: string) => setLabelText(value)}
               ref={labelInputRef}
             />
           </FormGroup>

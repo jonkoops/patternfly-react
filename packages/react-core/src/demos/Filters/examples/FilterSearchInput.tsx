@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   SearchInput,
   Toolbar,
@@ -54,9 +70,9 @@ const columnNames = {
   location: 'Location'
 };
 
-export const FilterSearchInput: React.FunctionComponent = () => {
+export const FilterSearchInput: FunctionComponent = () => {
   // Set up repo filtering
-  const [searchValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = useState('');
 
   const onSearchChange = (value: string) => {
     setSearchValue(value);
@@ -81,7 +97,7 @@ export const FilterSearchInput: React.FunctionComponent = () => {
   // In this example, selected rows are tracked by the repo names from each row. This could be any unique identifier.
   // This is to prevent state from being based on row order index in case we later add sorting.
   const isRepoSelectable = (repo: Repository) => repo.name !== 'a'; // Arbitrary logic for this example
-  const [selectedRepoNames, setSelectedRepoNames] = React.useState<string[]>([]);
+  const [selectedRepoNames, setSelectedRepoNames] = useState<string[]>([]);
   const setRepoSelected = (repo: Repository, isSelecting = true) =>
     setSelectedRepoNames((prevSelected) => {
       const otherSelectedRepoNames = prevSelected.filter((r) => r !== repo.name);
@@ -94,8 +110,8 @@ export const FilterSearchInput: React.FunctionComponent = () => {
   const isRepoSelected = (repo: Repository) => selectedRepoNames.includes(repo.name);
 
   // To allow shift+click to select/deselect multiple rows
-  const [recentSelectedRowIndex, setRecentSelectedRowIndex] = React.useState<number | null>(null);
-  const [shifting, setShifting] = React.useState(false);
+  const [recentSelectedRowIndex, setRecentSelectedRowIndex] = useState<number | null>(null);
+  const [shifting, setShifting] = useState(false);
 
   const onSelectRepo = (repo: Repository, rowIndex: number, isSelecting: boolean) => {
     // If the user is shift + selecting the checkboxes, then all intermediate checkboxes should be selected
@@ -112,7 +128,7 @@ export const FilterSearchInput: React.FunctionComponent = () => {
     setRecentSelectedRowIndex(rowIndex);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Shift') {
         setShifting(true);
@@ -134,11 +150,11 @@ export const FilterSearchInput: React.FunctionComponent = () => {
   }, []);
 
   // Set up bulk selection menu
-  const bulkSelectMenuRef = React.useRef<HTMLDivElement>(null);
-  const bulkSelectToggleRef = React.useRef<any>(null);
-  const bulkSelectContainerRef = React.useRef<HTMLDivElement>(null);
+  const bulkSelectMenuRef = useRef<HTMLDivElement>(null);
+  const bulkSelectToggleRef = useRef<any>(null);
+  const bulkSelectContainerRef = useRef<HTMLDivElement>(null);
 
-  const [isBulkSelectOpen, setIsBulkSelectOpen] = React.useState<boolean>(false);
+  const [isBulkSelectOpen, setIsBulkSelectOpen] = useState<boolean>(false);
 
   const handleBulkSelectClickOutside = (event: MouseEvent) => {
     if (isBulkSelectOpen && !bulkSelectMenuRef.current?.contains(event.target as Node)) {
@@ -161,7 +177,7 @@ export const FilterSearchInput: React.FunctionComponent = () => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('keydown', handleBulkSelectMenuKeys);
     window.addEventListener('click', handleBulkSelectClickOutside);
     return () => {
@@ -170,7 +186,7 @@ export const FilterSearchInput: React.FunctionComponent = () => {
     };
   }, [isBulkSelectOpen, bulkSelectMenuRef]);
 
-  const onBulkSelectToggleClick = (ev: React.MouseEvent) => {
+  const onBulkSelectToggleClick = (ev: ReactMouseEvent) => {
     ev.stopPropagation(); // Stop handleClickOutside from handling
     setTimeout(() => {
       if (bulkSelectMenuRef.current) {
@@ -288,7 +304,7 @@ export const FilterSearchInput: React.FunctionComponent = () => {
   );
 
   return (
-    <React.Fragment>
+    <>
       {toolbar}
       <Table aria-label="Selectable table">
         <Thead>
@@ -343,6 +359,6 @@ export const FilterSearchInput: React.FunctionComponent = () => {
           )}
         </Tbody>
       </Table>
-    </React.Fragment>
+    </>
   );
 };

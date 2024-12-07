@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Button, Flex } from '@patternfly/react-core';
 
-export const ButtonLinks: React.FunctionComponent = () => (
+export const ButtonLinks: FunctionComponent = () => (
   <Flex>
     <Button component="a" href="https://www.patternfly.org/" target="_blank" variant="primary">
       Link to PatternFly home

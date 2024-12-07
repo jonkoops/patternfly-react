@@ -1,17 +1,17 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/Drawer/drawer';
 import { css } from '@patternfly/react-styles';
 
 /** Provides a description within the drawer panel. This should typically follow the drawer head. */
 
-export interface DrawerPanelDescriptionProps extends React.HTMLProps<HTMLDivElement> {
+export interface DrawerPanelDescriptionProps extends HTMLProps<HTMLDivElement> {
   /** Additional classes added to the drawer description. */
   className?: string;
   /** Content to be rendered in the drawer description */
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export const DrawerPanelDescription: React.FunctionComponent<DrawerPanelDescriptionProps> = ({
+export const DrawerPanelDescription: FunctionComponent<DrawerPanelDescriptionProps> = ({
   className,
   children,
   ...props

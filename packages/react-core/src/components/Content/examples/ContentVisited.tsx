@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Content, ContentVariants } from '@patternfly/react-core';
 
-export const ContentVisited: React.FunctionComponent = () => (
+export const ContentVisited: FunctionComponent = () => (
   <>
     <Content>
       <Content component={ContentVariants.h3}>Link example</Content>

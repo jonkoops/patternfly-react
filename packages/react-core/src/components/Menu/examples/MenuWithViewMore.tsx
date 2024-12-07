@@ -1,12 +1,28 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Menu, MenuList, MenuItem, MenuContent, Spinner } from '@patternfly/react-core';
 
-export const MenuWithViewMore: React.FunctionComponent = () => {
-  const [activeItem, setActiveItem] = React.useState<number | string>(0);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [numOptions, setNumOptions] = React.useState(3);
+export const MenuWithViewMore: FunctionComponent = () => {
+  const [activeItem, setActiveItem] = useState<number | string>(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [numOptions, setNumOptions] = useState(3);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [menuOptions, setMenuOptions] = React.useState([
+  const [menuOptions, setMenuOptions] = useState([
     <MenuItem key={0} itemId={'view-more-0'}>
       Action
     </MenuItem>,
@@ -41,16 +57,16 @@ export const MenuWithViewMore: React.FunctionComponent = () => {
       Final option
     </MenuItem>
   ]);
-  const [visibleOptions, setVisibleOptions] = React.useState(menuOptions.slice(0, numOptions));
+  const [visibleOptions, setVisibleOptions] = useState(menuOptions.slice(0, numOptions));
 
-  const activeItemRef = React.useRef<HTMLElement>(null);
-  const viewMoreRef = React.useRef<HTMLElement>(null);
+  const activeItemRef = useRef<HTMLElement>(null);
+  const viewMoreRef = useRef<HTMLElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     activeItemRef.current?.focus();
   }, [visibleOptions]);
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
     // eslint-disable-next-line no-console
     console.log(`clicked ${itemId}`);
     setActiveItem(itemId as string);

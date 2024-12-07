@@ -1,8 +1,8 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Button, Flex } from '@patternfly/react-core';
 import BellIcon from '@patternfly/react-icons/dist/esm/icons/bell-icon';
 
-export const ButtonStateful: React.FunctionComponent = () => (
+export const ButtonStateful: FunctionComponent = () => (
   <Flex>
     <div>
       <div>

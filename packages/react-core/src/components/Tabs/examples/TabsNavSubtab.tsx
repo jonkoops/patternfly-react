@@ -1,21 +1,34 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Tabs, Tab, TabsComponent, TabTitleText } from '@patternfly/react-core';
 
-export const TabsNavSubtab: React.FunctionComponent = () => {
-  const [activeTabKey1, setActiveTabKey1] = React.useState<string | number>(0);
-  const [activeTabKey2, setActiveTabKey2] = React.useState<string | number>(0);
+export const TabsNavSubtab: FunctionComponent = () => {
+  const [activeTabKey1, setActiveTabKey1] = useState<string | number>(0);
+  const [activeTabKey2, setActiveTabKey2] = useState<string | number>(0);
 
   // Toggle currently active primary tab
-  const handleTabClickFirst = (
-    event: React.MouseEvent<any> | React.KeyboardEvent | MouseEvent,
-    tabIndex: string | number
-  ) => {
+  const handleTabClickFirst = (event: ReactMouseEvent<any> | KeyboardEvent | MouseEvent, tabIndex: string | number) => {
     setActiveTabKey1(tabIndex);
   };
 
   // Toggle currently active secondary tab
   const handleTabClickSecond = (
-    event: React.MouseEvent<any> | React.KeyboardEvent | MouseEvent,
+    event: ReactMouseEvent<any> | KeyboardEvent | MouseEvent,
     tabIndex: string | number
   ) => {
     setActiveTabKey2(tabIndex);

@@ -1,17 +1,33 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { FileUpload } from '@patternfly/react-core';
 import FileUploadIcon from '@patternfly/react-icons/dist/esm/icons/file-upload-icon';
 
-export const CustomPreviewFileUpload: React.FunctionComponent = () => {
-  const [value, setValue] = React.useState<File>();
-  const [filename, setFilename] = React.useState('');
+export const CustomPreviewFileUpload: FunctionComponent = () => {
+  const [value, setValue] = useState<File>();
+  const [filename, setFilename] = useState('');
 
   const handleFileInputChange = (_, file: File) => {
     setValue(file);
     setFilename(file.name);
   };
 
-  const handleClear = (_event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClear = (_event: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
     setFilename('');
     setValue(undefined);
   };

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Ref, FunctionComponent, MutableRefObject, KeyboardEvent, useRef, forwardRef } from 'react';
 import { Button, ButtonProps } from '../Button';
 import QuestionCircleIcon from '@patternfly/react-icons/dist/esm/icons/question-circle-icon';
 import { KeyTypes } from '../../helpers/constants';
@@ -12,22 +12,22 @@ export interface FormGroupLabelHelpProps extends ButtonProps {
   /** Additional classes added to the help button. */
   className?: string;
   /** @hide Forwarded ref */
-  innerRef?: React.Ref<HTMLSpanElement>;
+  innerRef?: Ref<HTMLSpanElement>;
 }
 
-const FormGroupLabelHelpBase: React.FunctionComponent<FormGroupLabelHelpProps> = ({
+const FormGroupLabelHelpBase: FunctionComponent<FormGroupLabelHelpProps> = ({
   'aria-label': ariaLabel,
   className,
   innerRef,
   ...props
 }) => {
-  const ref = React.useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const buttonRef = innerRef || ref;
 
-  const isMutableRef = (ref: React.Ref<HTMLSpanElement>): ref is React.MutableRefObject<HTMLSpanElement> =>
+  const isMutableRef = (ref: Ref<HTMLSpanElement>): ref is MutableRefObject<HTMLSpanElement> =>
     typeof ref === 'object' && ref !== null && 'current' in ref && ref.current !== undefined;
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLSpanElement>) => {
     if ([KeyTypes.Space, KeyTypes.Enter].includes(event.key) && isMutableRef(buttonRef) && buttonRef.current) {
       event.preventDefault();
       buttonRef.current.click();
@@ -50,7 +50,7 @@ const FormGroupLabelHelpBase: React.FunctionComponent<FormGroupLabelHelpProps> =
   );
 };
 
-export const FormGroupLabelHelp = React.forwardRef((props: FormGroupLabelHelpProps, ref: React.Ref<any>) => (
+export const FormGroupLabelHelp = forwardRef((props: FormGroupLabelHelpProps, ref: Ref<any>) => (
   <FormGroupLabelHelpBase innerRef={ref} {...props} />
 ));
 

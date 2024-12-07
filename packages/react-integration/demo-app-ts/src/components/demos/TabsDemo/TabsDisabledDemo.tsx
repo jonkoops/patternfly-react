@@ -1,7 +1,25 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  createRef,
+  Component
+} from 'react';
 import { Tabs, Tab, TabTitleText, Tooltip } from '@patternfly/react-core';
 
-export class TabsDisabledDemo extends React.Component {
+export class TabsDisabledDemo extends Component {
   static displayName = 'TabsDisabledDemo';
   state = {
     activeTabKey: 0,
@@ -12,7 +30,7 @@ export class TabsDisabledDemo extends React.Component {
     super(props);
   }
 
-  private handleTabClick = (_event: React.MouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
+  private handleTabClick = (_event: ReactMouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
     this.setState({
       activeTabKey: tabIndex
     });
@@ -20,7 +38,7 @@ export class TabsDisabledDemo extends React.Component {
 
   render() {
     const { activeTabKey } = this.state;
-    const tooltipRef = React.createRef();
+    const tooltipRef = createRef();
 
     return (
       <>

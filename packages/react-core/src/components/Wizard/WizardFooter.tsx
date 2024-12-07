@@ -1,4 +1,4 @@
-import React from 'react';
+import { HTMLProps, MouseEvent, ReactNode } from 'react';
 
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Wizard/wizard';
@@ -10,21 +10,21 @@ import { ActionList, ActionListGroup, ActionListItem } from '../ActionList';
  * Hosts the standard structure of a footer with ties to the active step so that text for buttons can vary from step to step.
  */
 
-export interface WizardFooterProps extends React.HTMLProps<HTMLElement> {
+export interface WizardFooterProps extends HTMLProps<HTMLElement> {
   /** The active step */
   activeStep: WizardStepType;
   /** Next button callback */
-  onNext: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
+  onNext: (event: MouseEvent<HTMLButtonElement>) => void | Promise<void>;
   /** Back button callback */
-  onBack: (event: React.MouseEvent<HTMLButtonElement>) => void | Promise<void>;
+  onBack: (event: MouseEvent<HTMLButtonElement>) => void | Promise<void>;
   /** Cancel link callback */
-  onClose: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClose: (event: MouseEvent<HTMLButtonElement>) => void;
   /** Custom text for the Next button. The current step's nextButtonText takes precedence. */
-  nextButtonText?: React.ReactNode;
+  nextButtonText?: ReactNode;
   /** Custom text for the Back button */
-  backButtonText?: React.ReactNode;
+  backButtonText?: ReactNode;
   /** Custom text for the Cancel link */
-  cancelButtonText?: React.ReactNode;
+  cancelButtonText?: ReactNode;
   /** Flag to disable the next button */
   isNextDisabled?: boolean;
   /** Flag to disable the back button */
@@ -47,8 +47,8 @@ export interface WizardFooterProps extends React.HTMLProps<HTMLElement> {
  * Applies default wizard footer styling any number of child elements.
  */
 
-interface WizardFooterWrapperProps extends React.HTMLProps<HTMLElement> {
-  children: React.ReactNode;
+interface WizardFooterWrapperProps extends HTMLProps<HTMLElement> {
+  children: ReactNode;
   className?: string;
 }
 

@@ -1,8 +1,8 @@
-import React from 'react';
+import { FunctionComponent, Fragment } from 'react';
 import { Switch } from '@patternfly/react-core';
 
-export const SwitchDisabled: React.FunctionComponent = () => (
-  <React.Fragment>
+export const SwitchDisabled: FunctionComponent = () => (
+  <Fragment>
     <Switch id="disabled-switch-on" label="Togglable option for disabled checked example" isChecked isDisabled />
     <br />
     <Switch
@@ -25,5 +25,5 @@ export const SwitchDisabled: React.FunctionComponent = () => (
       isChecked={false}
       isDisabled
     />
-  </React.Fragment>
+  </Fragment>
 );

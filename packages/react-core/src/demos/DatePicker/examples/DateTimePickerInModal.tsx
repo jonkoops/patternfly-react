@@ -1,13 +1,13 @@
-import React from 'react';
+import { MouseEvent, useState, useRef, Fragment } from 'react';
 import { DatePicker, Button, TimePicker, InputGroup, InputGroupItem } from '@patternfly/react-core';
 import { Modal as ModalDeprecated, ModalVariant as ModalVariantDeprecated } from '@patternfly/react-core/deprecated';
 
 export const SimpleModal = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [isTimePickerOpen, setIsTimePickerOpen] = React.useState(false);
-  const dateRef = React.useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isTimePickerOpen, setIsTimePickerOpen] = useState(false);
+  const dateRef = useRef(null);
 
-  const handleModalToggle = (_event: KeyboardEvent | React.MouseEvent) => {
+  const handleModalToggle = (_event: KeyboardEvent | MouseEvent) => {
     setIsModalOpen(!isModalOpen);
   };
 
@@ -22,7 +22,7 @@ export const SimpleModal = () => {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Button variant="primary" onClick={handleModalToggle}>
         Launch modal
       </Button>
@@ -51,6 +51,6 @@ export const SimpleModal = () => {
           </InputGroupItem>
         </InputGroup>
       </ModalDeprecated>
-    </React.Fragment>
+    </Fragment>
   );
 };

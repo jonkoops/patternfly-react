@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { JumpLinks, JumpLinksItem } from '@patternfly/react-core';
 
-export const JumpLinksWithLabel: React.FunctionComponent = () => (
+export const JumpLinksWithLabel: FunctionComponent = () => (
   <>
     <JumpLinks label="Jump to section">
       <JumpLinksItem href="#">Inactive section</JumpLinksItem>

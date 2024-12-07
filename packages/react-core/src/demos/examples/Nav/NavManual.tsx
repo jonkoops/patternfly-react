@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, FormEvent, KeyboardEvent, useState, Fragment } from 'react';
 import {
   Avatar,
   Brand,
@@ -44,17 +44,17 @@ import BarsIcon from '@patternfly/react-icons/dist/esm/icons/bars-icon';
 import imgAvatar from '@patternfly/react-core/src/components/assets/avatarImg.svg';
 import pfLogo from '@patternfly/react-core/src/demos/assets/PF-HorizontalLogo-Color.svg';
 
-export const NavManual: React.FunctionComponent = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const [isKebabDropdownOpen, setIsKebabDropdownOpen] = React.useState(false);
-  const [isFullKebabDropdownOpen, setIsFullKebabDropdownOpen] = React.useState(false);
-  const [isMobileView, setIsMobileView] = React.useState(false);
-  const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = React.useState(true);
-  const [isSidebarOpenMobile, setIsSidebarOpenMobile] = React.useState(false);
-  const [activeItem, setActiveItem] = React.useState<string | number>(0);
+export const NavManual: FunctionComponent = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isKebabDropdownOpen, setIsKebabDropdownOpen] = useState(false);
+  const [isFullKebabDropdownOpen, setIsFullKebabDropdownOpen] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
+  const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = useState(true);
+  const [isSidebarOpenMobile, setIsSidebarOpenMobile] = useState(false);
+  const [activeItem, setActiveItem] = useState<string | number>(0);
 
   const onNavSelect = (
-    _event: React.FormEvent<HTMLInputElement>,
+    _event: FormEvent<HTMLInputElement>,
     selectedItem: {
       groupId: number | string;
       itemId: number | string;
@@ -76,7 +76,7 @@ export const NavManual: React.FunctionComponent = () => {
     windowSize: number;
   }
 
-  const onPageResize = (_event: MouseEvent | TouchEvent | React.KeyboardEvent, { mobileView }: PageOptions) =>
+  const onPageResize = (_event: MouseEvent | TouchEvent | KeyboardEvent, { mobileView }: PageOptions) =>
     setIsMobileView(mobileView);
 
   const PageNav = (
@@ -251,7 +251,7 @@ export const NavManual: React.FunctionComponent = () => {
   );
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Page
         masthead={masthead}
         sidebar={Sidebar}
@@ -280,6 +280,6 @@ export const NavManual: React.FunctionComponent = () => {
           </Gallery>
         </PageSection>
       </Page>
-    </React.Fragment>
+    </Fragment>
   );
 };

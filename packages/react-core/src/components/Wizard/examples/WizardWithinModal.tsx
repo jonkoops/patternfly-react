@@ -1,9 +1,9 @@
-import React from 'react';
+import { useState } from 'react';
 import { Button, Wizard, WizardStep, WizardHeader } from '@patternfly/react-core';
 import { Modal as ModalDeprecated, ModalVariant as ModalVariantDeprecated } from '@patternfly/react-core/deprecated';
 
 export const WizardWithinModal = () => {
-  const [isModelOpen, setIsModalOpen] = React.useState(false);
+  const [isModelOpen, setIsModalOpen] = useState(false);
 
   return (
     <>

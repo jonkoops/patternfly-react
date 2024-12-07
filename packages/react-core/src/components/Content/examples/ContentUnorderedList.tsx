@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Content, ContentVariants } from '@patternfly/react-core';
 
-export const ContentUnorderedList: React.FunctionComponent = () => (
+export const ContentUnorderedList: FunctionComponent = () => (
   <Content component={ContentVariants.ul}>
     <Content component={ContentVariants.li}>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</Content>
     <Content component={ContentVariants.li}>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</Content>

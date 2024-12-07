@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactNode, MouseEvent, FunctionComponent, CSSProperties } from 'react';
 import { FocusTrap } from '../../helpers';
 import bullsEyeStyles from '@patternfly/react-styles/css/layouts/Bullseye/bullseye';
 import { css } from '@patternfly/react-styles';
@@ -19,7 +19,7 @@ export interface ModalContentProps extends OUIAProps {
   /** Id of the backdrop. */
   backdropId?: string;
   /** Content rendered inside the modal. */
-  children: React.ReactNode;
+  children: ReactNode;
   /** Additional classes added to the modal box. */
   className?: string;
   /** Additional classes added to the modal backdrop. */
@@ -33,7 +33,7 @@ export interface ModalContentProps extends OUIAProps {
   /** Flag to show the modal. */
   isOpen?: boolean;
   /** A callback for when the close button is clicked. */
-  onClose?: (event: KeyboardEvent | React.MouseEvent) => void;
+  onClose?: (event: KeyboardEvent | MouseEvent) => void;
   /** Position of the modal. By default a modal will be positioned vertically and horizontally centered. */
   position?: 'default' | 'top';
   /** Offset from alternate position. Can be any valid CSS length/percentage. */
@@ -50,7 +50,7 @@ export interface ModalContentProps extends OUIAProps {
   ouiaSafe?: boolean;
 }
 
-export const ModalContent: React.FunctionComponent<ModalContentProps> = ({
+export const ModalContent: FunctionComponent<ModalContentProps> = ({
   backdropClassName,
   children,
   className,
@@ -102,7 +102,7 @@ export const ModalContent: React.FunctionComponent<ModalContentProps> = ({
           ...(maxWidth && {
             '--pf-v6-c-modal-box--MaxWidth': typeof maxWidth !== 'number' ? maxWidth : `${maxWidth}px`
           })
-        } as React.CSSProperties
+        } as CSSProperties
       }
       {...props}
       id={boxId}

@@ -1,16 +1,16 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, useState, Fragment } from 'react';
 import { Button } from '@patternfly/react-core';
 import { Modal as ModalDeprecated, ModalVariant as ModalVariantDeprecated } from '@patternfly/react-core/deprecated';
 
-export const ModalWithOverflowingContent: React.FunctionComponent = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+export const ModalWithOverflowingContent: FunctionComponent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleModalToggle = (_event: KeyboardEvent | React.MouseEvent) => {
+  const handleModalToggle = (_event: KeyboardEvent | MouseEvent) => {
     setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Button variant="primary" onClick={handleModalToggle}>
         Show modal
       </Button>
@@ -67,6 +67,6 @@ export const ModalWithOverflowingContent: React.FunctionComponent = () => {
         purus gravida. Nisl purus in mollis nunc sed id semper risus. Id neque aliquam vestibulum morbi. Mauris a diam
         maecenas sed enim ut sem. Egestas tellus rutrum tellus pellentesque.
       </ModalDeprecated>
-    </React.Fragment>
+    </Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import { type FunctionComponent, type MouseEvent as ReactMouseEvent, type Ref, useState } from 'react';
 import {
   ActionList,
   ActionListGroup,
@@ -13,14 +13,14 @@ import {
 } from '@patternfly/react-core';
 import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
 
-export const ActionListSingleGroup: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+export const ActionListSingleGroup: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const onToggle = () => {
     setIsOpen(!isOpen);
   };
 
-  const onSelect = (event: React.MouseEvent<Element, MouseEvent> | undefined) => {
+  const onSelect = (event: ReactMouseEvent<Element, MouseEvent> | undefined) => {
     event?.stopPropagation();
     setIsOpen(!isOpen);
   };
@@ -45,7 +45,7 @@ export const ActionListSingleGroup: React.FunctionComponent = () => {
     </>
   );
   return (
-    <React.Fragment>
+    <>
       <ActionList>
         <ActionListGroup>
           <ActionListItem>
@@ -77,7 +77,7 @@ export const ActionListSingleGroup: React.FunctionComponent = () => {
           <ActionListItem>
             <Dropdown
               onSelect={onSelect}
-              toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+              toggle={(toggleRef: Ref<MenuToggleElement>) => (
                 <MenuToggle
                   ref={toggleRef}
                   onClick={onToggle}
@@ -95,6 +95,6 @@ export const ActionListSingleGroup: React.FunctionComponent = () => {
           </ActionListItem>
         </ActionListGroup>
       </ActionList>
-    </React.Fragment>
+    </>
   );
 };

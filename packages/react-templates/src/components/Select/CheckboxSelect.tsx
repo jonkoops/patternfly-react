@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Badge,
   MenuToggle,
@@ -10,34 +9,44 @@ import {
   SelectOptionProps,
   SelectProps
 } from '@patternfly/react-core';
+import {
+  type CSSProperties,
+  type FunctionComponent,
+  type MouseEvent as ReactMouseEvent,
+  type ReactNode,
+  type Ref,
+  forwardRef,
+  useEffect,
+  useState
+} from 'react';
 
 export interface CheckboxSelectOption extends Omit<SelectOptionProps, 'content'> {
   /** Content of the select option. */
-  content: React.ReactNode;
+  content: ReactNode;
   /** Value of the select option. */
   value: string | number;
 }
 
 export interface CheckboxSelectProps extends Omit<SelectProps, 'toggle'> {
   /** @hide Forwarded ref */
-  innerRef?: React.Ref<any>;
+  innerRef?: Ref<any>;
   /** Initial options of the select. */
   initialOptions?: CheckboxSelectOption[];
   /** Callback triggered on selection. */
-  onSelect?: (_event: React.MouseEvent<Element, MouseEvent>, value?: string | number) => void;
+  onSelect?: (_event: ReactMouseEvent<Element, MouseEvent>, value?: string | number) => void;
   /** Callback triggered when the select opens or closes. */
   onToggle?: (nextIsOpen: boolean) => void;
   /** Flag indicating the select should be disabled. */
   isDisabled?: boolean;
   /** Content of the toggle. Defaults to a string with badge count of selected options. */
-  toggleContent?: React.ReactNode;
+  toggleContent?: ReactNode;
   /** Width of the toggle. */
   toggleWidth?: string;
   /** Additional props passed to the toggle. */
   toggleProps?: MenuToggleProps;
 }
 
-const CheckboxSelectBase: React.FunctionComponent<CheckboxSelectProps> = ({
+const CheckboxSelectBase: FunctionComponent<CheckboxSelectProps> = ({
   innerRef,
   initialOptions,
   isDisabled,
@@ -48,10 +57,10 @@ const CheckboxSelectBase: React.FunctionComponent<CheckboxSelectProps> = ({
   toggleProps,
   ...props
 }: CheckboxSelectProps) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<string[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const selectedOptions = initialOptions?.filter((option) => option.selected);
     setSelected(selectedOptions?.map((selectedOption) => String(selectedOption.value)) ?? []);
   }, [initialOptions]);
@@ -71,7 +80,7 @@ const CheckboxSelectBase: React.FunctionComponent<CheckboxSelectProps> = ({
     setIsOpen(!isOpen);
   };
 
-  const onSelect = (event: React.MouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
+  const onSelect = (event: ReactMouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
     const valueString = `${value}`;
     if (selected.includes(valueString)) {
       setSelected((prevSelected) => prevSelected.filter((item) => item !== valueString));
@@ -88,7 +97,7 @@ const CheckboxSelectBase: React.FunctionComponent<CheckboxSelectProps> = ({
     </>
   );
 
-  const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const toggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       ref={toggleRef}
       onClick={onToggleClick}
@@ -97,7 +106,7 @@ const CheckboxSelectBase: React.FunctionComponent<CheckboxSelectProps> = ({
       style={
         {
           width: toggleWidth
-        } as React.CSSProperties
+        } as CSSProperties
       }
       {...toggleProps}
     >
@@ -124,6 +133,6 @@ const CheckboxSelectBase: React.FunctionComponent<CheckboxSelectProps> = ({
   );
 };
 
-export const CheckboxSelect = React.forwardRef((props: CheckboxSelectProps, ref: React.Ref<any>) => (
+export const CheckboxSelect = forwardRef((props: CheckboxSelectProps, ref: Ref<any>) => (
   <CheckboxSelectBase {...props} innerRef={ref} />
 ));

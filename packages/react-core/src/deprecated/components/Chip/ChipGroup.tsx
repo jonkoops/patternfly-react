@@ -1,11 +1,11 @@
-import * as React from 'react';
+import { ReactNode, MouseEvent, Component } from 'react';
 import { LabelGroup, LabelGroupProps } from '../../../components/Label';
 import { TooltipPosition } from '../../../components/Tooltip';
 import { getOUIAProps, OUIAProps } from '../../../helpers';
 
 export interface ChipGroupProps extends Omit<LabelGroupProps, 'ref'>, OUIAProps {
   /** Content rendered inside the chip group. Should be <Chip> elements. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the chip item */
   className?: string;
   /** Flag for having the chip group default to expanded */
@@ -25,9 +25,9 @@ export interface ChipGroupProps extends Omit<LabelGroupProps, 'ref'>, OUIAProps 
   /** Aria label for close button */
   closeBtnAriaLabel?: string;
   /** Function that is called when clicking on the chip group close button or on an overflow chip */
-  onClick?: (event: React.MouseEvent) => void;
+  onClick?: (event: MouseEvent) => void;
   /** @deprecated Function that is called when clicking on the overflow (expand/collapse) chip button */
-  onOverflowChipClick?: (event: React.MouseEvent) => void;
+  onOverflowChipClick?: (event: MouseEvent) => void;
   /** Position of the tooltip which is displayed if the category name text is longer */
   tooltipPosition?:
     | TooltipPosition
@@ -48,7 +48,7 @@ export interface ChipGroupProps extends Omit<LabelGroupProps, 'ref'>, OUIAProps 
   ouiaId?: number | string;
 }
 
-class ChipGroup extends React.Component<ChipGroupProps> {
+class ChipGroup extends Component<ChipGroupProps> {
   static displayName = 'ChipGroup';
   constructor(props: ChipGroupProps) {
     super(props);

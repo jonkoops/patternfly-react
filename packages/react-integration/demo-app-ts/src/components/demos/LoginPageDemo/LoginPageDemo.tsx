@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { FormEvent, MouseEvent, HTMLProps, Component } from 'react';
 /* eslint-disable camelcase */
 import brandImg from '../../../assets/images/brandImgColor.svg';
 import pfbg_icon from '../../../assets/images/pfbg-icon.svg';
@@ -23,7 +23,7 @@ export interface LoginPageDemoState {
   isRememberMeChecked: boolean;
 }
 
-export class LoginPageDemo extends Component<React.HTMLProps<HTMLDivElement>, LoginPageDemoState> {
+export class LoginPageDemo extends Component<HTMLProps<HTMLDivElement>, LoginPageDemoState> {
   static displayName = 'LoginPageDemo';
   state = {
     showHelperText: false,
@@ -34,11 +34,11 @@ export class LoginPageDemo extends Component<React.HTMLProps<HTMLDivElement>, Lo
     isRememberMeChecked: false
   };
 
-  handleUsernameChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  handleUsernameChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     this.setState({ usernameValue: value });
   };
 
-  handlePasswordChange = (_event: React.FormEvent<HTMLInputElement>, passwordValue: string) => {
+  handlePasswordChange = (_event: FormEvent<HTMLInputElement>, passwordValue: string) => {
     this.setState({ passwordValue });
   };
 
@@ -46,7 +46,7 @@ export class LoginPageDemo extends Component<React.HTMLProps<HTMLDivElement>, Lo
     this.setState({ isRememberMeChecked: !this.state.isRememberMeChecked });
   };
 
-  onLoginButtonClick = (event: React.MouseEvent<{}>) => {
+  onLoginButtonClick = (event: MouseEvent<{}>) => {
     event.preventDefault();
     this.setState({ isValidUsername: !!this.state.usernameValue });
     this.setState({ isValidPassword: !!this.state.passwordValue });

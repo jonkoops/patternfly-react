@@ -17,7 +17,7 @@ import {
   MenuToggle
 } from '@patternfly/react-core';
 import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
-import { Component } from 'react';
+import { Component, FormEvent } from 'react';
 
 const pfLogo = '../../../assets/images/pfLogo.svg';
 
@@ -84,7 +84,7 @@ class CardDemo extends Component {
     });
   };
 
-  onSelectableChange = (event: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  onSelectableChange = (event: FormEvent<HTMLInputElement>, checked: boolean) => {
     const name = event.currentTarget.name;
 
     switch (name) {
@@ -97,11 +97,11 @@ class CardDemo extends Component {
     }
   };
 
-  onSingleSelectableChange = (event: React.FormEvent<HTMLInputElement>) => {
+  onSingleSelectableChange = (event: FormEvent<HTMLInputElement>) => {
     this.setState({ singleSelectableChecked: (event.target as HTMLElement).id });
   };
 
-  onSelectableClickableChange = (_event: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  onSelectableClickableChange = (_event: FormEvent<HTMLInputElement>, checked: boolean) => {
     this.setState({ selectableClickableChecked: checked });
   };
 

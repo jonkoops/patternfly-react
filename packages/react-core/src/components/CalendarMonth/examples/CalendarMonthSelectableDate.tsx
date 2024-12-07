@@ -1,11 +1,11 @@
-import React from 'react';
+import { ChangeEvent, FormEvent, type FunctionComponent, type MouseEvent as ReactMouseEvent, useState } from 'react';
 import { CalendarMonth, Title, CalendarMonthInlineProps } from '@patternfly/react-core';
 
-export const CalendarMonthSelectableDate: React.FunctionComponent = () => {
-  const [date, setDate] = React.useState(new Date(2020, 10, 24));
+export const CalendarMonthSelectableDate: FunctionComponent = () => {
+  const [date, setDate] = useState(new Date(2020, 10, 24));
 
   const onMonthChange = (
-    _event: React.MouseEvent | React.ChangeEvent | React.FormEvent<HTMLInputElement> | undefined,
+    _event: ReactMouseEvent | ChangeEvent | FormEvent<HTMLInputElement> | undefined,
     newDate: Date
   ) => {
     // eslint-disable-next-line no-console
@@ -26,7 +26,7 @@ export const CalendarMonthSelectableDate: React.FunctionComponent = () => {
     <>
       <CalendarMonth
         date={date}
-        onChange={(_event: React.MouseEvent<HTMLButtonElement, MouseEvent>, date: Date) => setDate(date)}
+        onChange={(_event: ReactMouseEvent<HTMLButtonElement, MouseEvent>, date: Date) => setDate(date)}
         onMonthChange={onMonthChange}
         inlineProps={inlineProps}
       />

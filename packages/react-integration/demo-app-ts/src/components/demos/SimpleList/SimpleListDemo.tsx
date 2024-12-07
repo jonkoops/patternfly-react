@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { RefObject, Component } from 'react';
 import { SimpleList, SimpleListGroup, SimpleListItem, SimpleListItemProps } from '@patternfly/react-core';
 
 interface SimpleListDemoState {
@@ -48,10 +48,7 @@ export class SimpleListDemo extends Component<any, SimpleListDemoState> {
         <h2>Uncontrolled Simple List</h2>
         <SimpleList
           id="simple-list-demo-uncontrolled"
-          onSelect={(
-            _ref: React.RefObject<HTMLButtonElement> | React.RefObject<HTMLAnchorElement>,
-            props: SimpleListItemProps
-          ) => {
+          onSelect={(_ref: RefObject<HTMLButtonElement> | RefObject<HTMLAnchorElement>, props: SimpleListItemProps) => {
             this.setState({ activeItem: props.itemId! });
           }}
           isControlled={false}

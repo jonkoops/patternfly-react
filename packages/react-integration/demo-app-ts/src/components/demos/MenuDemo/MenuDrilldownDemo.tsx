@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { MouseEvent, KeyboardEvent, Component } from 'react';
 import { Menu, MenuContent, MenuList, MenuItem, Divider, DrilldownMenu } from '@patternfly/react-core';
 import StorageDomainIcon from '@patternfly/react-icons/dist/esm/icons/storage-domain-icon';
 import CodeBranchIcon from '@patternfly/react-icons/dist/esm/icons/code-branch-icon';
@@ -16,7 +16,7 @@ export class MenuDrilldownDemo extends Component {
     activeMenu: 'rootMenu'
   };
 
-  onSelect = (_event?: React.MouseEvent, itemId?: string | number) => {
+  onSelect = (_event?: MouseEvent, itemId?: string | number) => {
     if (typeof itemId !== 'string') {
       return;
     }
@@ -30,14 +30,14 @@ export class MenuDrilldownDemo extends Component {
       });
     }
   };
-  drillIn = (_event: React.KeyboardEvent | React.MouseEvent, fromMenuId: string, toMenuId: string, pathId: string) => {
+  drillIn = (_event: KeyboardEvent | MouseEvent, fromMenuId: string, toMenuId: string, pathId: string) => {
     this.setState({
       menuDrilledIn: [...this.state.menuDrilledIn, fromMenuId],
       drilldownPath: [...this.state.drilldownPath, pathId],
       activeMenu: toMenuId
     });
   };
-  drillOut = (_event: React.KeyboardEvent | React.MouseEvent, toMenuId: string) => {
+  drillOut = (_event: KeyboardEvent | MouseEvent, toMenuId: string) => {
     const menuDrilledInSansLast = this.state.menuDrilledIn.slice(0, this.state.menuDrilledIn.length - 1);
     const pathSansLast = this.state.drilldownPath.slice(0, this.state.drilldownPath.length - 1);
     this.setState({

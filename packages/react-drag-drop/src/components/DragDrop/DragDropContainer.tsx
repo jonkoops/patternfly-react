@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { ReactNode, FunctionComponent, CSSProperties, useRef, useState, useCallback, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { css } from '@patternfly/react-styles';
 import {
   DndContext,
@@ -36,7 +36,7 @@ export interface DraggableObject {
   /** Unique id of the draggable object */
   id: string | number;
   /** Content rendered in the draggable object */
-  content: React.ReactNode;
+  content: ReactNode;
   /** Props spread to the rendered wrapper of the draggable object */
   props?: any;
 }
@@ -46,7 +46,7 @@ export interface DraggableObject {
  */
 export interface DragDropContainerProps extends DndContextProps {
   /** Content containing one or more Droppable zones. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Set of records of all child droppables - their zone IDs and their draggable items. */
   items: Record<string, DraggableObject[]>;
   /** Callback when use begins dragging a draggable object */
@@ -67,7 +67,7 @@ export interface DragDropContainerProps extends DndContextProps {
   overlayProps?: any;
 }
 
-export const DragDropContainer: React.FunctionComponent<DragDropContainerProps> = ({
+export const DragDropContainer: FunctionComponent<DragDropContainerProps> = ({
   children,
   items,
   onDrag = () => {},
@@ -78,17 +78,17 @@ export const DragDropContainer: React.FunctionComponent<DragDropContainerProps> 
   overlayProps,
   ...props
 }: DragDropContainerProps) => {
-  const itemsCopy = React.useRef<Record<string, DraggableObject[]> | null>(null);
-  const hasRecentlyMovedContainer = React.useRef(false);
-  const [activeId, setActiveId] = React.useState<UniqueIdentifier>(null);
-  const lastOverId = React.useRef<UniqueIdentifier | null>(null);
+  const itemsCopy = useRef<Record<string, DraggableObject[]> | null>(null);
+  const hasRecentlyMovedContainer = useRef(false);
+  const [activeId, setActiveId] = useState<UniqueIdentifier>(null);
+  const lastOverId = useRef<UniqueIdentifier | null>(null);
 
-  const findItem = React.useCallback(
+  const findItem = useCallback(
     (id: UniqueIdentifier, containerId: UniqueIdentifier) => items[containerId].find((item) => item.id === id),
     [items]
   );
 
-  const findContainer = React.useCallback(
+  const findContainer = useCallback(
     (id: UniqueIdentifier) => {
       if (id in items) {
         return id;
@@ -105,7 +105,7 @@ export const DragDropContainer: React.FunctionComponent<DragDropContainerProps> 
     })
   );
 
-  const collisionDetectionStrategy: CollisionDetection = React.useCallback(
+  const collisionDetectionStrategy: CollisionDetection = useCallback(
     (args) => {
       if (activeId && activeId in items) {
         return closestCenter({
@@ -145,7 +145,7 @@ export const DragDropContainer: React.FunctionComponent<DragDropContainerProps> 
     [activeId, items]
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     requestAnimationFrame(() => {
       hasRecentlyMovedContainer.current = false;
     });
@@ -272,7 +272,7 @@ export const DragDropContainer: React.FunctionComponent<DragDropContainerProps> 
           {
             '--pf-v6-c-draggable--m-dragging--BackgroundColor':
               'var(--pf-t--global--background--color--primary--default)'
-          } as React.CSSProperties
+          } as CSSProperties
         }
       >
         {variant === 'DualListSelectorList' && <ul className="pf-v6-c-dual-list-selector">{content}</ul>}
@@ -298,7 +298,7 @@ export const DragDropContainer: React.FunctionComponent<DragDropContainerProps> 
       {...props}
     >
       {children}
-      {canUseDOM ? ReactDOM.createPortal(dragOverlay, document.getElementById('root')) : dragOverlay}
+      {canUseDOM ? createPortal(dragOverlay, document.getElementById('root')) : dragOverlay}
     </DndContext>
   );
 };

@@ -1,4 +1,23 @@
-import * as React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  createRef,
+  Component,
+  ChangeEvent
+} from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/SimpleList/simple-list';
 import { SimpleListContext } from './SimpleList';
@@ -7,7 +26,7 @@ export interface SimpleListItemProps {
   /** id for the item. */
   itemId?: number | string;
   /** Content rendered inside the SimpleList item */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the SimpleList <li> */
   className?: string;
   /** Component type of the SimpleList item */
@@ -19,16 +38,16 @@ export interface SimpleListItemProps {
   /** Indicates if the link is current/highlighted */
   isActive?: boolean;
   /** OnClick callback for the SimpleList item */
-  onClick?: (event: React.MouseEvent | React.ChangeEvent) => void;
+  onClick?: (event: ReactMouseEvent | ChangeEvent) => void;
   /** Type of button SimpleList item */
   type?: 'button' | 'submit' | 'reset';
   /** Default hyperlink location */
   href?: string;
 }
 
-class SimpleListItem extends React.Component<SimpleListItemProps> {
+class SimpleListItem extends Component<SimpleListItemProps> {
   static displayName = 'SimpleListItem';
-  ref = React.createRef<any>();
+  ref = createRef<any>();
   static defaultProps: SimpleListItemProps = {
     children: null,
     className: '',
@@ -80,7 +99,7 @@ class SimpleListItem extends React.Component<SimpleListItemProps> {
                   !isButton && styles.modifiers.link,
                   componentClassName
                 )}
-                onClick={(evt: React.MouseEvent) => {
+                onClick={(evt: ReactMouseEvent) => {
                   onClick(evt);
                   updateCurrentRef(this.ref, this.props);
                 }}

@@ -1,10 +1,26 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Menu, MenuList, MenuItem, MenuContent, MenuFooter, Button } from '@patternfly/react-core';
 
-export const MenuWithFooter: React.FunctionComponent = () => {
-  const [activeItem, setActiveItem] = React.useState(0);
+export const MenuWithFooter: FunctionComponent = () => {
+  const [activeItem, setActiveItem] = useState(0);
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
     const item = itemId as number;
     // eslint-disable-next-line no-console
     console.log(`clicked ${item}`);

@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   CalendarMonth,
   InputGroup,
@@ -15,11 +31,11 @@ import {
 import OutlinedCalendarAltIcon from '@patternfly/react-icons/dist/esm/icons/outlined-calendar-alt-icon';
 import OutlinedClockIcon from '@patternfly/react-icons/dist/esm/icons/outlined-clock-icon';
 
-export const DateTimePicker: React.FunctionComponent = () => {
-  const [isCalendarOpen, setIsCalendarOpen] = React.useState(false);
-  const [isTimeOpen, setIsTimeOpen] = React.useState(false);
-  const [valueDate, setValueDate] = React.useState('MM-DD-YYYY');
-  const [valueTime, setValueTime] = React.useState('HH:MM');
+export const DateTimePicker: FunctionComponent = () => {
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+  const [isTimeOpen, setIsTimeOpen] = useState(false);
+  const [valueDate, setValueDate] = useState('MM-DD-YYYY');
+  const [valueTime, setValueTime] = useState('HH:MM');
   const times = Array.from(new Array(10), (_, i) => i + 8);
   const defaultTime = '0:00';
   const dateFormat = (date: Date) =>
@@ -35,7 +51,7 @@ export const DateTimePicker: React.FunctionComponent = () => {
     setIsCalendarOpen(false);
   };
 
-  const onSelectCalendar = (_event: React.MouseEvent<HTMLButtonElement, MouseEvent>, newValueDate: Date) => {
+  const onSelectCalendar = (_event: ReactMouseEvent<HTMLButtonElement, MouseEvent>, newValueDate: Date) => {
     const newValue = dateFormat(newValueDate);
     setValueDate(newValue);
     setIsCalendarOpen(!isCalendarOpen);
@@ -45,7 +61,7 @@ export const DateTimePicker: React.FunctionComponent = () => {
     }
   };
 
-  const onSelectTime = (ev: React.MouseEvent<Element, MouseEvent> | undefined) => {
+  const onSelectTime = (ev: ReactMouseEvent<Element, MouseEvent> | undefined) => {
     setValueTime(ev?.currentTarget?.textContent as string);
     setIsTimeOpen(!isTimeOpen);
   };
@@ -59,7 +75,7 @@ export const DateTimePicker: React.FunctionComponent = () => {
       onSelect={onSelectTime}
       isOpen={isTimeOpen}
       onOpenChange={(isOpen: boolean) => setIsTimeOpen(isOpen)}
-      toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+      toggle={(toggleRef: Ref<MenuToggleElement>) => (
         <MenuToggle
           ref={toggleRef}
           onClick={onToggleTime}

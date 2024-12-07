@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/Icon/icon';
 import { css } from '@patternfly/react-styles';
 import { Spinner } from '../Spinner';
@@ -20,11 +20,11 @@ export type IconSize =
   | 'bodyDefault'
   | 'bodyLg';
 
-export interface IconComponentProps extends Omit<React.HTMLProps<HTMLSpanElement>, 'size'> {
+export interface IconComponentProps extends Omit<HTMLProps<HTMLSpanElement>, 'size'> {
   /** Icon content */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Icon when isInProgress is set to true. Defaults to a 1em spinner.  */
-  progressIcon?: React.ReactNode;
+  progressIcon?: ReactNode;
   /** Additional classes applied to the icon container */
   className?: string;
   /** Size of the icon component container and icon. */
@@ -47,7 +47,7 @@ export interface IconComponentProps extends Omit<React.HTMLProps<HTMLSpanElement
   shouldMirrorRTL?: boolean;
 }
 
-export const Icon: React.FunctionComponent<IconComponentProps> = ({
+export const Icon: FunctionComponent<IconComponentProps> = ({
   children,
   className,
   progressIcon,

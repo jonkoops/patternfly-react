@@ -1,4 +1,4 @@
-import React from 'react';
+import { MenuToggle, MenuToggleElement, MenuToggleProps } from '@patternfly/react-core/dist/esm/components/MenuToggle';
 import {
   Select,
   SelectList,
@@ -6,28 +6,37 @@ import {
   SelectOptionProps,
   SelectProps
 } from '@patternfly/react-core/dist/esm/components/Select';
-import { MenuToggle, MenuToggleElement, MenuToggleProps } from '@patternfly/react-core/dist/esm/components/MenuToggle';
+import {
+  type CSSProperties,
+  type FunctionComponent,
+  type MouseEvent as ReactMouseEvent,
+  type ReactNode,
+  type Ref,
+  forwardRef,
+  useEffect,
+  useState
+} from 'react';
 
 export interface SimpleSelectOption extends Omit<SelectOptionProps, 'content'> {
   /** Content of the select option. */
-  content: React.ReactNode;
+  content: ReactNode;
   /** Value of the select option. */
   value: string | number;
 }
 
 export interface SimpleSelectProps extends Omit<SelectProps, 'toggle'> {
   /** @hide Forwarded ref */
-  innerRef?: React.Ref<any>;
+  innerRef?: Ref<any>;
   /** Initial options of the select. */
   initialOptions?: SimpleSelectOption[];
   /** Callback triggered on selection. */
-  onSelect?: (_event: React.MouseEvent<Element, MouseEvent>, selection: string | number) => void;
+  onSelect?: (_event: ReactMouseEvent<Element, MouseEvent>, selection: string | number) => void;
   /** Callback triggered when the select opens or closes. */
   onToggle?: (nextIsOpen: boolean) => void;
   /** Flag indicating the select should be disabled. */
   isDisabled?: boolean;
   /** Content of the toggle. Defaults to the selected option. */
-  toggleContent?: React.ReactNode;
+  toggleContent?: ReactNode;
   /** Placeholder text for the select input. */
   placeholder?: string;
   /** Width of the toggle. */
@@ -36,7 +45,7 @@ export interface SimpleSelectProps extends Omit<SelectProps, 'toggle'> {
   toggleProps?: MenuToggleProps;
 }
 
-const SimpleSelectBase: React.FunctionComponent<SimpleSelectProps> = ({
+const SimpleSelectBase: FunctionComponent<SimpleSelectProps> = ({
   innerRef,
   initialOptions,
   isDisabled,
@@ -48,10 +57,10 @@ const SimpleSelectBase: React.FunctionComponent<SimpleSelectProps> = ({
   placeholder = 'Select a value',
   ...props
 }: SimpleSelectProps) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<SimpleSelectOption | undefined>();
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<SimpleSelectOption | undefined>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const selectedOption = initialOptions?.find((option) => option.selected);
     setSelected(selectedOption);
   }, [initialOptions]);
@@ -71,14 +80,14 @@ const SimpleSelectBase: React.FunctionComponent<SimpleSelectProps> = ({
     setIsOpen(!isOpen);
   };
 
-  const _onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
+  const _onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
     onSelect && onSelect(_event, value);
     setSelected(initialOptions.find((o) => o.value === value));
     onToggle && onToggle(true);
     setIsOpen(false);
   };
 
-  const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const toggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       ref={toggleRef}
       onClick={onToggleClick}
@@ -87,7 +96,7 @@ const SimpleSelectBase: React.FunctionComponent<SimpleSelectProps> = ({
       style={
         {
           width: toggleWidth
-        } as React.CSSProperties
+        } as CSSProperties
       }
       {...toggleProps}
     >
@@ -114,7 +123,7 @@ const SimpleSelectBase: React.FunctionComponent<SimpleSelectProps> = ({
   );
 };
 
-export const SimpleSelect = React.forwardRef((props: SimpleSelectProps, ref: React.Ref<any>) => (
+export const SimpleSelect = forwardRef((props: SimpleSelectProps, ref: Ref<any>) => (
   <SimpleSelectBase {...props} innerRef={ref} />
 ));
 

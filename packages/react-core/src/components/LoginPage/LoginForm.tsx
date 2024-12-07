@@ -1,4 +1,21 @@
-import * as React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  FormEvent
+} from 'react';
 import { Form, FormGroup, ActionGroup, FormHelperText } from '../Form';
 import { TextInput } from '../TextInput';
 import { Button } from '../Button';
@@ -9,7 +26,7 @@ import EyeSlashIcon from '@patternfly/react-icons/dist/esm/icons/eye-slash-icon'
 import EyeIcon from '@patternfly/react-icons/dist/esm/icons/eye-icon';
 import { HelperText, HelperTextItem } from '../HelperText';
 
-export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, 'ref'> {
+export interface LoginFormProps extends Omit<HTMLProps<HTMLFormElement>, 'ref'> {
   /** Flag to indicate if the first dropdown item should not gain initial focus */
   noAutoFocus?: boolean;
   /** Additional classes added to the login main body's form */
@@ -17,15 +34,15 @@ export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, '
   /** Flag indicating the helper text is visible * */
   showHelperText?: boolean;
   /** Content displayed in the helper text component * */
-  helperText?: React.ReactNode;
+  helperText?: ReactNode;
   /** Icon displayed to the left in the helper text */
-  helperTextIcon?: React.ReactNode;
+  helperTextIcon?: ReactNode;
   /** Label for the username input field */
   usernameLabel?: string;
   /** Value for the username */
   usernameValue?: string;
   /** Function that handles the onChange event for the username */
-  onChangeUsername?: (event: React.FormEvent<HTMLInputElement>, value: string) => void;
+  onChangeUsername?: (event: FormEvent<HTMLInputElement>, value: string) => void;
   /** Flag indicating if the username is valid */
   isValidUsername?: boolean;
   /** Label for the password input field */
@@ -33,7 +50,7 @@ export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, '
   /** Value for the password */
   passwordValue?: string;
   /** Function that handles the onChange event for the password */
-  onChangePassword?: (event: React.FormEvent<HTMLInputElement>, value: string) => void;
+  onChangePassword?: (event: FormEvent<HTMLInputElement>, value: string) => void;
   /** Flag indicating if the password is valid */
   isValidPassword?: boolean;
   /** Flag indicating if the user can toggle hiding the password */
@@ -47,16 +64,16 @@ export interface LoginFormProps extends Omit<React.HTMLProps<HTMLFormElement>, '
   /** Flag indicating if the login button is disabled */
   isLoginButtonDisabled?: boolean;
   /** Function that is called when the login button is clicked */
-  onLoginButtonClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onLoginButtonClick?: (event: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => void;
   /** Label for the remember me checkbox that indicates the user should be kept logged in.  If the label is not provided, the checkbox will not show. */
   rememberMeLabel?: string;
   /** Flag indicating if the remember me checkbox is checked. */
   isRememberMeChecked?: boolean;
   /** Function that handles the onChange event for the remember me checkbox */
-  onChangeRememberMe?: (event: React.FormEvent<HTMLInputElement>, checked: boolean) => void;
+  onChangeRememberMe?: (event: FormEvent<HTMLInputElement>, checked: boolean) => void;
 }
 
-export const LoginForm: React.FunctionComponent<LoginFormProps> = ({
+export const LoginForm: FunctionComponent<LoginFormProps> = ({
   noAutoFocus = false,
   className = '',
   showHelperText = false,
@@ -81,7 +98,7 @@ export const LoginForm: React.FunctionComponent<LoginFormProps> = ({
   onChangeRememberMe = () => undefined as any,
   ...props
 }: LoginFormProps) => {
-  const [passwordHidden, setPasswordHidden] = React.useState(true);
+  const [passwordHidden, setPasswordHidden] = useState(true);
 
   const passwordInput = (
     <TextInput

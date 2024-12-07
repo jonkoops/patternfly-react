@@ -1,11 +1,27 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Menu, MenuContent, MenuList, MenuItem, Checkbox } from '@patternfly/react-core';
 
-export const MenuBasic: React.FunctionComponent = () => {
-  const [activeItem, setActiveItem] = React.useState(0);
-  const [isPlain, setIsPlain] = React.useState(false);
+export const MenuBasic: FunctionComponent = () => {
+  const [activeItem, setActiveItem] = useState(0);
+  const [isPlain, setIsPlain] = useState(false);
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
     const item = itemId as number; // eslint-disable-next-line no-console
     console.log(`clicked ${itemId}`);
     setActiveItem(item);
@@ -16,7 +32,7 @@ export const MenuBasic: React.FunctionComponent = () => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Menu activeItemId={activeItem} onSelect={onSelect} isPlain={isPlain}>
         <MenuContent>
           <MenuList>
@@ -56,6 +72,6 @@ export const MenuBasic: React.FunctionComponent = () => {
           name="toggle-plain"
         />
       </div>
-    </React.Fragment>
+    </>
   );
 };

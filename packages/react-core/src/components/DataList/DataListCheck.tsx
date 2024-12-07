@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { FormEvent, FunctionComponent, useId, Fragment } from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/DataList/data-list';
 import { Checkbox, CheckboxProps } from '../Checkbox';
@@ -27,14 +27,14 @@ export interface DataListCheckProps extends Omit<CheckboxProps, 'ref' | 'id'> {
    */
   defaultChecked?: boolean;
   /** A callback for when the DataList checkbox selection changes */
-  onChange?: (event: React.FormEvent<HTMLInputElement>, checked: boolean) => void;
+  onChange?: (event: FormEvent<HTMLInputElement>, checked: boolean) => void;
   /** Aria-labelledby of the DataList checkbox */
   'aria-labelledby': string;
   /** Flag to indicate if other controls are used in the DataListItem */
   otherControls?: boolean;
 }
 
-export const DataListCheck: React.FunctionComponent<DataListCheckProps> = ({
+export const DataListCheck: FunctionComponent<DataListCheckProps> = ({
   id,
   className,
   onChange,
@@ -46,7 +46,7 @@ export const DataListCheck: React.FunctionComponent<DataListCheckProps> = ({
   otherControls = false,
   ...props
 }: DataListCheckProps) => {
-  const uniqueId = React.useId();
+  const uniqueId = useId();
 
   const check = (
     <div className={css(styles.dataListCheck)}>
@@ -64,10 +64,10 @@ export const DataListCheck: React.FunctionComponent<DataListCheckProps> = ({
     </div>
   );
   return (
-    <React.Fragment>
+    <Fragment>
       {!otherControls && <div className={css(styles.dataListItemControl, className)}>{check}</div>}
       {otherControls && check}
-    </React.Fragment>
+    </Fragment>
   );
 };
 DataListCheck.displayName = 'DataListCheck';

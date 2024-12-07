@@ -1,15 +1,15 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/Drawer/drawer';
 import { css } from '@patternfly/react-styles';
 
-export interface DrawerHeadProps extends React.HTMLProps<HTMLDivElement> {
+export interface DrawerHeadProps extends HTMLProps<HTMLDivElement> {
   /** Additional classes added to the drawer head. */
   className?: string;
   /** Content to be rendered in the drawer head */
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
-export const DrawerHead: React.FunctionComponent<DrawerHeadProps> = ({
+export const DrawerHead: FunctionComponent<DrawerHeadProps> = ({
   className = '',
   children,
   ...props

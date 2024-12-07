@@ -1,8 +1,8 @@
-import React from 'react';
+import { FunctionComponent, Fragment } from 'react';
 import { HelperText, HelperTextItem } from '@patternfly/react-core';
 
-export const HelperTextBasic: React.FunctionComponent = () => (
-  <React.Fragment>
+export const HelperTextBasic: FunctionComponent = () => (
+  <Fragment>
     <HelperText>
       <HelperTextItem>This is default helper text</HelperTextItem>
     </HelperText>
@@ -18,5 +18,5 @@ export const HelperTextBasic: React.FunctionComponent = () => (
     <HelperText>
       <HelperTextItem variant="error">This is error helper text</HelperTextItem>
     </HelperText>
-  </React.Fragment>
+  </Fragment>
 );

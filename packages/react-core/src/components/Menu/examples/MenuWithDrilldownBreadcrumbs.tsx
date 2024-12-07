@@ -1,4 +1,20 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import {
   Badge,
   Breadcrumb,
@@ -25,13 +41,13 @@ import LayerGroupIcon from '@patternfly/react-icons/dist/esm/icons/layer-group-i
 import AngleLeftIcon from '@patternfly/react-icons/dist/esm/icons/angle-left-icon';
 import CubeIcon from '@patternfly/react-icons/dist/esm/icons/cube-icon';
 
-export const MenuWithDrilldownBreadcrumbs: React.FunctionComponent = () => {
-  const [menuDrilledIn, setMenuDrilledIn] = React.useState<string[]>([]);
-  const [drilldownPath, setDrilldownPath] = React.useState<string[]>([]);
-  const [menuHeights, setMenuHeights] = React.useState<any>({});
-  const [activeMenu, setActiveMenu] = React.useState<string>('breadcrumbs-rootMenu');
-  const [breadcrumb, setBreadcrumb] = React.useState<JSX.Element | null>();
-  const [withMaxMenuHeight, setWithMaxMenuHeight] = React.useState(false);
+export const MenuWithDrilldownBreadcrumbs: FunctionComponent = () => {
+  const [menuDrilledIn, setMenuDrilledIn] = useState<string[]>([]);
+  const [drilldownPath, setDrilldownPath] = useState<string[]>([]);
+  const [menuHeights, setMenuHeights] = useState<any>({});
+  const [activeMenu, setActiveMenu] = useState<string>('breadcrumbs-rootMenu');
+  const [breadcrumb, setBreadcrumb] = useState<JSX.Element | null>();
+  const [withMaxMenuHeight, setWithMaxMenuHeight] = useState(false);
 
   const onToggle = (isOpen: boolean, key: string) => {
     switch (key) {
@@ -57,7 +73,7 @@ export const MenuWithDrilldownBreadcrumbs: React.FunctionComponent = () => {
   };
 
   const drillOut = (
-    _event: React.KeyboardEvent<Element> | MouseEvent | React.MouseEvent<any, MouseEvent>,
+    _event: KeyboardEvent<Element> | MouseEvent | ReactMouseEvent<any, MouseEvent>,
     toMenuId: string,
     fromPathId: string,
     breadcrumb: JSX.Element | null
@@ -80,12 +96,7 @@ export const MenuWithDrilldownBreadcrumbs: React.FunctionComponent = () => {
     }
   };
 
-  const drillIn = (
-    _event: React.KeyboardEvent | React.MouseEvent,
-    fromMenuId: string,
-    toMenuId: string,
-    pathId: string
-  ) => {
+  const drillIn = (_event: KeyboardEvent | ReactMouseEvent, fromMenuId: string, toMenuId: string, pathId: string) => {
     setMenuDrilledIn([...menuDrilledIn, fromMenuId]);
     setDrilldownPath([...drilldownPath, pathId]);
     setActiveMenu(toMenuId);
@@ -115,7 +126,7 @@ export const MenuWithDrilldownBreadcrumbs: React.FunctionComponent = () => {
         <Dropdown
           isOpen={isOpen}
           onOpenChange={(isOpen: boolean) => onToggle(isOpen, 'app')}
-          toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+          toggle={(toggleRef: Ref<MenuToggleElement>) => (
             <MenuToggle
               badge={
                 <Badge isRead screenReaderText="additional item">
@@ -162,7 +173,7 @@ export const MenuWithDrilldownBreadcrumbs: React.FunctionComponent = () => {
         <Dropdown
           isOpen={isOpen}
           onOpenChange={(isOpen: boolean) => onToggle(isOpen, 'label')}
-          toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+          toggle={(toggleRef: Ref<MenuToggleElement>) => (
             <MenuToggle
               badge={
                 <Badge isRead screenReaderText="additional item">
@@ -221,7 +232,7 @@ export const MenuWithDrilldownBreadcrumbs: React.FunctionComponent = () => {
         <Dropdown
           isOpen={isOpen}
           onOpenChange={(isOpen: boolean) => onToggle(isOpen, 'pause-app')}
-          toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+          toggle={(toggleRef: Ref<MenuToggleElement>) => (
             <MenuToggle
               badge={
                 <Badge isRead screenReaderText="additional item">
@@ -268,7 +279,7 @@ export const MenuWithDrilldownBreadcrumbs: React.FunctionComponent = () => {
         <Dropdown
           isOpen={isOpen}
           onOpenChange={(isOpen: boolean) => onToggle(isOpen, 'pause-label')}
-          toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+          toggle={(toggleRef: Ref<MenuToggleElement>) => (
             <MenuToggle
               badge={
                 <Badge isRead screenReaderText="additional item">

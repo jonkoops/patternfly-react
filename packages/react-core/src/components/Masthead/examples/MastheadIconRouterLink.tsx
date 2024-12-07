@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import {
   Masthead,
   MastheadMain,
@@ -13,7 +13,7 @@ import BarsIcon from '@patternfly/react-icons/dist/js/icons/bars-icon';
 import { Link } from '@reach/router';
 import pfIcon from '../../assets/PF-HorizontalLogo-Color.svg';
 
-export const MastheadIconRouterLink: React.FunctionComponent = () => (
+export const MastheadIconRouterLink: FunctionComponent = () => (
   <Masthead id="icon-router-link">
     <MastheadMain>
       <MastheadToggle>

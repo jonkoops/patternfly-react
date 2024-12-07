@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Content, ContentVariants } from '@patternfly/react-core';
 
-export const ContentPlainList: React.FunctionComponent = () => (
+export const ContentPlainList: FunctionComponent = () => (
   <>
     <Content component={ContentVariants.h3}>Plain unordered list</Content>
     <Content component={ContentVariants.ul} isPlainList>

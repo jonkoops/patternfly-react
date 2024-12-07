@@ -1,4 +1,21 @@
-import React, { Component, RefObject } from 'react';
+import { Component, createRef, RefObject } from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Tabs, Tab, TabContent, TabTitleText, TabTitleIcon, Button } from '@patternfly/react-core';
 import UsersIcon from '@patternfly/react-icons/dist/esm/icons/users-icon';
 
@@ -17,34 +34,34 @@ export class TabDemo extends Component {
   constructor(props: {}) {
     super(props);
 
-    this.contentRef1 = React.createRef<HTMLDivElement>();
-    this.contentRef2 = React.createRef<HTMLDivElement>();
-    this.contentRef3 = React.createRef<HTMLDivElement>();
+    this.contentRef1 = createRef<HTMLDivElement>();
+    this.contentRef2 = createRef<HTMLDivElement>();
+    this.contentRef3 = createRef<HTMLDivElement>();
   }
 
   // Toggle currently active tab
-  private handleTabClick = (_event: React.MouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
+  private handleTabClick = (_event: ReactMouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
     this.setState({
       activeTabKey: tabIndex
     });
   };
 
   // Toggle currently active tab
-  private handleTabClick2 = (_event: React.MouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
+  private handleTabClick2 = (_event: ReactMouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
     this.setState({
       activeTabKey2: tabIndex
     });
   };
 
   // Toggle currently active tab
-  private handleTabClick3 = (_event: React.MouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
+  private handleTabClick3 = (_event: ReactMouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
     this.setState({
       activeTabKey3: tabIndex
     });
   };
 
   // Toggle currently active tab
-  private handleTabClick4 = (_event: React.MouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
+  private handleTabClick4 = (_event: ReactMouseEvent<HTMLElement, MouseEvent>, tabIndex: number | string) => {
     this.setState({
       activeTabKey4: tabIndex
     });

@@ -1,15 +1,15 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, useState, Fragment } from 'react';
 import { Button, Modal, ModalBody, ModalHeader, ModalFooter, ModalVariant } from '@patternfly/react-core';
 
-export const ModalWithOverflowingContent: React.FunctionComponent = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+export const ModalWithOverflowingContent: FunctionComponent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleModalToggle = (_event: KeyboardEvent | React.MouseEvent) => {
+  const handleModalToggle = (_event: KeyboardEvent | MouseEvent) => {
     setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Button variant="primary" onClick={handleModalToggle}>
         Show modal
       </Button>
@@ -69,6 +69,6 @@ export const ModalWithOverflowingContent: React.FunctionComponent = () => {
           </Button>
         </ModalFooter>
       </Modal>
-    </React.Fragment>
+    </Fragment>
   );
 };

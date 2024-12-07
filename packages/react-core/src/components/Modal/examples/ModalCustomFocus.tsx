@@ -1,15 +1,15 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, useState, Fragment } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from '@patternfly/react-core';
 
-export const ModalCustomFocus: React.FunctionComponent = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+export const ModalCustomFocus: FunctionComponent = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleModalToggle = (_event: KeyboardEvent | React.MouseEvent) => {
+  const handleModalToggle = (_event: KeyboardEvent | MouseEvent) => {
     setIsModalOpen(!isModalOpen);
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Button variant="primary" onClick={handleModalToggle} ouiaId="ShowBasicModal">
         Show modal with custom focus
       </Button>
@@ -37,6 +37,6 @@ export const ModalCustomFocus: React.FunctionComponent = () => {
           </ModalFooter>
         </ModalBody>
       </Modal>
-    </React.Fragment>
+    </Fragment>
   );
 };

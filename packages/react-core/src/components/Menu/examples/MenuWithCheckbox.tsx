@@ -1,11 +1,27 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Menu, MenuContent, MenuList, MenuItem } from '@patternfly/react-core';
 
-export const MenuWithCheckbox: React.FunctionComponent = () => {
-  const [selectedItems, setSelectedItems] = React.useState<number[]>([]);
+export const MenuWithCheckbox: FunctionComponent = () => {
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   /* eslint no-unused-vars: ["error", {"args": "after-used"}] */
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, itemId: number | string | undefined) => {
     const item = itemId as number;
     if (selectedItems.includes(item)) {
       setSelectedItems(selectedItems.filter((id) => id !== item));

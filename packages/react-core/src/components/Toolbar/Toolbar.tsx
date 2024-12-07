@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, createRef, Component } from 'react';
 import styles from '@patternfly/react-styles/css/components/Toolbar/toolbar';
 import { GenerateId } from '../../helpers/GenerateId/GenerateId';
 import { css } from '@patternfly/react-styles';
@@ -15,13 +15,13 @@ export enum ToolbarColorVariant {
   noBackground = 'no-background'
 }
 
-export interface ToolbarProps extends React.HTMLProps<HTMLDivElement>, OUIAProps {
+export interface ToolbarProps extends HTMLProps<HTMLDivElement>, OUIAProps {
   /** Optional callback for clearing all filters in the toolbar */
   clearAllFilters?: () => void;
   /** Text to display in the clear all filters button */
   clearFiltersButtonText?: string;
   /** Custom content appended to the filter generated label group. To maintain spacing and styling, each node should be wrapped in a ToolbarItem or ToolbarGroup. This property will remove the default "Clear all filters" button. */
-  customLabelGroupContent?: React.ReactNode;
+  customLabelGroupContent?: ReactNode;
   /** The breakpoint at which the listed filters in label groups are collapsed down to a summary */
   collapseListedFiltersBreakpoint?: 'all' | 'md' | 'lg' | 'xl' | '2xl';
   /** Flag indicating if a data toolbar toggle group's expandable content is expanded */
@@ -31,7 +31,7 @@ export interface ToolbarProps extends React.HTMLProps<HTMLDivElement>, OUIAProps
   /** Classes applied to root element of the data toolbar */
   className?: string;
   /** Content to be rendered as rows in the data toolbar */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Id of the data toolbar */
   id?: string;
   /** Flag indicating the toolbar height should expand to the full height of the container */
@@ -74,9 +74,9 @@ interface FilterInfo {
   [key: string]: number;
 }
 
-class Toolbar extends React.Component<ToolbarProps, ToolbarState> {
+class Toolbar extends Component<ToolbarProps, ToolbarState> {
   static displayName = 'Toolbar';
-  labelGroupContentRef = React.createRef<HTMLDivElement>();
+  labelGroupContentRef = createRef<HTMLDivElement>();
   staticFilterInfo = {};
   state = {
     isManagedToggleExpanded: false,

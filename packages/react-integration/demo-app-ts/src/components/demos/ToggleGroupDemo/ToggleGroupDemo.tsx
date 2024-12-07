@@ -1,4 +1,21 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef,
+  Component
+} from 'react';
 import { ToggleGroup, ToggleGroupItem, ToggleGroupProps } from '@patternfly/react-core';
 import UndoIcon from '@patternfly/react-icons/dist/esm/icons/undo-icon';
 import CopyIcon from '@patternfly/react-icons/dist/esm/icons/copy-icon';
@@ -16,7 +33,7 @@ interface ToggleGroupState {
   };
 }
 
-export class ToggleGroupDemo extends React.Component<ToggleGroupProps, ToggleGroupState> {
+export class ToggleGroupDemo extends Component<ToggleGroupProps, ToggleGroupState> {
   static displayName = 'ToggleGroupDemo';
   constructor(props: ToggleGroupProps) {
     super(props);
@@ -33,7 +50,7 @@ export class ToggleGroupDemo extends React.Component<ToggleGroupProps, ToggleGro
     };
   }
 
-  handleItemClick = (event: React.MouseEvent<any> | React.KeyboardEvent | MouseEvent, isSelected: boolean) => {
+  handleItemClick = (event: ReactMouseEvent<any> | KeyboardEvent | MouseEvent, isSelected: boolean) => {
     const id = event.currentTarget.id as 'first' | 'second' | 'third' | 'fourth' | 'fifth' | 'sixth' | 'seventh';
     this.setState((prevState) => {
       prevState.isSelected[id] = isSelected;

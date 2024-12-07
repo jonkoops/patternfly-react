@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, FormEvent, useState } from 'react';
 import {
   TextInputGroup,
   TextInputGroupMain,
@@ -10,9 +10,9 @@ import {
 import SearchIcon from '@patternfly/react-icons/dist/esm/icons/search-icon';
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
 
-export const TextInputGroupFilters: React.FunctionComponent = () => {
-  const [inputValue, setInputValue] = React.useState('');
-  const [currentChips, setCurrentChips] = React.useState([
+export const TextInputGroupFilters: FunctionComponent = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [currentChips, setCurrentChips] = useState([
     'chip one',
     'chip two',
     'chip three',
@@ -33,7 +33,7 @@ export const TextInputGroupFilters: React.FunctionComponent = () => {
   const showSearchIcon = !currentChips.length;
 
   /** callback for updating the inputValue state in this component so that the input can be controlled */
-  const handleInputChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  const handleInputChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     setInputValue(value);
   };
 

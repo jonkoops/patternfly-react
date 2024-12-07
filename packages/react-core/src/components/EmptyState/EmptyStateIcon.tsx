@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ComponentType, ReactElement, FunctionComponent } from 'react';
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/EmptyState/empty-state';
 import { Spinner } from '../Spinner';
@@ -6,12 +6,12 @@ export interface EmptyStateIconProps {
   /** Additional classes added to the empty state icon */
   className?: string;
   /** Icon component to be rendered. Can also be a spinner component */
-  icon: React.ComponentType<any>;
+  icon: ComponentType<any>;
 }
 
-const isSpinner = (icon: React.ReactElement<any>) => icon.type === Spinner;
+const isSpinner = (icon: ReactElement<any>) => icon.type === Spinner;
 
-export const EmptyStateIcon: React.FunctionComponent<EmptyStateIconProps> = ({
+export const EmptyStateIcon: FunctionComponent<EmptyStateIconProps> = ({
   className,
   icon: IconComponent,
   ...props

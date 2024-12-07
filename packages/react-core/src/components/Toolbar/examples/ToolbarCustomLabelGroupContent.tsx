@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, ChangeEvent, Ref, CSSProperties, useState, Fragment } from 'react';
 import {
   Toolbar,
   ToolbarItem,
@@ -19,10 +19,10 @@ import EditIcon from '@patternfly/react-icons/dist/esm/icons/edit-icon';
 import CloneIcon from '@patternfly/react-icons/dist/esm/icons/clone-icon';
 import SyncIcon from '@patternfly/react-icons/dist/esm/icons/sync-icon';
 
-export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
-  const [statusIsExpanded, setStatusIsExpanded] = React.useState<boolean>(false);
-  const [riskIsExpanded, setRiskIsExpanded] = React.useState<boolean>(false);
-  const [filters, setFilters] = React.useState({
+export const ToolbarCustomLabelGroupContent: FunctionComponent = () => {
+  const [statusIsExpanded, setStatusIsExpanded] = useState<boolean>(false);
+  const [riskIsExpanded, setRiskIsExpanded] = useState<boolean>(false);
+  const [filters, setFilters] = useState({
     risk: ['Low'],
     status: ['New', 'Pending']
   });
@@ -45,7 +45,7 @@ export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
     }
   };
 
-  const onSelect = (type: 'Risk' | 'Status', event: React.MouseEvent | React.ChangeEvent, selection: string) => {
+  const onSelect = (type: 'Risk' | 'Status', event: MouseEvent | ChangeEvent, selection: string) => {
     const checked = (event.target as any).checked;
     if (type === 'Risk') {
       setFilters({
@@ -97,7 +97,7 @@ export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
   );
 
   const toggleGroupItems = (
-    <React.Fragment>
+    <Fragment>
       <ToolbarGroup variant="filter-group">
         <ToolbarFilter
           labels={filters.status}
@@ -108,7 +108,7 @@ export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
           <Select
             aria-label="Status"
             role="menu"
-            toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+            toggle={(toggleRef: Ref<MenuToggleElement>) => (
               <MenuToggle
                 ref={toggleRef}
                 onClick={() => setStatusIsExpanded(!statusIsExpanded)}
@@ -116,7 +116,7 @@ export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
                 style={
                   {
                     width: '140px'
-                  } as React.CSSProperties
+                  } as CSSProperties
                 }
               >
                 Status
@@ -140,7 +140,7 @@ export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
           <Select
             aria-label="Risk"
             role="menu"
-            toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+            toggle={(toggleRef: Ref<MenuToggleElement>) => (
               <MenuToggle
                 ref={toggleRef}
                 onClick={() => setRiskIsExpanded(!riskIsExpanded)}
@@ -148,7 +148,7 @@ export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
                 style={
                   {
                     width: '140px'
-                  } as React.CSSProperties
+                  } as CSSProperties
                 }
               >
                 Risk
@@ -164,11 +164,11 @@ export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
           </Select>
         </ToolbarFilter>
       </ToolbarGroup>
-    </React.Fragment>
+    </Fragment>
   );
 
   const toolbarItems = (
-    <React.Fragment>
+    <Fragment>
       <ToolbarToggleGroup toggleIcon={<FilterIcon />} breakpoint="xl">
         {toggleGroupItems}
       </ToolbarToggleGroup>
@@ -183,11 +183,11 @@ export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
           <Button variant="plain" aria-label="sync" icon={<SyncIcon />} />
         </ToolbarItem>
       </ToolbarGroup>
-    </React.Fragment>
+    </Fragment>
   );
 
   const customLabelGroupContent = (
-    <React.Fragment>
+    <Fragment>
       <ToolbarItem>
         <Button variant="link" onClick={() => {}} isInline>
           Save filters
@@ -198,7 +198,7 @@ export const ToolbarCustomLabelGroupContent: React.FunctionComponent = () => {
           Clear all filters
         </Button>
       </ToolbarItem>
-    </React.Fragment>
+    </Fragment>
   );
 
   return (

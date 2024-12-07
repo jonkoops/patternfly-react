@@ -1,18 +1,17 @@
-import * as React from 'react';
+import { HTMLProps, DetailedHTMLProps, ReactNode, ElementType, ComponentType, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/Masthead/masthead';
 import { css } from '@patternfly/react-styles';
 
-export interface MastheadLogoProps
-  extends React.DetailedHTMLProps<React.HTMLProps<HTMLAnchorElement>, HTMLAnchorElement> {
+export interface MastheadLogoProps extends DetailedHTMLProps<HTMLProps<HTMLAnchorElement>, HTMLAnchorElement> {
   /** Content rendered inside of the masthead logo. */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the masthead logo. */
   className?: string;
   /** Component type of the masthead logo. */
-  component?: React.ElementType<any> | React.ComponentType<any>;
+  component?: ElementType<any> | ComponentType<any>;
 }
 
-export const MastheadLogo: React.FunctionComponent<MastheadLogoProps> = ({
+export const MastheadLogo: FunctionComponent<MastheadLogoProps> = ({
   children,
   className,
   component,

@@ -1,4 +1,17 @@
-import React, { useEffect } from 'react';
+import {
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+  type HTMLProps,
+  type ReactNode,
+  useEffect,
+  ChangeEvent,
+  FormEvent,
+  useState,
+  useRef,
+  useMemo,
+  Ref,
+  CSSProperties
+} from 'react';
 import { TextInput } from '../TextInput';
 import { Button } from '../Button';
 import { Select, SelectList, SelectOption } from '../Select';
@@ -25,7 +38,7 @@ export interface CalendarMonthInlineProps {
   /** Component wrapping the calendar month when used inline. Recommended to be 'article'. */
   component?: keyof JSX.IntrinsicElements;
   /** Title of the calendar rendered above the inline calendar month. Recommended to be a 'title' component. */
-  title?: React.ReactNode;
+  title?: ReactNode;
   /** Id of the accessible label of the calendar month. Recommended to map to the title. */
   ariaLabelledby?: string;
 }
@@ -38,15 +51,15 @@ export interface CalendarFormat {
   /** Accessible label for the date cells. */
   cellAriaLabel?: (date: Date) => string;
   /** How to format days in buttons in table cells. */
-  dayFormat?: (date: Date) => React.ReactNode;
+  dayFormat?: (date: Date) => ReactNode;
   /** If using the default formatters which locale to use. Undefined defaults to current locale.
    * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation
    */
   locale?: string;
   /** How to format days in header for screen readers. */
-  longWeekdayFormat?: (date: Date) => React.ReactNode;
+  longWeekdayFormat?: (date: Date) => ReactNode;
   /** How to format months in month select. */
-  monthFormat?: (date: Date) => React.ReactNode;
+  monthFormat?: (date: Date) => ReactNode;
   /** Accessible label for the previous month button. */
   prevMonthAriaLabel?: string;
   /** Accessible label for the next month button. */
@@ -54,7 +67,7 @@ export interface CalendarFormat {
   /** Which date to start range styles from. */
   rangeStart?: Date;
   /** How to format week days in header. */
-  weekdayFormat?: (date: Date) => React.ReactNode;
+  weekdayFormat?: (date: Date) => ReactNode;
   /** Day of week that starts the week. 0 is Sunday, 6 is Saturday. */
   weekStart?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | Weekday;
   /** Accessible label for the year input. */
@@ -63,7 +76,7 @@ export interface CalendarFormat {
   inlineProps?: CalendarMonthInlineProps;
 }
 
-export interface CalendarProps extends CalendarFormat, Omit<React.HTMLProps<HTMLDivElement>, 'onChange'> {
+export interface CalendarProps extends CalendarFormat, Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
   /** Additional classes to add to the outer div of the calendar month. */
   className?: string;
   /** Month/year to base other dates around. */
@@ -71,12 +84,9 @@ export interface CalendarProps extends CalendarFormat, Omit<React.HTMLProps<HTML
   /** Flag to set browser focus on the passed date. **/
   isDateFocused?: boolean;
   /** Callback when date is selected. */
-  onChange?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, date: Date) => void;
+  onChange?: (event: ReactMouseEvent<HTMLButtonElement, MouseEvent>, date: Date) => void;
   /** Callback when month or year is changed. */
-  onMonthChange?: (
-    event?: React.MouseEvent | React.ChangeEvent | React.FormEvent<HTMLInputElement>,
-    newDate?: Date
-  ) => void;
+  onMonthChange?: (event?: ReactMouseEvent | ChangeEvent | FormEvent<HTMLInputElement>, newDate?: Date) => void;
   /** @hide Internal prop to allow pressing escape in select menu to not close popover. */
   onSelectToggle?: (open: boolean) => void;
   /** Functions that returns if a date is valid and selectable. */
@@ -148,7 +158,7 @@ export const CalendarMonth = ({
   const longMonths = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     .map((monthNum) => new Date(1990, monthNum))
     .map(monthFormat);
-  const [isSelectOpen, setIsSelectOpen] = React.useState(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   const getInitialDate = () => {
     if (isValidDate(dateProp)) {
@@ -160,18 +170,18 @@ export const CalendarMonth = ({
     return today;
   };
   const initialDate = getInitialDate();
-  const [focusedDate, setFocusedDate] = React.useState(initialDate);
+  const [focusedDate, setFocusedDate] = useState(initialDate);
 
   // Must be numeric given current header design
   const yearFormat = (date: Date) => date.getFullYear();
   //
   const yearFormatted = yearFormat(focusedDate);
-  const [yearInput, setYearInput] = React.useState(yearFormatted.toString());
+  const [yearInput, setYearInput] = useState(yearFormatted.toString());
 
-  const [hoveredDate, setHoveredDate] = React.useState<Date>(undefined);
-  const focusRef = React.useRef<HTMLButtonElement>();
-  const [hiddenMonthId] = React.useState(getUniqueId('hidden-month-span'));
-  const [shouldFocus, setShouldFocus] = React.useState(false);
+  const [hoveredDate, setHoveredDate] = useState<Date>(undefined);
+  const focusRef = useRef<HTMLButtonElement>();
+  const [hiddenMonthId] = useState(getUniqueId('hidden-month-span'));
+  const [shouldFocus, setShouldFocus] = useState(false);
 
   const isValidated = (date: Date) => validators.every((validator) => validator(date));
   const focusedDateValidated = isValidated(focusedDate);
@@ -190,14 +200,14 @@ export const CalendarMonth = ({
     }
   }, [focusedDate, isDateFocused, focusedDateValidated, focusRef]);
 
-  const onMonthClick = (ev: React.MouseEvent, newDate: Date) => {
+  const onMonthClick = (ev: ReactMouseEvent, newDate: Date) => {
     setFocusedDate(newDate);
     setShouldFocus(false);
     onMonthChange(ev, newDate);
     setYearInput(yearFormat(newDate).toString());
   };
 
-  const onKeyDown = (ev: React.KeyboardEvent<HTMLTableSectionElement>) => {
+  const onKeyDown = (ev: ReactKeyboardEvent<HTMLTableSectionElement>) => {
     const newDate = new Date(focusedDate);
     if (ev.key === 'ArrowUp') {
       newDate.setDate(newDate.getDate() - 7);
@@ -223,7 +233,7 @@ export const CalendarMonth = ({
   const MIN_YEAR = 1900;
   const MAX_YEAR = 2100;
 
-  const handleYearInputChange = (event: React.FormEvent<HTMLInputElement>, yearStr: string) => {
+  const handleYearInputChange = (event: FormEvent<HTMLInputElement>, yearStr: string) => {
     if (!/^\d{0,4}$/.test(yearStr)) {
       return;
     }
@@ -266,7 +276,7 @@ export const CalendarMonth = ({
   const nextMonth = addMonth(1);
   const focusedYear = focusedDate.getFullYear();
   const focusedMonth = focusedDate.getMonth();
-  const calendar = React.useMemo(
+  const calendar = useMemo(
     () => buildCalendar(focusedYear, focusedMonth, weekStart, validators),
     [focusedYear, focusedMonth, weekStart, validators]
   );
@@ -291,7 +301,7 @@ export const CalendarMonth = ({
           <Button
             variant="plain"
             aria-label={prevMonthAriaLabel}
-            onClick={(ev: React.MouseEvent) => onMonthClick(ev, prevMonth)}
+            onClick={(ev: ReactMouseEvent) => onMonthClick(ev, prevMonth)}
             icon={<AngleLeftIcon aria-hidden={true} />}
           />
         </div>
@@ -302,12 +312,12 @@ export const CalendarMonth = ({
                 Month
               </span>
               <Select
-                toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+                toggle={(toggleRef: Ref<MenuToggleElement>) => (
                   <MenuToggle
                     ref={toggleRef}
                     onClick={() => setIsSelectOpen(!isSelectOpen)}
                     isExpanded={isSelectOpen}
-                    style={{ width: '140px' } as React.CSSProperties}
+                    style={{ width: '140px' } as CSSProperties}
                   >
                     {monthFormatted}
                   </MenuToggle>
@@ -357,7 +367,7 @@ export const CalendarMonth = ({
           <Button
             variant="plain"
             aria-label={nextMonthAriaLabel}
-            onClick={(ev: React.MouseEvent) => onMonthClick(ev, nextMonth)}
+            onClick={(ev: ReactMouseEvent) => onMonthClick(ev, nextMonth)}
             icon={<AngleRightIcon aria-hidden={true} />}
           />
         </div>

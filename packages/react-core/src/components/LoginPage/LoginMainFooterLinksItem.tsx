@@ -1,15 +1,15 @@
-import * as React from 'react';
+import { HTMLProps, ReactNode, FunctionComponent } from 'react';
 import styles from '@patternfly/react-styles/css/components/Login/login';
 import { css } from '@patternfly/react-styles';
 
-export interface LoginMainFooterLinksItemProps extends React.HTMLProps<HTMLLIElement> {
+export interface LoginMainFooterLinksItemProps extends HTMLProps<HTMLLIElement> {
   /** Content rendered inside the footer link item */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /** Additional classes added to the footer link item  */
   className?: string;
 }
 
-export const LoginMainFooterLinksItem: React.FunctionComponent<LoginMainFooterLinksItemProps> = ({
+export const LoginMainFooterLinksItem: FunctionComponent<LoginMainFooterLinksItemProps> = ({
   children = null,
   className = '',
   ...props

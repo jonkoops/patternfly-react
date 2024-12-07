@@ -1,21 +1,32 @@
-import React from 'react';
 import {
-  Select,
-  SelectOption,
-  SelectList,
-  SelectOptionProps,
+  Button,
+  Label,
+  LabelGroup,
   MenuToggle,
   MenuToggleElement,
+  MenuToggleProps,
+  Select,
+  SelectList,
+  SelectOption,
+  SelectOptionProps,
+  SelectProps,
   TextInputGroup,
   TextInputGroupMain,
-  TextInputGroupUtilities,
-  Button,
-  MenuToggleProps,
-  SelectProps,
-  Label,
-  LabelGroup
+  TextInputGroupUtilities
 } from '@patternfly/react-core';
 import TimesIcon from '@patternfly/react-icons/dist/esm/icons/times-icon';
+import {
+  type CSSProperties,
+  FormEvent,
+  type FunctionComponent,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+  type Ref,
+  forwardRef,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 
 export interface MultiTypeaheadSelectOption extends Omit<SelectOptionProps, 'content'> {
   /** Content of the select option. */
@@ -26,12 +37,12 @@ export interface MultiTypeaheadSelectOption extends Omit<SelectOptionProps, 'con
 
 export interface MultiTypeaheadSelectProps extends Omit<SelectProps, 'toggle' | 'onSelect'> {
   /** @hide Forwarded ref */
-  innerRef?: React.Ref<any>;
+  innerRef?: Ref<any>;
   /** Initial options of the select. */
   initialOptions: MultiTypeaheadSelectOption[];
   /** Callback triggered on selection. */
   onSelectionChange?: (
-    _event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<HTMLInputElement>,
+    _event: ReactMouseEvent<Element, MouseEvent> | KeyboardEvent<HTMLInputElement>,
     selections: (string | number)[]
   ) => void;
   /** Callback triggered when the select opens or closes. */
@@ -50,7 +61,7 @@ export interface MultiTypeaheadSelectProps extends Omit<SelectProps, 'toggle' | 
   toggleProps?: MenuToggleProps;
 }
 
-export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSelectProps> = ({
+export const MultiTypeaheadSelectBase: FunctionComponent<MultiTypeaheadSelectProps> = ({
   innerRef,
   initialOptions,
   onSelectionChange,
@@ -63,15 +74,15 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
   toggleProps,
   ...props
 }: MultiTypeaheadSelectProps) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<(string | number)[]>(
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState<(string | number)[]>(
     (initialOptions?.filter((o) => o.selected) ?? []).map((o) => o.value)
   );
-  const [inputValue, setInputValue] = React.useState<string>();
-  const [selectOptions, setSelectOptions] = React.useState<MultiTypeaheadSelectOption[]>(initialOptions);
-  const [focusedItemIndex, setFocusedItemIndex] = React.useState<number | null>(null);
-  const [activeItemId, setActiveItemId] = React.useState<string | null>(null);
-  const textInputRef = React.useRef<HTMLInputElement>();
+  const [inputValue, setInputValue] = useState<string>();
+  const [selectOptions, setSelectOptions] = useState<MultiTypeaheadSelectOption[]>(initialOptions);
+  const [focusedItemIndex, setFocusedItemIndex] = useState<number | null>(null);
+  const [activeItemId, setActiveItemId] = useState<string | null>(null);
+  const textInputRef = useRef<HTMLInputElement>();
 
   const NO_RESULTS = 'no results';
 
@@ -80,7 +91,7 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
     setIsOpen(true);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     let newSelectOptions: MultiTypeaheadSelectOption[] = initialOptions;
 
     // Filter menu items based on the text input value when one exists
@@ -109,10 +120,7 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValue, initialOptions]);
 
-  React.useEffect(
-    () => setSelected((initialOptions?.filter((o) => o.selected) ?? []).map((o) => o.value)),
-    [initialOptions]
-  );
+  useEffect(() => setSelected((initialOptions?.filter((o) => o.selected) ?? []).map((o) => o.value)), [initialOptions]);
 
   const setActiveAndFocusedItem = (itemIndex: number) => {
     setFocusedItemIndex(itemIndex);
@@ -141,7 +149,7 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
   };
 
   const selectOption = (
-    _event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<HTMLInputElement> | undefined,
+    _event: ReactMouseEvent<Element, MouseEvent> | ReactKeyboardEvent<HTMLInputElement> | undefined,
     option: string | number
   ) => {
     const selections = selected.includes(option) ? selected.filter((o) => option !== o) : [...selected, option];
@@ -151,7 +159,7 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
   };
 
   const clearOption = (
-    _event: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<HTMLInputElement> | undefined,
+    _event: ReactMouseEvent<Element, MouseEvent> | ReactKeyboardEvent<HTMLInputElement> | undefined,
     option: string | number
   ) => {
     const selections = selected.filter((o) => option !== o);
@@ -159,13 +167,13 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
     setSelected(selections);
   };
 
-  const _onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
+  const _onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
     if (value && value !== NO_RESULTS) {
       selectOption(_event, value);
     }
   };
 
-  const onTextInputChange = (_event: React.FormEvent<HTMLInputElement>, value: string) => {
+  const onTextInputChange = (_event: FormEvent<HTMLInputElement>, value: string) => {
     setInputValue(value);
     onInputChange && onInputChange(value);
 
@@ -220,7 +228,7 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
     setActiveAndFocusedItem(indexToFocus);
   };
 
-  const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const onInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     const focusedItem = focusedItemIndex !== null ? selectOptions[focusedItemIndex] : null;
 
     switch (event.key) {
@@ -249,7 +257,7 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
     textInputRef?.current?.focus();
   };
 
-  const onClearButtonClick = (ev: React.MouseEvent) => {
+  const onClearButtonClick = (ev: ReactMouseEvent) => {
     setSelected([]);
     onInputChange && onInputChange('');
     resetActiveAndFocusedItem();
@@ -257,7 +265,7 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
     onSelectionChange && onSelectionChange(ev, []);
   };
 
-  const toggle = (toggleRef: React.Ref<MenuToggleElement>) => (
+  const toggle = (toggleRef: Ref<MenuToggleElement>) => (
     <MenuToggle
       ref={toggleRef}
       variant="typeahead"
@@ -269,7 +277,7 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
       style={
         {
           width: toggleWidth
-        } as React.CSSProperties
+        } as CSSProperties
       }
       {...toggleProps}
     >
@@ -341,7 +349,7 @@ export const MultiTypeaheadSelectBase: React.FunctionComponent<MultiTypeaheadSel
 
 MultiTypeaheadSelectBase.displayName = 'MultiTypeaheadSelectBase';
 
-export const MultiTypeaheadSelect = React.forwardRef((props: MultiTypeaheadSelectProps, ref: React.Ref<any>) => (
+export const MultiTypeaheadSelect = forwardRef((props: MultiTypeaheadSelectProps, ref: Ref<any>) => (
   <MultiTypeaheadSelectBase {...props} innerRef={ref} />
 ));
 

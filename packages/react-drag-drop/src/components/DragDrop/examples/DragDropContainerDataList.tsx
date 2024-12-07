@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, useState } from 'react';
 import {
   DataList,
   DataListCell,
@@ -34,8 +34,8 @@ const getItems = (from: number, count: number): DraggableObject[] =>
     )
   }));
 
-export const DataListDraggable: React.FunctionComponent = (props) => {
-  const [items, setItems] = React.useState<Record<string, DraggableObject[]>>({
+export const DataListDraggable: FunctionComponent = (props) => {
+  const [items, setItems] = useState<Record<string, DraggableObject[]>>({
     group1: getItems(0, 5),
     group2: getItems(5, 5)
   });

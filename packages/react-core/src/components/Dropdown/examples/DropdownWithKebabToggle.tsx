@@ -1,15 +1,31 @@
-import React from 'react';
+import {
+  type HTMLProps,
+  type ReactNode,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useRef,
+  useState,
+  useEffect,
+  type TouchEvent as ReactTouchEvent,
+  type MouseEvent as ReactMouseEvent,
+  type FunctionComponent,
+  useContext,
+  useCallback,
+  type CSSProperties,
+  type RefObject,
+  type Ref,
+  forwardRef
+} from 'react';
 import { Dropdown, DropdownItem, DropdownList, Divider, MenuToggle, MenuToggleElement } from '@patternfly/react-core';
 import EllipsisVIcon from '@patternfly/react-icons/dist/esm/icons/ellipsis-v-icon';
 
-export const DropdownWithKebab: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+export const DropdownWithKebab: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const onToggleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const onSelect = (_event: React.MouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
+  const onSelect = (_event: ReactMouseEvent<Element, MouseEvent> | undefined, value: string | number | undefined) => {
     // eslint-disable-next-line no-console
     console.log('selected', value);
     setIsOpen(false);
@@ -20,7 +36,7 @@ export const DropdownWithKebab: React.FunctionComponent = () => {
       isOpen={isOpen}
       onSelect={onSelect}
       onOpenChange={(isOpen: boolean) => setIsOpen(isOpen)}
-      toggle={(toggleRef: React.Ref<MenuToggleElement>) => (
+      toggle={(toggleRef: Ref<MenuToggleElement>) => (
         <MenuToggle
           ref={toggleRef}
           aria-label="kebab dropdown toggle"

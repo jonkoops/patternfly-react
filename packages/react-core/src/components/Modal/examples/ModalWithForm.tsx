@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent, MouseEvent, useState, useRef, Fragment } from 'react';
 import {
   Button,
   Form,
@@ -13,16 +13,16 @@ import {
   TextInput
 } from '@patternfly/react-core';
 
-export const ModalWithForm: React.FunctionComponent = () => {
-  const [isModalOpen, setModalOpen] = React.useState(false);
-  const [nameValue, setNameValue] = React.useState('');
-  const [emailValue, setEmailValue] = React.useState('');
-  const [addressValue, setAddressValue] = React.useState('');
-  const nameLabelHelpRef = React.useRef(null);
-  const emailLabelHelpRef = React.useRef(null);
-  const addressLabelHelpRef = React.useRef(null);
+export const ModalWithForm: FunctionComponent = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [nameValue, setNameValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
+  const [addressValue, setAddressValue] = useState('');
+  const nameLabelHelpRef = useRef(null);
+  const emailLabelHelpRef = useRef(null);
+  const addressLabelHelpRef = useRef(null);
 
-  const handleModalToggle = (_event: KeyboardEvent | React.MouseEvent) => {
+  const handleModalToggle = (_event: KeyboardEvent | MouseEvent) => {
     setModalOpen(!isModalOpen);
   };
 
@@ -38,7 +38,7 @@ export const ModalWithForm: React.FunctionComponent = () => {
   };
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Button variant="primary" onClick={handleModalToggle}>
         Show modal with form
       </Button>
@@ -197,6 +197,6 @@ export const ModalWithForm: React.FunctionComponent = () => {
           </Button>
         </ModalFooter>
       </Modal>
-    </React.Fragment>
+    </Fragment>
   );
 };

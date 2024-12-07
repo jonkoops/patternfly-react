@@ -1,7 +1,7 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import { Content, ContentVariants } from '@patternfly/react-core';
 
-export const ContentDescriptionList: React.FunctionComponent = () => (
+export const ContentDescriptionList: FunctionComponent = () => (
   <Content component={ContentVariants.dl}>
     <Content component={ContentVariants.dt}>Web</Content>
     <Content component={ContentVariants.dd}>The part of the Internet that contains websites and web pages</Content>

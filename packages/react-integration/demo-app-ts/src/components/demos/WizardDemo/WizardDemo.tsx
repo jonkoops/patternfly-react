@@ -1,4 +1,4 @@
-import React from 'react';
+import { HTMLProps, Component } from 'react';
 import { Button, Wizard, WizardHeader, WizardStep } from '@patternfly/react-core';
 import { Modal as ModalDeprecated } from '@patternfly/react-core/deprecated';
 
@@ -10,7 +10,7 @@ interface WizardDemoState {
   isOpenWithRole: boolean;
 }
 
-class WizardDemo extends React.Component<React.HTMLProps<HTMLDivElement>, WizardDemoState> {
+class WizardDemo extends Component<HTMLProps<HTMLDivElement>, WizardDemoState> {
   static displayName = 'WizardDemo';
   state = {
     isOpen: false,

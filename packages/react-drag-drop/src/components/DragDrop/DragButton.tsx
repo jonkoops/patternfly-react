@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { HTMLProps, FunctionComponent } from 'react';
 import { css } from '@patternfly/react-styles';
 import { Button } from '@patternfly/react-core';
 import dragButtonStyles from '@patternfly/react-styles/css/components/DataList/data-list';
 import GripVerticalIcon from '@patternfly/react-icons/dist/esm/icons/grip-vertical-icon';
 
-export interface DragButtonProps extends Omit<React.HTMLProps<HTMLButtonElement>, 'size'> {
+export interface DragButtonProps extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
   /** Additional classes added to the drag button */
   className?: string;
   /** Sets button type */
@@ -17,7 +17,7 @@ export interface DragButtonProps extends Omit<React.HTMLProps<HTMLButtonElement>
   'aria-labelledby'?: string;
 }
 
-export const DragButton: React.FunctionComponent<DragButtonProps> = ({
+export const DragButton: FunctionComponent<DragButtonProps> = ({
   className,
   'aria-label': ariaLabel = 'Drag button',
   'aria-labelledby': ariaLabelledby,

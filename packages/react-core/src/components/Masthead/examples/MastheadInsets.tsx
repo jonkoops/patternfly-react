@@ -1,4 +1,4 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
 import {
   Masthead,
   MastheadMain,
@@ -10,7 +10,7 @@ import {
 } from '@patternfly/react-core';
 import BarsIcon from '@patternfly/react-icons/dist/js/icons/bars-icon';
 
-export const MastheadInsets: React.FunctionComponent = () => (
+export const MastheadInsets: FunctionComponent = () => (
   <Masthead id="inset-masthead" inset={{ default: 'insetSm' }}>
     <MastheadMain>
       <MastheadToggle>
